@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>股票 on HELLO WORLD</title>
+    <link>http://localhost:1313/tags/%E8%82%A1%E7%A5%A8/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Wed, 13 Mar 2024 20:15:13 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/%E8%82%A1%E7%A5%A8/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>认识股票</title>
+      <link>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</link>
+      <pubDate>Wed, 13 Mar 2024 20:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</guid>
+      <description>
+        <![CDATA[<h1>认识股票</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="概念">
+<a class="header-anchor" href="#%e6%a6%82%e5%bf%b5"></a>
+概念
+</h2><p>股本：公司全部的股票数量。</p>
+<p>股价：单个股票的价格。股价是按当前时刻的最高成交价去定价的。</p>
+<h2 id="证券交易所">
+<a class="header-anchor" href="#%e8%af%81%e5%88%b8%e4%ba%a4%e6%98%93%e6%89%80"></a>
+证券交易所
+</h2><p>证券交易所是用于 股票交易的场所。</p>
+<p>公司上市的意思就是可在证券交易所发行股票。</p>
+        
+        <hr><p>本文2024-03-13首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-13</p>]]>
+      </description>
+      
+        <category>经济与金融</category>
+      
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>X86汇编 on HELLO WORLD</title>
+    <link>http://localhost:1313/tags/x86%E6%B1%87%E7%BC%96/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Wed, 20 Mar 2024 20:07:06 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/x86%E6%B1%87%E7%BC%96/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>x86汇编</title>
+      <link>http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</link>
+      <pubDate>Wed, 20 Mar 2024 20:07:06 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</guid>
+      <description>
+        <![CDATA[<h1>x86汇编</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="一寄存器">
+<a class="header-anchor" href="#%e4%b8%80%e5%af%84%e5%ad%98%e5%99%a8"></a>
+一、寄存器
+</h2><p>​	寄存器的本质就是一片存储空间。</p>
+<p>​	不同型号的CPU可能对应着不同种类的<strong>寄存器组</strong> 。</p>
+<p>​	CPU中的每个核心都对应着一组<strong>寄存器</strong>。</p>
+<p>​	高位的寄存器可以向下兼容低位程序。</p>
+        
+        <hr><p>本文2024-03-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
+      </description>
+      
+        <category>二进制</category>
+      
+    </item>
+    
+  </channel>
+</rss>

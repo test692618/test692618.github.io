@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>靶机渗透过程 on HELLO WORLD</title>
+    <link>http://localhost:1313/categories/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%BF%87%E7%A8%8B/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>DC-9靶机</title>
+      <link>http://localhost:1313/post/images/0x01.dc-9/</link>
+      <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/images/0x01.dc-9/</guid>
+      <description>
+        <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="port-scan">
+<a class="header-anchor" href="#port-scan"></a>
+PORT-SCAN
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sudo nmap -p <span class="m">80</span> 192.168.1.22 --script<span class="o">=</span>vuln
+</span></span><span class="line"><span class="cl">Starting Nmap 7.94 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2023-11-14 07:01 EST
+</span></span><span class="line"><span class="cl">Pre-scan script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> broadcast-avahi-dos: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Discovered hosts:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     224.0.0.251
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   After NULL UDP avahi packet DoS <span class="o">(</span>CVE-2011-1002<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Hosts are all up <span class="o">(</span>not vulnerable<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> dc-9.bbrouter <span class="o">(</span>192.168.1.22<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.00053s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-vuln-cve2017-1001000: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-dombased-xss: Couldn<span class="s1">&#39;t find any DOM based XSS.
+</span></span></span><span class="line"><span class="cl"><span class="s1">|_http-stored-xss: Couldn&#39;</span>t find any stored XSS vulnerabilities.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-enum: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /css/: Potentially interesting directory w/ listing on <span class="s1">&#39;apache/2.4.38 (debian)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  /includes/: Potentially interesting directory w/ listing on <span class="s1">&#39;apache/2.4.38 (debian)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-csrf: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Spidering limited to: <span class="nv">maxdepth</span><span class="o">=</span>3<span class="p">;</span> <span class="nv">maxpagecount</span><span class="o">=</span>20<span class="p">;</span> <span class="nv">withinhost</span><span class="o">=</span>dc-9.bbrouter
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Found the following possible CSRF vulnerabilities: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Path: http://dc-9.bbrouter:80/search.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form id: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form action: results.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Path: http://dc-9.bbrouter:80/manage.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form id: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Form action: manage.php
+</span></span><span class="line"><span class="cl">MAC Address: 08:00:27:DD:A0:C3 <span class="o">(</span>Oracle VirtualBox virtual NIC<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
+</span></span></code></pre></div><p>无有效信息。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>靶机渗透过程</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>DC-9靶机</title>
+      <link>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC/</link>
+      <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC/</guid>
+      <description>
+        <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="port-scan">
+<a class="header-anchor" href="#port-scan"></a>
+PORT-SCAN
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sudo nmap -p <span class="m">80</span> 192.168.1.22 --script<span class="o">=</span>vuln
+</span></span><span class="line"><span class="cl">Starting Nmap 7.94 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2023-11-14 07:01 EST
+</span></span><span class="line"><span class="cl">Pre-scan script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> broadcast-avahi-dos: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Discovered hosts:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     224.0.0.251
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   After NULL UDP avahi packet DoS <span class="o">(</span>CVE-2011-1002<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Hosts are all up <span class="o">(</span>not vulnerable<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> dc-9.bbrouter <span class="o">(</span>192.168.1.22<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.00053s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-vuln-cve2017-1001000: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-dombased-xss: Couldn<span class="s1">&#39;t find any DOM based XSS.
+</span></span></span><span class="line"><span class="cl"><span class="s1">|_http-stored-xss: Couldn&#39;</span>t find any stored XSS vulnerabilities.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-enum: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /css/: Potentially interesting directory w/ listing on <span class="s1">&#39;apache/2.4.38 (debian)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  /includes/: Potentially interesting directory w/ listing on <span class="s1">&#39;apache/2.4.38 (debian)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-csrf: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Spidering limited to: <span class="nv">maxdepth</span><span class="o">=</span>3<span class="p">;</span> <span class="nv">maxpagecount</span><span class="o">=</span>20<span class="p">;</span> <span class="nv">withinhost</span><span class="o">=</span>dc-9.bbrouter
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Found the following possible CSRF vulnerabilities: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Path: http://dc-9.bbrouter:80/search.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form id: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form action: results.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Path: http://dc-9.bbrouter:80/manage.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form id: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Form action: manage.php
+</span></span><span class="line"><span class="cl">MAC Address: 08:00:27:DD:A0:C3 <span class="o">(</span>Oracle VirtualBox virtual NIC<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
+</span></span></code></pre></div><p>无有效信息。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>靶机渗透过程</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>DC-9靶机</title>
+      <link>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/</link>
+      <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/</guid>
+      <description>
+        <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="port-scan">
+<a class="header-anchor" href="#port-scan"></a>
+PORT-SCAN
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ sudo nmap -p <span class="m">80</span> 192.168.1.22 --script<span class="o">=</span>vuln
+</span></span><span class="line"><span class="cl">Starting Nmap 7.94 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2023-11-14 07:01 EST
+</span></span><span class="line"><span class="cl">Pre-scan script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> broadcast-avahi-dos: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Discovered hosts:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     224.0.0.251
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   After NULL UDP avahi packet DoS <span class="o">(</span>CVE-2011-1002<span class="o">)</span>.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  Hosts are all up <span class="o">(</span>not vulnerable<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">Nmap scan report <span class="k">for</span> dc-9.bbrouter <span class="o">(</span>192.168.1.22<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Host is up <span class="o">(</span>0.00053s latency<span class="o">)</span>.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-vuln-cve2017-1001000: ERROR: Script execution failed <span class="o">(</span>use -d to debug<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-dombased-xss: Couldn<span class="s1">&#39;t find any DOM based XSS.
+</span></span></span><span class="line"><span class="cl"><span class="s1">|_http-stored-xss: Couldn&#39;</span>t find any stored XSS vulnerabilities.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-enum: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   /css/: Potentially interesting directory w/ listing on <span class="s1">&#39;apache/2.4.38 (debian)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  /includes/: Potentially interesting directory w/ listing on <span class="s1">&#39;apache/2.4.38 (debian)&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> http-csrf: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Spidering limited to: <span class="nv">maxdepth</span><span class="o">=</span>3<span class="p">;</span> <span class="nv">maxpagecount</span><span class="o">=</span>20<span class="p">;</span> <span class="nv">withinhost</span><span class="o">=</span>dc-9.bbrouter
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Found the following possible CSRF vulnerabilities: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Path: http://dc-9.bbrouter:80/search.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form id: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form action: results.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Path: http://dc-9.bbrouter:80/manage.php
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Form id: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Form action: manage.php
+</span></span><span class="line"><span class="cl">MAC Address: 08:00:27:DD:A0:C3 <span class="o">(</span>Oracle VirtualBox virtual NIC<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
+</span></span></code></pre></div><p>无有效信息。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>靶机渗透过程</category>
+      
+    </item>
+    
+  </channel>
+</rss>

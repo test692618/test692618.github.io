@@ -1,0 +1,721 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  x86汇编 | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="x86汇编 | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="http://localhost:1313/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="2024-03-20T20:07:06&#43;00:00" />
+  <meta property="article:modified_time" content="2024-03-20T20:07:06&#43;00:00" /><meta property="article:tag" content="x86汇编" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="http://localhost:1313/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">友链</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="x86汇编"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">x86汇编</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一寄存器">一、寄存器</a>
+      <ul>
+        <li><a href="#寄存器的分类">寄存器的分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#二堆栈">二、堆栈</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2024-03-20 20:07:06 &#43;0000 UTC" itemprop="datePublished"
+      >2024-03-20</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2024-03-20</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="一寄存器">
+<a class="header-anchor" href="#%e4%b8%80%e5%af%84%e5%ad%98%e5%99%a8"></a>
+一、寄存器
+</h2><p>​	寄存器的本质就是一片存储空间。</p>
+<p>​	不同型号的CPU可能对应着不同种类的<strong>寄存器组</strong> 。</p>
+<p>​	CPU中的每个核心都对应着一组<strong>寄存器</strong>。</p>
+<p>​	高位的寄存器可以向下兼容低位程序。</p>
+<h3 id="寄存器的分类">
+<a class="header-anchor" href="#%e5%af%84%e5%ad%98%e5%99%a8%e7%9a%84%e5%88%86%e7%b1%bb"></a>
+寄存器的分类
+</h3><ul>
+<li>
+<p>通用寄存器（32bit）：用于在处理器上处理数据时临时存储数据，8个</p>
+<p><strong>EAX</strong>：用于算术计算的主寄存器。也称为累加器，因为它包含算术运算的结果和函数返回值。</p>
+<p><strong>EBX</strong>：基本寄存器。指向 DS 段中数据的指针。用于存储程序的基址。</p>
+<p><strong>ECX</strong>：计数器寄存器通常用于保存一个值，该值表示要重复的进程的次数。用于循环和字符串操作。</p>
+<p><strong>EDX</strong>：通用寄存器。此外，还用于 I/O 操作。此外，还将 EAX 扩展到 64 位。</p>
+<p><strong>ESI</strong>：源索引寄存器。指向 DS 寄存器指向的段中的数据的指针。在字符串和数组操作中用作偏移地址。它保存从中读取数据的地址。</p>
+<p><strong>EDI</strong>：目标索引寄存器。指向 ES 寄存器指向的段中的数据（或目标）的指针。在字符串和数组操作中用作偏移地址。它保存所有字符串操作的隐含写入地址。</p>
+<p><strong>EBP</strong>：基指针。指向堆栈上的数据的指针（在 SS 段中）。它指向当前堆栈帧的底部。它用于引用局部变量。</p>
+<p><strong>ESP</strong>：堆栈指针（在 SS 段中）。它指向当前堆栈帧的顶部。它用于引用局部变量。</p>
+<p>通用寄存器虽为32位寄存器，但它们可以向下兼容16位，甚至8位的数据。</p>
+<p>​				例如， EAX(32)  AX(16)   AH\AL(8)</p>
+<table>
+  <thead>
+      <tr>
+          <th>32bit</th>
+          <th style="text-align: left">16bit</th>
+          <th style="text-align: left">8bit</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>EAX</td>
+          <td style="text-align: left">AX</td>
+          <td style="text-align: left">AH</td>
+      </tr>
+      <tr>
+          <td>EBX</td>
+          <td style="text-align: left">BX</td>
+          <td style="text-align: left">AL</td>
+      </tr>
+      <tr>
+          <td>ECX</td>
+          <td style="text-align: left">CX</td>
+          <td style="text-align: left">BH</td>
+      </tr>
+      <tr>
+          <td>EDX</td>
+          <td style="text-align: left">DX</td>
+          <td style="text-align: left">BL</td>
+      </tr>
+      <tr>
+          <td>ESP</td>
+          <td style="text-align: left">SP</td>
+          <td style="text-align: left">CH</td>
+      </tr>
+      <tr>
+          <td>EBP</td>
+          <td style="text-align: left">BP</td>
+          <td style="text-align: left">CL</td>
+      </tr>
+      <tr>
+          <td>ESI</td>
+          <td style="text-align: left">SI</td>
+          <td style="text-align: left">DH</td>
+      </tr>
+      <tr>
+          <td>EDI</td>
+          <td style="text-align: left">DI</td>
+          <td style="text-align: left">DL</td>
+      </tr>
+  </tbody>
+</table>
+</li>
+</ul>
+<p>​</p>
+<ul>
+<li>段寄存器 （均为16bit）：用于引用存储器位置 ， 6个</li>
+</ul>
+<p>​	**CS：**代码段寄存器存储用于数据访问的代码段（.text 部分）的基本位置。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">1.CS 寄存器包含指向内存中代码段的指针。代码段是指令代码存储在内存中的位置。处理器根据 CS 寄存器值和指令指针 （EIP） 寄存器中包含的偏移值从内存中检索指令代码。
+</span></span><span class="line"><span class="cl">2.任何程序都不能显式加载或更改 CS 寄存器。处理器在为程序分配内存空间时分配其值。
+</span></span></code></pre></div><p>​	**DS：**数据段寄存器存储用于数据访问的变量（.data 部分）的默认位置。</p>
+<p>​	**ES：**在字符串操作期间使用的额外段寄存器。</p>
+<p>​	**SS：**堆栈段寄存器存储堆栈段的基位置，在隐式使用堆栈指针或显式使用基指针时使用。</p>
+<p>​	**FS：**额外段寄存器。</p>
+<p>​	**GS：**额外段寄存器。</p>
+<p>注意：段寄存器被视为操作系统的一部分，在几乎所有情况下都不能直接读取或更改。</p>
+<p>段的机制也是CPU的一种保护模式：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">在保护模式平面模型（32 位的 x86 体系结构）中工作时，程序运行并接收一个 4GB 地址空间，任何 32 位寄存器都可能寻址 40 亿内存位置中的任何一个，但操作系统定义的受保护区域除外。物理内存可能大于 4GB，但 32 位寄存器只能表示 4,294,967,296 个不同的位置。如果计算机中的内存超过 4GB，则操作系统必须在内存中安排一个 4GB 区域，并且程序仅限于该新区域。此任务由段寄存器完成，操作系统对此保持密切控制。
+</span></span></code></pre></div><ul>
+<li>
+<p>指令指针寄存器</p>
+<p>​	<strong>EIP</strong>：逆向工程中最重要的寄存器。EIP 会跟踪要执行的下一个指令代码。弹性公网IP指向要执行的下一条指令。如果您要更改该指针以跳转到代码中的另一个区域，则可以完全控制该程序。</p>
+</li>
+<li>
+<p>控制寄存器 ： 用于确定 CPU 的运行模式和当前执行任务的特性</p>
+</li>
+</ul>
+<p>​</p>
+<p>​	<strong>CR0</strong>：控制处理器的操作模式和各种状态的系统标志。</p>
+<p>​	<strong>CR1</strong>：（当前未实现）</p>
+<p>​	<strong>CR2</strong>：内存页故障信息。</p>
+<p>​	<strong>CR3</strong>：内存页面目录信息。</p>
+<p>​	<strong>CR4</strong>：启用处理器羽化并指示处理器功能的标志。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">每个控制寄存器中的值不能直接访问，但控制寄存器中的数据可以移动到其中一个通用寄存器中，一旦数据在GP寄存器中，程序就可以检查寄存器中的位标志，以确定处理器的运行状态以及当前正在运行的任务。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">如果需要更改控制寄存器标志值，则可以对 GP 寄存器中的数据进行更改，并将寄存器移动到 CR。普通应用程序通常不会修改控制寄存器条目，但它们可能会查询标志值以确定当前运行程序的主机处理器芯片的功能。
+</span></span></code></pre></div><ul>
+<li>
+<p>标志寄存器(32bit)：用于验证每个程序函数成功执行的检查，就一个。</p>
+<p>​	EFLAGS</p>
+</li>
+</ul>
+<p><img src="./../../images/image-20231230184405023.png" alt="image-20231230184405023"></p>
+<!-- raw HTML omitted -->
+<p>目前学习的是  CF PF AF ZF SF DF</p>
+<h4 id="cf-carry-flag进位标识-在某些软件中用cy表示">
+<a class="header-anchor" href="#cf-carry-flag%e8%bf%9b%e4%bd%8d%e6%a0%87%e8%af%86-%e5%9c%a8%e6%9f%90%e4%ba%9b%e8%bd%af%e4%bb%b6%e4%b8%ad%e7%94%a8cy%e8%a1%a8%e7%a4%ba"></a>
+CF （Carry Flag）&mdash;&ndash;进位标识&mdash;-（在某些软件中用CY表示）
+</h4><p>当发生进位时，由0变成1；当发生借位时，由1变成0；</p>
+<p>也可用于表示 无符号 整数运算时，发生溢出。</p>
+<p><strong>注</strong>： 进位的含义：假设一个寄存器范围为8bit , 当前值为0xFF，当再进行+1时，会导致寄存器溢出，值变为0x00。此时CF标志位会由0变成1。</p>
+<p>如下图：</p>
+<!-- raw HTML omitted -->
+<h4 id="pf-parity-flag奇偶标志在某些软件中用pe表示">
+<a class="header-anchor" href="#pf-parity-flag%e5%a5%87%e5%81%b6%e6%a0%87%e5%bf%97%e5%9c%a8%e6%9f%90%e4%ba%9b%e8%bd%af%e4%bb%b6%e4%b8%ad%e7%94%a8pe%e8%a1%a8%e7%a4%ba"></a>
+PF （parity flag）&mdash;奇偶标志&mdash;（在某些软件中用PE表示）
+</h4><p>当运算结果的 <strong>最低有效字节</strong> 中的1为偶数时，变为1；为奇数时，变为0；</p>
+<p>​	不管运算结果的长度为多少，只看最低字节位中的1的个数，即0-7bit位的1的个数。</p>
+<h4 id="afauxiliary-carry-flag-辅助进位在某些软件中用ac表示">
+<a class="header-anchor" href="#afauxiliary-carry-flag-%e8%be%85%e5%8a%a9%e8%bf%9b%e4%bd%8d%e5%9c%a8%e6%9f%90%e4%ba%9b%e8%bd%af%e4%bb%b6%e4%b8%ad%e7%94%a8ac%e8%a1%a8%e7%a4%ba"></a>
+AF(auxiliary carry flag)&ndash; 辅助进位&ndash;（在某些软件中用AC表示）
+</h4><p>运算结果，低四位向高四位发生进位时，值置为1；借位时，置为0.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h4 id="zf-zero-flag-零标志位">
+<a class="header-anchor" href="#zf-zero-flag-%e9%9b%b6%e6%a0%87%e5%bf%97%e4%bd%8d"></a>
+ZF （zero flag ）&mdash;零标志位
+</h4><p>运算结果为0，置为1；反之为0；</p>
+<p>例如，</p>
+<p>MOV AL,FFH ;</p>
+<p>ADD AL,01H；</p>
+<p><strong>此时AL 的值为00H ,ZF位置为1.</strong></p>
+<h4 id="sfsign-flag---符号标志-某些软件中用pl表示">
+<a class="header-anchor" href="#sfsign-flag---%e7%ac%a6%e5%8f%b7%e6%a0%87%e5%bf%97-%e6%9f%90%e4%ba%9b%e8%bd%af%e4%bb%b6%e4%b8%ad%e7%94%a8pl%e8%a1%a8%e7%a4%ba"></a>
+SF(sign flag) &mdash;- 符号标志 &mdash;（某些软件中用PL表示）
+</h4><p>该值与运算结果中的最高有效位的值一致。即符号位，用于指示整数还是负数</p>
+<p>最高有效值为1，它为1 ；反之为0；</p>
+<p>例如：</p>
+<p>​	MOV AL 70H;</p>
+<p>​	// 0111 0000</p>
+<p>​	ADD AL 10H;</p>
+<p>​	// 0001 0000</p>
+<p>结果为 1000 0000 ,最高有效位为1，所以SF为1</p>
+<h4 id="dfdrection-flag--方向标志--某些软件称为-up">
+<a class="header-anchor" href="#dfdrection-flag--%e6%96%b9%e5%90%91%e6%a0%87%e5%bf%97--%e6%9f%90%e4%ba%9b%e8%bd%af%e4%bb%b6%e7%a7%b0%e4%b8%ba-up"></a>
+DF(Drection Flag) &mdash; 方向标志 &mdash; 某些软件称为 UP
+</h4><p>控制处理字符串的顺序</p>
+<p><img src="./../../images/image-20231231172257928.png" alt="image-20231231172257928"></p>
+<h4 id="of-overflow-flag-溢出标志某些软件叫ov">
+<a class="header-anchor" href="#of-overflow-flag-%e6%ba%a2%e5%87%ba%e6%a0%87%e5%bf%97%e6%9f%90%e4%ba%9b%e8%bd%af%e4%bb%b6%e5%8f%abov"></a>
+OF (overflow flag) &mdash;溢出标志&ndash;某些软件叫OV
+</h4><p>它与CF标志位类似，表示 有符号 整数运算时，发生溢出。</p>
+<!-- raw HTML omitted -->
+<p>简单的判断规则：</p>
+<p><img src="./../../images/image-20231231174554357.png" alt="image-20231231174554357"></p>
+<p>具体原理说明：</p>
+<p>​	OF 标志位是用于判断运算是否为有符号运算。当为1则是，为0则反之。</p>
+<p>​	一段运算结束后，发生了进1，同时，会将CY的值和运算的最高有效位进行异或，异或的值为1，则OF为1，反之为0</p>
+<p>​				补充：异或：不同为1，相同为0.</p>
+<p><em><strong>例如：</strong></em></p>
+<p>一、  MOV AL , 7FH;    // 0111 1111</p>
+<p>​			ADD AL , 01H;     // 0000 0001</p>
+<p>​	按照有符号运算，最终值为 000 1000 0000  值为有符号整数的-128 (十进制)</p>
+<p>​	此时按无符号来说没有发生溢出，CY=0 , 最高有效位为1，异或为1，所以 OF=1</p>
+<p>​	符合正+正= 负 &gt; 发生溢出。</p>
+<p>二、MOV AL ，80H // 1000 0000</p>
+<p>​		ADD AL，80H  // 1000 0000</p>
+<p>​	按有符号运算，最终值为 001 0000 0000  值为有符号整数的0 (十进制)</p>
+<p>​	此时按无符号来说发生溢出，使CY=1 ，最高有效位为0 ， 异或为1 ，所以OF =1</p>
+<p>符合负+负= 正 &gt; 发生溢出。</p>
+<p><em>扩展：计算机并不认识什么是有符号整数，什么是无符号整数，它只是通过CY和OF的值去判断他们是什么。</em></p>
+<h2 id="二堆栈">
+<a class="header-anchor" href="#%e4%ba%8c%e5%a0%86%e6%a0%88"></a>
+二、堆栈
+</h2><p>是一段连续的<strong>内存</strong>部分，编程语言中的函数本质就是堆栈。</p>
+<p>堆栈上有两个操作，分别是 push （入栈操作）和 pop（出栈操作）。</p>
+<p>堆栈是一个后进先出的数据结构，</p>
+<p>由 CPU 密切管理和优化。每当函数声明一个新变量时，它就会被推送到堆栈上。每当函数存在时，该函数推送到堆栈上的所有变量都会被释放或删除。释放堆栈变量后，该内存区域将可用于其他堆栈变量。</p>
+<p>堆栈存储变量的优点是可以为您管理内存。您不必手动分配内存或手动释放内存。CPU 非常有效地管理和组织堆栈内存，并且速度非常快。</p>
+<p>至关重要的是，当函数退出时，它的所有变量都会从堆栈中弹出并永远丢失。堆栈变量是局部变量。堆栈会随着函数推送和弹出局部变量而增长和缩小。</p>
+</div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/%e4%ba%8c%e8%bf%9b%e5%88%b6"
+      data-aos="zoom-in"
+      >二进制</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/x86%e6%b1%87%e7%bc%96"
+        rel="tag"
+        >x86汇编</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="经济常识"
+              class="lazyload"
+            /><a
+          href="/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/"
+          aria-label="前一篇:经济常识"
+          title="前一篇:经济常识"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">经济常识</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="C基础"
+              class="lazyload"
+            /><a
+          href="/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/"
+          aria-label="后一篇:C基础"
+          title="后一篇:C基础"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">C基础</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;73.0k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;03:05</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一寄存器">一、寄存器</a>
+      <ul>
+        <li><a href="#寄存器的分类">寄存器的分类</a></li>
+      </ul>
+    </li>
+    <li><a href="#二堆栈">二、堆栈</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js"  ></script><script src="/js/aos.js"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "x86汇编",
+          url: "http:\/\/localhost:1313\/post\/%E4%BA%8C%E8%BF%9B%E5%88%B6\/x86%E6%B1%87%E7%BC%96\/",
+          description: "\r一、寄存器\r​\t寄存器的本质就是一片存储空间。\n​\t不同型号的CPU可能对应着不同种类的寄存器组 。\n​\tCPU中的每个核心都对应着一组寄存器。\n​\t高位的寄存器可以向下兼容低位程序。\n",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax ></script><script src="/js/tabs.js" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

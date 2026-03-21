@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>协议-基础知识 on HELLO WORLD</title>
+    <link>http://localhost:1313/categories/%E5%8D%8F%E8%AE%AE-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Sun, 28 Jan 2024 17:24:56 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/%E5%8D%8F%E8%AE%AE-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>RPC协议</title>
+      <link>http://localhost:1313/post/%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/rpc%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Sun, 28 Jan 2024 17:24:56 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/rpc%E5%8D%8F%E8%AE%AE/</guid>
+      <description>
+        <![CDATA[<h1>RPC协议</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="rpc和rpc协议是两回事">
+<a class="header-anchor" href="#rpc%e5%92%8crpc%e5%8d%8f%e8%ae%ae%e6%98%af%e4%b8%a4%e5%9b%9e%e4%ba%8b"></a>
+RPC和RPC协议是两回事
+</h2><p>RPC协议指的是协议</p>
+<p>​	RPC是远程过程调用一种方法，凡是实现了 向远端服务器中调取数据 这一个过程，都可以说它是一种RPC，任何协议 (HTTP,SMTP等等) 都可以说他是一种RPC。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>协议-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>HTTP协议</title>
+      <link>http://localhost:1313/post/%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/http%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Sun, 28 Jan 2024 17:24:56 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/http%E5%8D%8F%E8%AE%AE/</guid>
+      <description>
+        <![CDATA[<h1>HTTP协议</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="一简介">
+<a class="header-anchor" href="#%e4%b8%80%e7%ae%80%e4%bb%8b"></a>
+一、简介
+</h2><ul>
+<li>
+<p>http协议只能单向通信，只能有客户端发送请求，服务端才能相应，而服务端不能不送请求。</p>
+</li>
+<li>
+<p>基于http协议，也衍生了多个基于HTTP的协议，如下，他们可以归为HTTP协议簇。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>协议-基础知识</category>
+      
+    </item>
+    
+  </channel>
+</rss>

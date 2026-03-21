@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>信息搜集 on HELLO WORLD</title>
+    <link>http://localhost:1313/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Mon, 12 Feb 2024 10:40:00 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>hvv快速信息搜集思路</title>
+      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/hvv%E5%BF%AB%E9%80%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
+      <pubDate>Mon, 12 Feb 2024 10:40:00 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/hvv%E5%BF%AB%E9%80%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
+      <description>
+        <![CDATA[<h1>hvv快速信息搜集思路</h1><p>作者：L（xxx@example.com）</p>
+        
+          <p>文章：https://xz.aliyun.com/t/9877?time__1311=n4%2BxuDgD9AKYq2ODlxGObDyWaDCb1aOt3O4D&amp;alichlgref=https%3A%2F%2Fwww.bing.com%2F</p>
+        
+        <hr><p>本文2024-02-12首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-12</p>]]>
+      </description>
+      
+        <category>杂项</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>信息搜集思路</title>
+      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF/</guid>
+      <description>
+        <![CDATA[<h1>信息搜集思路</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="信息搜集的目标">
+<a class="header-anchor" href="#%e4%bf%a1%e6%81%af%e6%90%9c%e9%9b%86%e7%9a%84%e7%9b%ae%e6%a0%87"></a>
+信息搜集的目标
+</h2><p><a href="https://blog.csdn.net/w1590191166/article/details/104160404">史上最全的子域名搜集方法（证书透明度/DNS记录/威胁情报/代码仓库/dns暴力破解/各种细节）_子域名收集方式_ATpiu的博客-CSDN博客</a></p>
+<p>​	域名、子域名</p>
+<p>​	CMS指纹</p>
+<p>​	网站真实IP</p>
+<p>​	端口</p>
+<p>​	等&hellip;</p>
+<h2 id="查询类型">
+<a class="header-anchor" href="#%e6%9f%a5%e8%af%a2%e7%b1%bb%e5%9e%8b"></a>
+查询类型
+</h2><ul>
+<li>
+<p>whois查询</p>
+<p>​	通过此种方式可以通过域名信息，查询域名有效期，注册人，邮箱，电话，ns服务器等信息。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>杂项</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>新信息搜集思路</title>
+      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E6%96%B0-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF-/</link>
+      <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E6%96%B0-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF-/</guid>
+      <description>
+        <![CDATA[<h1>新信息搜集思路</h1><p>作者：L（xxx@example.com）</p>
+        
+          <p>好用的工具站：棱角社区（[<a href="https://forum.ywhack.com/bountytips.php?tools">~]#棱角 ::Edge.Forum* (ywhack.com)</a>）</p>
+<h2 id="主域名搜集">
+<a class="header-anchor" href="#%e4%b8%bb%e5%9f%9f%e5%90%8d%e6%90%9c%e9%9b%86"></a>
+主域名搜集
+</h2><h3 id="根据企业名搜集子公司-和-公司下涉及的域名app公众号小程序pc客户端等资产">
+<a class="header-anchor" href="#%e6%a0%b9%e6%8d%ae%e4%bc%81%e4%b8%9a%e5%90%8d%e6%90%9c%e9%9b%86%e5%ad%90%e5%85%ac%e5%8f%b8-%e5%92%8c-%e5%85%ac%e5%8f%b8%e4%b8%8b%e6%b6%89%e5%8f%8a%e7%9a%84%e5%9f%9f%e5%90%8dapp%e5%85%ac%e4%bc%97%e5%8f%b7%e5%b0%8f%e7%a8%8b%e5%ba%8fpc%e5%ae%a2%e6%88%b7%e7%ab%af%e7%ad%89%e8%b5%84%e4%ba%a7"></a>
+根据企业名，搜集子公司 和 公司下涉及的域名、APP、公众号、小程序、PC客户端等资产。
+</h3><ul>
+<li>企业查：花钱</li>
+<li>小蓝本：好处是免费。但数据更新频率不如企业查这些。</li>
+</ul>
+<h3 id="通过icp备案号查询域名">
+<a class="header-anchor" href="#%e9%80%9a%e8%bf%87icp%e5%a4%87%e6%a1%88%e5%8f%b7%e6%9f%a5%e8%af%a2%e5%9f%9f%e5%90%8d"></a>
+通过ICP备案号查询域名
+</h3><ul>
+<li>ICP备案网： <a href="https://www.beianx.cn/">ICP备案查询网 - 网站备案查询 - 工信部域名备案查询实时数据 (beianx.cn)</a></li>
+</ul>
+<h3 id="在域名网站查询-已注册的域名进行搜集">
+<a class="header-anchor" href="#%e5%9c%a8%e5%9f%9f%e5%90%8d%e7%bd%91%e7%ab%99%e6%9f%a5%e8%af%a2-%e5%b7%b2%e6%b3%a8%e5%86%8c%e7%9a%84%e5%9f%9f%e5%90%8d%e8%bf%9b%e8%a1%8c%e6%90%9c%e9%9b%86"></a>
+在域名网站查询-已注册的域名，进行搜集
+</h3><ul>
+<li>万网：<a href="https://domain.aliyun.com/">域名注册_域名查询_域名申请_域名购买_域名续费_国际域名-万网-阿里云品牌 (aliyun.com)</a></li>
+</ul>
+<h3 id="通过ip反查域名">
+<a class="header-anchor" href="#%e9%80%9a%e8%bf%87ip%e5%8f%8d%e6%9f%a5%e5%9f%9f%e5%90%8d"></a>
+通过IP反查域名
+</h3><ul>
+<li><a href="https://site.ip138.com/">域名查iP 域名解析 iP查询网站 iP反查域名 iP反查网站 同一iP网站 同iP网站域名iP查询 (ip138.com)</a></li>
+<li>微步情报社区</li>
+</ul>
+<h2 id="子域名搜集">
+<a class="header-anchor" href="#%e5%ad%90%e5%9f%9f%e5%90%8d%e6%90%9c%e9%9b%86"></a>
+子域名搜集
+</h2><h3 id="通过dns解析查询子域名">
+<a class="header-anchor" href="#%e9%80%9a%e8%bf%87dns%e8%a7%a3%e6%9e%90%e6%9f%a5%e8%af%a2%e5%ad%90%e5%9f%9f%e5%90%8d"></a>
+通过DNS解析，查询子域名
+</h3><ul>
+<li><a href="https://dnsdumpster.com/">DNSDumpster.com - dns recon and research, find and lookup dns records</a></li>
+</ul>
+<h3 id="通过证书查询子域名只适合安装证书的网站">
+<a class="header-anchor" href="#%e9%80%9a%e8%bf%87%e8%af%81%e4%b9%a6%e6%9f%a5%e8%af%a2%e5%ad%90%e5%9f%9f%e5%90%8d%e5%8f%aa%e9%80%82%e5%90%88%e5%ae%89%e8%a3%85%e8%af%81%e4%b9%a6%e7%9a%84%e7%bd%91%e7%ab%99"></a>
+通过证书，查询子域名（只适合安装证书的网站）
+</h3><ul>
+<li><a href="https://crt.sh/">crt.sh | Certificate Search</a></li>
+</ul>
+<h3 id="威胁情报搜集子域名">
+<a class="header-anchor" href="#%e5%a8%81%e8%83%81%e6%83%85%e6%8a%a5%e6%90%9c%e9%9b%86%e5%ad%90%e5%9f%9f%e5%90%8d"></a>
+威胁情报搜集子域名
+</h3><ul>
+<li>微步</li>
+<li>奇安信威胁情报</li>
+<li>360威胁情报</li>
+<li>等等</li>
+</ul>
+<h3 id="网络空间搜集">
+<a class="header-anchor" href="#%e7%bd%91%e7%bb%9c%e7%a9%ba%e9%97%b4%e6%90%9c%e9%9b%86"></a>
+网络空间搜集
+</h3><ul>
+<li>
+<p>FOFA</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>杂项</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>其他-搜集方式补充</title>
+      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/</link>
+      <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/</guid>
+      <description>
+        <![CDATA[<h1>其他-搜集方式补充</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h1 id="一公众号">
+<a class="header-anchor" href="#%e4%b8%80%e5%85%ac%e4%bc%97%e5%8f%b7"></a>
+一、公众号
+</h1><h2 id="1通过微信公众号获取">
+<a class="header-anchor" href="#1%e9%80%9a%e8%bf%87%e5%be%ae%e4%bf%a1%e5%85%ac%e4%bc%97%e5%8f%b7%e8%8e%b7%e5%8f%96"></a>
+1.通过微信公众号获取
+</h2><p>微信公众号中功能本身通常是调用微信本身的API接口，但有一个例外，当公众号存在跳转至新功能界面上时，需要作为测试对象。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>杂项</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>APP和小程序搜集思路及渗透思路</title>
+      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</guid>
+      <description>
+        <![CDATA[<h1>APP和小程序搜集思路及渗透思路</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="">
+<a class="header-anchor" href="#"></a>
+
+</h2><h1 id="1app">
+<a class="header-anchor" href="#1app"></a>
+1.APP
+</h1><h2 id="公开数据网站查询">
+<a class="header-anchor" href="#%e5%85%ac%e5%bc%80%e6%95%b0%e6%8d%ae%e7%bd%91%e7%ab%99%e6%9f%a5%e8%af%a2"></a>
+公开数据网站查询
+</h2><p>通过企业名称等方式查找</p>
+<ul>
+<li>企业查</li>
+<li>小蓝本</li>
+<li>点点数据</li>
+<li>七麦数据</li>
+<li>系统网站可能存在APP下载</li>
+<li>ICP备案查询：只要是合规的APP都需要备案</li>
+</ul>
+<p>多平台搜索，进行比对</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>杂项</category>
+      
+    </item>
+    
+  </channel>
+</rss>

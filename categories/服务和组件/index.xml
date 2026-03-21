@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务和组件 on HELLO WORLD</title>
+    <link>http://localhost:1313/categories/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Mon, 29 Jan 2024 19:15:13 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>redis服务</title>
+      <link>http://localhost:1313/post/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/redis/</link>
+      <pubDate>Mon, 29 Jan 2024 19:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/redis/</guid>
+      <description>
+        <![CDATA[<h1>redis服务</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="简介">
+<a class="header-anchor" href="#%e7%ae%80%e4%bb%8b"></a>
+简介
+</h2><ul>
+<li>redis数据保存在内存中，因此它的速度非常快，性能非常高。</li>
+<li>一旦断电，数据则会消失</li>
+<li>以键值对的形式存储数据</li>
+<li>redis所有配置都存储在redis.conf文件中，因此他它配置文件需要进行备份</li>
+</ul>
+<p><img src="../../images/image-20230806083915069.png" alt="image-20230806083915069"></p>
+        
+        <hr><p>本文2024-01-29首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
+      </description>
+      
+        <category>服务和组件</category>
+      
+    </item>
+    
+  </channel>
+</rss>

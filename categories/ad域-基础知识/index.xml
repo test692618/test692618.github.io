@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AD域-基础知识 on HELLO WORLD</title>
+    <link>http://localhost:1313/categories/ad%E5%9F%9F-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Wed, 07 Feb 2024 15:45:22 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/categories/ad%E5%9F%9F-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>SPN(服务主体名称)</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/spn%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BD%93%E5%90%8D%E7%A7%B0/</link>
+      <pubDate>Wed, 07 Feb 2024 15:45:22 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/spn%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BD%93%E5%90%8D%E7%A7%B0/</guid>
+      <description>
+        <![CDATA[<h1>SPN(服务主体名称)</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="简述">
+<a class="header-anchor" href="#%e7%ae%80%e8%bf%b0"></a>
+简述
+</h2><ul>
+<li>SPN是服务实例的唯一标识。</li>
+<li>SPN将服务实例和服务账户进行关联。</li>
+<li>使用kerberos协议，服务实例必须要有SPN。</li>
+<li>SPN为域中的概念。</li>
+<li>一个账户下可注册多个SPN</li>
+</ul>
+<h2 id="格式">
+<a class="header-anchor" href="#%e6%a0%bc%e5%bc%8f"></a>
+格式
+</h2><p><strong>标准的SPN语法</strong></p>
+        
+        <hr><p>本文2024-02-07首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-07</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>windows账户</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/windows%E8%B4%A6%E6%88%B7/</link>
+      <pubDate>Wed, 07 Feb 2024 12:39:51 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/windows%E8%B4%A6%E6%88%B7/</guid>
+      <description>
+        <![CDATA[<h1>windows账户</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="简述">
+<a class="header-anchor" href="#%e7%ae%80%e8%bf%b0"></a>
+简述
+</h2><p>windows 中有：</p>
+<ul>
+<li>本地账户</li>
+<li>域账户
+<ul>
+<li>用户账户</li>
+<li>服务账户</li>
+<li>机器账户</li>
+</ul>
+</li>
+</ul>
+<h2 id="本地账户工作组环境下">
+<a class="header-anchor" href="#%e6%9c%ac%e5%9c%b0%e8%b4%a6%e6%88%b7%e5%b7%a5%e4%bd%9c%e7%bb%84%e7%8e%af%e5%a2%83%e4%b8%8b"></a>
+本地账户(工作组环境下)
+</h2><p>存在于主机的用户文件夹中。默认有如下：</p>
+<ul>
+<li>administrator   SID 为 S-1-XX-XX-XX-500</li>
+<li>guest    SID 为 S-1-XX-XX-XX-501</li>
+<li>defaultaccount   SID 为 S-1-XX-XX-XX-503   win10/server 2016 及以后引入</li>
+<li>WDAGUtlityaccount  SID 为 S-1-XX-XX-XX-504   win10/server 2019 及以后引入</li>
+</ul>
+<h2 id="域账户域环境下">
+<a class="header-anchor" href="#%e5%9f%9f%e8%b4%a6%e6%88%b7%e5%9f%9f%e7%8e%af%e5%a2%83%e4%b8%8b"></a>
+域账户（域环境下）
+</h2><p>服务账户和机器账户其实都是用户账户</p>
+        
+        <hr><p>本文2024-02-07首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-07</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>域内信息搜集</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/%E5%9F%9F%E5%86%85%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
+      <pubDate>Tue, 06 Feb 2024 09:18:00 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/%E5%9F%9F%E5%86%85%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
+      <description>
+        <![CDATA[<h1>域内信息搜集</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="基础信息搜集">
+<a class="header-anchor" href="#%e5%9f%ba%e7%a1%80%e4%bf%a1%e6%81%af%e6%90%9c%e9%9b%86"></a>
+基础信息搜集
+</h2><p>当我们通过任意的手段进入到内网时，我们对其内网的架构一无所知。此时在这种情况下，我们则需要进行对其整个所处环境进行分析。
+此时我们需要进行的则是信息收集，此处与我们在互联网渗透是一个道理，信息收集的越多越全则对我们进行内网渗透时则越方便。<br>
+假设我们通过钓鱼手段，获取到一台pc用户机的控制权限，那么我们第一步需要进行的则是信息收集。</p>
+        
+        <hr><p>本文2024-02-06首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-06</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>LDAP</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/ldap/</link>
+      <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/ldap/</guid>
+      <description>
+        <![CDATA[<h1>LDAP</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="概述">
+<a class="header-anchor" href="#%e6%a6%82%e8%bf%b0"></a>
+概述
+</h2><p>ldap是一种访问 <strong>活动目录（AD）和LDAP目录</strong> 的协议。</p>
+<p>​	活动目录就是域控中那个活动目录。</p>
+<p>​	LDAP目录是LDAP自带的一套东西，和活动目录是类似的。LDAP是可跨平台的，能在非域非windows下部署，此时就是用的<strong>LDAP目录</strong></p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>Kerberos协议</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/kerberos%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/kerberos%E5%8D%8F%E8%AE%AE/</guid>
+      <description>
+        <![CDATA[<h1>Kerberos协议</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="一简介">
+<a class="header-anchor" href="#%e4%b8%80%e7%ae%80%e4%bb%8b"></a>
+一、简介
+</h2><p>使用密钥加密技术为程序提供强身份验证。</p>
+<p>kerberos协议使用88端口进行认证，使用464端口密码重设。</p>
+<h2 id="二kerberos基础">
+<a class="header-anchor" href="#%e4%ba%8ckerberos%e5%9f%ba%e7%a1%80"></a>
+二、Kerberos基础
+</h2><p>​	<strong>三个主要角色;</strong></p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>NTML协议</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/ntlm%E5%8D%8F%E8%AE%AE/</link>
+      <pubDate>Thu, 25 Jan 2024 21:13:06 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/ntlm%E5%8D%8F%E8%AE%AE/</guid>
+      <description>
+        <![CDATA[<h1>NTML协议</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="协议简介">
+<a class="header-anchor" href="#%e5%8d%8f%e8%ae%ae%e7%ae%80%e4%bb%8b"></a>
+协议简介
+</h2><p>用于windows下的身份验证的协议。（工作组和域环境的身份验证，都使用此协议）</p>
+<p>出现位置：SMB、RDP、LDAP、SMTP等需要调用windwos账户的服务，均会使用此协议进行身份认证。</p>
+        
+        <hr><p>本文2024-01-25首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-25</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>域渗透-攻击手段</title>
+      <link>http://localhost:1313/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</guid>
+      <description>
+        <![CDATA[<h1>域渗透-攻击手段</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="0x01--域内用户枚举">
+<a class="header-anchor" href="#0x01--%e5%9f%9f%e5%86%85%e7%94%a8%e6%88%b7%e6%9e%9a%e4%b8%be"></a>
+0x01  域内用户枚举
+</h2><h3 id="原理">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86"></a>
+原理
+</h3><p>根据kerberos协议中的AS-REQ阶段，不同用户状态（禁用、启用、不存在）时的不同响应实现枚举。</p>
+<h3 id="工具">
+<a class="header-anchor" href="#%e5%b7%a5%e5%85%b7"></a>
+工具
+</h3><ul>
+<li>
+<p>kerbrute</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">地址：https://github.com/ropnop/kerbrute/releases/tag/v1.0.3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用：
+</span></span><span class="line"><span class="cl"> .<span class="se">\k</span>erbrute_windows_amd64.exe userenum --dc 192.168.1.200 -d xie.com user.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">## user.txt 是字典，需要自己指定.</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## --dc 指域控的IP </span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## xie.com 指域名</span>
+</span></span></code></pre></div></li>
+<li>
+<p>pykerbrute</p>
+        
+        <hr><p>本文0001-01-01首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于0001-01-01</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+  </channel>
+</rss>

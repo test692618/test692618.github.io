@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>绕杀软 on HELLO WORLD</title>
+    <link>http://localhost:1313/tags/%E7%BB%95%E6%9D%80%E8%BD%AF/</link>
+    <description>Recent content from HELLO WORLD</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>xxx@example.com (L)</managingEditor>
+    <webMaster>xxx@example.com (L)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
+    
+    
+    <atom:link href="http://localhost:1313/tags/%E7%BB%95%E6%9D%80%E8%BD%AF/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>杀软免杀</title>
+      <link>http://localhost:1313/post/%E5%85%8D%E6%9D%80/%E6%9D%80%E8%BD%AF-%E5%85%8D%E6%9D%80/</link>
+      <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>http://localhost:1313/post/%E5%85%8D%E6%9D%80/%E6%9D%80%E8%BD%AF-%E5%85%8D%E6%9D%80/</guid>
+      <description>
+        <![CDATA[<h1>杀软免杀</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h2 id="免杀要素">
+<a class="header-anchor" href="#%e5%85%8d%e6%9d%80%e8%a6%81%e7%b4%a0"></a>
+免杀要素
+</h2><ul>
+<li>程序可以成功执行</li>
+<li>可避免静态查杀</li>
+<li>可避免动态查杀</li>
+</ul>
+<h2 id="病毒检测技术">
+<a class="header-anchor" href="#%e7%97%85%e6%af%92%e6%a3%80%e6%b5%8b%e6%8a%80%e6%9c%af"></a>
+病毒检测技术
+</h2><ul>
+<li>
+<p>基于特征码进行检测</p>
+<p>​	AV签名是用来便是恶意软件的特征。所以在免杀中需要确保payload与数据库中的任何一直签名不匹配。</p>
+        
+        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+      </description>
+      
+        <category>免杀</category>
+      
+    </item>
+    
+  </channel>
+</rss>
