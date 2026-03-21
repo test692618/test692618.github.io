@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>靶机练习 on HELLO WORLD</title>
-    <link>http://localhost:1313/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/</link>
+    <link>https://test692618.github.io/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/categories/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>w34kn3ss1靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x06--w34kn3ss1/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x06--w34kn3ss1/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x06--w34kn3ss1/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x06--w34kn3ss1/</guid>
       <description>
         <![CDATA[<h1>w34kn3ss1靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -88,7 +88,7 @@ Expolit
 </span></span></code></pre></div><!-- raw HTML omitted -->
 <p>反编译成功。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -99,10 +99,10 @@ Expolit
 
     <item>
       <title>Nullbyte靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/</guid>
       <description>
         <![CDATA[<h1>Nullbyte靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -206,7 +206,7 @@ Expolit
 </span></span><span class="line"><span class="cl">链条：当你执行prowatch文件后，你就具备了一定的root权限，通过path变量诱导，用root权限执行了ps文件，shell定义了ps执行的内容。
 </span></span></code></pre></div>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -217,10 +217,10 @@ Expolit
 
     <item>
       <title>MERCY靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/</guid>
       <description>
         <![CDATA[<h1>MERCY靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -229,7 +229,7 @@ Expolit
 <p>​	1.有的账户不能通过SSH登录不代表密码不正确，可能是只能使用su 进行切换</p>
 <p>​	2.进到tomcat后台，可以通过部署war包的方式getshell</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -240,10 +240,10 @@ Expolit
 
     <item>
       <title>IMF</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/</guid>
       <description>
         <![CDATA[<h1>IMF</h1><p>作者：L（xxx@example.com）</p>
         
@@ -256,7 +256,7 @@ php-webshell 代码简单绕过技巧
 <p>​	system()  也可以写成  “\x73\x79\x73\x74\x65\x6d”（）</p>
 <p>​	依然可以被解析成PHP代码。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -267,10 +267,10 @@ php-webshell 代码简单绕过技巧
 
     <item>
       <title>FALL靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/</guid>
       <description>
         <![CDATA[<h1>FALL靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -297,7 +297,7 @@ WEB-PTE
 </h2><p><img src="./image-20231116232006846.png" alt="image-20231116232006846"></p>
 <p>发现文件包含漏洞，打点思路</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -308,10 +308,10 @@ WEB-PTE
 
     <item>
       <title>Djinn靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/</guid>
       <description>
         <![CDATA[<h1>Djinn靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -357,7 +357,7 @@ WEB-PTE
 </span></span></code></pre></div><!-- raw HTML omitted -->
 <p>这是一个命令执行的输入框。但我尝试反弹shell发现不能执行，判断可能有哪些字符触发了规则，被过滤了。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -368,10 +368,10 @@ WEB-PTE
 
     <item>
       <title>DC-9靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x01.dc-9/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x01.dc-9/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x01.dc-9/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x01.dc-9/</guid>
       <description>
         <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -414,7 +414,7 @@ PORT-SCAN
 </span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
 </span></span></code></pre></div><p>无有效信息。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>
@@ -425,10 +425,10 @@ PORT-SCAN
 
     <item>
       <title>brainpan靶机</title>
-      <link>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x07-brainpan/</link>
+      <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x07-brainpan/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x07-brainpan/</guid>
+      <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x07-brainpan/</guid>
       <description>
         <![CDATA[<h1>brainpan靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -438,7 +438,7 @@ PORT-SCAN
 </h1><p>略去开始的步骤，从要点记录。</p>
 <p>通过网站下载到了xx.exe文件，</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机练习</category>

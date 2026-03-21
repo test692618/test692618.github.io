@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HELLO WORLD</title>
-    <link>http://localhost:1313/algolia.json</link>
+    <link>https://test692618.github.io/algolia.json</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Mon, 20 May 2024 20:07:06 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>安卓逆向</title>
-      <link>http://localhost:1313/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</link>
+      <link>https://test692618.github.io/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 20 May 2024 20:07:06 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://test692618.github.io/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</guid>
       <description>
         <![CDATA[<h1>安卓逆向</h1><p>作者：L（xxx@example.com）</p>
         
@@ -38,7 +38,7 @@ APK文件结构
 <li>
 <p>assets目录 ： 存放APK的静态资源文件，比如视频，音频，图片等</p>
         
-        <hr><p>本文2024-05-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-05-20</p>]]>
+        <hr><p>本文2024-05-20首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-05-20</p>]]>
       </description>
       
         <category>安卓逆向</category>
@@ -49,10 +49,10 @@ APK文件结构
 
     <item>
       <title>JS渗透</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/js%E6%B8%97%E9%80%8F/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/js%E6%B8%97%E9%80%8F/</link>
       <pubDate>Sat, 04 May 2024 17:40:44 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/js%E6%B8%97%E9%80%8F/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/js%E6%B8%97%E9%80%8F/</guid>
       <description>
         <![CDATA[<h1>JS渗透</h1><p>作者：L（xxx@example.com）</p>
         
@@ -97,7 +97,7 @@ APK文件结构
 <li>
 <p>针对webpack打包器测试</p>
         
-        <hr><p>本文2024-05-04首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-05-04</p>]]>
+        <hr><p>本文2024-05-04首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-05-04</p>]]>
       </description>
       
         <category>杂项</category>
@@ -108,10 +108,10 @@ APK文件结构
 
     <item>
       <title>x86汇编</title>
-      <link>http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</link>
+      <link>https://test692618.github.io/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</link>
       <pubDate>Wed, 20 Mar 2024 20:07:06 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</guid>
+      <guid>https://test692618.github.io/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</guid>
       <description>
         <![CDATA[<h1>x86汇编</h1><p>作者：L（xxx@example.com）</p>
         
@@ -123,7 +123,7 @@ APK文件结构
 <p>​	CPU中的每个核心都对应着一组<strong>寄存器</strong>。</p>
 <p>​	高位的寄存器可以向下兼容低位程序。</p>
         
-        <hr><p>本文2024-03-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
+        <hr><p>本文2024-03-20首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
       </description>
       
         <category>二进制</category>
@@ -134,10 +134,10 @@ APK文件结构
 
     <item>
       <title>C基础</title>
-      <link>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/</link>
+      <link>https://test692618.github.io/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Wed, 20 Mar 2024 20:07:06 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://test692618.github.io/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/</guid>
       <description>
         <![CDATA[<h1>C基础</h1><p>作者：L（xxx@example.com）</p>
         
@@ -175,7 +175,7 @@ APK文件结构
 </span></span></span><span class="line"><span class="cl"><span class="cp">#define HP 100
 </span></span></span></code></pre></div><p>​</p>
         
-        <hr><p>本文2024-03-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
+        <hr><p>本文2024-03-20首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
       </description>
       
         <category>C语言</category>
@@ -186,10 +186,10 @@ APK文件结构
 
     <item>
       <title>经济常识</title>
-      <link>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/</link>
+      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/</link>
       <pubDate>Thu, 14 Mar 2024 21:55:11 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/</guid>
+      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/</guid>
       <description>
         <![CDATA[<h1>经济常识</h1><p>作者：L（xxx@example.com）</p>
         
@@ -199,7 +199,7 @@ APK文件结构
 </h2><p>如果去买股票、债券，相当于是个人去交易。</p>
 <p>买基金，相当于把钱给基金公司，由基金公司去进行交易投资，由基金公司买入多支股票。当然基金公司在中途会收取管理费。</p>
         
-        <hr><p>本文2024-03-14首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-14</p>]]>
+        <hr><p>本文2024-03-14首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-14</p>]]>
       </description>
       
         <category>经济与金融</category>
@@ -210,10 +210,10 @@ APK文件结构
 
     <item>
       <title>《小岛经济学》笔记</title>
-      <link>http://localhost:1313/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</link>
+      <link>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</link>
       <pubDate>Thu, 14 Mar 2024 21:33:25 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
       <description>
         <![CDATA[<h1>《小岛经济学》笔记</h1><p>作者：L（xxx@example.com）</p>
         
@@ -224,7 +224,7 @@ APK文件结构
 <p>在远古时代，每个人如果自己狩猎，自己吃，自己养活自己，那么经济将不复存在。</p>
 <p>但如果，一个人需要一样东西，自己难以取得，而另一个人又恰好拥有，对方又难以可能直接给你，这是你要拿出价值相等的东西交换，这就是经济的雏形。</p>
         
-        <hr><p>本文2024-03-14首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-14</p>]]>
+        <hr><p>本文2024-03-14首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-14</p>]]>
       </description>
       
         <category>读书笔记</category>
@@ -235,10 +235,10 @@ APK文件结构
 
     <item>
       <title>认识股票</title>
-      <link>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</link>
+      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</link>
       <pubDate>Wed, 13 Mar 2024 20:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</guid>
+      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</guid>
       <description>
         <![CDATA[<h1>认识股票</h1><p>作者：L（xxx@example.com）</p>
         
@@ -253,7 +253,7 @@ APK文件结构
 </h2><p>证券交易所是用于 股票交易的场所。</p>
 <p>公司上市的意思就是可在证券交易所发行股票。</p>
         
-        <hr><p>本文2024-03-13首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-13</p>]]>
+        <hr><p>本文2024-03-13首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-13</p>]]>
       </description>
       
         <category>经济与金融</category>
@@ -264,10 +264,10 @@ APK文件结构
 
     <item>
       <title>现代经济</title>
-      <link>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%8E%B0%E4%BB%A3%E7%BB%8F%E6%B5%8E%E4%BD%93%E7%B3%BB/</link>
+      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%8E%B0%E4%BB%A3%E7%BB%8F%E6%B5%8E%E4%BD%93%E7%B3%BB/</link>
       <pubDate>Tue, 12 Mar 2024 21:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%8E%B0%E4%BB%A3%E7%BB%8F%E6%B5%8E%E4%BD%93%E7%B3%BB/</guid>
+      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%8E%B0%E4%BB%A3%E7%BB%8F%E6%B5%8E%E4%BD%93%E7%B3%BB/</guid>
       <description>
         <![CDATA[<h1>现代经济</h1><p>作者：L（xxx@example.com）</p>
         
@@ -289,7 +289,7 @@ APK文件结构
 <li>
 <p>商业银行</p>
         
-        <hr><p>本文2024-03-12首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-12</p>]]>
+        <hr><p>本文2024-03-12首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-12</p>]]>
       </description>
       
         <category>经济与金融</category>
@@ -300,10 +300,10 @@ APK文件结构
 
     <item>
       <title>经济常识</title>
-      <link>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BB%8F%E6%B5%8E%E5%B8%B8%E8%AF%86/</link>
+      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BB%8F%E6%B5%8E%E5%B8%B8%E8%AF%86/</link>
       <pubDate>Tue, 12 Mar 2024 19:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BB%8F%E6%B5%8E%E5%B8%B8%E8%AF%86/</guid>
+      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BB%8F%E6%B5%8E%E5%B8%B8%E8%AF%86/</guid>
       <description>
         <![CDATA[<h1>经济常识</h1><p>作者：L（xxx@example.com）</p>
         
@@ -314,7 +314,7 @@ APK文件结构
 <li>
 <p>M0:指流通中的现金，即在单位和居民手中流通的货币总和，这里的单位指排除银行体系意外的学校、部队、机关等。M0与日常消费密切相关，其数值高代表老百姓手头宽裕、富足。</p>
         
-        <hr><p>本文2024-03-12首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-12</p>]]>
+        <hr><p>本文2024-03-12首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-12</p>]]>
       </description>
       
         <category>经济与金融</category>
@@ -325,10 +325,10 @@ APK文件结构
 
     <item>
       <title>《影响力》笔记</title>
-      <link>http://localhost:1313/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</link>
+      <link>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</link>
       <pubDate>Sun, 10 Mar 2024 18:11:55 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
+      <guid>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
       <description>
         <![CDATA[<h1>《影响力》笔记</h1><p>作者：L（xxx@example.com）</p>
         
@@ -372,7 +372,7 @@ APK文件结构
 <li>
 <p>个性化定制礼物</p>
         
-        <hr><p>本文2024-03-10首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-10</p>]]>
+        <hr><p>本文2024-03-10首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-10</p>]]>
       </description>
       
         <category>读书笔记</category>

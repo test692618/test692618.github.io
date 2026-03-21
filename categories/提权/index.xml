@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>提权 on HELLO WORLD</title>
-    <link>http://localhost:1313/categories/%E6%8F%90%E6%9D%83/</link>
+    <link>https://test692618.github.io/categories/%E6%8F%90%E6%9D%83/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/%E6%8F%90%E6%9D%83/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/categories/%E6%8F%90%E6%9D%83/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>提权基础</title>
-      <link>http://localhost:1313/post/%E6%8F%90%E6%9D%83/%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86/</link>
+      <link>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%8F%90%E6%9D%83/%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86/</guid>
+      <guid>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86/</guid>
       <description>
         <![CDATA[<h1>提权基础</h1><p>作者：L（xxx@example.com）</p>
         
@@ -89,7 +89,7 @@
 自动信息枚举：
 </h2><p>​    缺点：</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>提权</category>
@@ -100,10 +100,10 @@
 
     <item>
       <title>mysql_udf提权</title>
-      <link>http://localhost:1313/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/</link>
+      <link>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/</guid>
+      <guid>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/</guid>
       <description>
         <![CDATA[<h1>mysql_udf提权</h1><p>作者：L（xxx@example.com）</p>
         
@@ -118,7 +118,7 @@
 <li>
 <p>需要有mysql账户权限（creat、insert、delete），最好为root。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>提权</category>
@@ -129,10 +129,10 @@
 
     <item>
       <title>linux提权的各种手段</title>
-      <link>http://localhost:1313/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/</link>
+      <link>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/</guid>
+      <guid>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/</guid>
       <description>
         <![CDATA[<h1>linux提权的各种手段</h1><p>作者：L（xxx@example.com）</p>
         
@@ -145,7 +145,7 @@
 <p>​		<img src="../../images/image-20231101191442605.png" alt="image-20231101191442605"></p>
 <p>​		将字串拷贝进文件，使用john进行破解即可，他会自动识别hash算法。如图，</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>提权</category>

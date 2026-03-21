@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>小程序 on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
+    <link>https://test692618.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 17:40:44 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>APP和小程序搜集思路及渗透思路</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</link>
       <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</guid>
       <description>
         <![CDATA[<h1>APP和小程序搜集思路及渗透思路</h1><p>作者：L（xxx@example.com）</p>
         
@@ -50,7 +50,7 @@
 </ul>
 <p>多平台搜索，进行比对</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>杂项</category>

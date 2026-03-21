@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>图片隐写分析 on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%88%86%E6%9E%90/</link>
+    <link>https://test692618.github.io/tags/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%88%86%E6%9E%90/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 15:08:14 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E5%88%86%E6%9E%90/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>图片隐写识别、破解与提取</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E8%AF%86%E5%88%AB%E7%A0%B4%E8%A7%A3%E4%B8%8E%E6%8F%90%E5%8F%96/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E8%AF%86%E5%88%AB%E7%A0%B4%E8%A7%A3%E4%B8%8E%E6%8F%90%E5%8F%96/</link>
       <pubDate>Sun, 28 Jan 2024 15:08:14 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E8%AF%86%E5%88%AB%E7%A0%B4%E8%A7%A3%E4%B8%8E%E6%8F%90%E5%8F%96/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E8%AF%86%E5%88%AB%E7%A0%B4%E8%A7%A3%E4%B8%8E%E6%8F%90%E5%8F%96/</guid>
       <description>
         <![CDATA[<h1>图片隐写识别、破解与提取</h1><p>作者：L（xxx@example.com）</p>
         
@@ -97,7 +97,7 @@
 使用 strings 检查 图片中存在的可疑字符串
 </h2><p>省略。。。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>杂项</category>

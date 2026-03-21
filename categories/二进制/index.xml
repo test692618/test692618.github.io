@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>二进制 on HELLO WORLD</title>
-    <link>http://localhost:1313/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6/</link>
+    <link>https://test692618.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Wed, 20 Mar 2024 20:07:06 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>x86汇编</title>
-      <link>http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</link>
+      <link>https://test692618.github.io/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</link>
       <pubDate>Wed, 20 Mar 2024 20:07:06 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</guid>
+      <guid>https://test692618.github.io/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/</guid>
       <description>
         <![CDATA[<h1>x86汇编</h1><p>作者：L（xxx@example.com）</p>
         
@@ -38,7 +38,7 @@
 <p>​	CPU中的每个核心都对应着一组<strong>寄存器</strong>。</p>
 <p>​	高位的寄存器可以向下兼容低位程序。</p>
         
-        <hr><p>本文2024-03-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
+        <hr><p>本文2024-03-20首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
       </description>
       
         <category>二进制</category>

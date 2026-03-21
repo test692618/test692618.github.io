@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>股票 on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E8%82%A1%E7%A5%A8/</link>
+    <link>https://test692618.github.io/tags/%E8%82%A1%E7%A5%A8/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Wed, 13 Mar 2024 20:15:13 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E8%82%A1%E7%A5%A8/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E8%82%A1%E7%A5%A8/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>认识股票</title>
-      <link>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</link>
+      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</link>
       <pubDate>Wed, 13 Mar 2024 20:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</guid>
+      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</guid>
       <description>
         <![CDATA[<h1>认识股票</h1><p>作者：L（xxx@example.com）</p>
         
@@ -41,7 +41,7 @@
 </h2><p>证券交易所是用于 股票交易的场所。</p>
 <p>公司上市的意思就是可在证券交易所发行股票。</p>
         
-        <hr><p>本文2024-03-13首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-03-13</p>]]>
+        <hr><p>本文2024-03-13首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-13</p>]]>
       </description>
       
         <category>经济与金融</category>

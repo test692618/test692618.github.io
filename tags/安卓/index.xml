@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>安卓 on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E5%AE%89%E5%8D%93/</link>
+    <link>https://test692618.github.io/tags/%E5%AE%89%E5%8D%93/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Mon, 20 May 2024 20:07:06 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E5%AE%89%E5%8D%93/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E5%AE%89%E5%8D%93/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>安卓逆向</title>
-      <link>http://localhost:1313/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</link>
+      <link>https://test692618.github.io/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 20 May 2024 20:07:06 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</guid>
+      <guid>https://test692618.github.io/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/</guid>
       <description>
         <![CDATA[<h1>安卓逆向</h1><p>作者：L（xxx@example.com）</p>
         
@@ -38,7 +38,7 @@ APK文件结构
 <li>
 <p>assets目录 ： 存放APK的静态资源文件，比如视频，音频，图片等</p>
         
-        <hr><p>本文2024-05-20首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-05-20</p>]]>
+        <hr><p>本文2024-05-20首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-05-20</p>]]>
       </description>
       
         <category>安卓逆向</category>

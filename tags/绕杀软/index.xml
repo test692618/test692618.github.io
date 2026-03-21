@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>绕杀软 on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E7%BB%95%E6%9D%80%E8%BD%AF/</link>
+    <link>https://test692618.github.io/tags/%E7%BB%95%E6%9D%80%E8%BD%AF/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E7%BB%95%E6%9D%80%E8%BD%AF/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E7%BB%95%E6%9D%80%E8%BD%AF/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>杀软免杀</title>
-      <link>http://localhost:1313/post/%E5%85%8D%E6%9D%80/%E6%9D%80%E8%BD%AF-%E5%85%8D%E6%9D%80/</link>
+      <link>https://test692618.github.io/post/%E5%85%8D%E6%9D%80/%E6%9D%80%E8%BD%AF-%E5%85%8D%E6%9D%80/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E5%85%8D%E6%9D%80/%E6%9D%80%E8%BD%AF-%E5%85%8D%E6%9D%80/</guid>
+      <guid>https://test692618.github.io/post/%E5%85%8D%E6%9D%80/%E6%9D%80%E8%BD%AF-%E5%85%8D%E6%9D%80/</guid>
       <description>
         <![CDATA[<h1>杀软免杀</h1><p>作者：L（xxx@example.com）</p>
         
@@ -46,7 +46,7 @@
 <p>基于特征码进行检测</p>
 <p>​	AV签名是用来便是恶意软件的特征。所以在免杀中需要确保payload与数据库中的任何一直签名不匹配。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>免杀</category>

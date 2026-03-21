@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>靶机渗透过程 on HELLO WORLD</title>
-    <link>http://localhost:1313/categories/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%BF%87%E7%A8%8B/</link>
+    <link>https://test692618.github.io/categories/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%BF%87%E7%A8%8B/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/categories/%E9%9D%B6%E6%9C%BA%E6%B8%97%E9%80%8F%E8%BF%87%E7%A8%8B/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>DC-9靶机</title>
-      <link>http://localhost:1313/post/images/0x01.dc-9/</link>
+      <link>https://test692618.github.io/post/images/0x01.dc-9/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/images/0x01.dc-9/</guid>
+      <guid>https://test692618.github.io/post/images/0x01.dc-9/</guid>
       <description>
         <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -69,7 +69,7 @@ PORT-SCAN
 </span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
 </span></span></code></pre></div><p>无有效信息。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机渗透过程</category>
@@ -80,10 +80,10 @@ PORT-SCAN
 
     <item>
       <title>DC-9靶机</title>
-      <link>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC/</link>
+      <link>https://test692618.github.io/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC/</guid>
+      <guid>https://test692618.github.io/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC/</guid>
       <description>
         <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -126,7 +126,7 @@ PORT-SCAN
 </span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
 </span></span></code></pre></div><p>无有效信息。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机渗透过程</category>
@@ -137,10 +137,10 @@ PORT-SCAN
 
     <item>
       <title>DC-9靶机</title>
-      <link>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/</link>
+      <link>https://test692618.github.io/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/</guid>
+      <guid>https://test692618.github.io/post/images/0x01.dc-9---%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/</guid>
       <description>
         <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
         
@@ -183,7 +183,7 @@ PORT-SCAN
 </span></span><span class="line"><span class="cl">Nmap <span class="k">done</span>: <span class="m">1</span> IP address <span class="o">(</span><span class="m">1</span> host up<span class="o">)</span> scanned in 55.36 seconds
 </span></span></code></pre></div><p>无有效信息。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>靶机渗透过程</category>

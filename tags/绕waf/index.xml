@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>绕WAF on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E7%BB%95waf/</link>
+    <link>https://test692618.github.io/tags/%E7%BB%95waf/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Sun, 28 Jan 2024 17:15:13 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E7%BB%95waf/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E7%BB%95waf/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>WAF-免杀</title>
-      <link>http://localhost:1313/post/%E5%85%8D%E6%9D%80/waf-%E5%85%8D%E6%9D%80/</link>
+      <link>https://test692618.github.io/post/%E5%85%8D%E6%9D%80/waf-%E5%85%8D%E6%9D%80/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E5%85%8D%E6%9D%80/waf-%E5%85%8D%E6%9D%80/</guid>
+      <guid>https://test692618.github.io/post/%E5%85%8D%E6%9D%80/waf-%E5%85%8D%E6%9D%80/</guid>
       <description>
         <![CDATA[<h1>WAF-免杀</h1><p>作者：L（xxx@example.com）</p>
         
@@ -35,7 +35,7 @@
 0 . waf的防护意义
 </h2><p>​	waf理论上是可以做到绝对完美的防护，但完美的防护也意味着可能会导致一些正常的业务流量被阻断，因此waf需要在完美的基础上进行一定的阉割，达成一种不完美中的完美。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>免杀</category>

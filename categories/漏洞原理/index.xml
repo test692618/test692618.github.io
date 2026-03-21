@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>漏洞原理 on HELLO WORLD</title>
-    <link>http://localhost:1313/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/</link>
+    <link>https://test692618.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Wed, 21 Feb 2024 20:01:18 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/categories/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,10 +23,10 @@
 
     <item>
       <title>shiro反序列化漏洞</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Wed, 21 Feb 2024 20:01:18 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</guid>
       <description>
         <![CDATA[<h1>shiro反序列化漏洞</h1><p>作者：L（xxx@example.com）</p>
         
@@ -39,7 +39,7 @@ shiro简介
 工作流程
 </h2><p>shiro反序列化漏洞的出现点就是在 rememberme 功能上面（这个功能就是记住账户，下次访问无需再登陆），因此只说明和它相关的流程。</p>
         
-        <hr><p>本文2024-02-21首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-21</p>]]>
+        <hr><p>本文2024-02-21首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-02-21</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -50,10 +50,10 @@ shiro简介
 
     <item>
       <title>API漏洞测试</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Wed, 21 Feb 2024 11:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/</guid>
       <description>
         <![CDATA[<h1>API漏洞测试</h1><p>作者：L（xxx@example.com）</p>
         
@@ -63,7 +63,7 @@ shiro简介
 </h2><p>API是一个本质是远程过程调用的实现方式。</p>
 <p>远程过程调用（英语：Remote Procedure Call，缩写为 RPC）是一个计算机通信协议。该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额外地为这个交互作用编程。</p>
         
-        <hr><p>本文2024-02-21首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-21</p>]]>
+        <hr><p>本文2024-02-21首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-02-21</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -74,16 +74,16 @@ shiro简介
 
     <item>
       <title>API漏洞</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Mon, 19 Feb 2024 19:54:12 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E/</guid>
       <description>
         <![CDATA[<h1>API漏洞</h1><p>作者：L（xxx@example.com）</p>
         
           
         
-        <hr><p>本文2024-02-19首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-19</p>]]>
+        <hr><p>本文2024-02-19首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-02-19</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -94,10 +94,10 @@ shiro简介
 
     <item>
       <title>oauth2.0漏洞</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/oauth2.0%E6%BC%8F%E6%B4%9E/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/oauth2.0%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Sun, 18 Feb 2024 21:15:00 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/oauth2.0%E6%BC%8F%E6%B4%9E/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/oauth2.0%E6%BC%8F%E6%B4%9E/</guid>
       <description>
         <![CDATA[<h1>oauth2.0漏洞</h1><p>作者：L（xxx@example.com）</p>
         
@@ -109,7 +109,7 @@ shiro简介
 识别OAuth认证
 </h3><p>如果登录应用程序会重定向到第三方网站进行登录，大概率是使用了OAuth，进一步探测是通过在burp代理中观察经过浏览器的HTTP请求有哪些，无论哪一种授权类型，整个流程的第一个请求都是向/authorization端点发出的请求，其特点为URL中包含了很多OAuth使用的查询参数，值得注意的查询参数有client_id、redirect_uri、response_type，像这样</p>
         
-        <hr><p>本文2024-02-18首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-18</p>]]>
+        <hr><p>本文2024-02-18首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-02-18</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -120,10 +120,10 @@ shiro简介
 
     <item>
       <title>jwt漏洞</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Tue, 30 Jan 2024 19:15:00 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/</guid>
       <description>
         <![CDATA[<h1>jwt漏洞</h1><p>作者：L（xxx@example.com）</p>
         
@@ -136,7 +136,7 @@ shiro简介
 <p><strong>token的认证和传统的session认证的区别</strong></p>
 <p><em><strong>传统的session认证：</strong></em></p>
         
-        <hr><p>本文2024-01-30首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-30</p>]]>
+        <hr><p>本文2024-01-30首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-30</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -147,10 +147,10 @@ shiro简介
 
     <item>
       <title>jwt靶场练习</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</link>
       <pubDate>Tue, 30 Jan 2024 19:15:00 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</guid>
       <description>
         <![CDATA[<h1>jwt靶场练习</h1><p>作者：L（xxx@example.com）</p>
         
@@ -162,7 +162,7 @@ shiro简介
 <p><img src="../../images/jwt-exp-image.png" alt="Alt text">
 解码后发现user账户</p>
         
-        <hr><p>本文2024-01-30首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-30</p>]]>
+        <hr><p>本文2024-01-30首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-30</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -173,10 +173,10 @@ shiro简介
 
     <item>
       <title>Tomcat 文件读取包含漏洞 (cve-2020-1938)</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/</link>
       <pubDate>Mon, 29 Jan 2024 10:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/</guid>
       <description>
         <![CDATA[<h1>Tomcat 文件读取包含漏洞 (cve-2020-1938)</h1><p>作者：L（xxx@example.com）</p>
         
@@ -198,7 +198,7 @@ Tomcat 9-9.0.31
 </h2><p><img src="../../images/2024-1-29-2.png" alt="Alt text"></p>
 <p><strong>Connector</strong> ：Tomcat默认有两个Connector，分别是8080（web服务）和8009（AJP服务），AJP服务就是专门用于处理其他web服务器请求。</p>
         
-        <hr><p>本文2024-01-29首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
+        <hr><p>本文2024-01-29首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -209,10 +209,10 @@ Tomcat 9-9.0.31
 
     <item>
       <title>SQL注入</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/</link>
       <pubDate>Mon, 29 Jan 2024 10:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/</guid>
       <description>
         <![CDATA[<h1>SQL注入</h1><p>作者：L（xxx@example.com）</p>
         
@@ -241,7 +241,7 @@ Xxx.com/sqli/?id=1‘ 故意拼接错误的sql语句，看是否会在页面产�
 利用
 </h3><p><strong>Sql显注利用思路：</strong></p>
         
-        <hr><p>本文2024-01-29首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
+        <hr><p>本文2024-01-29首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
       </description>
       
         <category>漏洞原理</category>
@@ -252,10 +252,10 @@ Xxx.com/sqli/?id=1‘ 故意拼接错误的sql语句，看是否会在页面产�
 
     <item>
       <title>Apache Log4j™ 2 -rce(CVE-2021-44228)</title>
-      <link>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/</link>
+      <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/</link>
       <pubDate>Mon, 29 Jan 2024 10:15:13 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/</guid>
+      <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/</guid>
       <description>
         <![CDATA[<h1>Apache Log4j™ 2 -rce(CVE-2021-44228)</h1><p>作者：L（xxx@example.com）</p>
         
@@ -289,7 +289,7 @@ RMI（远程方法调用）: 是一种用于实现分布式计算的Java远程�
 利用过程
 </h2><p><img src="../../images/image.png" alt="Alt text"></p>
         
-        <hr><p>本文2024-01-29首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
+        <hr><p>本文2024-01-29首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-29</p>]]>
       </description>
       
         <category>漏洞原理</category>

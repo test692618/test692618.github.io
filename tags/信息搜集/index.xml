@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>信息搜集 on HELLO WORLD</title>
-    <link>http://localhost:1313/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
+    <link>https://test692618.github.io/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
     <description>Recent content from HELLO WORLD</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
@@ -15,7 +15,7 @@
     <lastBuildDate>Mon, 12 Feb 2024 10:40:00 +0000</lastBuildDate>
     
     
-    <atom:link href="http://localhost:1313/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.xml" rel="self" type="application/rss&#43;xml" />
+    <atom:link href="https://test692618.github.io/tags/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
     
@@ -23,16 +23,16 @@
 
     <item>
       <title>hvv快速信息搜集思路</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/hvv%E5%BF%AB%E9%80%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/hvv%E5%BF%AB%E9%80%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</link>
       <pubDate>Mon, 12 Feb 2024 10:40:00 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/hvv%E5%BF%AB%E9%80%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/hvv%E5%BF%AB%E9%80%9F%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86/</guid>
       <description>
         <![CDATA[<h1>hvv快速信息搜集思路</h1><p>作者：L（xxx@example.com）</p>
         
           <p>文章：https://xz.aliyun.com/t/9877?time__1311=n4%2BxuDgD9AKYq2ODlxGObDyWaDCb1aOt3O4D&amp;alichlgref=https%3A%2F%2Fwww.bing.com%2F</p>
         
-        <hr><p>本文2024-02-12首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-02-12</p>]]>
+        <hr><p>本文2024-02-12首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-02-12</p>]]>
       </description>
       
         <category>杂项</category>
@@ -43,10 +43,10 @@
 
     <item>
       <title>信息搜集思路</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF/</link>
       <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF/</guid>
       <description>
         <![CDATA[<h1>信息搜集思路</h1><p>作者：L（xxx@example.com）</p>
         
@@ -67,7 +67,7 @@
 <p>whois查询</p>
 <p>​	通过此种方式可以通过域名信息，查询域名有效期，注册人，邮箱，电话，ns服务器等信息。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>杂项</category>
@@ -78,10 +78,10 @@
 
     <item>
       <title>新信息搜集思路</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E6%96%B0-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF-/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E6%96%B0-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF-/</link>
       <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E6%96%B0-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF-/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E6%96%B0-%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF-/</guid>
       <description>
         <![CDATA[<h1>新信息搜集思路</h1><p>作者：L（xxx@example.com）</p>
         
@@ -146,7 +146,7 @@
 <li>
 <p>FOFA</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>杂项</category>
@@ -157,10 +157,10 @@
 
     <item>
       <title>其他-搜集方式补充</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/</link>
       <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/</guid>
       <description>
         <![CDATA[<h1>其他-搜集方式补充</h1><p>作者：L（xxx@example.com）</p>
         
@@ -172,7 +172,7 @@
 1.通过微信公众号获取
 </h2><p>微信公众号中功能本身通常是调用微信本身的API接口，但有一个例外，当公众号存在跳转至新功能界面上时，需要作为测试对象。</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>杂项</category>
@@ -183,10 +183,10 @@
 
     <item>
       <title>APP和小程序搜集思路及渗透思路</title>
-      <link>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</link>
+      <link>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</link>
       <pubDate>Sun, 28 Jan 2024 17:40:44 &#43;0000</pubDate>
       <author>xxx@example.com (L)</author>
-      <guid>http://localhost:1313/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</guid>
+      <guid>https://test692618.github.io/post/%E6%9D%82%E9%A1%B9/app%E5%92%8C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%90%9C%E9%9B%86%E6%80%9D%E8%B7%AF%E5%8F%8A%E6%B8%97%E9%80%8F%E6%80%9D%E8%B7%AF/</guid>
       <description>
         <![CDATA[<h1>APP和小程序搜集思路及渗透思路</h1><p>作者：L（xxx@example.com）</p>
         
@@ -210,7 +210,7 @@
 </ul>
 <p>多平台搜索，进行比对</p>
         
-        <hr><p>本文2024-01-28首发于<a href='http://localhost:1313/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
+        <hr><p>本文2024-01-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-28</p>]]>
       </description>
       
         <category>杂项</category>
