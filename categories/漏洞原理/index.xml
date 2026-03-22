@@ -7,8 +7,8 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     
-    <managingEditor>xxx@example.com (L)</managingEditor>
-    <webMaster>xxx@example.com (L)</webMaster>
+    <managingEditor>knock_s@foxmial.com (L)</managingEditor>
+    <webMaster>knock_s@foxmial.com (L)</webMaster>
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
@@ -25,10 +25,10 @@
       <title>shiro反序列化漏洞</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Wed, 21 Feb 2024 20:01:18 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/</guid>
       <description>
-        <![CDATA[<h1>shiro反序列化漏洞</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>shiro反序列化漏洞</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="shiro简介">
 <a class="header-anchor" href="#shiro%e7%ae%80%e4%bb%8b"></a>
@@ -52,10 +52,10 @@ shiro简介
       <title>API漏洞测试</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Wed, 21 Feb 2024 11:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E%E6%B5%8B%E8%AF%95/</guid>
       <description>
-        <![CDATA[<h1>API漏洞测试</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>API漏洞测试</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="简介">
 <a class="header-anchor" href="#%e7%ae%80%e4%bb%8b"></a>
@@ -76,10 +76,10 @@ shiro简介
       <title>API漏洞</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Mon, 19 Feb 2024 19:54:12 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/api%E6%BC%8F%E6%B4%9E/</guid>
       <description>
-        <![CDATA[<h1>API漏洞</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>API漏洞</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           
         
@@ -96,10 +96,10 @@ shiro简介
       <title>oauth2.0漏洞</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/oauth2.0%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Sun, 18 Feb 2024 21:15:00 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/oauth2.0%E6%BC%8F%E6%B4%9E/</guid>
       <description>
-        <![CDATA[<h1>oauth2.0漏洞</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>oauth2.0漏洞</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="介绍">
 <a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d"></a>
@@ -122,10 +122,10 @@ shiro简介
       <title>jwt漏洞</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/</link>
       <pubDate>Tue, 30 Jan 2024 19:15:00 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/</guid>
       <description>
-        <![CDATA[<h1>jwt漏洞</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>jwt漏洞</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="简介">
 <a class="header-anchor" href="#%e7%ae%80%e4%bb%8b"></a>
@@ -149,10 +149,10 @@ shiro简介
       <title>jwt靶场练习</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</link>
       <pubDate>Tue, 30 Jan 2024 19:15:00 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/</guid>
       <description>
-        <![CDATA[<h1>jwt靶场练习</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>jwt靶场练习</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <p><strong>靶场名称：WebGoat</strong></p>
 <h2 id="敏感信息泻露">
@@ -175,10 +175,10 @@ shiro简介
       <title>Tomcat 文件读取包含漏洞 (cve-2020-1938)</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/</link>
       <pubDate>Mon, 29 Jan 2024 10:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/</guid>
       <description>
-        <![CDATA[<h1>Tomcat 文件读取包含漏洞 (cve-2020-1938)</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>Tomcat 文件读取包含漏洞 (cve-2020-1938)</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="存在漏洞的版本">
 <a class="header-anchor" href="#%e5%ad%98%e5%9c%a8%e6%bc%8f%e6%b4%9e%e7%9a%84%e7%89%88%e6%9c%ac"></a>
@@ -211,10 +211,10 @@ Tomcat 9-9.0.31
       <title>SQL注入</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/</link>
       <pubDate>Mon, 29 Jan 2024 10:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/</guid>
       <description>
-        <![CDATA[<h1>SQL注入</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>SQL注入</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="概述">
 <a class="header-anchor" href="#%e6%a6%82%e8%bf%b0"></a>
@@ -254,10 +254,10 @@ Xxx.com/sqli/?id=1‘ 故意拼接错误的sql语句，看是否会在页面产�
       <title>Apache Log4j™ 2 -rce(CVE-2021-44228)</title>
       <link>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/</link>
       <pubDate>Mon, 29 Jan 2024 10:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/</guid>
       <description>
-        <![CDATA[<h1>Apache Log4j™ 2 -rce(CVE-2021-44228)</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>Apache Log4j™ 2 -rce(CVE-2021-44228)</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="简介">
 <a class="header-anchor" href="#%e7%ae%80%e4%bb%8b"></a>

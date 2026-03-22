@@ -64,11 +64,6 @@
     <lastmod>2026-03-22T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://test692618.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/tags/"
                 />
@@ -79,9 +74,17 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="en"
+                href="https://test692618.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn"
                 href="https://test692618.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://test692618.github.io/other_site/</loc>
+    <lastmod>2025-06-09T20:12:52+08:00</lastmod>
   </url><url>
     <loc>https://test692618.github.io/about/</loc>
     <lastmod>2025-06-09T20:12:52+08:00</lastmod>
@@ -406,8 +409,6 @@
     <loc>https://test692618.github.io/post/images/0x07-brainpan/</loc>
   </url><url>
     <loc>https://test692618.github.io/post/images/0x08-/</loc>
-  </url><url>
-    <loc>https://test692618.github.io/friend/</loc>
   </url><url>
     <loc>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</loc>
   </url>

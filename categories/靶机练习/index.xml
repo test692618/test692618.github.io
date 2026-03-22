@@ -7,8 +7,8 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     
-    <managingEditor>xxx@example.com (L)</managingEditor>
-    <webMaster>xxx@example.com (L)</webMaster>
+    <managingEditor>knock_s@foxmial.com (L)</managingEditor>
+    <webMaster>knock_s@foxmial.com (L)</webMaster>
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
@@ -25,10 +25,10 @@
       <title>w34kn3ss1靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x06--w34kn3ss1/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x06--w34kn3ss1/</guid>
       <description>
-        <![CDATA[<h1>w34kn3ss1靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>w34kn3ss1靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tex" data-lang="tex"><span class="line"><span class="cl">该靶机的 关键内容是 openssl 0.9.8c-1 漏洞 和 python 预编译文件的使用。
 </span></span></code></pre></div><h2 id="信息搜集">
@@ -101,10 +101,10 @@ Expolit
       <title>Nullbyte靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x05-nullbyte/</guid>
       <description>
-        <![CDATA[<h1>Nullbyte靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>Nullbyte靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <p>省去一堆步骤，</p>
 <p>此时我拿到普通权限shell</p>
@@ -219,10 +219,10 @@ Expolit
       <title>MERCY靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x03-mercy-v2/</guid>
       <description>
-        <![CDATA[<h1>MERCY靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>MERCY靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <p>懒得写</p>
 <p>两个注意事项。</p>
@@ -242,10 +242,10 @@ Expolit
       <title>IMF</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/</guid>
       <description>
-        <![CDATA[<h1>IMF</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>IMF</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h3 id="php-webshell-代码简单绕过技巧">
 <a class="header-anchor" href="#php-webshell-%e4%bb%a3%e7%a0%81%e7%ae%80%e5%8d%95%e7%bb%95%e8%bf%87%e6%8a%80%e5%b7%a7"></a>
@@ -269,10 +269,10 @@ php-webshell 代码简单绕过技巧
       <title>FALL靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/</guid>
       <description>
-        <![CDATA[<h1>FALL靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>FALL靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="port-scan">
 <a class="header-anchor" href="#port-scan"></a>
@@ -310,10 +310,10 @@ WEB-PTE
       <title>Djinn靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/</guid>
       <description>
-        <![CDATA[<h1>Djinn靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>Djinn靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="port-scan">
 <a class="header-anchor" href="#port-scan"></a>
@@ -370,10 +370,10 @@ WEB-PTE
       <title>DC-9靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x01.dc-9/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x01.dc-9/</guid>
       <description>
-        <![CDATA[<h1>DC-9靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>DC-9靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="port-scan">
 <a class="header-anchor" href="#port-scan"></a>
@@ -427,10 +427,10 @@ PORT-SCAN
       <title>brainpan靶机</title>
       <link>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x07-brainpan/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x07-brainpan/</guid>
       <description>
-        <![CDATA[<h1>brainpan靶机</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>brainpan靶机</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h1 id="缓冲区溢出漏洞-初见">
 <a class="header-anchor" href="#%e7%bc%93%e5%86%b2%e5%8c%ba%e6%ba%a2%e5%87%ba%e6%bc%8f%e6%b4%9e-%e5%88%9d%e8%a7%81"></a>

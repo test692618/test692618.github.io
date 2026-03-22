@@ -7,8 +7,8 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     
-    <managingEditor>xxx@example.com (L)</managingEditor>
-    <webMaster>xxx@example.com (L)</webMaster>
+    <managingEditor>knock_s@foxmial.com (L)</managingEditor>
+    <webMaster>knock_s@foxmial.com (L)</webMaster>
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
@@ -25,10 +25,10 @@
       <title>提权基础</title>
       <link>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/%E6%8F%90%E6%9D%83%E5%8E%9F%E7%90%86/</guid>
       <description>
-        <![CDATA[<h1>提权基础</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>提权基础</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="常见权限体系">
 <a class="header-anchor" href="#%e5%b8%b8%e8%a7%81%e6%9d%83%e9%99%90%e4%bd%93%e7%b3%bb"></a>
@@ -102,10 +102,10 @@
       <title>mysql_udf提权</title>
       <link>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/mysql_udf%E6%8F%90%E6%9D%83/</guid>
       <description>
-        <![CDATA[<h1>mysql_udf提权</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>mysql_udf提权</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h1 id="一简介">
 <a class="header-anchor" href="#%e4%b8%80%e7%ae%80%e4%bb%8b"></a>
@@ -131,10 +131,10 @@
       <title>linux提权的各种手段</title>
       <link>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/</link>
       <pubDate>Sun, 28 Jan 2024 17:15:13 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%9A%84%E5%90%84%E7%A7%8D%E6%8A%80%E5%B7%A7%E6%89%8B%E6%AE%B5/</guid>
       <description>
-        <![CDATA[<h1>linux提权的各种手段</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>linux提权的各种手段</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h2 id="0x01-利用shdow文件提权">
 <a class="header-anchor" href="#0x01-%e5%88%a9%e7%94%a8shdow%e6%96%87%e4%bb%b6%e6%8f%90%e6%9d%83"></a>

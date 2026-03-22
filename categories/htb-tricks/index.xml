@@ -7,8 +7,8 @@
     <generator>Hugo</generator>
     <language>zh-cn</language>
     
-    <managingEditor>xxx@example.com (L)</managingEditor>
-    <webMaster>xxx@example.com (L)</webMaster>
+    <managingEditor>knock_s@foxmial.com (L)</managingEditor>
+    <webMaster>knock_s@foxmial.com (L)</webMaster>
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
@@ -25,10 +25,10 @@
       <title>htb-trick</title>
       <link>https://test692618.github.io/post/htb-trick/htb-trick/</link>
       <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
+      <author>knock_s@foxmial.com (L)</author>
       <guid>https://test692618.github.io/post/htb-trick/htb-trick/</guid>
       <description>
-        <![CDATA[<h1>htb-trick</h1><p>作者：L（xxx@example.com）</p>
+        <![CDATA[<h1>htb-trick</h1><p>作者：L（knock_s@foxmial.com）</p>
         
           <h3 id="ttl值判断操作系统">
 <a class="header-anchor" href="#ttl%e5%80%bc%e5%88%a4%e6%96%ad%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f"></a>
