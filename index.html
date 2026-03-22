@@ -46,8 +46,8 @@
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2024-05-20T20:07:06&#43;00:00" />
-  <meta property="article:modified_time" content="2024-05-20T20:07:06&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
+  <meta property="article:published_time" content="2026-03-22T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-03-22T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.8f5255d5a41db9f4c8349667e7ec6b3d8fb79b7dcc6304fe7d40a5b566fa224f.css" /><link
     rel="preload"
     as="style"
@@ -143,7 +143,7 @@
 
         selectOptions.forEach((item) => {
           item.addEventListener("click", () => {
-            const langMap = {};langMap['ja'] = '\/ja\/';langMap['zh-tw'] = '\/zh-tw\/';langMap['en'] = '\/en\/';selectedLang.textContent = item.textContent;
+            const langMap = {};langMap['en'] = '\/en\/';langMap['ja'] = '\/ja\/';langMap['zh-tw'] = '\/zh-tw\/';selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
             selectOptions.forEach((option) => {
               option.classList.remove("selected");
@@ -195,17 +195,17 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">75</div>
+    <div>文章</div><div class="sidebar-state-number">76</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
     <div class="sidebar-state-number">
-      15
+      16
     </div>
   </a>
   <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
     <div>标签</div>
-    <div class="sidebar-state-number">21</div>
+    <div class="sidebar-state-number">22</div>
   </a>
 </div>
 <div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
@@ -252,6 +252,11 @@
                   >C语言</a
                 >
               </li><li class="category-list-item">
+                <a class="category-list-link" href="/categories/htb-tricks/" 
+                  title="HTB-Tricks"
+                  >HTB-Tricks</a
+                >
+              </li><li class="category-list-item">
                 <a class="category-list-link" href="/categories/%E4%BA%8C%E8%BF%9B%E5%88%B6/" 
                   title="二进制"
                   >二进制</a
@@ -285,11 +290,6 @@
                 <a class="category-list-link" href="/categories/%E6%9D%82%E9%A1%B9/" 
                   title="杂项"
                   >杂项</a
-                >
-              </li><li class="category-list-item">
-                <a class="category-list-link" href="/categories/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7/" 
-                  title="渗透技巧"
-                  >渗透技巧</a
                 >
               </li></ul>
       </div>
@@ -328,6 +328,15 @@
                   title="CDN"
                 >
                   CDN
+                </a>
+              </li><li class="tag-item">
+                <a
+                  class="tag-link"
+                  href="/tags/htb/"
+                  aria-label="标签: Htb"
+                  title="Htb"
+                >
+                  Htb
                 </a>
               </li><li class="tag-item">
                 <a
@@ -383,15 +392,6 @@
                 >
                   基金
                 </a>
-              </li><li class="tag-item">
-                <a
-                  class="tag-link"
-                  href="/tags/%E5%AE%89%E5%8D%93/"
-                  aria-label="标签: 安卓"
-                  title="安卓"
-                >
-                  安卓
-                </a>
               </li></ul>
       </div>
     </div>
@@ -415,6 +415,11 @@
             href="/tags/cdn/"
             aria-label="标签: CDN"
             >CDN</a
+          ><a
+            style="font-size:10px"
+            href="/tags/htb/"
+            aria-label="标签: Htb"
+            >Htb</a
           ><a
             style="font-size:10px"
             href="/tags/test/"
@@ -495,11 +500,6 @@
             href="/tags/%E8%82%A1%E7%A5%A8/"
             aria-label="标签: 股票"
             >股票</a
-          ><a
-            style="font-size:10px"
-            href="/tags/%E8%B4%A7%E5%B8%81/"
-            aria-label="标签: 货币"
-            >货币</a
           ></div>
   </div>
 </div><div class="widget-wrapper">
@@ -510,6 +510,8 @@
       <h3 class="widget-title">最新文章</h3>
       <div class="widget">
         <ul><li>
+              <a href="/post/htb-trick/htb-trick/" title="htb-trick">htb-trick</a>
+            </li><li>
               <a href="/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" title="安卓逆向">安卓逆向</a>
             </li><li>
               <a href="/post/%E6%9D%82%E9%A1%B9/js%E6%B8%97%E9%80%8F/" title="JS渗透">JS渗透</a>
@@ -517,8 +519,6 @@
               <a href="/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/" title="C基础">C基础</a>
             </li><li>
               <a href="/post/%E4%BA%8C%E8%BF%9B%E5%88%B6/x86%E6%B1%87%E7%BC%96/" title="x86汇编">x86汇编</a>
-            </li><li>
-              <a href="/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E6%8C%87%E6%95%B0%E5%9F%BA%E9%87%91/" title="经济常识">经济常识</a>
             </li></ul>
       </div>
     </div>
@@ -531,13 +531,54 @@
     data-aos="fade-up"
   ><a
         class="post-link"
+        href="/post/htb-trick/htb-trick/"
+        aria-label="htb-trick"
+        title="htb-trick"
+      >
+      </a><div
+      class="
+        post-cover left
+      "
+    ><img
+            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-sizes="auto"
+            alt="htb-trick"
+            class="lazyload"
+          /></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span
+          ><span class="icon-calendar"></span
+          >2026-03-22</span
+        ><span
+          ><span class="icon-pencil"></span
+          >491 字</span
+        >
+        <span
+          ><span class="icon-clock"></span
+          >1 分钟</span
+        >
+      </div>
+      <h2 class="post-title">htb-trick</h2>
+      <article class="post-article"> TTL值判断操作系统 对比TTL值与操作系统默认值 不同操作系统的默认TTL值如下： Windows: 默认TTL为128 Linux/Unix: 默认TTL为64 macOS: 默认TTL为64 网络设备（如路由器）: 通常为255 smbclient使用注意 smbclient -L X.X.X.X -U [USER] 列出主机目录 smbclient &#39;\\\\X.X.X.X\\Dir&#39; -U [USER] 进入目录	redis基础命令 redis info 详情 select 0-15 选择库 keys * 查询键 get key 查询键值 字典推荐 sudo apt …</article>
+    </div>
+  </div>
+</div>
+<div class="post-wrapper">
+  <div
+    class="
+      post-wrap right
+    "
+    data-aos="fade-up"
+  ><a
+        class="post-link"
         href="/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/"
         aria-label="安卓逆向"
         title="安卓逆向"
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -569,7 +610,7 @@ assets目录 ： 存放APK的静态资源文件，比如视频，音频，图片
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -580,7 +621,7 @@ assets目录 ： 存放APK的静态资源文件，比如视频，音频，图片
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -611,7 +652,7 @@ src= path= method:&#34;get&#34; http.get(&#34; method:&#34;post&#34; http.post(&
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -622,7 +663,7 @@ src= path= method:&#34;get&#34; http.get(&#34; method:&#34;post&#34; http.post(&
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -658,7 +699,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -669,7 +710,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -703,7 +744,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -714,7 +755,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -746,7 +787,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -757,7 +798,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -790,7 +831,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -801,7 +842,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -835,7 +876,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -846,7 +887,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -877,7 +918,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -888,7 +929,7 @@ int a; \\定义变量，占用内存空间 a =2 ================================
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -916,50 +957,6 @@ int a; \\定义变量，占用内存空间 a =2 ================================
     </div>
   </div>
 </div>
-<div class="post-wrapper">
-  <div
-    class="
-      post-wrap right
-    "
-    data-aos="fade-up"
-  ><a
-        class="post-link"
-        href="/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%BD%B1%E5%93%8D%E5%8A%9B_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/"
-        aria-label="《影响力》笔记"
-        title="《影响力》笔记"
-      >
-      </a><div
-      class="
-        post-cover right
-      "
-    ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-            data-sizes="auto"
-            alt="《影响力》笔记"
-            class="lazyload"
-          /></div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span
-          ><span class="icon-calendar"></span
-          >2024-03-10</span
-        ><span
-          ><span class="icon-pencil"></span
-          >1322 字</span
-        >
-        <span
-          ><span class="icon-clock"></span
-          >3 分钟</span
-        >
-      </div>
-      <h2 class="post-title">《影响力》笔记</h2>
-      <article class="post-article"> 第一章 机械反应：
-人在面对不了解的事物时，会出现if判断的情况，例如，贵就是好。 直觉对比：
-鲁迅曾说，中国人总是折中的，你要开窗，他们不同意，但你要拆屋顶，他们又同意开窗了。 例如，买东西时，售货员先推销贵的产品，再推销便宜产品，会更容易卖出去。因为你会通过对比感觉东西便宜。 第二章 互利互惠：
-人在受到别人的帮助/恩惠后，会本能的产生回报别人的意愿，即使你并不喜欢那个人，即使那个人是个恶人。 举例来说,4S店中存在各种免费小零食和免费试驾，会使你产生愧疚的心理状态，会更容易产生消费的冲动。 办公室中，主动去帮助别人，与别人分享好东西的人，更容易得到帮助。 在请人填写问卷时，附送一些小礼 …</article>
-    </div>
-  </div>
-</div>
 <nav id="page-nav" aria-label="Pagination navigation" data-aos="fade-up"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">
       下一页 &raquo;
     </a></nav>
@@ -984,10 +981,10 @@ int a; \\定义变量，占用内存空间 a =2 ================================
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;73.0k</span
+          >&nbsp;73.5k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:06</span>
+        <span class="icon-coffee">&nbsp;03:07</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -1021,17 +1018,17 @@ int a; \\定义变量，占用内存空间 a =2 ================================
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">75</div>
+    <div>文章</div><div class="sidebar-state-number">76</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
     <div class="sidebar-state-number">
-      15
+      16
     </div>
   </a>
   <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
     <div>标签</div>
-    <div class="sidebar-state-number">21</div>
+    <div class="sidebar-state-number">22</div>
   </a>
 </div>
 <div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">

