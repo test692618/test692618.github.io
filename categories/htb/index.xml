@@ -12,12 +12,51 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Mon, 23 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/categories/htb/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Oopsie</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-oopsie/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-oopsie/</guid>
+      <description>
+        <![CDATA[<h1>htb-Oopsie</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口发现">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e5%8f%91%e7%8e%b0"></a>
+端口发现
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PORT   STATE SERVICE VERSION
+</span></span><span class="line"><span class="cl">22/tcp open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 <span class="o">(</span>Ubuntu Linux<span class="p">;</span> protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey:
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span>    61:e4:3f:d4:1e:e2:b2:f1:0d:3c:ed:36:28:36:67:c7 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 24:1d:a4:17:d4:e3:2a:9c:90:5c:30:58:8f:60:77:8d <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 78:03:0e:b4:a1:af:e5:c2:f9:8d:29:05:3e:29:c9:f2 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp open  http    Apache httpd 2.4.29 <span class="o">((</span>Ubuntu<span class="o">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.29 <span class="o">(</span>Ubuntu<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Welcome
+</span></span><span class="line"><span class="cl">Service Info: OS: Linux<span class="p">;</span> CPE: cpe:/o:linux:linux_kernel
+</span></span></code></pre></div><h2 id="网站测试">
+<a class="header-anchor" href="#%e7%bd%91%e7%ab%99%e6%b5%8b%e8%af%95"></a>
+网站测试
+</h2><p><img src="../images/ooimage.png" alt="alt text">
+检查网站代码发现疑似登录入口。</p>
+<p><img src="../images/ooimage-1.png" alt="alt text">
+利用常规弱密码、cewl提取网站字符构造字典枚举后均无果，后注意“访客登录”的方式</p>
+        
+        <hr><p>本文2026-03-26首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-26</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 
