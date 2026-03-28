@@ -4,7 +4,7 @@
   data-theme-mode="auto"
   >
   <head>
-	<meta name="generator" content="Hugo 0.159.0"><meta charset="utf-8" />
+	<meta name="generator" content="Hugo 0.159.1"><meta charset="utf-8" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -46,8 +46,8 @@
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2026-03-26T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2026-03-26T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
+  <meta property="article:published_time" content="2026-03-28T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-03-28T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.3cb430561af988141327a9e105860d0e1d0f240a915b0c600564590371ef51c3.css" /><link
     rel="preload"
     as="style"
@@ -143,7 +143,7 @@
 
         selectOptions.forEach((item) => {
           item.addEventListener("click", () => {
-            const langMap = {};langMap['zh-tw'] = '\/zh-tw\/';langMap['en'] = '\/en\/';langMap['ja'] = '\/ja\/';selectedLang.textContent = item.textContent;
+            const langMap = {};langMap['en'] = '\/en\/';langMap['ja'] = '\/ja\/';langMap['zh-tw'] = '\/zh-tw\/';selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
             selectOptions.forEach((option) => {
               option.classList.remove("selected");
@@ -195,7 +195,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">78</div>
+    <div>文章</div><div class="sidebar-state-number">79</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -518,6 +518,8 @@
       <h3 class="widget-title">最新文章</h3>
       <div class="widget">
         <ul><li>
+              <a href="/post/htb/htb%E6%89%93%E9%9D%B6-unified/" title="htb-Unified">htb-Unified</a>
+            </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-oopsie/" title="htb-Oopsie">htb-Oopsie</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-archetype/" title="htb-Archetype">htb-Archetype</a>
@@ -525,8 +527,6 @@
               <a href="/post/htb/htb-trick/" title="htb-trick">htb-trick</a>
             </li><li>
               <a href="/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/" title="安卓逆向">安卓逆向</a>
-            </li><li>
-              <a href="/post/%E6%9D%82%E9%A1%B9/js%E6%B8%97%E9%80%8F/" title="JS渗透">JS渗透</a>
             </li></ul>
       </div>
     </div>
@@ -539,13 +539,54 @@
     data-aos="fade-up"
   ><a
         class="post-link"
+        href="/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/ftp%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/"
+        aria-label="FTP端口测试"
+        title="FTP端口测试"
+      >
+      </a><div
+      class="
+        post-cover left
+      "
+    ><img
+            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-sizes="auto"
+            alt="FTP端口测试"
+            class="lazyload"
+          /></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span
+          ><span class="icon-calendar"></span
+          >2024-01-28</span
+        ><span
+          ><span class="icon-pencil"></span
+          >120 字</span
+        >
+        <span
+          ><span class="icon-clock"></span
+          >1 分钟</span
+        >
+      </div>
+      <h2 class="post-title">FTP端口测试</h2>
+      <article class="post-article"> 对于FTP端口要注意测试匿名帐户登录—anonymous 。 使用get 或 mget 命令下载文件到本地。 并且先使用binary命令将模式切换成二进制模式，以保证下载二进制文件时，内容不会产生错误。 使用pssive on 开启被动模式传输，可防止传输过程中断。 </article>
+    </div>
+  </div>
+</div>
+<div class="post-wrapper">
+  <div
+    class="
+      post-wrap right
+    "
+    data-aos="fade-up"
+  ><a
+        class="post-link"
         href="/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/rpc%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/"
         aria-label="RPC端口测试"
         title="RPC端口测试"
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -578,7 +619,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -589,7 +630,7 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -624,7 +665,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -635,7 +676,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -668,7 +709,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -679,7 +720,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -709,7 +750,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -720,7 +761,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -753,7 +794,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -764,7 +805,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -796,7 +837,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -807,7 +848,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -837,7 +878,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -848,7 +889,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -882,7 +923,7 @@ Html编码：&amp;ltxsa: (就是实体字符)
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -893,7 +934,7 @@ Html编码：&amp;ltxsa: (就是实体字符)
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -917,48 +958,6 @@ Html编码：&amp;ltxsa: (就是实体字符)
       </div>
       <h2 class="post-title">插件</h2>
       <article class="post-article"> 指纹识别工具 gotoscan工具 常见框架识别方式 返回包中的关键字 特有的web路径 icon 插件 潮听指纹识别网站 </article>
-    </div>
-  </div>
-</div>
-<div class="post-wrapper">
-  <div
-    class="
-      post-wrap right
-    "
-    data-aos="fade-up"
-  ><a
-        class="post-link"
-        href="/post/%E6%9D%82%E9%A1%B9/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86-%E9%A2%9D%E5%A4%96/"
-        aria-label="其他-搜集方式补充"
-        title="其他-搜集方式补充"
-      >
-      </a><div
-      class="
-        post-cover right
-      "
-    ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-            data-sizes="auto"
-            alt="其他-搜集方式补充"
-            class="lazyload"
-          /></div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span
-          ><span class="icon-calendar"></span
-          >2024-01-28</span
-        ><span
-          ><span class="icon-pencil"></span
-          >413 字</span
-        >
-        <span
-          ><span class="icon-clock"></span
-          >1 分钟</span
-        >
-      </div>
-      <h2 class="post-title">其他-搜集方式补充</h2>
-      <article class="post-article"> 一、公众号 1.通过微信公众号获取 微信公众号中功能本身通常是调用微信本身的API接口，但有一个例外，当公众号存在跳转至新功能界面上时，需要作为测试对象。
-</article>
     </div>
   </div>
 </div>
@@ -988,10 +987,10 @@ Html编码：&amp;ltxsa: (就是实体字符)
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;75.5k</span
+          >&nbsp;76.6k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:12</span>
+        <span class="icon-coffee">&nbsp;03:15</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -1025,7 +1024,7 @@ Html编码：&amp;ltxsa: (就是实体字符)
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">78</div>
+    <div>文章</div><div class="sidebar-state-number">79</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>

