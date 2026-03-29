@@ -12,12 +12,53 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/categories/htb/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Included</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-included/</link>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-included/</guid>
+      <description>
+        <![CDATA[<h1>htb-Included</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//TCP端口仅开放80端口，UDP端口开放69端口-tftp
+</span></span><span class="line"><span class="cl">//TCP扫描
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//UDP扫描，UDP这里扫描不稳定，未能发现tftp端口，但实际通过tftp客户端是可以直接访问到的。
+</span></span><span class="line"><span class="cl">PORT    STATE  SERVICE
+</span></span><span class="line"><span class="cl">17/udp  closed qotd
+</span></span><span class="line"><span class="cl">26/udp  closed unknown
+</span></span><span class="line"><span class="cl">292/udp closed unknown
+</span></span><span class="line"><span class="cl">339/udp closed unknown
+</span></span><span class="line"><span class="cl">353/udp closed ndsauth
+</span></span><span class="line"><span class="cl">374/udp closed legent-2
+</span></span><span class="line"><span class="cl">413/udp closed smsp
+</span></span><span class="line"><span class="cl">486/udp closed avian
+</span></span></code></pre></div><h2 id="web测试">
+<a class="header-anchor" href="#web%e6%b5%8b%e8%af%95"></a>
+web测试
+</h2><p>发现文件包含漏洞，并且经测试为本地文件包含。</p>
+        
+        <hr><p>本文2026-03-29首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-29</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 

@@ -12,12 +12,53 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Sat, 28 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 29 Mar 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/post/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Included</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-included/</link>
+      <pubDate>Sun, 29 Mar 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-included/</guid>
+      <description>
+        <![CDATA[<h1>htb-Included</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//TCP端口仅开放80端口，UDP端口开放69端口-tftp
+</span></span><span class="line"><span class="cl">//TCP扫描
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//UDP扫描，UDP这里扫描不稳定，未能发现tftp端口，但实际通过tftp客户端是可以直接访问到的。
+</span></span><span class="line"><span class="cl">PORT    STATE  SERVICE
+</span></span><span class="line"><span class="cl">17/udp  closed qotd
+</span></span><span class="line"><span class="cl">26/udp  closed unknown
+</span></span><span class="line"><span class="cl">292/udp closed unknown
+</span></span><span class="line"><span class="cl">339/udp closed unknown
+</span></span><span class="line"><span class="cl">353/udp closed ndsauth
+</span></span><span class="line"><span class="cl">374/udp closed legent-2
+</span></span><span class="line"><span class="cl">413/udp closed smsp
+</span></span><span class="line"><span class="cl">486/udp closed avian
+</span></span></code></pre></div><h2 id="web测试">
+<a class="header-anchor" href="#web%e6%b5%8b%e8%af%95"></a>
+web测试
+</h2><p>发现文件包含漏洞，并且经测试为本地文件包含。</p>
+        
+        <hr><p>本文2026-03-29首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-03-29</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 
@@ -597,31 +638,6 @@ APK文件结构
       </description>
       
         <category>经济与金融</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>《小岛经济学》笔记</title>
-      <link>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Thu, 14 Mar 2024 21:33:25 &#43;0000</pubDate>
-      <author>knock_s@foxmial.com (L)</author>
-      <guid>https://test692618.github.io/post/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E5%B0%8F%E5%B2%9B%E7%BB%8F%E6%B5%8E%E5%AD%A6_%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
-      <description>
-        <![CDATA[<h1>《小岛经济学》笔记</h1><p>作者：L（knock_s@foxmial.com）</p>
-        
-          <h2 id="经济的本质是什么">
-<a class="header-anchor" href="#%e7%bb%8f%e6%b5%8e%e7%9a%84%e6%9c%ac%e8%b4%a8%e6%98%af%e4%bb%80%e4%b9%88"></a>
-经济的本质是什么
-</h2><p>我认为经济的本质是交换。</p>
-<p>在远古时代，每个人如果自己狩猎，自己吃，自己养活自己，那么经济将不复存在。</p>
-<p>但如果，一个人需要一样东西，自己难以取得，而另一个人又恰好拥有，对方又难以可能直接给你，这是你要拿出价值相等的东西交换，这就是经济的雏形。</p>
-        
-        <hr><p>本文2024-03-14首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-14</p>]]>
-      </description>
-      
-        <category>读书笔记</category>
       
     </item>
     

