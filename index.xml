@@ -12,12 +12,46 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Wed, 01 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Base</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-base/</link>
+      <pubDate>Sat, 04 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-base/</guid>
+      <description>
+        <![CDATA[<h1>htb-Base</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">22/tcp open  ssh
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span></code></pre></div><h2 id="web测试">
+<a class="header-anchor" href="#web%e6%b5%8b%e8%af%95"></a>
+web测试
+</h2><p>通过目录扫描发现login.php.swp文件。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">swp文件是Vim或Vi文本编辑器创建的临时交换文件，主要用于以下两个核心原因：
+</span></span><span class="line"><span class="cl">1. **崩溃恢复**：当编辑会话异常中断（如系统崩溃、终端意外关闭、网络断开）时，swp文件保存着未保存的更改和编辑状态。重新打开原文件时，Vim会提示你恢复内容，防止数据丢失。
+</span></span><span class="line"><span class="cl">2. **避免编辑冲突**：当同一个文件被多个Vim实例同时打开编辑时，后续实例会检测到先打开实例创建的swp文件，从而发出警告，防止多人编辑导致更改相互覆盖。
+</span></span><span class="line"><span class="cl">简单来说，它是Vim的“自动保存和冲突检测”机制文件。
+</span></span></code></pre></div><p><img src="./../images/image-20260404091206676.png" alt="image-20260404091206676"></p>
+        
+        <hr><p>本文2026-04-04首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-04-04</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 
@@ -593,58 +627,6 @@ APK文件结构
       </description>
       
         <category>二进制</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>C基础</title>
-      <link>https://test692618.github.io/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/</link>
-      <pubDate>Wed, 20 Mar 2024 20:07:06 &#43;0000</pubDate>
-      <author>knock_s@foxmial.com (L)</author>
-      <guid>https://test692618.github.io/post/c%E8%AF%AD%E8%A8%80/c%E5%9F%BA%E7%A1%80/</guid>
-      <description>
-        <![CDATA[<h1>C基础</h1><p>作者：L（knock_s@foxmial.com）</p>
-        
-          <h2 id="变量">
-<a class="header-anchor" href="#%e5%8f%98%e9%87%8f"></a>
-变量
-</h2><p>标识符（变量名）命名规则：</p>
-<p>​	1.不能是关键字</p>
-<p>​	2.只能由字母数字下划线组成</p>
-<p>​	3.字母区分大小写</p>
-<p>​	4.第一个字符只能是字母或下划线</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">a</span><span class="p">;</span> <span class="err">\\定义变量，占用内存空间</span>
-</span></span><span class="line"><span class="cl"><span class="n">a</span> <span class="o">=</span><span class="mi">2</span> 
-</span></span><span class="line"><span class="cl"><span class="o">========================================</span>
-</span></span><span class="line"><span class="cl"><span class="k">extern</span> <span class="kt">int</span> <span class="n">b</span><span class="p">;</span> <span class="err">\\</span> <span class="err">声明变量，不占用内存</span>
-</span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="p">;</span> <span class="c1">//会发生报错。
-</span></span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1">// extern也叫类型限定符。
-</span></span></span></code></pre></div><h3 id="类型限定符">
-<a class="header-anchor" href="#%e7%b1%bb%e5%9e%8b%e9%99%90%e5%ae%9a%e7%ac%a6"></a>
-类型限定符
-</h3><ul>
-<li>extern</li>
-<li>const</li>
-<li>register</li>
-<li>volatile</li>
-</ul>
-<h2 id="常量">
-<a class="header-anchor" href="#%e5%b8%b8%e9%87%8f"></a>
-常量
-</h2><ul>
-<li>宏常量</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-C" data-lang="C"><span class="line"><span class="cl"><span class="c1">// #defind 常量名 初始值
-</span></span></span><span class="line"><span class="cl"><span class="cp">#define HP 100
-</span></span></span></code></pre></div><p>​</p>
-        
-        <hr><p>本文2024-03-20首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-20</p>]]>
-      </description>
-      
-        <category>C语言</category>
       
     </item>
     

