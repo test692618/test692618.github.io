@@ -12,12 +12,82 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Wed, 07 Feb 2024 15:45:22 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/categories/ad%E5%9F%9F-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>域渗透实战</title>
+      <link>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/</link>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/</guid>
+      <description>
+        <![CDATA[<h1>域渗透实战</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="信息枚举">
+<a class="header-anchor" href="#%e4%bf%a1%e6%81%af%e6%9e%9a%e4%b8%be"></a>
+信息枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">net user #枚举本地账户
+</span></span><span class="line"><span class="cl">net user /domain  #枚举域内所有账户
+</span></span><span class="line"><span class="cl">net user [用户名] /domain # 查看用户详情，所在组。域内最高权限组为“domain admins”。
+</span></span><span class="line"><span class="cl">net group /domain  # 枚举域内组
+</span></span></code></pre></div><p>使用powershell进行信息枚举</p>
+        
+        <hr><p>本文2026-04-24首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-04-24</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>域渗透-攻击手段</title>
+      <link>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</link>
+      <pubDate>Thu, 07 Mar 2024 12:20:20 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</guid>
+      <description>
+        <![CDATA[<h1>域渗透-攻击手段</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="0x01--域内用户枚举">
+<a class="header-anchor" href="#0x01--%e5%9f%9f%e5%86%85%e7%94%a8%e6%88%b7%e6%9e%9a%e4%b8%be"></a>
+0x01  域内用户枚举
+</h2><h3 id="原理">
+<a class="header-anchor" href="#%e5%8e%9f%e7%90%86"></a>
+原理
+</h3><p>根据kerberos协议中的AS-REQ阶段，不同用户状态（禁用、启用、不存在）时的不同响应实现枚举。</p>
+<h3 id="工具">
+<a class="header-anchor" href="#%e5%b7%a5%e5%85%b7"></a>
+工具
+</h3><ul>
+<li>
+<p>kerbrute</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">地址：https://github.com/ropnop/kerbrute/releases/tag/v1.0.3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用：
+</span></span><span class="line"><span class="cl"> .<span class="se">\k</span>erbrute_windows_amd64.exe userenum --dc 192.168.1.200 -d xie.com user.txt
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1">## user.txt 是字典，需要自己指定.</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## --dc 指域控的IP </span>
+</span></span><span class="line"><span class="cl"> <span class="c1">## xie.com 指域名</span>
+</span></span></code></pre></div></li>
+<li>
+<p>pykerbrute</p>
+        
+        <hr><p>本文2024-03-07首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-03-07</p>]]>
+      </description>
+      
+        <category>AD域-基础知识</category>
+      
+    </item>
     
     
 
@@ -195,49 +265,6 @@
 <p>出现位置：SMB、RDP、LDAP、SMTP等需要调用windwos账户的服务，均会使用此协议进行身份认证。</p>
         
         <hr><p>本文2024-01-25首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-01-25</p>]]>
-      </description>
-      
-        <category>AD域-基础知识</category>
-      
-    </item>
-    
-    
-
-    <item>
-      <title>域渗透-攻击手段</title>
-      <link>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
-      <author>knock_s@foxmial.com (L)</author>
-      <guid>https://test692618.github.io/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F-%E6%94%BB%E5%87%BB%E6%89%8B%E6%AE%B5/</guid>
-      <description>
-        <![CDATA[<h1>域渗透-攻击手段</h1><p>作者：L（knock_s@foxmial.com）</p>
-        
-          <h2 id="0x01--域内用户枚举">
-<a class="header-anchor" href="#0x01--%e5%9f%9f%e5%86%85%e7%94%a8%e6%88%b7%e6%9e%9a%e4%b8%be"></a>
-0x01  域内用户枚举
-</h2><h3 id="原理">
-<a class="header-anchor" href="#%e5%8e%9f%e7%90%86"></a>
-原理
-</h3><p>根据kerberos协议中的AS-REQ阶段，不同用户状态（禁用、启用、不存在）时的不同响应实现枚举。</p>
-<h3 id="工具">
-<a class="header-anchor" href="#%e5%b7%a5%e5%85%b7"></a>
-工具
-</h3><ul>
-<li>
-<p>kerbrute</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">地址：https://github.com/ropnop/kerbrute/releases/tag/v1.0.3
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">使用：
-</span></span><span class="line"><span class="cl"> .<span class="se">\k</span>erbrute_windows_amd64.exe userenum --dc 192.168.1.200 -d xie.com user.txt
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"> <span class="c1">## user.txt 是字典，需要自己指定.</span>
-</span></span><span class="line"><span class="cl"> <span class="c1">## --dc 指域控的IP </span>
-</span></span><span class="line"><span class="cl"> <span class="c1">## xie.com 指域名</span>
-</span></span></code></pre></div></li>
-<li>
-<p>pykerbrute</p>
-        
-        <hr><p>本文0001-01-01首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于0001-01-01</p>]]>
       </description>
       
         <category>AD域-基础知识</category>
