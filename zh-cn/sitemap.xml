@@ -9,11 +9,6 @@
     <lastmod>2026-04-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="https://test692618.github.io/en/categories/"
                 />
@@ -21,6 +16,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -32,11 +32,6 @@
     <lastmod>2026-04-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://test692618.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/"
                 />
@@ -44,6 +39,11 @@
                 rel="alternate"
                 hreflang="zh-tw"
                 href="https://test692618.github.io/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://test692618.github.io/en/"
                 />
     <xhtml:link
                 rel="alternate"

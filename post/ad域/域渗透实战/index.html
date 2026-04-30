@@ -190,6 +190,7 @@
     <li><a href="#本地账户攻击">本地账户攻击</a></li>
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
     <li><a href="#低速口令枚举">低速口令枚举</a></li>
+    <li><a href="#横向移动">横向移动</a></li>
   </ul>
 </nav>
 </div></div>
@@ -441,6 +442,33 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">使用Spray-Passwords.ps1工具进行名密码喷洒攻击。
+</span></span></code></pre></div><h2 id="横向移动">
+<a class="header-anchor" href="#%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8"></a>
+横向移动
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">哈希传递:
+</span></span><span class="line"><span class="cl">	适用情况：
+</span></span><span class="line"><span class="cl">		1. 采用NTML验证的服务，如 WMI(135)、SMB(445)、RDP(3389)、WINRM(5985)等
+</span></span><span class="line"><span class="cl">		2. 已获取本地管理权限。
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">	工具包括以下（根据不同端口采用不同工具）：
+</span></span><span class="line"><span class="cl">		Evil-WinRM
+</span></span><span class="line"><span class="cl">		CrackMapExec
+</span></span><span class="line"><span class="cl">		Impacket 的 wmiexec
+</span></span><span class="line"><span class="cl">		Impacket 的 mssqlclient
+</span></span><span class="line"><span class="cl">		Impacket 的 psexec
+</span></span><span class="line"><span class="cl">		Passing-The-Hash 工具包中的 pth-winexe
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-----------------------------------------------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Overpass-the-Hash（又称 Pass-the-Key）
+</span></span><span class="line"><span class="cl">	这是一种将窃取的 NTLM 哈希或 AES 密钥转换为 Kerberos 票据，从而在 Kerberos 优先的环境中实现横向移动的攻击技术。其核心是 “升级”凭据，从仅能用于 NTLM 认证的哈希，升级为功能更全的 Kerberos TGT（票证授予票证）
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">-----------------------------------------------------------
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">白银票据伪造
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-----------------------------------------------------------
 </span></span></code></pre></div></div>
     <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
     <a
@@ -489,7 +517,7 @@
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;83.0k</span
+          >&nbsp;83.3k</span
         >
         &nbsp;|&nbsp;
         <span class="icon-coffee">&nbsp;03:30</span>
@@ -522,6 +550,7 @@
     <li><a href="#本地账户攻击">本地账户攻击</a></li>
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
     <li><a href="#低速口令枚举">低速口令枚举</a></li>
+    <li><a href="#横向移动">横向移动</a></li>
   </ul>
 </nav>
 </div></div>
