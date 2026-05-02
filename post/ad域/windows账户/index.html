@@ -195,6 +195,8 @@
         <li><a href="#机器账户">机器账户</a></li>
       </ul>
     </li>
+    <li><a href="#本地账户与域账户的通讯">本地账户与域账户的通讯</a></li>
+    <li><a href="#本地账户与域账户横向移动权限">本地账户与域账户横向移动权限</a></li>
   </ul>
 </nav>
 </div></div>
@@ -324,7 +326,7 @@
 <a class="header-anchor" href="#%e6%9c%8d%e5%8a%a1%e8%b4%a6%e6%88%b7"></a>
 服务账户
 </h3><p>注册了SPN的账户就是服务账户，和linux一样。(说白了就是<strong>在域环境内</strong>，运行了<strong>被域控认可的服务</strong>的账户就叫服务账户)</p>
-<p>如果机器账户/用户账户运行服务，那就是机器账户。</p>
+<p>如果机器账户/用户账户运行服务，那就是服务账户。</p>
 <p>比如，krbtgt账户是用户账户，也是服务账户，它的SPN是 kadmin/changepw</p>
 <h3 id="机器账户">
 <a class="header-anchor" href="#%e6%9c%ba%e5%99%a8%e8%b4%a6%e6%88%b7"></a>
@@ -332,6 +334,25 @@
 </h3><p>此账户不能登录，他的密码为120位，且随机生成。但可以以某种手段拿到它的权限。</p>
 <p>它代表一个域内的机器实体，比如，域内的一台主机，该主机的机器账户就是：机器账户名+$，在本机内，他叫做system。</p>
 <p><strong>本地的system账户</strong>就是<strong>域内的机器账户</strong>。拿到system权限即拿到了一个机器账户的权限。</p>
+<h2 id="本地账户与域账户的通讯">
+<a class="header-anchor" href="#%e6%9c%ac%e5%9c%b0%e8%b4%a6%e6%88%b7%e4%b8%8e%e5%9f%9f%e8%b4%a6%e6%88%b7%e7%9a%84%e9%80%9a%e8%ae%af"></a>
+本地账户与域账户的通讯
+</h2><ul>
+<li>
+<p>域外账户（包括administrator账户）无法与域内进行通信，例如，使用net user /domain 无显示。但如果是SYSTEM账户可以与域内进行通信。</p>
+<p>​	因此实现通信可以通过 提权至SYSTEM账户 或 使用域内账户 。</p>
+</li>
+<li>
+<p>域内账户可以与域内通信。</p>
+</li>
+</ul>
+<h2 id="本地账户与域账户横向移动权限">
+<a class="header-anchor" href="#%e6%9c%ac%e5%9c%b0%e8%b4%a6%e6%88%b7%e4%b8%8e%e5%9f%9f%e8%b4%a6%e6%88%b7%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8%e6%9d%83%e9%99%90"></a>
+本地账户与域账户横向移动权限
+</h2><ul>
+<li>域内的普通账户一般无法 使用 SMB/IPC类、WMI/DCOM远程命令执行类、远程RDP/WinRM交互式登录  进行横向。需提权至管理员才可以。注意：并非所有横向移动手段都不可以。</li>
+<li>域外账户（administrator账户）可以进行横向移动。</li>
+</ul>
 </div>
     <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
     <a
@@ -392,10 +413,10 @@
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;84.3k</span
+          >&nbsp;87.4k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:32</span>
+        <span class="icon-coffee">&nbsp;03:39</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -430,6 +451,8 @@
         <li><a href="#机器账户">机器账户</a></li>
       </ul>
     </li>
+    <li><a href="#本地账户与域账户的通讯">本地账户与域账户的通讯</a></li>
+    <li><a href="#本地账户与域账户横向移动权限">本地账户与域账户横向移动权限</a></li>
   </ul>
 </nav>
 </div></div>

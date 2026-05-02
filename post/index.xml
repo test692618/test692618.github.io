@@ -30,14 +30,9 @@
       <description>
         <![CDATA[<h1>域渗透实战</h1><p>作者：L（knock_s@foxmial.com）</p>
         
-          <h2 id="信息枚举">
-<a class="header-anchor" href="#%e4%bf%a1%e6%81%af%e6%9e%9a%e4%b8%be"></a>
-信息枚举
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">net user #枚举本地账户
-</span></span><span class="line"><span class="cl">net user /domain  #枚举域内所有账户
-</span></span><span class="line"><span class="cl">net user [用户名] /domain # 查看用户详情，所在组。域内最高权限组为“domain admins”。
-</span></span><span class="line"><span class="cl">net group /domain  # 枚举域内组
-</span></span></code></pre></div><p>使用powershell进行信息枚举</p>
+          <p>域内环境基本思路：</p>
+<p>​	获取一台机器权限时，定位域控制器IP及域管理员账号。</p>
+<p>​	利用域成员主机作为跳板扩大范围，利用域管理员可以登陆域中任何成员主机特性，定位出域管理员登陆过的主机IP，设法从域成员主机内存中dump出域管理员密码，进而拿下域控制器、渗透整个内网。</p>
         
         <hr><p>本文2026-04-24首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-04-24</p>]]>
       </description>

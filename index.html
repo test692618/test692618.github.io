@@ -143,7 +143,7 @@
 
         selectOptions.forEach((item) => {
           item.addEventListener("click", () => {
-            const langMap = {};langMap['en'] = '\/en\/';langMap['ja'] = '\/ja\/';langMap['zh-tw'] = '\/zh-tw\/';selectedLang.textContent = item.textContent;
+            const langMap = {};langMap['zh-tw'] = '\/zh-tw\/';langMap['en'] = '\/en\/';langMap['ja'] = '\/ja\/';selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
             selectOptions.forEach((option) => {
               option.classList.remove("selected");
@@ -560,15 +560,17 @@
           >2026-04-24</span
         ><span
           ><span class="icon-pencil"></span
-          >3353 字</span
+          >6124 字</span
         >
         <span
           ><span class="icon-clock"></span
-          >7 分钟</span
+          >13 分钟</span
         >
       </div>
       <h2 class="post-title">域渗透实战</h2>
-      <article class="post-article"> 信息枚举 net user #枚举本地账户 net user /domain #枚举域内所有账户 net user [用户名] /domain # 查看用户详情，所在组。域内最高权限组为“domain admins”。 net group /domain # 枚举域内组 使用powershell进行信息枚举
+      <article class="post-article">域内环境基本思路：
+​	获取一台机器权限时，定位域控制器IP及域管理员账号。
+​	利用域成员主机作为跳板扩大范围，利用域管理员可以登陆域中任何成员主机特性，定位出域管理员登陆过的主机IP，设法从域成员主机内存中dump出域管理员密码，进而拿下域控制器、渗透整个内网。
 </article>
     </div>
   </div>
@@ -972,10 +974,10 @@ src= path= method:&#34;get&#34; http.get(&#34; method:&#34;post&#34; http.post(&
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;84.3k</span
+          >&nbsp;87.4k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:32</span>
+        <span class="icon-coffee">&nbsp;03:39</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
