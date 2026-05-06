@@ -197,12 +197,9 @@
         <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
         <li><a href="#dcom横向不易被发现">DCOM横向（不易被发现）</a></li>
         <li><a href="#wmismbdcom横向的区别">WMI、SMB、DCOM横向的区别</a></li>
-      </ul>
-    </li>
-    <li><a href="#winrm横向">winrm横向</a>
-      <ul>
+        <li><a href="#winrm横向">winrm横向</a></li>
         <li><a href="#rdp横向">RDP横向</a></li>
-        <li><a href="#利用低速密码枚举手段">利用低速密码枚举手段</a></li>
+        <li><a href="#利用低速密码枚举手段横向">利用低速密码枚举手段横向</a></li>
       </ul>
     </li>
   </ul>
@@ -596,10 +593,10 @@ WMI、SMB、DCOM横向的区别
 </span></span><span class="line"><span class="cl">    必开：动态高位端口（49152~65535，DCOM数据传输端口）
 </span></span><span class="line"><span class="cl">    高版本系统若通过组策略限制DCOM端口范围，需放通对应区间
 </span></span></code></pre></div><p>一般情况下，杀软中存在默认共享访问和RPC调用的限制，所以，若目标有杀软，以上这些路基本就堵死了。<img src="../../images/image-20260501211511681.png" alt="image-20260501211511681"></p>
-<h2 id="winrm横向">
+<h3 id="winrm横向">
 <a class="header-anchor" href="#winrm%e6%a8%aa%e5%90%91"></a>
 winrm横向
-</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">简介：
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">简介：
 </span></span><span class="line"><span class="cl">	WinRM(Windows Remote Management)，通过WS-management协议来实现管理远程主机，对应的端口是5985和5986（带ssl），在Windows 2008以上的版本才会自启动。
 </span></span><span class="line"><span class="cl">	WinRS(Windows Remote Shell，Windows 远程命令行)是一款Windows提供用于远程管理WinRM服务的客户端工具。
 </span></span><span class="line"><span class="cl">利用条件：
@@ -665,9 +662,9 @@ RDP横向
 </span></span><span class="line"><span class="cl">    劫持会话（图形化，影子模式）
 </span></span><span class="line"><span class="cl">    SharpRDPHijack.exe --session=会话ID
 </span></span><span class="line"><span class="cl">    SharpRDPHijack.exe --session=会话ID --shadow
-</span></span></code></pre></div><h3 id="利用低速密码枚举手段">
-<a class="header-anchor" href="#%e5%88%a9%e7%94%a8%e4%bd%8e%e9%80%9f%e5%af%86%e7%a0%81%e6%9e%9a%e4%b8%be%e6%89%8b%e6%ae%b5"></a>
-利用低速密码枚举手段
+</span></span></code></pre></div><h3 id="利用低速密码枚举手段横向">
+<a class="header-anchor" href="#%e5%88%a9%e7%94%a8%e4%bd%8e%e9%80%9f%e5%af%86%e7%a0%81%e6%9e%9a%e4%b8%be%e6%89%8b%e6%ae%b5%e6%a8%aa%e5%90%91"></a>
+利用低速密码枚举手段横向
 </h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">C:\Users\XXXX&gt;net accounts   # 通过此命令查看锁定阈值，已调整枚举频率
 </span></span><span class="line"><span class="cl">强制用户在时间到期之后多久必须注销?:     从不
 </span></span><span class="line"><span class="cl">密码最短使用期限(天):                    0
@@ -787,12 +784,9 @@ RDP横向
         <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
         <li><a href="#dcom横向不易被发现">DCOM横向（不易被发现）</a></li>
         <li><a href="#wmismbdcom横向的区别">WMI、SMB、DCOM横向的区别</a></li>
-      </ul>
-    </li>
-    <li><a href="#winrm横向">winrm横向</a>
-      <ul>
+        <li><a href="#winrm横向">winrm横向</a></li>
         <li><a href="#rdp横向">RDP横向</a></li>
-        <li><a href="#利用低速密码枚举手段">利用低速密码枚举手段</a></li>
+        <li><a href="#利用低速密码枚举手段横向">利用低速密码枚举手段横向</a></li>
       </ul>
     </li>
   </ul>
