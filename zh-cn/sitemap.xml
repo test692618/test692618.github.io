@@ -9,6 +9,11 @@
     <lastmod>2026-05-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="en"
                 href="https://test692618.github.io/en/categories/"
                 />
@@ -16,11 +21,6 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -32,11 +32,6 @@
     <lastmod>2026-05-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="https://test692618.github.io/en/"
                 />
@@ -44,6 +39,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -73,11 +73,6 @@
     <lastmod>2026-04-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="https://test692618.github.io/en/tags/"
                 />
@@ -85,6 +80,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/tags/"
                 />
     <xhtml:link
                 rel="alternate"

