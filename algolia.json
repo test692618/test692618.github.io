@@ -1,5 +1,17 @@
 [
   {
+    "objectID": "dbb2a9877944d032833d2d969ccf7b1ef54c8558",
+    "permalink": "/post/htb/htb%E6%89%93%E9%9D%B6-connected/",
+    "title": "htb-Connected","content": " 端口枚举 ports=$(nmap --top-ports=1000 --min-rate=1000 -Pn -T4 $ip | grep \u0026amp;#39;^[0-9]\u0026amp;#39; | cut -d \u0026amp;#39;/\u0026amp;#39; -f 1 | tr \u0026amp;#39;\\n\u0026amp;#39; \u0026amp;#39;,\u0026amp;#39; | sed s/,$//) nmap -p $ports -Pn -sC -sV $ip ----- PORT STATE SERVICE VERSION 22/tcp open ssh OpenSSH 7.4 (protocol 2.0) | ssh-hostkey: | 2048 4e:60:38:6f:e7:78:6c:ca:58:62:a1:f1:56:ae:8d:30 (RSA) | 256 12:41:55:26:9d:ad:3d:e8:bf:4e:31:aa:d7:d1:a5:d2 (ECDSA) |_ 256 8e:b6:96:e0:21:83:5d:1d:ce:8d:e2:6a:dd:38:c6:75 (ED25519) 80/tcp open http Apache httpd 2.4.6 ((CentOS) OpenSSL/1.0.2k-fips PHP/7.4.16) |_http-title: Did not follow redirect to http://connected.htb/ |_http-server-header: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.16 443/tcp open ssl/https Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.16 |_http-server-header: Apache/2.4.6 (CentOS) OpenSSL/1.0.2k-fips PHP/7.4.16 |_ssl-date: TLS randomness does not represent time | ssl-cert: Subject: …","date": "2026-06-19 00:00:00",
+    "updated": "2026-06-19 00:00:00"
+  }, 
+  {
+    "objectID": "6fe76aa0979e9f918801386230c003ca8f8bdd38",
+    "permalink": "/post/htb/htb%E6%89%93%E9%9D%B6-cap/",
+    "title": "htb-cap","content": " 枚举 此处省略。。。。\n我直接快进\n权限提升（利用python错误配置提权） #通过linpeas发现此配置 ...... /usr/bin/python3.8 = cap_setuid,cap_net_bind_service+eip ...... #注意 通过“getcap /usr/bin/python3.8” 命令，可以查到此配置。 python默认不存在此配置，通过“ setcap cap_setuid+ep /usr/bin/python3.8 ”可手动加上（需root操作） #解释 这表明 /usr/bin/python3.8这个可执行文件被赋予了两个特殊的 Linux Capabilities（能力/权能）： cap_setuid： 正常情况：Linux 中，只有 root 用户才能把自己的用户 ID（UID）改成 0（root）。 这里的情况：cap_setuid打破了这个规则，它允许 Python 解释器在运行脚本时，直接将自身的权限提升为 root。 cap_net_bind_service： 正常情况：只有 root 用户才能监听 1024 以下的“特权端口”（如 80、443、22 等）。 这里的情况：给了 Python 绑定这些低端口的权限，通常用于容器或特殊服务，但在主机上配合其他权限会非常危险。 +eip： 代表这两个能力当前处于生效（Effective）、允许（Permitted）和继承（Inherited）状态。这意味着 Python 进程随时可以调用这些特权。 # 利用脚本 /usr/bin/python3.8 -c \u0026#39;import os; os.setuid(0); os.system(\u0026#34;/bin/bash\u0026#34;)\u0026#39; ","date": "2026-06-18 00:00:00",
+    "updated": "2026-06-18 00:00:00"
+  }, 
+  {
     "objectID": "6643a9a14814bebcb3ddf0dab612848d00da3557",
     "permalink": "/post/ad%E5%9F%9F/%E5%86%85%E7%BD%91%E9%80%9A%E4%BF%A1/",
     "title": "内网通信","content": " 内网windows主机防火墙限制 ​\t默认情况：windows防火墙默认限制入策略，不限制出策略。\n防火墙基本策略 ​\t限制端口分为：入站限制端口、出站限制端口、出入站均限制端口。\n入站限制端口，出站未限制端口，使用反向连接。\n出站限制端口，入站未限制端口，使用正向连接。\n出入站均限制端口，使用端口绕过进行连接，建议配合反向连接。\n​\t限制协议分为：\n入站限制、出站限制、出入均限制， ​\t限制又分为：单协议限制、多协议限制、全部限制。\n入站限制： ​\t单协议限制，使用其它协议或者反向连接绕过。（隧道技术）\n​\t多协议限制，使用未被限制的协议或者反向连接绕过。（隧道技术）\n​\t全部协议限制，使用放弃或者反向连接绕过，但正常不会将所以协议都封闭的。\n出站限制 ​\t参考上面使用正向连接绕过。\n出入均限制 ​\t单协议限制，使用其它协议绕过。（隧道技术）\n​\t多协议限制，使用未被限制的协议绕过。（隧道技术）\n​\t全部协议限制，使用放弃绕过，但正常不会将所以协议都封闭的。\n单层目标机防火墙开启上线解决方案：\n1、命令关闭防火墙\n2、反向中转连接上线\n3、利用隧道技术上线（规则决定）\n单层跳板机防火墙开启上线解决方案：\n1、命令关闭防火墙\n2、正向监听连接上线\n3、利用隧道技术上线（规则决定）\n双层防火墙开启上线解决方案：\n1、命令关闭防火墙\n2、SMB管道通讯上线（默认放行）\n3、利用隧道技术上线（规则决定）\n防火墙关闭实验（命令适用场景）：\n1、内网无域环境下（命令可关闭）\n2、内网有域环境下（命令不可关闭）\nWindows防火墙命令： 参考：https://www.cnblogs.com/tomtellyou/p/16300557.html 查看当前防火墙状态：netsh advfirewall show allprofiles 关闭防火墙：netsh advfirewall set allprofiles state off 开启防火墙：netsh advfirewall set allprofiles state on 恢复初始防火墙设置：netsh advfirewall reset 启用桌面防火墙: netsh advfirewall set allprofiles state on 设置默认输入和输出策略：netsh advfirewall set …","date": "2026-05-06 00:00:00",
@@ -58,6 +70,12 @@
     "permalink": "/post/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91/%E5%AE%89%E5%8D%93%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/",
     "title": "安卓逆向","content": " APK文件结构 apk 全称 Android Package，它相当于一个压缩文件，只要在电脑上将apk后缀改为zip即可解压。\nassets目录 ： 存放APK的静态资源文件，比如视频，音频，图片等\nlib 目录 ：armeabi-v7a基本通用所有android设备，arm64-v8a只适用于64位的android设备，x86常见用于android模拟器，其目录下的.so文件是c或c++编译的动态链接库文件。\nMETA-INF目录 : 保存应用的签名信息，签名信息可以验证APK文件的完整性，相当于APK的身份证(验证文件是否又被修改)\nres目录 : res目录存放资源文件，包括图片，字符串等等，APK的脸蛋由他的layout文件设计\nAndroidMainfest.xml文件 : APK的应用清单信息，它描述了应用的名字，版本，权限，引用的库文件等等信息。\nversionCode\t版本号，主要用来更新，例如:12 versionName\t版本名，给用户看的，例如:1.2 package\t包名，例如：com.zj.52pj.demo uses-permission android:name=\u0026amp;quot;\u0026amp;quot;\t应用权限，例如：android.permission.INTERNET 代表网络权限 android:label=\u0026amp;quot;@string/app_name\u0026amp;quot;\t应用名称 android:icon=\u0026amp;quot;@mipmap/ic_launcher\u0026amp;quot;\t应用图标路径 android:debuggable=\u0026amp;quot;true\u0026amp;quot;\t应用是否开启debug权限 classes.dex文件 : classes.dex是java源码编译后生成的java字节码文件，APK运行的主要逻辑。\nresources.arsc文件 ： resources.arsc是编译后的二进制资源文件，它是一个映射表，映射着资源和id，通过R文件中的id就可以找到对应的资源\n安卓四大组件 Activity(活动) : 就是前端，在应用中的一个Activity可以用来表示一个界面，意思可以理解为“活动”，即一个活动开始，代表 Activity组件启动，活动结束，代表一个Activity的生命周期结束。一个Android应用必须通过Activity来运行和启动 …","date": "2024-05-20 20:07:06",
     "updated": "2024-05-20 20:07:06"
+  }, 
+  {
+    "objectID": "817974786812619e264f60e723b1055c533be4f5",
+    "permalink": "/post/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/ssh/",
+    "title": "SSH服务","content": " 两种登录方式 密码登录：输入账号密码验证 公钥免密登录：密钥验证，无需密码（推荐） 双因素：密码+公钥 密码登录流程 客户端发起SSH连接请求 服务端返回公钥给客户端 客户端用公钥加密账号密码，发送给服务端 服务端用私钥解密，校验账号密码，成功则允许登录 免密登录（公钥登录）流程 核心：谁发起连接，谁生成密钥对，谁把公钥发给服务端\n客户端生成RSA密钥对（公钥+私钥） 客户端将公钥上传至服务端，保存为~/.ssh/authorized_keys 客户端发起连接，服务端生成随机字符串发送给客户端 客户端用私钥加密字符串，回传服务端 服务端用客户端公钥解密，校验一致则免密登录 双因素登录 登陆时需要输入密码，并且指定私钥。\n具体配置\n# 1. 确保开启公钥认证 PubkeyAuthentication yes # 2. 确保开启密码认证（如果你之前为了安全把它关了，现在要重新打开） PasswordAuthentication yes # 3. 【核心参数】指定必须连续通过哪几种认证方式 # 逗号 \u0026#39;,\u0026#39; 表示“且”的关系，即必须全部通过；空格 \u0026#39; \u0026#39; 表示“或”的关系。 AuthenticationMethods publickey,password ","date": "2024-05-15 00:00:00",
+    "updated": "2024-05-15 00:00:00"
   }, 
   {
     "objectID": "5fd114565ff952b3df0317615384c397403efc60",

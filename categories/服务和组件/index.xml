@@ -12,12 +12,52 @@
     
     <copyright>本博客所有文章除特别声明外，均采用 BY-NC-SA 许可协议。转载请注明出处！</copyright>
     
-    <lastBuildDate>Mon, 29 Jan 2024 19:15:13 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 May 2024 00:00:00 +0000</lastBuildDate>
     
     
     <atom:link href="https://test692618.github.io/categories/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/index.xml" rel="self" type="application/rss&#43;xml" />
     
 
+    
+    
+
+    <item>
+      <title>SSH服务</title>
+      <link>https://test692618.github.io/post/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/ssh/</link>
+      <pubDate>Wed, 15 May 2024 00:00:00 &#43;0000</pubDate>
+      <author>knock_s@foxmial.com (L)</author>
+      <guid>https://test692618.github.io/post/%E6%9C%8D%E5%8A%A1%E5%92%8C%E7%BB%84%E4%BB%B6/ssh/</guid>
+      <description>
+        <![CDATA[<h1>SSH服务</h1><p>作者：L（knock_s@foxmial.com）</p>
+        
+          <h3 id="两种登录方式">
+<a class="header-anchor" href="#%e4%b8%a4%e7%a7%8d%e7%99%bb%e5%bd%95%e6%96%b9%e5%bc%8f"></a>
+两种登录方式
+</h3><ol>
+<li><strong>密码登录</strong>：输入账号密码验证</li>
+<li><strong>公钥免密登录</strong>：密钥验证，无需密码（推荐）</li>
+<li><strong>双因素</strong>：密码+公钥</li>
+</ol>
+<h3 id="密码登录流程">
+<a class="header-anchor" href="#%e5%af%86%e7%a0%81%e7%99%bb%e5%bd%95%e6%b5%81%e7%a8%8b"></a>
+密码登录流程
+</h3><ol>
+<li>客户端发起SSH连接请求</li>
+<li>服务端返回<strong>公钥</strong>给客户端</li>
+<li>客户端用公钥加密账号密码，发送给服务端</li>
+<li>服务端用<strong>私钥</strong>解密，校验账号密码，成功则允许登录</li>
+</ol>
+<h3 id="免密登录公钥登录流程">
+<a class="header-anchor" href="#%e5%85%8d%e5%af%86%e7%99%bb%e5%bd%95%e5%85%ac%e9%92%a5%e7%99%bb%e5%bd%95%e6%b5%81%e7%a8%8b"></a>
+免密登录（公钥登录）流程
+</h3><p>核心：<strong>谁发起连接，谁生成密钥对，谁把公钥发给服务端</strong></p>
+        
+        <hr><p>本文2024-05-15首发于<a href='https://test692618.github.io/'>HELLO WORLD</a>，最后修改于2024-05-15</p>]]>
+      </description>
+      
+        <category>服务和组件</category>
+      
+    </item>
     
     
 

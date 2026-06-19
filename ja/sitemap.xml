@@ -10,13 +10,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="en"
-                href="https://test692618.github.io/en/categories/"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/categories/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/categories/"
+                hreflang="en"
+                href="https://test692618.github.io/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -32,11 +32,6 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
                 hreflang="en"
                 href="https://test692618.github.io/en/"
                 />
@@ -44,6 +39,11 @@
                 rel="alternate"
                 hreflang="ja"
                 href="https://test692618.github.io/ja/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/"
                 />
   </url><url>
     <loc>https://test692618.github.io/ja/tags/</loc>
@@ -59,13 +59,13 @@
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="zh-tw"
-                href="https://test692618.github.io/zh-tw/tags/"
+                hreflang="ja"
+                href="https://test692618.github.io/ja/tags/"
                 />
     <xhtml:link
                 rel="alternate"
-                hreflang="ja"
-                href="https://test692618.github.io/ja/tags/"
+                hreflang="zh-tw"
+                href="https://test692618.github.io/zh-tw/tags/"
                 />
   </url>
 </urlset>

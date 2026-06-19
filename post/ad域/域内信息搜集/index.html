@@ -207,7 +207,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">84</div>
+    <div>文章</div><div class="sidebar-state-number">87</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -294,115 +294,115 @@
 </span></span><span class="line"><span class="cl">2.未加域机器，处于单机版（工作组环境）
 </span></span></code></pre></div><p>信息搜集的相关指令：</p>
 <table>
-  <thead>
-      <tr>
-          <th>指令</th>
-          <th>作用</th>
-          <th>细节点</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>ipconfig /all</td>
-          <td>查看当前机器网卡以及ip信息</td>
-          <td>主DNS后缀中会显示域名</td>
-      </tr>
-      <tr>
-          <td>nslookup</td>
-          <td>使用nslookup解析域名</td>
-          <td>查看域名解析出来的地址是否是与dns服务器是否一致</td>
-      </tr>
-      <tr>
-          <td>systeminfo</td>
-          <td>查看本机系统详细信息</td>
-          <td>在域这一列显示域名</td>
-      </tr>
-      <tr>
-          <td>net config workstation</td>
-          <td>查看当前登录域及域用户</td>
-          <td>域环境下的机器，那么在工作站域这一列显示的则是域名</td>
-      </tr>
-      <tr>
-          <td>net time /domain</td>
-          <td>查看域内时间</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>whoami /user</td>
-          <td>当前用户权限</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>whoami /priv</td>
-          <td>当前用户权限</td>
-          <td>不同的用户拥有不同的权限</td>
-      </tr>
-      <tr>
-          <td>echo %PROCESSOR_ARCHITECTURE%</td>
-          <td>判断该系统体系结构</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>netstat -ano</td>
-          <td>网络连接以及端口开放情况</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>route print</td>
-          <td>路由表判断网络情况</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>arp -a</td>
-          <td>ARP表判断网络情况</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>hostname</td>
-          <td>查看当前机器名</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>wmic product Get name,version</td>
-          <td>查看当前安装的程序及版本</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>quser</td>
-          <td>查看在线用户</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>tasklist</td>
-          <td>查看当前进程列表</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>tasklist /v</td>
-          <td>查看进程对应的用户身份</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>tasklist /svc</td>
-          <td>查看是否存在杀软</td>
-          <td>WMIC /Node:localhost /Namespace:\root\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List （平替）</td>
-      </tr>
-      <tr>
-          <td>wmic startup get command,caption</td>
-          <td>查看启动程序信息</td>
-          <td>通过查看启动程序信息可以知道当前机器开机的时候会运行哪些软件，这可以启动劫持。</td>
-      </tr>
-      <tr>
-          <td>schtasks /query /fo list /v</td>
-          <td>查看计划任务</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>netsh firewall show config</td>
-          <td>查看防火墙配置</td>
-          <td>查看防火墙配置判断当前机器是否开了防火墙，以及防火墙配置信息。</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>指令</th>
+					<th>作用</th>
+					<th>细节点</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ipconfig /all</td>
+					<td>查看当前机器网卡以及ip信息</td>
+					<td>主DNS后缀中会显示域名</td>
+			</tr>
+			<tr>
+					<td>nslookup</td>
+					<td>使用nslookup解析域名</td>
+					<td>查看域名解析出来的地址是否是与dns服务器是否一致</td>
+			</tr>
+			<tr>
+					<td>systeminfo</td>
+					<td>查看本机系统详细信息</td>
+					<td>在域这一列显示域名</td>
+			</tr>
+			<tr>
+					<td>net config workstation</td>
+					<td>查看当前登录域及域用户</td>
+					<td>域环境下的机器，那么在工作站域这一列显示的则是域名</td>
+			</tr>
+			<tr>
+					<td>net time /domain</td>
+					<td>查看域内时间</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>whoami /user</td>
+					<td>当前用户权限</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>whoami /priv</td>
+					<td>当前用户权限</td>
+					<td>不同的用户拥有不同的权限</td>
+			</tr>
+			<tr>
+					<td>echo %PROCESSOR_ARCHITECTURE%</td>
+					<td>判断该系统体系结构</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>netstat -ano</td>
+					<td>网络连接以及端口开放情况</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>route print</td>
+					<td>路由表判断网络情况</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>arp -a</td>
+					<td>ARP表判断网络情况</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>hostname</td>
+					<td>查看当前机器名</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>wmic product Get name,version</td>
+					<td>查看当前安装的程序及版本</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>quser</td>
+					<td>查看在线用户</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>tasklist</td>
+					<td>查看当前进程列表</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>tasklist /v</td>
+					<td>查看进程对应的用户身份</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>tasklist /svc</td>
+					<td>查看是否存在杀软</td>
+					<td>WMIC /Node:localhost /Namespace:\root\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List （平替）</td>
+			</tr>
+			<tr>
+					<td>wmic startup get command,caption</td>
+					<td>查看启动程序信息</td>
+					<td>通过查看启动程序信息可以知道当前机器开机的时候会运行哪些软件，这可以启动劫持。</td>
+			</tr>
+			<tr>
+					<td>schtasks /query /fo list /v</td>
+					<td>查看计划任务</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>netsh firewall show config</td>
+					<td>查看防火墙配置</td>
+					<td>查看防火墙配置判断当前机器是否开了防火墙，以及防火墙配置信息。</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="2-域内信息收集">
 <a class="header-anchor" href="#2-%e5%9f%9f%e5%86%85%e4%bf%a1%e6%81%af%e6%94%b6%e9%9b%86"></a>
@@ -425,70 +425,70 @@
 </span></span></code></pre></div><p><img src="./../../images/image-20230108191127476.png" alt="image-20230108191127476"></p>
 <p>2.3域内的相关命令</p>
 <table>
-  <thead>
-      <tr>
-          <th>指令</th>
-          <th>作用</th>
-          <th>细节点</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>nltest /domain_trusts /all_trusts /v</td>
-          <td>查询域信任列表</td>
-          <td>可以查询到有多少个域以及域名</td>
-      </tr>
-      <tr>
-          <td>nltest /dsgetdc:fsec</td>
-          <td>查询域控以及对应ip</td>
-          <td>快速定位域控机器</td>
-      </tr>
-      <tr>
-          <td>net user /do</td>
-          <td>获取域用户列表</td>
-          <td>获取到域内所有用户，从此判断域的大小</td>
-      </tr>
-      <tr>
-          <td>net group &ldquo;domain admins&rdquo; /domain</td>
-          <td>获取域管理员列表</td>
-          <td>快速定位域管</td>
-      </tr>
-      <tr>
-          <td>net localgroup administrators /domain</td>
-          <td>登录本机的域管理员</td>
-          <td>该条命令会显示本地管理员以及域管理员，需要区别一下</td>
-      </tr>
-      <tr>
-          <td>net user xxx /domain</td>
-          <td>查询某个域用户的详细信息</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>net group /domain</td>
-          <td>查询域内用户组列表</td>
-          <td>有的域内可能会有部分的分组，比如信息组，财务组</td>
-      </tr>
-      <tr>
-          <td>net group caiwu /domain</td>
-          <td>查询域内某个组下用户</td>
-          <td>(查询caiwu这个用户组下的用户)</td>
-      </tr>
-      <tr>
-          <td>net accounts /domain</td>
-          <td>查询域密码策略</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>net group &ldquo;domain controllers&rdquo; /domain</td>
-          <td>查询所有域控列表</td>
-          <td>想要知道域控的ip是多少时，那么直接ping机器名即可</td>
-      </tr>
-      <tr>
-          <td>net view  \\ net group &ldquo;domain computers&rdquo; /domain</td>
-          <td>查询域内机器列表</td>
-          <td></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>指令</th>
+					<th>作用</th>
+					<th>细节点</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>nltest /domain_trusts /all_trusts /v</td>
+					<td>查询域信任列表</td>
+					<td>可以查询到有多少个域以及域名</td>
+			</tr>
+			<tr>
+					<td>nltest /dsgetdc:fsec</td>
+					<td>查询域控以及对应ip</td>
+					<td>快速定位域控机器</td>
+			</tr>
+			<tr>
+					<td>net user /do</td>
+					<td>获取域用户列表</td>
+					<td>获取到域内所有用户，从此判断域的大小</td>
+			</tr>
+			<tr>
+					<td>net group &ldquo;domain admins&rdquo; /domain</td>
+					<td>获取域管理员列表</td>
+					<td>快速定位域管</td>
+			</tr>
+			<tr>
+					<td>net localgroup administrators /domain</td>
+					<td>登录本机的域管理员</td>
+					<td>该条命令会显示本地管理员以及域管理员，需要区别一下</td>
+			</tr>
+			<tr>
+					<td>net user xxx /domain</td>
+					<td>查询某个域用户的详细信息</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>net group /domain</td>
+					<td>查询域内用户组列表</td>
+					<td>有的域内可能会有部分的分组，比如信息组，财务组</td>
+			</tr>
+			<tr>
+					<td>net group caiwu /domain</td>
+					<td>查询域内某个组下用户</td>
+					<td>(查询caiwu这个用户组下的用户)</td>
+			</tr>
+			<tr>
+					<td>net accounts /domain</td>
+					<td>查询域密码策略</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>net group &ldquo;domain controllers&rdquo; /domain</td>
+					<td>查询所有域控列表</td>
+					<td>想要知道域控的ip是多少时，那么直接ping机器名即可</td>
+			</tr>
+			<tr>
+					<td>net view  \\ net group &ldquo;domain computers&rdquo; /domain</td>
+					<td>查询域内机器列表</td>
+					<td></td>
+			</tr>
+	</tbody>
 </table>
 <p>2.4 查找机器上保存的敏感密码以及敏感文件</p>
 <p>根据文件名称搜索:</p>
@@ -516,7 +516,7 @@
     aria-label="Article navigation"
     data-aos="fade-up"
   ><div class="article-nav-link-wrap left"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg4.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg3.webp"
               data-sizes="auto"
               alt="jwt靶场练习"
               class="lazyload"
@@ -528,7 +528,7 @@
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">jwt靶场练习</h3>
       </div><div class="article-nav-link-wrap right"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg26.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg13.webp"
               data-sizes="auto"
               alt="windows账户"
               class="lazyload"
@@ -560,10 +560,10 @@
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;103.5k</span
+          >&nbsp;113.0k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;04:12</span>
+        <span class="icon-coffee">&nbsp;04:32</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -610,7 +610,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">84</div>
+    <div>文章</div><div class="sidebar-state-number">87</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>

